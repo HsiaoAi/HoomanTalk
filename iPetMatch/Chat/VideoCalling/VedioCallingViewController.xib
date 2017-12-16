@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoCallingViewController" customModule="iPetMatch" customModuleProvider="target">
+            <connections>
+                <outlet property="opponentVideoView" destination="Ra1-b1-dR8" id="2aj-eo-ctX"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ra1-b1-dR8" customClass="QBRTCRemoteVideoView" customModule="iPetMatch" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQp-hx-49x">
+                            <rect key="frame" x="116" y="597" width="142.5" height="30"/>
+                            <color key="backgroundColor" red="0.93457251789999995" green="0.3537055254" blue="0.34148138760000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Decline">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="declineCall:" destination="-1" eventType="touchUpInside" id="nwb-gm-5zh"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="XQp-hx-49x" secondAttribute="trailing" constant="116.5" id="5tn-fZ-afJ"/>
+                        <constraint firstItem="XQp-hx-49x" firstAttribute="leading" secondItem="Ra1-b1-dR8" secondAttribute="leading" constant="116" id="CwO-sI-Wxc"/>
+                        <constraint firstAttribute="bottom" secondItem="XQp-hx-49x" secondAttribute="bottom" constant="20" id="Hud-Bf-292"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Ra1-b1-dR8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2Jg-ZX-TFV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ra1-b1-dR8" secondAttribute="trailing" id="d31-Co-QCR"/>
+                <constraint firstItem="Ra1-b1-dR8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="gh4-de-v6B"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ra1-b1-dR8" secondAttribute="bottom" id="ya2-7d-Ajg"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>
