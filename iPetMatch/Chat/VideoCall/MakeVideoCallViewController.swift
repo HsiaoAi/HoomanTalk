@@ -15,9 +15,8 @@ class MakeVideoCallViewController: UIViewController {
     @IBAction func hangUpCall(_ sender: Any) {
 
         let userInfo: [String: String] = ["key": "value"]
-        
-        CallManager.shared.session?.hangUp(userInfo)
 
+        CallManager.shared.session?.hangUp(userInfo)
 
     }
 

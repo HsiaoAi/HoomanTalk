@@ -12,7 +12,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MakeAudioCallViewController" customModule="iPetMatch" customModuleProvider="target">
             <connections>
-                <outlet property="callStatusLabel" destination="Dst-g1-ZS6" id="GZ5-2e-8ES"/>
                 <outlet property="declineButton" destination="nXw-B2-cyh" id="2Tu-g4-k9p"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -41,19 +40,10 @@
                         </button>
                     </subviews>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dst-g1-ZS6">
-                    <rect key="frame" x="20" y="210" width="335" height="20.5"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.73328191040000001" blue="0.64699196820000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Dst-g1-ZS6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="190" id="3fW-kP-pSY"/>
                 <constraint firstItem="C4k-NY-03J" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="UOH-Pk-Eae"/>
-                <constraint firstItem="Dst-g1-ZS6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Uln-UA-DXA"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Dst-g1-ZS6" secondAttribute="trailing" constant="20" id="cbt-aj-LCk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="C4k-NY-03J" secondAttribute="trailing" constant="20" id="ejk-aO-qs6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="C4k-NY-03J" secondAttribute="bottom" constant="72" id="t6H-dF-KOE"/>
             </constraints>

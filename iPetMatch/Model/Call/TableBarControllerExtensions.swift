@@ -11,6 +11,7 @@
 extension TabBarController: QBRTCClientDelegate {
 
     // ReceiveCall
+
     func didReceiveNewSession(_ session: QBRTCSession, userInfo: [String: String]? = nil) {
 
         if CallManager.shared.session != nil {
@@ -23,9 +24,95 @@ extension TabBarController: QBRTCClientDelegate {
 
             CallManager.shared.session = session
 
-            self.present(IncommingCallViewController(), animated: true, completion: nil)
+            switch session.conferenceType {
+
+            case .audio:
+
+                self.present(IncommingCallViewController(), animated: true, completion: nil)
+
+            case .video:
+
+                self.present(MakeVideoCallViewController(), animated: true, completion: nil)
+            }
 
         }
 
     }
+
+    func sessionDidClose(_ session: QBRTCSession) {
+
+        // TODO: show how long the call is
+        print("***sessionDidClose***")
+
+        CallManager.shared.session = nil
+
+    }
+
+    // Make Call
+
+    func session(_ session: QBRTCSession, userDidNotRespond userID: NSNumber) {
+
+        // TODO: Show Alert
+        print("***userDidNotRespond***")
+
+    }
+
+    func session(_ session: QBRTCSession, rejectedByUser userID: NSNumber, userInfo: [String: String]? = nil) {
+
+        // TODO: Show Alert
+        print("***Reject***")
+
+    }
+
+    func session(_ session: QBRTCSession, acceptedByUser userID: NSNumber, userInfo: [String: String]? = nil) {
+
+        print("***acceptedByUser***")
+    }
+
+    func session(_ session: QBRTCSession, hungUpByUser userID: NSNumber, userInfo: [String: String]? = nil) {
+
+        print("***hungUpByUser***")
+
+    }
+
+    // MARK - Connection life-cyle
+
+    func session(_ session: QBRTCBaseSession, startedConnectingToUser userID: NSNumber) {
+
+        print("***startedConnectingToUser***")
+
+    }
+
+    func session(_ session: QBRTCBaseSession, connectedToUser userID: NSNumber) {
+
+        print("***connectedToUser***")
+
+    }
+
+    func session(_ session: QBRTCBaseSession, connectionClosedForUser userID: NSNumber) {
+
+        print("***connectionClosedForUser***")
+
+    }
+
+    func session(_ session: QBRTCBaseSession, disconnectedFromUser userID: NSNumber) {
+
+        print("***disconnectedFromUser***")
+
+    }
+
+    func session(session: QBRTCSession!, userDidNotRespond userID: NSNumber!) {
+
+        // TODO: Alert
+        print("***userDidNotRespond***")
+
+    }
+
+    func session(_ session: QBRTCBaseSession, connectionFailedForUser userID: NSNumber) {
+
+        // TODO: Alert
+        print("***connectionFailedForUser***")
+
+    }
+
 }

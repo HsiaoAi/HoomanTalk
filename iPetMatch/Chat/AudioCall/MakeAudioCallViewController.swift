@@ -10,18 +10,24 @@ import UIKit
 
 class MakeAudioCallViewController: UIViewController {
 
-    @IBOutlet weak var callStatusLabel: UILabel!
-
     @IBOutlet weak var declineButton: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //self.navigationController?.navigationBar.topItem?.title =  "撥打語音電話中"
+
         QBRTCClient.instance().add(self)
-        
-        callStatusLabel.text = "撥打語音電話中"
 
         declineButton.addTarget(self, action: #selector(declineCall), for: .touchUpInside)
+
+        self.navigationItem.title = "撥打語音電話中"
+
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+
+        super.viewWillAppear(animated)
 
     }
 
@@ -31,50 +37,28 @@ extension MakeAudioCallViewController: QBRTCClientDelegate {
 
     func session(_ session: QBRTCSession, acceptedByUser userID: NSNumber, userInfo: [String: String]? = nil) {
 
-        callStatusLabel.text = "語音通話中"
-
-    }
-
-    func session(_ session: QBRTCSession, userDidNotRespond userID: NSNumber) {
-
-        // TODO: Show Alert
-        callStatusLabel.text = "語音沒有回應"
-
-        self.dismiss(animated: true, completion: nil)
+        self.navigationItem.title =  "通話中"
 
     }
 
     func session(_ session: QBRTCSession, rejectedByUser userID: NSNumber, userInfo: [String: String]? = nil) {
 
-        // TODO: Show Alert
-        callStatusLabel.text = "語音被拒絕"
-
-        self.dismiss(animated: true, completion: nil)
+        self.navigationItem.title =  "被拒絕"
 
     }
 
     func session(_ session: QBRTCSession, hungUpByUser userID: NSNumber, userInfo: [String: String]? = nil) {
 
-        callStatusLabel.text = "語音通話結束"
-
-        self.dismiss(animated: true, completion: nil)
-    }
-
-    func session(_ session: QBRTCBaseSession, connectionFailedForUser userID: NSNumber) {
-
-        // TODO: Alert
-
-        self.dismiss(animated: true, completion: nil)
-
-        print("----------Connection has failed with user \(userID)")
+        self.navigationItem.title =  "被掛斷"
 
     }
-    
+
     func sessionDidClose(_ session: QBRTCSession) {
-        print("***")
-        // TODO: show how long the call is
-        CallManager.shared.session = nil
-        
+
+        self.navigationItem.title = ""
+
+        self.navigationController?.popToRootViewController(animated: true)
+
     }
 
 }
@@ -87,11 +71,9 @@ extension MakeAudioCallViewController {
 
         let userInfo: [String: String] = ["key": "value"]
 
-        CallManager.shared.session?.rejectCall(userInfo)
+        CallManager.shared.session?.hangUp(userInfo)
 
         CallManager.shared.session = nil
-
-        self.dismiss(animated: true, completion: nil)
 
     }
 

@@ -26,8 +26,6 @@ class ChatListTableViewController: UITableViewController {
 
         super.viewDidLoad()
 
-        //QBRTCClient.instance().add(self)
-
         self.navigationItem.hidesBackButton = false
 
         setUp()
@@ -151,7 +149,7 @@ class ChatListTableViewController: UITableViewController {
 
         CallManager.shared.makeCall(to: toUserID, with: .audio)
 
-        self.present(MakeAudioCallViewController(), animated: true, completion: nil)
+        self.navigationController?.pushViewController(MakeAudioCallViewController(), animated: true)
 
     }
 
