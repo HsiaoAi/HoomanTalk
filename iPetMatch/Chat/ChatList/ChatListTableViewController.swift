@@ -149,7 +149,11 @@ class ChatListTableViewController: UITableViewController {
 
         CallManager.shared.makeCall(to: toUserID, with: .audio)
 
-        self.navigationController?.pushViewController(MakeAudioCallViewController(), animated: true)
+        let makeAudioCallViewController = MakeAudioCallViewController()
+
+        let navigationController = UINavigationController(rootViewController: makeAudioCallViewController)
+
+        self.navigationController?.present(navigationController, animated: true, completion: nil)
 
     }
 

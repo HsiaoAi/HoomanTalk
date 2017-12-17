@@ -57,7 +57,7 @@ extension MakeAudioCallViewController: QBRTCClientDelegate {
 
         self.navigationItem.title = ""
 
-        self.navigationController?.popToRootViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
 
     }
 

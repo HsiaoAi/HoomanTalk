@@ -9,12 +9,18 @@
 import UIKit
 
 class IncommingCallViewController: UIViewController {
+
     @IBOutlet weak var callStatusLabel: UILabel!
 
     var isAnswer = false
 
     override func viewDidLoad() {
+
         super.viewDidLoad()
+
+        QBRTCClient.instance().add(self)
+
+        self.title = "來電"
 
     }
 
@@ -26,7 +32,7 @@ class IncommingCallViewController: UIViewController {
 
         CallManager.shared.session?.acceptCall(userInfo)
 
-        callStatusLabel.text = "通話中"
+        self.title = "通話中"
 
     }
 
@@ -43,6 +49,18 @@ class IncommingCallViewController: UIViewController {
             CallManager.shared.session?.rejectCall(userInfo)
 
         }
+
+    }
+
+}
+
+extension IncommingCallViewController: QBRTCClientDelegate {
+
+    func session(_ session: QBRTCSession, hungUpByUser userID: NSNumber, userInfo: [String: String]? = nil) {
+
+    }
+
+    func sessionDidClose(_ session: QBRTCSession) {
 
         CallManager.shared.session = nil
 

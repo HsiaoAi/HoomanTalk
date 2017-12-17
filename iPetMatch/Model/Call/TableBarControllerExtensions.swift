@@ -28,7 +28,11 @@ extension TabBarController: QBRTCClientDelegate {
 
             case .audio:
 
-                self.present(IncommingCallViewController(), animated: true, completion: nil)
+                let incommingCallViewController = IncommingCallViewController()
+
+                let navigationController = UINavigationController(rootViewController: incommingCallViewController)
+
+                self.present(navigationController, animated: true, completion: nil)
 
             case .video:
 
