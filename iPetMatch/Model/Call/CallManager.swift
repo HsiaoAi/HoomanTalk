@@ -17,8 +17,6 @@ class CallManager {
 
     var conferenceType: QBRTCConferenceType = .audio
 
-    var videoCapture: QBRTCCameraCapture?
-
     var session: QBRTCSession?
 
     func makeCall(to userID: UInt, with conferenceType: QBRTCConferenceType) {
@@ -43,17 +41,17 @@ class CallManager {
 
         let videoFormat = QBRTCVideoFormat.init()
 
-        self.videoCapture = QBRTCCameraCapture.init(videoFormat: videoFormat, position: .front)
+        let videoCapture = QBRTCCameraCapture(videoFormat: videoFormat, position: .front)
 
-        self.session?.localMediaStream.videoTrack.videoCapture = self.videoCapture
+        self.session?.localMediaStream.videoTrack.videoCapture = videoCapture
 
-        self.videoCapture?.previewLayer.frame = localVideoView.bounds
+        videoCapture.previewLayer.frame = localVideoView.bounds
 
-        self.videoCapture?.previewLayer.videoGravity = .resizeAspectFill
+        videoCapture.previewLayer.videoGravity = .resizeAspectFill
 
-        self.videoCapture?.startSession()
+        videoCapture.startSession()
 
-        localVideoView.layer.insertSublayer(self.videoCapture!.previewLayer, at: 0)
+        localVideoView.layer.insertSublayer(videoCapture.previewLayer, at: 0)
 
     }
 

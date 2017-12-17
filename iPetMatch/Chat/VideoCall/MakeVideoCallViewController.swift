@@ -8,19 +8,16 @@
 
 import UIKit
 
-class MakeCallViewController: UIViewController {
+class MakeVideoCallViewController: UIViewController {
 
     @IBOutlet weak var localVideoView: LocalVideoView!
 
     @IBAction func hangUpCall(_ sender: Any) {
 
         let userInfo: [String: String] = ["key": "value"]
+        
+        CallManager.shared.session?.hangUp(userInfo)
 
-        DispatchQueue.global().async {
-
-            CallManager.shared.session?.hangUp(userInfo)
-
-        }
 
     }
 
@@ -45,7 +42,7 @@ class MakeCallViewController: UIViewController {
 
 }
 
-extension MakeCallViewController: QBRTCClientDelegate {
+extension MakeVideoCallViewController: QBRTCClientDelegate {
 
     func session(session: QBRTCSession!, receivedRemoteVideoTrack videoTrack: QBRTCVideoTrack!, fromUser userID: NSNumber!) {
 
@@ -57,13 +54,11 @@ extension MakeCallViewController: QBRTCClientDelegate {
 
         CallManager.shared.session = nil
 
-        CallManager.shared.videoCapture?.stopSession(nil)
-
     }
 
 }
 
-extension MakeCallViewController: UIDropInteractionDelegate {
+extension MakeVideoCallViewController: UIDropInteractionDelegate {
 
     func setupLocalVideoView() {
 

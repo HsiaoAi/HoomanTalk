@@ -151,13 +151,13 @@ class ChatListTableViewController: UITableViewController {
 
         CallManager.shared.makeCall(to: toUserID, with: .audio)
 
-        self.present(IncommingCallViewController(), animated: true, completion: nil)
+        self.present(MakeAudioCallViewController(), animated: true, completion: nil)
 
     }
 
     @objc func startVedioCalling() {
 
-        self.present(MakeCallViewController(), animated: true, completion: nil)
+        self.present(MakeVideoCallViewController(), animated: true, completion: nil)
 
     }
 

@@ -9,8 +9,13 @@
 import UIKit
 
 class IncommingCallViewController: UIViewController {
+    @IBOutlet weak var callStatusLabel: UILabel!
+    
+    var isAnswer = false
 
     @IBAction func answerCall(_ sender: Any) {
+        
+        isAnswer = true
 
         let userInfo: [String: String] = ["key": "value"]
 
@@ -21,12 +26,12 @@ class IncommingCallViewController: UIViewController {
         switch sessionConferenceType {
 
             case .audio:
-
-                self.present(AudioCallingViewController(), animated: false, completion: nil)
+                print("here")
+                //self.present(MakeAudioCallViewController(), animated: false, completion: nil)
 
             case .video:
 
-                self.present(MakeCallViewController(), animated: false, completion: nil)
+                self.present(MakeVideoCallViewController(), animated: false, completion: nil)
 
         }
 
@@ -36,9 +41,13 @@ class IncommingCallViewController: UIViewController {
 
         let userInfo: [String: String] = ["key": "value"]
 
-        DispatchQueue.global().async {
-
+        if isAnswer {
+            
             CallManager.shared.session?.hangUp(userInfo)
+            
+        } else {
+            
+            CallManager.shared.session?.rejectCall(userInfo)
 
         }
 
@@ -50,14 +59,49 @@ class IncommingCallViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        QBRTCClient.instance().add(self)
 
-        self.view.backgroundColor = UIColor.yellow
-
+        callStatusLabel.text = "來電"
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+}
 
+extension IncommingCallViewController: QBRTCClientDelegate {
+    
+    func session(_ session: QBRTCSession, hungUpByUser userID: NSNumber, userInfo: [String: String]? = nil) {
+        
+        callStatusLabel.text = "語音通話結束"
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func session(_ session: QBRTCBaseSession, connectionFailedForUser userID: NSNumber) {
+        
+        // TODO: Alert
+        
+        callStatusLabel.text = "Connection has failed"
+
+        
+        self.dismiss(animated: true, completion: nil)
+        
+        print("----------Connection has failed with user \(userID)")
+        
+    }
+    
+    func session(session: QBRTCSession!, disconnectedFromUser userID: NSNumber!) {
+        callStatusLabel.text = "disconnectedFromUser"
+
+    }
+    
+    func sessionDidClose(_ session: QBRTCSession) {
+        print("***")
+        // TODO: show how long the call is
+        CallManager.shared.session = nil
+        
+        self.dismiss(animated: true, completion: nil)
+        
+        callStatusLabel.text = "sessionDidClose"
+    }
+    
 }

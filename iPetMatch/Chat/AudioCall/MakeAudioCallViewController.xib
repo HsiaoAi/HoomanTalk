@@ -10,9 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AudioCallingViewController" customModule="iPetMatch" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MakeAudioCallViewController" customModule="iPetMatch" customModuleProvider="target">
             <connections>
                 <outlet property="callStatusLabel" destination="Dst-g1-ZS6" id="GZ5-2e-8ES"/>
+                <outlet property="declineButton" destination="nXw-B2-cyh" id="2Tu-g4-k9p"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,22 +25,19 @@
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="C4k-NY-03J">
                     <rect key="frame" x="20" y="565" width="335" height="30"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kLZ-Jl-8bV">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dft-5C-83I">
                             <rect key="frame" x="0.0" y="0.0" width="142.5" height="30"/>
-                            <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal" title="Microphe">
+                            <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Microphone">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dft-5C-83I">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXw-B2-cyh">
                             <rect key="frame" x="192.5" y="0.0" width="142.5" height="30"/>
                             <color key="backgroundColor" red="0.93457251789999995" green="0.3537055254" blue="0.34148138760000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="Decline">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
-                            <connections>
-                                <action selector="declineCall:" destination="-1" eventType="touchUpInside" id="RBo-Lu-Oku"/>
-                            </connections>
                         </button>
                     </subviews>
                 </stackView>

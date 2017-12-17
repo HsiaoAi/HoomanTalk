@@ -7,7 +7,9 @@
 //
 
 let kQBRingThickness: CGFloat = 1.0
-let kQBAnswerTimeInterval: TimeInterval = 60.0
+
+//60
+let kQBAnswerTimeInterval: TimeInterval = 10
 let kQBDialingTimeInterval: TimeInterval = 5.0
 
 @UIApplicationMain

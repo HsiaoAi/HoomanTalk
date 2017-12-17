@@ -12,13 +12,13 @@
 		87126BE61FE18B09009D0188 /* LandingViewControViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87126BE41FE18B09009D0188 /* LandingViewControViewController.xib */; };
 		87126BFA1FE19B2A009D0188 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126BF91FE19B2A009D0188 /* Identifiable.swift */; };
 		87126C011FE2412F009D0188 /* CallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126C001FE2412F009D0188 /* CallManager.swift */; };
-		8733710E1FE5112D0092CE34 /* MakeCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8733710C1FE5112D0092CE34 /* MakeCallViewController.swift */; };
-		8733710F1FE5112D0092CE34 /* MakeCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8733710D1FE5112D0092CE34 /* MakeCallViewController.xib */; };
-		873371111FE5139D0092CE34 /* LocalVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873371101FE5139D0092CE34 /* LocalVideoView.swift */; };
+		872D9CD51FE65EFD0008C8AA /* MakeVideoCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 872D9CD11FE65CF80008C8AA /* MakeVideoCallViewController.xib */; };
+		872D9CD61FE65F030008C8AA /* MakeVideoCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D9CD31FE65CF80008C8AA /* MakeVideoCallViewController.swift */; };
+		872D9CD71FE65F110008C8AA /* LocalVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D9CD21FE65CF80008C8AA /* LocalVideoView.swift */; };
 		8735E6191FE56A4500C85442 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8735E6181FE56A4400C85442 /* AppDelegate.swift */; };
 		8735E6331FE58EF000C85442 /* QuickBloxKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8735E6321FE58EF000C85442 /* QuickBloxKey.plist */; };
-		8737143A1FE40612009C440F /* AudioCallingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873714381FE40612009C440F /* AudioCallingViewController.swift */; };
-		8737143B1FE40612009C440F /* AudioCallingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 873714391FE40612009C440F /* AudioCallingViewController.xib */; };
+		8737143A1FE40612009C440F /* MakeAudioCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873714381FE40612009C440F /* MakeAudioCallViewController.swift */; };
+		8737143B1FE40612009C440F /* MakeAudioCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 873714391FE40612009C440F /* MakeAudioCallViewController.xib */; };
 		874D94321FE250F00009C9F3 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94311FE250EF0009C9F3 /* SweetAlert.swift */; };
 		874D94351FE2B2B00009C9F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94341FE2B2B00009C9F3 /* User.swift */; };
 		874D94391FE2CEAE0009C9F3 /* IncommingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94371FE2CEAE0009C9F3 /* IncommingCallViewController.swift */; };
@@ -72,13 +72,13 @@
 		87126BE41FE18B09009D0188 /* LandingViewControViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LandingViewControViewController.xib; sourceTree = "<group>"; };
 		87126BF91FE19B2A009D0188 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		87126C001FE2412F009D0188 /* CallManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallManager.swift; sourceTree = "<group>"; };
-		8733710C1FE5112D0092CE34 /* MakeCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCallViewController.swift; sourceTree = "<group>"; };
-		8733710D1FE5112D0092CE34 /* MakeCallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MakeCallViewController.xib; sourceTree = "<group>"; };
-		873371101FE5139D0092CE34 /* LocalVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalVideoView.swift; sourceTree = "<group>"; };
+		872D9CD11FE65CF80008C8AA /* MakeVideoCallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MakeVideoCallViewController.xib; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/VideoCall/MakeVideoCallViewController.xib; sourceTree = "<absolute>"; };
+		872D9CD21FE65CF80008C8AA /* LocalVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalVideoView.swift; sourceTree = "<group>"; };
+		872D9CD31FE65CF80008C8AA /* MakeVideoCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeVideoCallViewController.swift; sourceTree = "<group>"; };
 		8735E6181FE56A4400C85442 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8735E6321FE58EF000C85442 /* QuickBloxKey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = QuickBloxKey.plist; sourceTree = "<group>"; };
-		873714381FE40612009C440F /* AudioCallingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCallingViewController.swift; sourceTree = "<group>"; };
-		873714391FE40612009C440F /* AudioCallingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioCallingViewController.xib; sourceTree = "<group>"; };
+		873714381FE40612009C440F /* MakeAudioCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAudioCallViewController.swift; sourceTree = "<group>"; };
+		873714391FE40612009C440F /* MakeAudioCallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MakeAudioCallViewController.xib; sourceTree = "<group>"; };
 		874D94311FE250EF0009C9F3 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
 		874D94341FE2B2B00009C9F3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		874D94371FE2CEAE0009C9F3 /* IncommingCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncommingCallViewController.swift; sourceTree = "<group>"; };
@@ -169,9 +169,9 @@
 			isa = PBXGroup;
 			children = (
 				879FB12F1FE2EF8B002332EF /* ChatList */,
-				8733710B1FE5110F0092CE34 /* MakeCall */,
 				874D94361FE2CA3B0009C9F3 /* IncommingCall */,
-				879FB1301FE2EFC6002332EF /* AudioCalling */,
+				872D9CD01FE65C9E0008C8AA /* VideoCall */,
+				879FB1301FE2EFC6002332EF /* AudioCall */,
 			);
 			name = Chat;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat;
@@ -186,24 +186,33 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
-		87126C021FE2413D009D0188 /* CallModel */ = {
+		87126C021FE2413D009D0188 /* Call */ = {
 			isa = PBXGroup;
 			children = (
 				879FB12D1FE2E75A002332EF /* TableBarControllerExtensions.swift */,
 				87126C001FE2412F009D0188 /* CallManager.swift */,
 			);
-			path = CallModel;
+			path = Call;
 			sourceTree = "<group>";
 		};
-		8733710B1FE5110F0092CE34 /* MakeCall */ = {
+		872D9CCF1FE65C180008C8AA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8733710C1FE5112D0092CE34 /* MakeCallViewController.swift */,
-				8733710D1FE5112D0092CE34 /* MakeCallViewController.xib */,
-				873371101FE5139D0092CE34 /* LocalVideoView.swift */,
+				87126C021FE2413D009D0188 /* Call */,
 			);
-			name = MakeCall;
-			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/MakeCall;
+			name = Model;
+			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Model;
+			sourceTree = "<absolute>";
+		};
+		872D9CD01FE65C9E0008C8AA /* VideoCall */ = {
+			isa = PBXGroup;
+			children = (
+				872D9CD31FE65CF80008C8AA /* MakeVideoCallViewController.swift */,
+				872D9CD11FE65CF80008C8AA /* MakeVideoCallViewController.xib */,
+				872D9CD21FE65CF80008C8AA /* LocalVideoView.swift */,
+			);
+			name = VideoCall;
+			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/VideoCall;
 			sourceTree = "<absolute>";
 		};
 		874D94331FE2B28E0009C9F3 /* Profile */ = {
@@ -265,9 +274,9 @@
 			children = (
 				8735E6181FE56A4400C85442 /* AppDelegate.swift */,
 				879FB12B1FE2E2F4002332EF /* AppDelegateExtensions.swift */,
+				872D9CCF1FE65C180008C8AA /* Model */,
 				874D943C1FE2D1660009C9F3 /* Tab Bar */,
 				87126BE21FE18A20009D0188 /* Landing */,
-				87126C021FE2413D009D0188 /* CallModel */,
 				87126BEB1FE18CC7009D0188 /* Chat */,
 				874D94331FE2B28E0009C9F3 /* Profile */,
 				87126BF81FE19B10009D0188 /* Library */,
@@ -295,23 +304,23 @@
 			isa = PBXGroup;
 			children = (
 				87E8A9291FE5932100726A2E /* ChatListTableViewController.swift */,
-				87E8A9271FE5932100726A2E /* ChatListButtonsTableViewCell.swift */,
-				87E8A9281FE5932100726A2E /* ChatListButtonsTableViewCell.xib */,
 				87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */,
 				87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */,
+				87E8A9271FE5932100726A2E /* ChatListButtonsTableViewCell.swift */,
+				87E8A9281FE5932100726A2E /* ChatListButtonsTableViewCell.xib */,
 			);
 			name = ChatList;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/ChatList;
 			sourceTree = "<absolute>";
 		};
-		879FB1301FE2EFC6002332EF /* AudioCalling */ = {
+		879FB1301FE2EFC6002332EF /* AudioCall */ = {
 			isa = PBXGroup;
 			children = (
-				873714381FE40612009C440F /* AudioCallingViewController.swift */,
-				873714391FE40612009C440F /* AudioCallingViewController.xib */,
+				873714381FE40612009C440F /* MakeAudioCallViewController.swift */,
+				873714391FE40612009C440F /* MakeAudioCallViewController.xib */,
 			);
-			name = AudioCalling;
-			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/AudioCalling;
+			name = AudioCall;
+			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/AudioCall;
 			sourceTree = "<absolute>";
 		};
 		CCA268D45A008955D663A267 /* Frameworks */ = {
@@ -402,11 +411,11 @@
 				87126BE61FE18B09009D0188 /* LandingViewControViewController.xib in Resources */,
 				8735E6331FE58EF000C85442 /* QuickBloxKey.plist in Resources */,
 				87E8A92E1FE596C200726A2E /* ChatUsersListTableViewCell.xib in Resources */,
-				8737143B1FE40612009C440F /* AudioCallingViewController.xib in Resources */,
+				8737143B1FE40612009C440F /* MakeAudioCallViewController.xib in Resources */,
 				87E8A92D1FE596BC00726A2E /* ChatListButtonsTableViewCell.xib in Resources */,
 				8797E65A1FE10D5800C9002F /* LaunchScreen.storyboard in Resources */,
+				872D9CD51FE65EFD0008C8AA /* MakeVideoCallViewController.xib in Resources */,
 				8797E6571FE10D5800C9002F /* Assets.xcassets in Resources */,
-				8733710F1FE5112D0092CE34 /* MakeCallViewController.xib in Resources */,
 				874D943A1FE2CEAE0009C9F3 /* IncommingCallViewController.xib in Resources */,
 				8797E6551FE10D5800C9002F /* Main.storyboard in Resources */,
 			);
@@ -498,19 +507,19 @@
 				874D94321FE250F00009C9F3 /* SweetAlert.swift in Sources */,
 				879FB12C1FE2E2F4002332EF /* AppDelegateExtensions.swift in Sources */,
 				87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */,
-				8733710E1FE5112D0092CE34 /* MakeCallViewController.swift in Sources */,
 				8797E67F1FE1174100C9002F /* QuickbloxAdmin.swift in Sources */,
 				87E8A92C1FE5932100726A2E /* ChatListTableViewController.swift in Sources */,
-				8737143A1FE40612009C440F /* AudioCallingViewController.swift in Sources */,
+				8737143A1FE40612009C440F /* MakeAudioCallViewController.swift in Sources */,
 				879FB12A1FE2DF92002332EF /* TabBarController.swift in Sources */,
-				873371111FE5139D0092CE34 /* LocalVideoView.swift in Sources */,
 				87126BFA1FE19B2A009D0188 /* Identifiable.swift in Sources */,
 				87E8A92B1FE5932100726A2E /* ChatListButtonsTableViewCell.swift in Sources */,
 				87126C011FE2412F009D0188 /* CallManager.swift in Sources */,
 				874D94391FE2CEAE0009C9F3 /* IncommingCallViewController.swift in Sources */,
+				872D9CD71FE65F110008C8AA /* LocalVideoView.swift in Sources */,
 				879FB1261FE2DCFD002332EF /* TabBarItem.swift in Sources */,
 				879FB12E1FE2E75A002332EF /* TableBarControllerExtensions.swift in Sources */,
 				8797E6521FE10D5800C9002F /* ViewController.swift in Sources */,
+				872D9CD61FE65F030008C8AA /* MakeVideoCallViewController.swift in Sources */,
 				8735E6191FE56A4500C85442 /* AppDelegate.swift in Sources */,
 				879FB1281FE2DE54002332EF /* TabBarItemType.swift in Sources */,
 				874D94351FE2B2B00009C9F3 /* User.swift in Sources */,
@@ -658,7 +667,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = iPetMatch/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.iPetMatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -680,7 +689,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = iPetMatch/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.iPetMatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
