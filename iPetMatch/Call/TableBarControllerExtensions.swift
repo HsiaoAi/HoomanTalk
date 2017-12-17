@@ -65,7 +65,10 @@ extension TabBarController: QBRTCClientDelegate {
                 switch session.conferenceType {
 
                 case .audio:
-                    self.present(AudioCallingViewController(), animated: true, completion: nil)
+                    self.dismiss(animated: false, completion: {
+                        self.present(AudioCallingViewController(), animated: true, completion: nil)
+                        
+                        })
 
                 case .video:
 
