@@ -168,7 +168,6 @@
 		87126BEB1FE18CC7009D0188 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				87126C021FE2413D009D0188 /* Call */,
 				879FB12F1FE2EF8B002332EF /* ChatList */,
 				8733710B1FE5110F0092CE34 /* MakeCall */,
 				874D94361FE2CA3B0009C9F3 /* IncommingCall */,
@@ -187,14 +186,13 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
-		87126C021FE2413D009D0188 /* Call */ = {
+		87126C021FE2413D009D0188 /* CallModel */ = {
 			isa = PBXGroup;
 			children = (
 				879FB12D1FE2E75A002332EF /* TableBarControllerExtensions.swift */,
 				87126C001FE2412F009D0188 /* CallManager.swift */,
 			);
-			name = Call;
-			path = ../Call;
+			path = CallModel;
 			sourceTree = "<group>";
 		};
 		8733710B1FE5110F0092CE34 /* MakeCall */ = {
@@ -269,6 +267,7 @@
 				879FB12B1FE2E2F4002332EF /* AppDelegateExtensions.swift */,
 				874D943C1FE2D1660009C9F3 /* Tab Bar */,
 				87126BE21FE18A20009D0188 /* Landing */,
+				87126C021FE2413D009D0188 /* CallModel */,
 				87126BEB1FE18CC7009D0188 /* Chat */,
 				874D94331FE2B28E0009C9F3 /* Profile */,
 				87126BF81FE19B10009D0188 /* Library */,
