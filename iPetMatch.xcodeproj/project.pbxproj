@@ -1,0 +1,726 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		693E86532A574593235778FC /* Pods_iPetMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA9B305BF331FC6F95E0DA0D /* Pods_iPetMatch.framework */; };
+		87126BE51FE18B09009D0188 /* LandingViewControViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126BE31FE18B09009D0188 /* LandingViewControViewController.swift */; };
+		87126BE61FE18B09009D0188 /* LandingViewControViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87126BE41FE18B09009D0188 /* LandingViewControViewController.xib */; };
+		87126BFA1FE19B2A009D0188 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126BF91FE19B2A009D0188 /* Identifiable.swift */; };
+		87126C011FE2412F009D0188 /* CallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126C001FE2412F009D0188 /* CallManager.swift */; };
+		872D9CD51FE65EFD0008C8AA /* MakeVideoCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 872D9CD11FE65CF80008C8AA /* MakeVideoCallViewController.xib */; };
+		872D9CD61FE65F030008C8AA /* MakeVideoCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D9CD31FE65CF80008C8AA /* MakeVideoCallViewController.swift */; };
+		872D9CD71FE65F110008C8AA /* LocalVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D9CD21FE65CF80008C8AA /* LocalVideoView.swift */; };
+		8735E6191FE56A4500C85442 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8735E6181FE56A4400C85442 /* AppDelegate.swift */; };
+		8735E6331FE58EF000C85442 /* QuickBloxKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8735E6321FE58EF000C85442 /* QuickBloxKey.plist */; };
+		8737143A1FE40612009C440F /* MakeAudioCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873714381FE40612009C440F /* MakeAudioCallViewController.swift */; };
+		8737143B1FE40612009C440F /* MakeAudioCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 873714391FE40612009C440F /* MakeAudioCallViewController.xib */; };
+		874D94321FE250F00009C9F3 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94311FE250EF0009C9F3 /* SweetAlert.swift */; };
+		874D94351FE2B2B00009C9F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94341FE2B2B00009C9F3 /* User.swift */; };
+		874D94391FE2CEAE0009C9F3 /* IncommingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94371FE2CEAE0009C9F3 /* IncommingCallViewController.swift */; };
+		874D943A1FE2CEAE0009C9F3 /* IncommingCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 874D94381FE2CEAE0009C9F3 /* IncommingCallViewController.xib */; };
+		8797E6521FE10D5800C9002F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797E6511FE10D5800C9002F /* ViewController.swift */; };
+		8797E6551FE10D5800C9002F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6531FE10D5800C9002F /* Main.storyboard */; };
+		8797E6571FE10D5800C9002F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6561FE10D5800C9002F /* Assets.xcassets */; };
+		8797E65A1FE10D5800C9002F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6581FE10D5800C9002F /* LaunchScreen.storyboard */; };
+		8797E6621FE113CB00C9002F /* Quickblox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6611FE113CB00C9002F /* Quickblox.framework */; };
+		8797E6641FE113DA00C9002F /* QuickbloxWebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6631FE113D900C9002F /* QuickbloxWebRTC.framework */; };
+		8797E6661FE1143400C9002F /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6651FE1143300C9002F /* libicucore.tbd */; };
+		8797E6681FE1143F00C9002F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6671FE1143F00C9002F /* libc++.tbd */; };
+		8797E66A1FE1144700C9002F /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6691FE1144700C9002F /* libresolv.tbd */; };
+		8797E66C1FE1145100C9002F /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E66B1FE1145100C9002F /* libxml2.tbd */; };
+		8797E66E1FE1145B00C9002F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E66D1FE1145B00C9002F /* libz.tbd */; };
+		8797E6751FE114BE00C9002F /* Quickblox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6611FE113CB00C9002F /* Quickblox.framework */; };
+		8797E6761FE114BE00C9002F /* Quickblox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6611FE113CB00C9002F /* Quickblox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8797E6771FE114BE00C9002F /* QuickbloxWebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6631FE113D900C9002F /* QuickbloxWebRTC.framework */; };
+		8797E6781FE114BE00C9002F /* QuickbloxWebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6631FE113D900C9002F /* QuickbloxWebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8797E67F1FE1174100C9002F /* QuickbloxAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797E67E1FE1174100C9002F /* QuickbloxAdmin.swift */; };
+		879FB1261FE2DCFD002332EF /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB1251FE2DCFD002332EF /* TabBarItem.swift */; };
+		879FB1281FE2DE54002332EF /* TabBarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB1271FE2DE54002332EF /* TabBarItemType.swift */; };
+		879FB12A1FE2DF92002332EF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB1291FE2DF92002332EF /* TabBarController.swift */; };
+		879FB12C1FE2E2F4002332EF /* AppDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB12B1FE2E2F4002332EF /* AppDelegateExtensions.swift */; };
+		879FB12E1FE2E75A002332EF /* TableBarControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB12D1FE2E75A002332EF /* TableBarControllerExtensions.swift */; };
+		87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */; };
+		87E8A92B1FE5932100726A2E /* ChatListButtonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E8A9271FE5932100726A2E /* ChatListButtonsTableViewCell.swift */; };
+		87E8A92C1FE5932100726A2E /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E8A9291FE5932100726A2E /* ChatListTableViewController.swift */; };
+		87E8A92D1FE596BC00726A2E /* ChatListButtonsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E8A9281FE5932100726A2E /* ChatListButtonsTableViewCell.xib */; };
+		87E8A92E1FE596C200726A2E /* ChatUsersListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8797E6791FE114BF00C9002F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8797E6781FE114BE00C9002F /* QuickbloxWebRTC.framework in Embed Frameworks */,
+				8797E6761FE114BE00C9002F /* Quickblox.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		87126BE11FE183C5009D0188 /* bridge_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bridge_Header.h; path = iPetMatch/bridge_Header.h; sourceTree = SOURCE_ROOT; };
+		87126BE31FE18B09009D0188 /* LandingViewControViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewControViewController.swift; sourceTree = "<group>"; };
+		87126BE41FE18B09009D0188 /* LandingViewControViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LandingViewControViewController.xib; sourceTree = "<group>"; };
+		87126BF91FE19B2A009D0188 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		87126C001FE2412F009D0188 /* CallManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallManager.swift; sourceTree = "<group>"; };
+		872D9CD11FE65CF80008C8AA /* MakeVideoCallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MakeVideoCallViewController.xib; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/VideoCall/MakeVideoCallViewController.xib; sourceTree = "<absolute>"; };
+		872D9CD21FE65CF80008C8AA /* LocalVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalVideoView.swift; sourceTree = "<group>"; };
+		872D9CD31FE65CF80008C8AA /* MakeVideoCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeVideoCallViewController.swift; sourceTree = "<group>"; };
+		8735E6181FE56A4400C85442 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8735E6321FE58EF000C85442 /* QuickBloxKey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = QuickBloxKey.plist; sourceTree = "<group>"; };
+		873714381FE40612009C440F /* MakeAudioCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAudioCallViewController.swift; sourceTree = "<group>"; };
+		873714391FE40612009C440F /* MakeAudioCallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MakeAudioCallViewController.xib; sourceTree = "<group>"; };
+		874D94311FE250EF0009C9F3 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
+		874D94341FE2B2B00009C9F3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		874D94371FE2CEAE0009C9F3 /* IncommingCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncommingCallViewController.swift; sourceTree = "<group>"; };
+		874D94381FE2CEAE0009C9F3 /* IncommingCallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncommingCallViewController.xib; sourceTree = "<group>"; };
+		8797E64C1FE10D5800C9002F /* iPetMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPetMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8797E6511FE10D5800C9002F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8797E6541FE10D5800C9002F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8797E6561FE10D5800C9002F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8797E6591FE10D5800C9002F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8797E65B1FE10D5800C9002F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Info.plist; sourceTree = "<absolute>"; };
+		8797E6611FE113CB00C9002F /* Quickblox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quickblox.framework; sourceTree = "<group>"; };
+		8797E6631FE113D900C9002F /* QuickbloxWebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QuickbloxWebRTC.framework; sourceTree = "<group>"; };
+		8797E6651FE1143300C9002F /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		8797E6671FE1143F00C9002F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		8797E6691FE1144700C9002F /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		8797E66B1FE1145100C9002F /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		8797E66D1FE1145B00C9002F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		8797E66F1FE1146200C9002F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		8797E6701FE1146A00C9002F /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		8797E6711FE1147100C9002F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		8797E6721FE1147800C9002F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8797E6731FE1147E00C9002F /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		8797E6741FE1148500C9002F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		8797E67E1FE1174100C9002F /* QuickbloxAdmin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickbloxAdmin.swift; sourceTree = "<group>"; };
+		879FB1251FE2DCFD002332EF /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		879FB1271FE2DE54002332EF /* TabBarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemType.swift; sourceTree = "<group>"; };
+		879FB1291FE2DF92002332EF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		879FB12B1FE2E2F4002332EF /* AppDelegateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensions.swift; sourceTree = "<group>"; };
+		879FB12D1FE2E75A002332EF /* TableBarControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableBarControllerExtensions.swift; sourceTree = "<group>"; };
+		87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersListTableViewCell.swift; sourceTree = "<group>"; };
+		87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatUsersListTableViewCell.xib; sourceTree = "<group>"; };
+		87E8A9271FE5932100726A2E /* ChatListButtonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatListButtonsTableViewCell.swift; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/ChatList/ChatListButtonsTableViewCell.swift; sourceTree = "<absolute>"; };
+		87E8A9281FE5932100726A2E /* ChatListButtonsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ChatListButtonsTableViewCell.xib; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/ChatList/ChatListButtonsTableViewCell.xib; sourceTree = "<absolute>"; };
+		87E8A9291FE5932100726A2E /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
+		92EBCC34EEE82B0C93315475 /* Pods-iPetMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPetMatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch.release.xcconfig"; sourceTree = "<group>"; };
+		BA9B305BF331FC6F95E0DA0D /* Pods_iPetMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iPetMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFD6D953E11E9C1079F2E543 /* Pods-iPetMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPetMatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8797E6491FE10D5800C9002F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8797E6641FE113DA00C9002F /* QuickbloxWebRTC.framework in Frameworks */,
+				8797E66E1FE1145B00C9002F /* libz.tbd in Frameworks */,
+				8797E6681FE1143F00C9002F /* libc++.tbd in Frameworks */,
+				693E86532A574593235778FC /* Pods_iPetMatch.framework in Frameworks */,
+				8797E66C1FE1145100C9002F /* libxml2.tbd in Frameworks */,
+				8797E6751FE114BE00C9002F /* Quickblox.framework in Frameworks */,
+				8797E6621FE113CB00C9002F /* Quickblox.framework in Frameworks */,
+				8797E6661FE1143400C9002F /* libicucore.tbd in Frameworks */,
+				8797E6771FE114BE00C9002F /* QuickbloxWebRTC.framework in Frameworks */,
+				8797E66A1FE1144700C9002F /* libresolv.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6735321130BD0E778E978584 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BFD6D953E11E9C1079F2E543 /* Pods-iPetMatch.debug.xcconfig */,
+				92EBCC34EEE82B0C93315475 /* Pods-iPetMatch.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		87126BE01FE18351009D0188 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SupportingFiles;
+			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/SupportingFiles;
+			sourceTree = "<absolute>";
+		};
+		87126BE21FE18A20009D0188 /* Landing */ = {
+			isa = PBXGroup;
+			children = (
+				87126BE31FE18B09009D0188 /* LandingViewControViewController.swift */,
+				87126BE41FE18B09009D0188 /* LandingViewControViewController.xib */,
+			);
+			path = Landing;
+			sourceTree = "<group>";
+		};
+		87126BEB1FE18CC7009D0188 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				879FB12F1FE2EF8B002332EF /* ChatList */,
+				874D94361FE2CA3B0009C9F3 /* IncommingCall */,
+				872D9CD01FE65C9E0008C8AA /* VideoCall */,
+				879FB1301FE2EFC6002332EF /* AudioCall */,
+			);
+			name = Chat;
+			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat;
+			sourceTree = "<absolute>";
+		};
+		87126BF81FE19B10009D0188 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				874D94311FE250EF0009C9F3 /* SweetAlert.swift */,
+				87126BF91FE19B2A009D0188 /* Identifiable.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		87126C021FE2413D009D0188 /* Call */ = {
+			isa = PBXGroup;
+			children = (
+				879FB12D1FE2E75A002332EF /* TableBarControllerExtensions.swift */,
+				87126C001FE2412F009D0188 /* CallManager.swift */,
+			);
+			path = Call;
+			sourceTree = "<group>";
+		};
+		872D9CCF1FE65C180008C8AA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				87126C021FE2413D009D0188 /* Call */,
+			);
+			name = Model;
+			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Model;
+			sourceTree = "<absolute>";
+		};
+		872D9CD01FE65C9E0008C8AA /* VideoCall */ = {
+			isa = PBXGroup;
+			children = (
+				872D9CD31FE65CF80008C8AA /* MakeVideoCallViewController.swift */,
+				872D9CD11FE65CF80008C8AA /* MakeVideoCallViewController.xib */,
+				872D9CD21FE65CF80008C8AA /* LocalVideoView.swift */,
+			);
+			name = VideoCall;
+			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/VideoCall;
+			sourceTree = "<absolute>";
+		};
+		874D94331FE2B28E0009C9F3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				874D94341FE2B2B00009C9F3 /* User.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		874D94361FE2CA3B0009C9F3 /* IncommingCall */ = {
+			isa = PBXGroup;
+			children = (
+				874D94371FE2CEAE0009C9F3 /* IncommingCallViewController.swift */,
+				874D94381FE2CEAE0009C9F3 /* IncommingCallViewController.xib */,
+			);
+			path = IncommingCall;
+			sourceTree = "<group>";
+		};
+		874D943B1FE2D0A80009C9F3 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				8797E6581FE10D5800C9002F /* LaunchScreen.storyboard */,
+				8797E6531FE10D5800C9002F /* Main.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		874D943C1FE2D1660009C9F3 /* Tab Bar */ = {
+			isa = PBXGroup;
+			children = (
+				879FB1251FE2DCFD002332EF /* TabBarItem.swift */,
+				879FB1271FE2DE54002332EF /* TabBarItemType.swift */,
+				879FB1291FE2DF92002332EF /* TabBarController.swift */,
+			);
+			path = "Tab Bar";
+			sourceTree = "<group>";
+		};
+		8797E6431FE10D5700C9002F = {
+			isa = PBXGroup;
+			children = (
+				8797E64E1FE10D5800C9002F /* iPetMatch */,
+				8797E64D1FE10D5800C9002F /* Products */,
+				6735321130BD0E778E978584 /* Pods */,
+				CCA268D45A008955D663A267 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8797E64D1FE10D5800C9002F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8797E64C1FE10D5800C9002F /* iPetMatch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8797E64E1FE10D5800C9002F /* iPetMatch */ = {
+			isa = PBXGroup;
+			children = (
+				8735E6181FE56A4400C85442 /* AppDelegate.swift */,
+				879FB12B1FE2E2F4002332EF /* AppDelegateExtensions.swift */,
+				872D9CCF1FE65C180008C8AA /* Model */,
+				874D943C1FE2D1660009C9F3 /* Tab Bar */,
+				87126BE21FE18A20009D0188 /* Landing */,
+				87126BEB1FE18CC7009D0188 /* Chat */,
+				874D94331FE2B28E0009C9F3 /* Profile */,
+				87126BF81FE19B10009D0188 /* Library */,
+				8797E67B1FE116C200C9002F /* Key */,
+				874D943B1FE2D0A80009C9F3 /* StoryBoard */,
+				87126BE01FE18351009D0188 /* SupportingFiles */,
+				8797E6511FE10D5800C9002F /* ViewController.swift */,
+				8797E6561FE10D5800C9002F /* Assets.xcassets */,
+				8797E65B1FE10D5800C9002F /* Info.plist */,
+				8797E67E1FE1174100C9002F /* QuickbloxAdmin.swift */,
+				87126BE11FE183C5009D0188 /* bridge_Header.h */,
+			);
+			path = iPetMatch;
+			sourceTree = "<group>";
+		};
+		8797E67B1FE116C200C9002F /* Key */ = {
+			isa = PBXGroup;
+			children = (
+				8735E6321FE58EF000C85442 /* QuickBloxKey.plist */,
+			);
+			path = Key;
+			sourceTree = "<group>";
+		};
+		879FB12F1FE2EF8B002332EF /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				87E8A9291FE5932100726A2E /* ChatListTableViewController.swift */,
+				87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */,
+				87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */,
+				87E8A9271FE5932100726A2E /* ChatListButtonsTableViewCell.swift */,
+				87E8A9281FE5932100726A2E /* ChatListButtonsTableViewCell.xib */,
+			);
+			name = ChatList;
+			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/ChatList;
+			sourceTree = "<absolute>";
+		};
+		879FB1301FE2EFC6002332EF /* AudioCall */ = {
+			isa = PBXGroup;
+			children = (
+				873714381FE40612009C440F /* MakeAudioCallViewController.swift */,
+				873714391FE40612009C440F /* MakeAudioCallViewController.xib */,
+			);
+			name = AudioCall;
+			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/AudioCall;
+			sourceTree = "<absolute>";
+		};
+		CCA268D45A008955D663A267 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8797E6741FE1148500C9002F /* Accelerate.framework */,
+				8797E6731FE1147E00C9002F /* VideoToolbox.framework */,
+				8797E6721FE1147800C9002F /* SystemConfiguration.framework */,
+				8797E6711FE1147100C9002F /* MobileCoreServices.framework */,
+				8797E6701FE1146A00C9002F /* GLKit.framework */,
+				8797E66F1FE1146200C9002F /* CFNetwork.framework */,
+				8797E66D1FE1145B00C9002F /* libz.tbd */,
+				8797E66B1FE1145100C9002F /* libxml2.tbd */,
+				8797E6691FE1144700C9002F /* libresolv.tbd */,
+				8797E6671FE1143F00C9002F /* libc++.tbd */,
+				8797E6651FE1143300C9002F /* libicucore.tbd */,
+				8797E6611FE113CB00C9002F /* Quickblox.framework */,
+				BA9B305BF331FC6F95E0DA0D /* Pods_iPetMatch.framework */,
+				8797E6631FE113D900C9002F /* QuickbloxWebRTC.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8797E64B1FE10D5800C9002F /* iPetMatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8797E65E1FE10D5800C9002F /* Build configuration list for PBXNativeTarget "iPetMatch" */;
+			buildPhases = (
+				0B1D7360833938DE71CEBADC /* [CP] Check Pods Manifest.lock */,
+				8797E6481FE10D5800C9002F /* Sources */,
+				8797E6491FE10D5800C9002F /* Frameworks */,
+				8797E64A1FE10D5800C9002F /* Resources */,
+				162DC793DB2F9B7F91B746F1 /* [CP] Embed Pods Frameworks */,
+				7E6B64015C2B5B2A3C569B94 /* [CP] Copy Pods Resources */,
+				8797E6791FE114BF00C9002F /* Embed Frameworks */,
+				8797E67A1FE1154800C9002F /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iPetMatch;
+			productName = iPetMatch;
+			productReference = 8797E64C1FE10D5800C9002F /* iPetMatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8797E6441FE10D5700C9002F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Hsiao Ai LEE";
+				TargetAttributes = {
+					8797E64B1FE10D5800C9002F = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8797E6471FE10D5700C9002F /* Build configuration list for PBXProject "iPetMatch" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8797E6431FE10D5700C9002F;
+			productRefGroup = 8797E64D1FE10D5800C9002F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8797E64B1FE10D5800C9002F /* iPetMatch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8797E64A1FE10D5800C9002F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87126BE61FE18B09009D0188 /* LandingViewControViewController.xib in Resources */,
+				8735E6331FE58EF000C85442 /* QuickBloxKey.plist in Resources */,
+				87E8A92E1FE596C200726A2E /* ChatUsersListTableViewCell.xib in Resources */,
+				8737143B1FE40612009C440F /* MakeAudioCallViewController.xib in Resources */,
+				87E8A92D1FE596BC00726A2E /* ChatListButtonsTableViewCell.xib in Resources */,
+				8797E65A1FE10D5800C9002F /* LaunchScreen.storyboard in Resources */,
+				872D9CD51FE65EFD0008C8AA /* MakeVideoCallViewController.xib in Resources */,
+				8797E6571FE10D5800C9002F /* Assets.xcassets in Resources */,
+				874D943A1FE2CEAE0009C9F3 /* IncommingCallViewController.xib in Resources */,
+				8797E6551FE10D5800C9002F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0B1D7360833938DE71CEBADC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iPetMatch-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		162DC793DB2F9B7F91B746F1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IHKeyboardAvoiding/IHKeyboardAvoiding.framework",
+				"${PODS_ROOT}/QuickBlox/Quickblox.framework",
+				"${PODS_ROOT}/Quickblox-WebRTC/QuickbloxWebRTC.framework",
+				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IHKeyboardAvoiding.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quickblox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickbloxWebRTC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E6B64015C2B5B2A3C569B94 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8797E67A1FE1154800C9002F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickbloxWebRTC.framework/strip-framework.sh\"\n\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8797E6481FE10D5800C9002F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87126BE51FE18B09009D0188 /* LandingViewControViewController.swift in Sources */,
+				874D94321FE250F00009C9F3 /* SweetAlert.swift in Sources */,
+				879FB12C1FE2E2F4002332EF /* AppDelegateExtensions.swift in Sources */,
+				87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */,
+				8797E67F1FE1174100C9002F /* QuickbloxAdmin.swift in Sources */,
+				87E8A92C1FE5932100726A2E /* ChatListTableViewController.swift in Sources */,
+				8737143A1FE40612009C440F /* MakeAudioCallViewController.swift in Sources */,
+				879FB12A1FE2DF92002332EF /* TabBarController.swift in Sources */,
+				87126BFA1FE19B2A009D0188 /* Identifiable.swift in Sources */,
+				87E8A92B1FE5932100726A2E /* ChatListButtonsTableViewCell.swift in Sources */,
+				87126C011FE2412F009D0188 /* CallManager.swift in Sources */,
+				874D94391FE2CEAE0009C9F3 /* IncommingCallViewController.swift in Sources */,
+				872D9CD71FE65F110008C8AA /* LocalVideoView.swift in Sources */,
+				879FB1261FE2DCFD002332EF /* TabBarItem.swift in Sources */,
+				879FB12E1FE2E75A002332EF /* TableBarControllerExtensions.swift in Sources */,
+				8797E6521FE10D5800C9002F /* ViewController.swift in Sources */,
+				872D9CD61FE65F030008C8AA /* MakeVideoCallViewController.swift in Sources */,
+				8735E6191FE56A4500C85442 /* AppDelegate.swift in Sources */,
+				879FB1281FE2DE54002332EF /* TabBarItemType.swift in Sources */,
+				874D94351FE2B2B00009C9F3 /* User.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8797E6531FE10D5800C9002F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8797E6541FE10D5800C9002F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8797E6581FE10D5800C9002F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8797E6591FE10D5800C9002F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8797E65C1FE10D5800C9002F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8797E65D1FE10D5800C9002F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8797E65F1FE10D5800C9002F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFD6D953E11E9C1079F2E543 /* Pods-iPetMatch.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DTTYHBEAZE;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = iPetMatch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.iPetMatch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = iPetMatch/bridge_Header.h;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8797E6601FE10D5800C9002F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92EBCC34EEE82B0C93315475 /* Pods-iPetMatch.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DTTYHBEAZE;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = iPetMatch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.iPetMatch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = iPetMatch/bridge_Header.h;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8797E6471FE10D5700C9002F /* Build configuration list for PBXProject "iPetMatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8797E65C1FE10D5800C9002F /* Debug */,
+				8797E65D1FE10D5800C9002F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8797E65E1FE10D5800C9002F /* Build configuration list for PBXNativeTarget "iPetMatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8797E65F1FE10D5800C9002F /* Debug */,
+				8797E6601FE10D5800C9002F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8797E6441FE10D5700C9002F /* Project object */;
+}
