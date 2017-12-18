@@ -16,6 +16,8 @@ class MakeVideoCallViewController: UIViewController {
 
     @IBOutlet weak var makeCallResponseView: UIView!
 
+    @IBOutlet weak var opponentVideoView: QBRTCRemoteVideoView!
+
     @IBAction func hangUpCall(_ sender: Any) {
 
         let userInfo: [String: String] = ["key": "value"]
@@ -23,7 +25,12 @@ class MakeVideoCallViewController: UIViewController {
         CallManager.shared.session?.hangUp(userInfo)
 
     }
-    @IBOutlet weak var opponentVideoView: QBRTCRemoteVideoView!
+
+}
+
+// View life cycle
+
+extension MakeVideoCallViewController {
 
     override func viewDidLoad() {
 
@@ -53,6 +60,12 @@ class MakeVideoCallViewController: UIViewController {
 
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+
+        super.viewDidDisappear(animated)
+
+    }
+
 }
 
 extension MakeVideoCallViewController: QBRTCClientDelegate {
@@ -63,9 +76,6 @@ extension MakeVideoCallViewController: QBRTCClientDelegate {
 
         // QBRTCCameraCapture class used to capture frames using AVFoundation APIs
         self.videoCapture = QBRTCCameraCapture.init(videoFormat: videoFormat, position: AVCaptureDevice.Position.front)
-
-        // add video capture to session's local media stream
-        // from version 2.3 you no longer need to wait for 'initializedLocalMediaStream:' delegate to do it
 
         CallManager.shared.session?.localMediaStream.videoTrack.videoCapture = self.videoCapture
 
@@ -79,15 +89,17 @@ extension MakeVideoCallViewController: QBRTCClientDelegate {
 
     func session(_ session: QBRTCBaseSession, receivedRemoteVideoTrack videoTrack: QBRTCVideoTrack, fromUser userID: NSNumber) {
 
-        print("+++++++++++++++")
-        self.opponentVideoView.videoGravity = "AVLayerVideoGravityResizeAspect"
-        self.opponentVideoView.setVideoTrack(videoTrack)
+        opponentVideoView.videoGravity = "AVLayerVideoGravityResizeAspect"
+
+        opponentVideoView.setVideoTrack(videoTrack)
 
     }
 
     func sessionDidClose(session: QBRTCSession!) {
 
         CallManager.shared.session = nil
+
+        self.videoCapture?.stopSession()
 
     }
 

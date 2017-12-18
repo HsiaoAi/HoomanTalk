@@ -27,7 +27,6 @@
 		8797E6551FE10D5800C9002F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6531FE10D5800C9002F /* Main.storyboard */; };
 		8797E6571FE10D5800C9002F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6561FE10D5800C9002F /* Assets.xcassets */; };
 		8797E65A1FE10D5800C9002F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6581FE10D5800C9002F /* LaunchScreen.storyboard */; };
-		8797E6621FE113CB00C9002F /* Quickblox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6611FE113CB00C9002F /* Quickblox.framework */; };
 		8797E6641FE113DA00C9002F /* QuickbloxWebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6631FE113D900C9002F /* QuickbloxWebRTC.framework */; };
 		8797E6661FE1143400C9002F /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6651FE1143300C9002F /* libicucore.tbd */; };
 		8797E6681FE1143F00C9002F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6671FE1143F00C9002F /* libc++.tbd */; };
@@ -36,7 +35,6 @@
 		8797E66E1FE1145B00C9002F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E66D1FE1145B00C9002F /* libz.tbd */; };
 		8797E6751FE114BE00C9002F /* Quickblox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6611FE113CB00C9002F /* Quickblox.framework */; };
 		8797E6761FE114BE00C9002F /* Quickblox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6611FE113CB00C9002F /* Quickblox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8797E6771FE114BE00C9002F /* QuickbloxWebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6631FE113D900C9002F /* QuickbloxWebRTC.framework */; };
 		8797E6781FE114BE00C9002F /* QuickbloxWebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6631FE113D900C9002F /* QuickbloxWebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8797E67F1FE1174100C9002F /* QuickbloxAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797E67E1FE1174100C9002F /* QuickbloxAdmin.swift */; };
 		879FB1261FE2DCFD002332EF /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB1251FE2DCFD002332EF /* TabBarItem.swift */; };
@@ -129,9 +127,7 @@
 				693E86532A574593235778FC /* Pods_iPetMatch.framework in Frameworks */,
 				8797E66C1FE1145100C9002F /* libxml2.tbd in Frameworks */,
 				8797E6751FE114BE00C9002F /* Quickblox.framework in Frameworks */,
-				8797E6621FE113CB00C9002F /* Quickblox.framework in Frameworks */,
 				8797E6661FE1143400C9002F /* libicucore.tbd in Frameworks */,
-				8797E6771FE114BE00C9002F /* QuickbloxWebRTC.framework in Frameworks */,
 				8797E66A1FE1144700C9002F /* libresolv.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -667,13 +663,13 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = iPetMatch/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.GoogleMap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.bcd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = iPetMatch/bridge_Header.h;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -689,13 +685,13 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = iPetMatch/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.GoogleMap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.bcd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = iPetMatch/bridge_Header.h;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
