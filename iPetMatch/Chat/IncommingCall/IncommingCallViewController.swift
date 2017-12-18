@@ -30,9 +30,20 @@ class IncommingCallViewController: UIViewController {
 
         let userInfo: [String: String] = ["key": "value"]
 
-        CallManager.shared.session?.acceptCall(userInfo)
+        switch CallManager.shared.session!.conferenceType {
 
-        self.title = "通話中"
+        case .audio:
+
+            self.title = "通話中"
+            CallManager.shared.session?.acceptCall(userInfo)
+
+        case .video:
+
+            CallManager.shared.session?.acceptCall(userInfo)
+
+            self.present(MakeVideoCallViewController(), animated: false, completion: nil)
+
+        }
 
     }
 
@@ -57,6 +68,8 @@ class IncommingCallViewController: UIViewController {
 extension IncommingCallViewController: QBRTCClientDelegate {
 
     func session(_ session: QBRTCSession, hungUpByUser userID: NSNumber, userInfo: [String: String]? = nil) {
+
+        CallManager.shared.session?.hangUp(userInfo)
 
     }
 

@@ -36,7 +36,11 @@ extension TabBarController: QBRTCClientDelegate {
 
             case .video:
 
-                self.present(MakeVideoCallViewController(), animated: true, completion: nil)
+                let incommingCallViewController = IncommingCallViewController()
+
+                let navigationController = UINavigationController(rootViewController: incommingCallViewController)
+
+                self.present(navigationController, animated: true, completion: nil)
             }
 
         }
@@ -49,6 +53,8 @@ extension TabBarController: QBRTCClientDelegate {
         print("***sessionDidClose***")
 
         CallManager.shared.session = nil
+
+        self.dismiss(animated: true, completion: nil)
 
     }
 

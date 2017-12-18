@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatListTableViewController: UITableViewController {
+class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
 
     enum ChatListComponent {
 

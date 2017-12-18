@@ -4,14 +4,16 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MakeVideoCallViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MakeVideoCallViewController" customModule="iPetMatch" customModuleProvider="target">
             <connections>
                 <outlet property="localVideoView" destination="cEs-TL-hUX" id="TCC-Xt-7El"/>
+                <outlet property="makeCallResponseView" destination="E1m-uD-lzj" id="eFm-L3-c1g"/>
                 <outlet property="opponentVideoView" destination="Q4E-sl-0BN" id="mDJ-rs-hje"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,28 +23,27 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q4E-sl-0BN" customClass="QBRTCRemoteVideoView" customModule="iPetMatch" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q4E-sl-0BN" customClass="QBRTCRemoteVideoView">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E1m-uD-lzj">
+                    <rect key="frame" x="0.0" y="300" width="375" height="67"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JD6-2Y-D1e">
-                            <rect key="frame" x="116" y="591" width="143" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ck3-ct-zeY">
+                            <rect key="frame" x="140" y="18" width="96" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.93457251789999995" green="0.3537055254" blue="0.34148138760000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="143" id="gtt-9k-ExK"/>
-                            </constraints>
                             <state key="normal" title="Decline">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
-                                <action selector="hangUpCall:" destination="-1" eventType="touchUpInside" id="Qa3-iA-3EG"/>
+                                <action selector="hangUpCall:" destination="-1" eventType="touchUpInside" id="vQm-8y-AFV"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="JD6-2Y-D1e" secondAttribute="bottom" constant="46" id="K30-MQ-UJH"/>
-                        <constraint firstItem="JD6-2Y-D1e" firstAttribute="centerX" secondItem="Q4E-sl-0BN" secondAttribute="centerX" id="xay-76-EUz"/>
-                    </constraints>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEs-TL-hUX" customClass="LocalVideoView" customModule="iPetMatch" customModuleProvider="target">
                     <rect key="frame" x="10" y="10" width="120" height="150"/>

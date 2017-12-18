@@ -10,7 +10,11 @@ import UIKit
 
 class MakeVideoCallViewController: UIViewController {
 
+    var videoCapture: QBRTCCameraCapture?
+
     @IBOutlet weak var localVideoView: LocalVideoView!
+
+    @IBOutlet weak var makeCallResponseView: UIView!
 
     @IBAction func hangUpCall(_ sender: Any) {
 
@@ -19,8 +23,8 @@ class MakeVideoCallViewController: UIViewController {
         CallManager.shared.session?.hangUp(userInfo)
 
     }
-
     @IBOutlet weak var opponentVideoView: QBRTCRemoteVideoView!
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -29,13 +33,23 @@ class MakeVideoCallViewController: UIViewController {
 
         setupLocalVideoView()
 
-        self.opponentVideoView.backgroundColor = UIColor.white
+        if CallManager.shared.session != nil {
 
-        CallManager.shared.session = QBRTCClient.instance().createNewSession(withOpponents: [38863883], with: .video)
+            // Incomming
 
-        CallManager.shared.prepareLocalVideoTrack(localVideoView: localVideoView)
+            self.prepareLocalVideoTrack()
 
-        CallManager.shared.makeCall(to: 38863883, with: .video)
+        } else {
+
+            // Make call
+
+            CallManager.shared.session = QBRTCClient.instance().createNewSession(withOpponents: [38863883], with: .video)
+
+            self.prepareLocalVideoTrack()
+
+            CallManager.shared.session?.startCall(nil)
+
+        }
 
     }
 
@@ -43,9 +57,31 @@ class MakeVideoCallViewController: UIViewController {
 
 extension MakeVideoCallViewController: QBRTCClientDelegate {
 
-    func session(session: QBRTCSession!, receivedRemoteVideoTrack videoTrack: QBRTCVideoTrack!, fromUser userID: NSNumber!) {
+    func prepareLocalVideoTrack() {
 
-        self.opponentVideoView?.setVideoTrack(videoTrack)
+        let videoFormat = QBRTCVideoFormat.init()
+
+        // QBRTCCameraCapture class used to capture frames using AVFoundation APIs
+        self.videoCapture = QBRTCCameraCapture.init(videoFormat: videoFormat, position: AVCaptureDevice.Position.front)
+
+        // add video capture to session's local media stream
+        // from version 2.3 you no longer need to wait for 'initializedLocalMediaStream:' delegate to do it
+
+        CallManager.shared.session?.localMediaStream.videoTrack.videoCapture = self.videoCapture
+
+        self.videoCapture!.previewLayer.frame = self.localVideoView.bounds
+
+        self.videoCapture!.startSession()
+
+        self.localVideoView.layer.insertSublayer(self.videoCapture!.previewLayer, at: 0)
+
+    }
+
+    func session(_ session: QBRTCBaseSession, receivedRemoteVideoTrack videoTrack: QBRTCVideoTrack, fromUser userID: NSNumber) {
+
+        print("+++++++++++++++")
+        self.opponentVideoView.videoGravity = "AVLayerVideoGravityResizeAspect"
+        self.opponentVideoView.setVideoTrack(videoTrack)
 
     }
 

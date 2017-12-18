@@ -37,24 +37,6 @@ class CallManager {
 
     }
 
-    func prepareLocalVideoTrack(localVideoView: UIView) {
-
-        let videoFormat = QBRTCVideoFormat.init()
-
-        let videoCapture = QBRTCCameraCapture(videoFormat: videoFormat, position: .front)
-
-        self.session?.localMediaStream.videoTrack.videoCapture = videoCapture
-
-        videoCapture.previewLayer.frame = localVideoView.bounds
-
-        videoCapture.previewLayer.videoGravity = .resizeAspectFill
-
-        videoCapture.startSession()
-
-        localVideoView.layer.insertSublayer(videoCapture.previewLayer, at: 0)
-
-    }
-
 }
 
 // Call sounds

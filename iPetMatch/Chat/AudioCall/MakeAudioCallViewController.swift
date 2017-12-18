@@ -49,6 +49,8 @@ extension MakeAudioCallViewController: QBRTCClientDelegate {
 
     func session(_ session: QBRTCSession, hungUpByUser userID: NSNumber, userInfo: [String: String]? = nil) {
 
+        print("++++++被掛斷++++++")
+
         self.navigationItem.title =  "被掛斷"
 
     }
