@@ -56,7 +56,7 @@ extension TabBarController: QBRTCClientDelegate {
 
         RingtonePlayer.shared.stopPhoneRing()
 
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: false, completion: nil)
 
     }
 

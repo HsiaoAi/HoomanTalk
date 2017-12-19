@@ -21,11 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Try function
 
         // Set rootViewController
-
         let landingViewController = LandingViewControViewController()
+
         let navigationController = UINavigationController(rootViewController: landingViewController)
 
+        window = UIWindow(frame: UIScreen.main.bounds)
+
         window?.rootViewController = navigationController
+
         window?.makeKeyAndVisible()
 
         // Quickblox API

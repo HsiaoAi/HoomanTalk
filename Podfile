@@ -16,6 +16,7 @@ target 'iPetMatch' do
   pod 'Crashlytics'
   pod 'IHKeyboardAvoiding'
   pod 'SCLAlertView'
-
+  pod 'MZTimerLabel', '~> 0.5'
+  pod 'SwiftTimer'
 
 end

@@ -10,8 +10,7 @@ import UIKit
 
 class IncommingCallViewController: UIViewController {
 
-    @IBOutlet weak var callStatusLabel: UILabel!
-
+    @IBOutlet weak var timerLabel: MZTimerLabel!
     var isAnswer = false
 
     override func viewDidLoad() {
@@ -20,8 +19,17 @@ class IncommingCallViewController: UIViewController {
 
         QBRTCClient.instance().add(self)
 
+        timerLabel.isHidden = true
+
         self.title = "來電"
 
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+
+        super.viewDidDisappear(animated)
+
+        CallManager.shared.timerReset(timerLabel: timerLabel)
     }
 
     @IBAction func answerCall(_ sender: Any) {
@@ -64,6 +72,26 @@ class IncommingCallViewController: UIViewController {
 
 extension IncommingCallViewController: QBRTCClientDelegate {
 
+    func session(_ session: QBRTCBaseSession, startedConnectingToUser userID: NSNumber) {
+
+        CallManager.shared.startCountingTime(timerLabel: timerLabel)
+
+    }
+
+    func session(_ session: QBRTCBaseSession, disconnectedFromUser userID: NSNumber) {
+
+        CallManager.shared.stopCountingTime(timerLabel: timerLabel)
+
+    }
+
+    func session(_ session: QBRTCBaseSession, connectionClosedForUser userID: NSNumber) {
+
+        CallManager.shared.stopCountingTime(timerLabel: timerLabel)
+
+        let alert = UIAlertController(title: "Info", message: "通話時間: \(timerLabel.text)", preferredStyle: UIAlertControllerStyle.alert)
+
+    }
+
     func session(_ session: QBRTCSession, hungUpByUser userID: NSNumber, userInfo: [String: String]? = nil) {
 
         CallManager.shared.hangupCall()
@@ -76,7 +104,7 @@ extension IncommingCallViewController: QBRTCClientDelegate {
 
         RingtonePlayer.shared.stopPhoneRing()
 
-        self.dismiss(animated: true)
+        self.dismiss(animated: false, completion: nil)
 
     }
 

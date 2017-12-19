@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IncommingCallViewController" customModule="iPetMatch" customModuleProvider="target">
             <connections>
-                <outlet property="callStatusLabel" destination="hz3-gt-9u7" id="oM9-NC-Ole"/>
+                <outlet property="timerLabel" destination="hz3-gt-9u7" id="GRD-gh-7QY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -40,19 +40,22 @@
                         </button>
                     </subviews>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hz3-gt-9u7">
-                    <rect key="frame" x="98" y="139" width="178" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hz3-gt-9u7" customClass="MZTimerLabel">
+                    <rect key="frame" x="20" y="139" width="335" height="20.5"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="0.55634254220000001" green="0.97934550050000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="hz3-gt-9u7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="2K7-qH-1aJ"/>
                 <constraint firstItem="ZXs-oH-r6i" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="8Kw-Hn-D6G"/>
                 <constraint firstItem="ZXs-oH-r6i" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="90r-aI-NQM"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hz3-gt-9u7" secondAttribute="trailing" constant="20" id="cwh-tl-AoJ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ZXs-oH-r6i" secondAttribute="bottom" constant="145" id="eky-Jj-hDC"/>
+                <constraint firstItem="hz3-gt-9u7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jVM-CA-jed"/>
+                <constraint firstItem="hz3-gt-9u7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="119" id="oRL-Be-AbX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZXs-oH-r6i" secondAttribute="trailing" constant="20" id="ty3-iL-jje"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

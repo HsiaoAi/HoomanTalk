@@ -62,6 +62,30 @@ class CallManager {
 
     }
 
+    func startCountingTime(timerLabel: MZTimerLabel) {
+
+        timerLabel.isHidden = false
+
+        timerLabel.addTimeCounted(byTime: 0)
+
+        timerLabel.start()
+
+    }
+
+    func stopCountingTime(timerLabel: MZTimerLabel) {
+
+        timerLabel.pause()
+
+    }
+
+    func timerReset(timerLabel: MZTimerLabel) {
+
+        timerLabel.reset()
+
+        timerLabel.isHidden = true
+
+    }
+
 }
 
 // Call sounds
