@@ -22,6 +22,7 @@
 @import Crashlytics;
 @import IHKeyboardAvoiding;
 @import SCLAlertView;
+@import AVFoundation;
 
 
 

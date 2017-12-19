@@ -15,8 +15,6 @@ class MakeAudioCallViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //self.navigationController?.navigationBar.topItem?.title =  "撥打語音電話中"
-
         QBRTCClient.instance().add(self)
 
         declineButton.addTarget(self, action: #selector(declineCall), for: .touchUpInside)
@@ -56,6 +54,8 @@ extension MakeAudioCallViewController: QBRTCClientDelegate {
     }
 
     func sessionDidClose(_ session: QBRTCSession) {
+
+        RingtonePlayer.shared.stopPhoneRing()
 
         self.navigationItem.title = ""
 

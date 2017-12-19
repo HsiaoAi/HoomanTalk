@@ -56,6 +56,8 @@ extension MakeVideoCallViewController {
 
             CallManager.shared.session?.startCall(nil)
 
+            RingtonePlayer.shared.startPhoneRing(callRole: .host)
+
         }
 
     }
@@ -88,6 +90,8 @@ extension MakeVideoCallViewController: QBRTCClientDelegate {
     }
 
     func session(_ session: QBRTCBaseSession, receivedRemoteVideoTrack videoTrack: QBRTCVideoTrack, fromUser userID: NSNumber) {
+
+        RingtonePlayer.shared.stopPhoneRing()
 
         opponentVideoView.videoGravity = "AVLayerVideoGravityResizeAspect"
 

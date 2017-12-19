@@ -18,6 +18,8 @@ class IncommingCallViewController: UIViewController {
 
         super.viewDidLoad()
 
+        CallManager.shared.audioManager.currentAudioDevice = QBRTCAudioDevice.receiver
+
         QBRTCClient.instance().add(self)
 
         self.title = "來電"
@@ -28,18 +30,15 @@ class IncommingCallViewController: UIViewController {
 
         isAnswer = true
 
-        let userInfo: [String: String] = ["key": "value"]
+        CallManager.shared.acceptCall()
 
         switch CallManager.shared.session!.conferenceType {
 
         case .audio:
 
             self.title = "通話中"
-            CallManager.shared.session?.acceptCall(userInfo)
 
         case .video:
-
-            CallManager.shared.session?.acceptCall(userInfo)
 
             self.present(MakeVideoCallViewController(), animated: false, completion: nil)
 
@@ -53,11 +52,11 @@ class IncommingCallViewController: UIViewController {
 
         if isAnswer {
 
-            CallManager.shared.session?.hangUp(userInfo)
+            CallManager.shared.hangupCall()
 
         } else {
 
-            CallManager.shared.session?.rejectCall(userInfo)
+            CallManager.shared.rejectCall(for: CallManager.shared.session)
 
         }
 
@@ -69,13 +68,15 @@ extension IncommingCallViewController: QBRTCClientDelegate {
 
     func session(_ session: QBRTCSession, hungUpByUser userID: NSNumber, userInfo: [String: String]? = nil) {
 
-        CallManager.shared.session?.hangUp(userInfo)
+        CallManager.shared.hangupCall()
 
     }
 
     func sessionDidClose(_ session: QBRTCSession) {
 
         CallManager.shared.session = nil
+
+        RingtonePlayer.shared.stopPhoneRing()
 
         self.dismiss(animated: true)
 

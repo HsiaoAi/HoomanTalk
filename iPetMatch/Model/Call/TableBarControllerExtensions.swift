@@ -16,13 +16,13 @@ extension TabBarController: QBRTCClientDelegate {
 
         if CallManager.shared.session != nil {
 
-            let userInfo: [String: String] = ["key": "value"]
-
-            session.rejectCall(userInfo)
+            CallManager.shared.rejectCall(for: session)
 
         } else {
 
             CallManager.shared.session = session
+
+            RingtonePlayer.shared.startPhoneRing(callRole: .receiver)
 
             switch session.conferenceType {
 
@@ -54,6 +54,8 @@ extension TabBarController: QBRTCClientDelegate {
 
         CallManager.shared.session = nil
 
+        RingtonePlayer.shared.stopPhoneRing()
+
         self.dismiss(animated: true, completion: nil)
 
     }
@@ -63,23 +65,32 @@ extension TabBarController: QBRTCClientDelegate {
     func session(_ session: QBRTCSession, userDidNotRespond userID: NSNumber) {
 
         // TODO: Show Alert
+
+        RingtonePlayer.shared.stopPhoneRing()
+
         print("***userDidNotRespond***")
 
     }
 
     func session(_ session: QBRTCSession, rejectedByUser userID: NSNumber, userInfo: [String: String]? = nil) {
 
-        // TODO: Show Alert
+        RingtonePlayer.shared.stopPhoneRing()
+
+        // TODO: Show Alerr
         print("***Reject***")
 
     }
 
     func session(_ session: QBRTCSession, acceptedByUser userID: NSNumber, userInfo: [String: String]? = nil) {
 
+        RingtonePlayer.shared.stopPhoneRing()
+
         print("***acceptedByUser***")
     }
 
     func session(_ session: QBRTCSession, hungUpByUser userID: NSNumber, userInfo: [String: String]? = nil) {
+
+        RingtonePlayer.shared.stopPhoneRing()
 
         print("***hungUpByUser***")
 
@@ -101,12 +112,14 @@ extension TabBarController: QBRTCClientDelegate {
 
     func session(_ session: QBRTCBaseSession, connectionClosedForUser userID: NSNumber) {
 
+        RingtonePlayer.shared.stopPhoneRing()
         print("***connectionClosedForUser***")
 
     }
 
     func session(_ session: QBRTCBaseSession, disconnectedFromUser userID: NSNumber) {
 
+        RingtonePlayer.shared.stopPhoneRing()
         print("***disconnectedFromUser***")
 
     }
@@ -114,6 +127,7 @@ extension TabBarController: QBRTCClientDelegate {
     func session(session: QBRTCSession!, userDidNotRespond userID: NSNumber!) {
 
         // TODO: Alert
+        RingtonePlayer.shared.stopPhoneRing()
         print("***userDidNotRespond***")
 
     }
@@ -121,6 +135,7 @@ extension TabBarController: QBRTCClientDelegate {
     func session(_ session: QBRTCBaseSession, connectionFailedForUser userID: NSNumber) {
 
         // TODO: Alert
+        RingtonePlayer.shared.stopPhoneRing()
         print("***connectionFailedForUser***")
 
     }

@@ -11,13 +11,15 @@ class CallManager {
     static let shared = CallManager()
 
     // fromUser: User
-    var fromUser: User?
-
     var toUserID: UInt?
 
     var conferenceType: QBRTCConferenceType = .audio
 
     var session: QBRTCSession?
+
+    var userInfo: [String: String]?
+
+    let audioManager = QBRTCAudioSession.instance()
 
     func makeCall(to userID: UInt, with conferenceType: QBRTCConferenceType) {
 
@@ -29,11 +31,34 @@ class CallManager {
 
         let newSession = QBRTCClient.instance().createNewSession(withOpponents: opponents, with: conferenceType)
 
-        let userInfo: [String: String] = ["key": "value"]
-
         newSession.startCall(userInfo)
 
+        RingtonePlayer.shared.startPhoneRing(callRole: .host)
+
         self.session = newSession
+
+    }
+
+    func acceptCall() {
+
+        CallManager.shared.session?.acceptCall(self.userInfo)
+
+        RingtonePlayer.shared.stopPhoneRing()
+
+    }
+
+    func rejectCall(for session: QBRTCSession?) {
+
+        session?.rejectCall(self.userInfo)
+
+        RingtonePlayer.shared.stopPhoneRing()
+
+    }
+
+    func hangupCall() {
+
+       RingtonePlayer.shared.stopPhoneRing()
+        CallManager.shared.session?.hangUp(self.userInfo)
 
     }
 
