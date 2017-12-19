@@ -36,6 +36,8 @@ extension MakeVideoCallViewController {
 
         super.viewDidLoad()
 
+        CallManager.shared.audioManager.currentAudioDevice = QBRTCAudioDevice.speaker
+
         QBRTCClient.instance().add(self)
 
         setupLocalVideoView()

@@ -18,8 +18,6 @@ class IncommingCallViewController: UIViewController {
 
         super.viewDidLoad()
 
-        CallManager.shared.audioManager.currentAudioDevice = QBRTCAudioDevice.receiver
-
         QBRTCClient.instance().add(self)
 
         self.title = "來電"

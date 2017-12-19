@@ -17,6 +17,8 @@ class MakeAudioCallViewController: UIViewController {
 
         QBRTCClient.instance().add(self)
 
+        CallManager.shared.audioManager.currentAudioDevice = QBRTCAudioDevice.receiver
+
         declineButton.addTarget(self, action: #selector(declineCall), for: .touchUpInside)
 
         self.navigationItem.title = "撥打語音電話中"

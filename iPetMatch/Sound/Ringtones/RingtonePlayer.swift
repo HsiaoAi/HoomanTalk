@@ -40,11 +40,17 @@ class RingtonePlayer {
 
     @objc func playRingtone(_ timer: Timer) {
 
-        if UserSetting.isAllowVibrating,
-            let callRole = timer.userInfo as? Int,
-            callRole == 1 {
+        if let callRole = timer.userInfo as? Int, callRole == 1 {
 
             AudioServicesPlayAlertSound(self.ringtoneID)
+
+            CallManager.shared.audioManager.currentAudioDevice = QBRTCAudioDevice.speaker
+
+            if !UserSetting.isAllowVibrating {
+
+                 AudioServicesPlaySystemSound(self.ringtoneID)
+
+            }
 
         } else {
 
