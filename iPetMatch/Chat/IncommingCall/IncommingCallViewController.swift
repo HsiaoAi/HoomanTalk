@@ -14,17 +14,22 @@ class IncommingCallViewController: UIViewController {
     
     @IBOutlet weak var userImageView: UIImageView!
     
+    
+    @IBOutlet weak var incomingCallLabel: UILabel!
+    
+    @IBOutlet weak var hostUserNameLabel: UILabel!
+   
     var isAnswer = false
 
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        
+        self.navigationController?.isNavigationBarHidden = true
+        
+        timerLabel.isHidden = true
     
         QBRTCClient.instance().add(self)
-
-        timerLabel.isHidden = true
-
-        self.title = "來電"
 
     }
 
@@ -34,9 +39,9 @@ class IncommingCallViewController: UIViewController {
 
         CallManager.shared.timerReset(timerLabel: timerLabel)
     }
-
+    
     @IBAction func answerCall(_ sender: Any) {
-
+        
         isAnswer = true
 
         CallManager.shared.acceptCall()
@@ -44,8 +49,6 @@ class IncommingCallViewController: UIViewController {
         switch CallManager.shared.session!.conferenceType {
 
         case .audio:
-
-            self.title = "通話中"
 
         case .video:
 
@@ -75,10 +78,13 @@ class IncommingCallViewController: UIViewController {
 
 extension IncommingCallViewController: QBRTCClientDelegate {
 
-    func session(_ session: QBRTCBaseSession, startedConnectingToUser userID: NSNumber) {
-
+    func session(_ session: QBRTCBaseSession, connectedToUser userID: NSNumber) {
+        
+        incomingCallLabel.textColor = UIColor.clear
+        
+        timerLabel.isHidden = false
+        
         CallManager.shared.startCountingTime(timerLabel: timerLabel)
-
     }
 
     func session(_ session: QBRTCBaseSession, disconnectedFromUser userID: NSNumber) {

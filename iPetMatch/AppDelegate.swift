@@ -29,9 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let vc = IncommingCallViewController()
         
-        window?.rootViewController = vc
+        //window?.rootViewController = vc
         
-        //window?.rootViewController = navigationController
+        window?.rootViewController = navigationController
 
         window?.makeKeyAndVisible()
 
