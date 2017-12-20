@@ -28,9 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
 
         let vc = IncommingCallViewController()
-        
+
         //window?.rootViewController = vc
-        
+
         window?.rootViewController = navigationController
 
         window?.makeKeyAndVisible()
@@ -91,6 +91,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         SVProgressHUD.setDefaultMaskType(.gradient)
         QBRTCClient.initializeRTC()
+
+        QBRTCAudioSession.instance().initialize()
 
         // loading settings
         //Settings.instance()

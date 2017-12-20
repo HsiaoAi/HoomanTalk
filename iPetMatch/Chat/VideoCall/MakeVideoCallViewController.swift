@@ -37,7 +37,7 @@ extension MakeVideoCallViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-        
+
         opponentVideoView.videoGravity = "AVLayerVideoGravityResizeAspect"
 
         CallManager.shared.audioManager.currentAudioDevice = QBRTCAudioDevice.speaker
@@ -67,11 +67,11 @@ extension MakeVideoCallViewController {
         }
 
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
-        
+
         super.viewWillAppear(animated)
-        
+
         timerLabel.isHidden = true
 
     }
@@ -90,7 +90,7 @@ extension MakeVideoCallViewController: QBRTCClientDelegate {
         CallManager.shared.session?.localMediaStream.videoTrack.videoCapture = self.videoCapture
 
         self.videoCapture!.previewLayer.frame = self.localVideoView.bounds
-            
+
         self.localVideoView.layer.insertSublayer(self.videoCapture!.previewLayer, at: 0)
 
         self.videoCapture!.startSession()
@@ -99,9 +99,9 @@ extension MakeVideoCallViewController: QBRTCClientDelegate {
     func session(_ session: QBRTCBaseSession, receivedRemoteVideoTrack videoTrack: QBRTCVideoTrack, fromUser userID: NSNumber) {
 
         RingtonePlayer.shared.stopPhoneRing()
-        
+
         self.opponentVideoView.setVideoTrack(videoTrack)
-    
+
     }
 
     func session(_ session: QBRTCBaseSession, startedConnectingToUser userID: NSNumber) {
@@ -121,13 +121,13 @@ extension MakeVideoCallViewController: QBRTCClientDelegate {
         CallManager.shared.stopCountingTime(timerLabel: timerLabel)
 
     }
-    
+
     func sessionDidClose(_ session: QBRTCSession) {
 
         CallManager.shared.session = nil
-        
+
         self.videoCapture?.stopSession()
-        
+
         self.dismiss(animated: false, completion: nil)
 
     }

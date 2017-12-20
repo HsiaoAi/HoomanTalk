@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		693E86532A574593235778FC /* Pods_iPetMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA9B305BF331FC6F95E0DA0D /* Pods_iPetMatch.framework */; };
+		870327631FEADC4F009D2FF3 /* IconEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870327621FEADC4F009D2FF3 /* IconEnum.swift */; };
 		87126BE51FE18B09009D0188 /* LandingViewControViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126BE31FE18B09009D0188 /* LandingViewControViewController.swift */; };
 		87126BE61FE18B09009D0188 /* LandingViewControViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87126BE41FE18B09009D0188 /* LandingViewControViewController.xib */; };
 		87126BFA1FE19B2A009D0188 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126BF91FE19B2A009D0188 /* Identifiable.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		870327621FEADC4F009D2FF3 /* IconEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconEnum.swift; sourceTree = "<group>"; };
 		87126BE11FE183C5009D0188 /* bridge_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bridge_Header.h; path = iPetMatch/bridge_Header.h; sourceTree = SOURCE_ROOT; };
 		87126BE31FE18B09009D0188 /* LandingViewControViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewControViewController.swift; sourceTree = "<group>"; };
 		87126BE41FE18B09009D0188 /* LandingViewControViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LandingViewControViewController.xib; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				874D94311FE250EF0009C9F3 /* SweetAlert.swift */,
+				870327621FEADC4F009D2FF3 /* IconEnum.swift */,
 				87126BF91FE19B2A009D0188 /* Identifiable.swift */,
 			);
 			path = Library;
@@ -562,6 +565,7 @@
 				872D9CD61FE65F030008C8AA /* MakeVideoCallViewController.swift in Sources */,
 				8735E6191FE56A4500C85442 /* AppDelegate.swift in Sources */,
 				879FB1281FE2DE54002332EF /* TabBarItemType.swift in Sources */,
+				870327631FEADC4F009D2FF3 /* IconEnum.swift in Sources */,
 				874D94351FE2B2B00009C9F3 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
