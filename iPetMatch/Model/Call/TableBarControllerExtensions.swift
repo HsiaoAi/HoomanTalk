@@ -32,15 +32,17 @@ extension TabBarController: QBRTCClientDelegate {
 
                 let navigationController = UINavigationController(rootViewController: incommingCallViewController)
 
-                self.present(navigationController, animated: true, completion: nil)
+                self.present(navigationController,
+                             animated: true,
+                             completion: nil)
 
             case .video:
 
                 let incommingCallViewController = IncommingCallViewController()
 
-                let navigationController = UINavigationController(rootViewController: incommingCallViewController)
+               // let navigationController = UINavigationController(rootViewController: incommingCallViewController)
 
-                self.present(navigationController, animated: true, completion: nil)
+                self.present(incommingCallViewController, animated: true, completion: nil)
             }
 
         }
@@ -55,8 +57,6 @@ extension TabBarController: QBRTCClientDelegate {
         CallManager.shared.session = nil
 
         RingtonePlayer.shared.stopPhoneRing()
-
-        //self.dismiss(animated: false, completion: nil)
 
     }
 

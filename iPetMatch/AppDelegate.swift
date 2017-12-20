@@ -8,7 +8,7 @@
 
 let kQBRingThickness: CGFloat = 1.0
 
-let kQBAnswerTimeInterval: TimeInterval = 45
+let kQBAnswerTimeInterval: TimeInterval = 240
 let kQBDialingTimeInterval: TimeInterval = 5.0
 
 @UIApplicationMain
@@ -27,7 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        window?.rootViewController = navigationController
+        let vc = IncommingCallViewController()
+        
+        window?.rootViewController = vc
+        
+        //window?.rootViewController = navigationController
 
         window?.makeKeyAndVisible()
 

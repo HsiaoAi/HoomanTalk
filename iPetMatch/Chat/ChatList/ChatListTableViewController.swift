@@ -154,6 +154,7 @@ class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
         let navigationController = UINavigationController(rootViewController: makeAudioCallViewController)
 
         self.navigationController?.present(navigationController, animated: true, completion: nil)
+        
 
     }
 

@@ -18,5 +18,7 @@ target 'iPetMatch' do
   pod 'SCLAlertView'
   pod 'MZTimerLabel', '~> 0.5'
   pod 'SwiftTimer'
-
+  pod 'LGButton'
+  pod 'FaveButton', '~> 2.0.3'
+  pod 'UIImageView+Extension', '~> 0.2'
 end

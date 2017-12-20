@@ -10,10 +10,13 @@ import UIKit
 
 class MakeAudioCallViewController: UIViewController {
 
+    @IBOutlet weak var timerLabel: MZTimerLabel!
     @IBOutlet weak var declineButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.timerLabel.isHidden = true
 
         QBRTCClient.instance().add(self)
 
@@ -54,6 +57,25 @@ extension MakeAudioCallViewController: QBRTCClientDelegate {
         self.navigationItem.title =  "被掛斷"
 
     }
+    
+    func session(_ session: QBRTCBaseSession, startedConnectingToUser userID: NSNumber) {
+        
+        CallManager.shared.startCountingTime(timerLabel: timerLabel)
+        
+    }
+    
+    func session(_ session: QBRTCBaseSession, disconnectedFromUser userID: NSNumber) {
+        
+        CallManager.shared.stopCountingTime(timerLabel: timerLabel)
+        
+    }
+    
+    func session(_ session: QBRTCBaseSession, connectionClosedForUser userID: NSNumber) {
+        
+        CallManager.shared.stopCountingTime(timerLabel: timerLabel)
+        
+    }
+
 
     func sessionDidClose(_ session: QBRTCSession) {
 

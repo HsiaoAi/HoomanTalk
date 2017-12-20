@@ -18,6 +18,8 @@ class MakeVideoCallViewController: UIViewController {
 
     @IBOutlet weak var opponentVideoView: QBRTCRemoteVideoView!
 
+    @IBOutlet weak var timerLabel: MZTimerLabel!
+
     @IBAction func hangUpCall(_ sender: Any) {
 
         let userInfo: [String: String] = ["key": "value"]
@@ -35,6 +37,8 @@ extension MakeVideoCallViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        
+        opponentVideoView.videoGravity = "AVLayerVideoGravityResizeAspect"
 
         CallManager.shared.audioManager.currentAudioDevice = QBRTCAudioDevice.speaker
 
@@ -63,10 +67,12 @@ extension MakeVideoCallViewController {
         }
 
     }
-
-    override func viewDidDisappear(_ animated: Bool) {
-
-        super.viewDidDisappear(animated)
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        timerLabel.isHidden = true
 
     }
 
@@ -84,28 +90,45 @@ extension MakeVideoCallViewController: QBRTCClientDelegate {
         CallManager.shared.session?.localMediaStream.videoTrack.videoCapture = self.videoCapture
 
         self.videoCapture!.previewLayer.frame = self.localVideoView.bounds
-
-        self.videoCapture!.startSession()
-
+            
         self.localVideoView.layer.insertSublayer(self.videoCapture!.previewLayer, at: 0)
 
+        self.videoCapture!.startSession()
     }
 
     func session(_ session: QBRTCBaseSession, receivedRemoteVideoTrack videoTrack: QBRTCVideoTrack, fromUser userID: NSNumber) {
 
         RingtonePlayer.shared.stopPhoneRing()
+        
+        self.opponentVideoView.setVideoTrack(videoTrack)
+    
+    }
 
-        opponentVideoView.videoGravity = "AVLayerVideoGravityResizeAspect"
+    func session(_ session: QBRTCBaseSession, startedConnectingToUser userID: NSNumber) {
 
-        opponentVideoView.setVideoTrack(videoTrack)
+        CallManager.shared.startCountingTime(timerLabel: timerLabel)
 
     }
 
-    func sessionDidClose(session: QBRTCSession!) {
+    func session(_ session: QBRTCBaseSession, disconnectedFromUser userID: NSNumber) {
+
+        CallManager.shared.stopCountingTime(timerLabel: timerLabel)
+
+    }
+
+    func session(_ session: QBRTCBaseSession, connectionClosedForUser userID: NSNumber) {
+
+        CallManager.shared.stopCountingTime(timerLabel: timerLabel)
+
+    }
+    
+    func sessionDidClose(_ session: QBRTCSession) {
 
         CallManager.shared.session = nil
-
+        
         self.videoCapture?.stopSession()
+        
+        self.dismiss(animated: false, completion: nil)
 
     }
 

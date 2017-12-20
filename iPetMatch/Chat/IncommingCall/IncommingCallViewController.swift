@@ -11,12 +11,15 @@ import UIKit
 class IncommingCallViewController: UIViewController {
 
     @IBOutlet weak var timerLabel: MZTimerLabel!
+    
+    @IBOutlet weak var userImageView: UIImageView!
+    
     var isAnswer = false
 
     override func viewDidLoad() {
 
         super.viewDidLoad()
-
+    
         QBRTCClient.instance().add(self)
 
         timerLabel.isHidden = true
@@ -87,8 +90,6 @@ extension IncommingCallViewController: QBRTCClientDelegate {
     func session(_ session: QBRTCBaseSession, connectionClosedForUser userID: NSNumber) {
 
         CallManager.shared.stopCountingTime(timerLabel: timerLabel)
-
-        let alert = UIAlertController(title: "Info", message: "通話時間: \(timerLabel.text)", preferredStyle: UIAlertControllerStyle.alert)
 
     }
 

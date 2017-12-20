@@ -27,10 +27,6 @@ class LocalVideoView: UIView {
 
     func setupVideoLayer() {
 
-        self.layer.borderWidth = 2.0
-
-        self.layer.borderColor = UIColor.lightGray.cgColor
-
         self.backgroundColor = UIColor.clear
 
         let videoLayer = AVCaptureVideoPreviewLayer()
