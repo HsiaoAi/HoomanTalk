@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatListTableViewController: UITableViewController {
+class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
 
     enum ChatListComponent {
 
@@ -25,8 +25,6 @@ class ChatListTableViewController: UITableViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-
-        //QBRTCClient.instance().add(self)
 
         self.navigationItem.hidesBackButton = false
 
@@ -151,13 +149,17 @@ class ChatListTableViewController: UITableViewController {
 
         CallManager.shared.makeCall(to: toUserID, with: .audio)
 
-        self.present(IncommingCallViewController(), animated: true, completion: nil)
+        let makeAudioCallViewController = MakeAudioCallViewController()
+
+        let navigationController = UINavigationController(rootViewController: makeAudioCallViewController)
+
+        self.navigationController?.present(navigationController, animated: true, completion: nil)
 
     }
 
     @objc func startVedioCalling() {
 
-        self.present(MakeCallViewController(), animated: true, completion: nil)
+        self.present(MakeVideoCallViewController(), animated: true, completion: nil)
 
     }
 

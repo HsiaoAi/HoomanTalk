@@ -34,6 +34,10 @@ class TabBarController: UITabBarController {
 
         setUpTabBar()
 
+        QBRTCClient.instance().add(self)
+
+        QBRTCAudioSession.instance().initialize()
+
     }
 
     // MARK: Set up tab bar
@@ -41,8 +45,6 @@ class TabBarController: UITabBarController {
     func setUpTabBar() {
 
         // Delegate
-
-        QBRTCClient.instance().add(self)
 
         tabBar.barStyle = .default
 

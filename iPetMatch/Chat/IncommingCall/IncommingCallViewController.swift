@@ -10,23 +10,110 @@ import UIKit
 
 class IncommingCallViewController: UIViewController {
 
+    @IBOutlet weak var timerLabel: MZTimerLabel!
+
+    @IBOutlet weak var userImageView: UIImageView!
+
+    @IBOutlet weak var incomingCallLabel: UILabel!
+
+    @IBOutlet weak var hostUserNameLabel: UILabel!
+
+    @IBOutlet weak var beforeAnswerButtonsStack: UIStackView!
+
+    @IBOutlet weak var afterAnswerBurronStack: UIStackView!
+
+    @IBOutlet weak var speakerButton: LGButton!
+    var isAnswer = false
+
+    @IBOutlet weak var microphoneButton: LGButton!
+
+    override func viewDidLoad() {
+
+        super.viewDidLoad()
+
+        self.navigationController?.isNavigationBarHidden = true
+
+        timerLabel.isHidden = true
+
+        afterAnswerBurronStack.isHidden = true
+
+        QBRTCClient.instance().add(self)
+
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+
+        super.viewDidDisappear(animated)
+
+        CallManager.shared.timerReset(timerLabel: timerLabel)
+
+        // Rest microPhone
+    }
+
+    func turnOffSpeaker() {
+
+        CallManager.shared.audioManager.currentAudioDevice = .receiver
+
+        speakerButton.rightImageSrc = IconImage.speakerOff.image
+
+    }
+
+    @IBAction func switchMicrophone(_ sender: Any) {
+
+        if CallManager.shared.session!.localMediaStream.audioTrack.isEnabled {
+
+            CallManager.shared.session!.localMediaStream.audioTrack.isEnabled = false
+
+            microphoneButton.rightImageSrc = IconImage.microphoneOff.image
+
+        } else {
+
+            CallManager.shared.session!.localMediaStream.audioTrack.isEnabled = true
+
+            microphoneButton.rightImageSrc = IconImage.microphoneOn.image
+
+        }
+
+    }
+    @IBAction func switchSpeakerMode(_ sender: Any) {
+
+        if CallManager.shared.audioManager.currentAudioDevice == .receiver {
+
+            CallManager.shared.audioManager.currentAudioDevice = .speaker
+
+            speakerButton.rightImageSrc = IconImage.speakerOn.image
+
+        } else {
+
+            CallManager.shared.audioManager.currentAudioDevice = .receiver
+
+            speakerButton.rightImageSrc = IconImage.speakerOff.image
+
+        }
+
+    }
+
     @IBAction func answerCall(_ sender: Any) {
 
-        let userInfo: [String: String] = ["key": "value"]
+        isAnswer = true
 
-        CallManager.shared.session?.acceptCall(userInfo)
+        CallManager.shared.acceptCall()
 
-        let sessionConferenceType = CallManager.shared.session!.conferenceType
+        switch CallManager.shared.session!.conferenceType {
 
-        switch sessionConferenceType {
+        case .audio:
 
-            case .audio:
+            incomingCallLabel.text = "Connecting..."
 
-                self.present(AudioCallingViewController(), animated: false, completion: nil)
+            beforeAnswerButtonsStack.isHidden = true
 
-            case .video:
+            afterAnswerBurronStack.isHidden = false
 
-                self.present(MakeCallViewController(), animated: false, completion: nil)
+            turnOffSpeaker()
+
+        case .video:
+
+            self.present(MakeVideoCallViewController(), animated: false, completion: nil)
 
         }
 
@@ -36,28 +123,57 @@ class IncommingCallViewController: UIViewController {
 
         let userInfo: [String: String] = ["key": "value"]
 
-        DispatchQueue.global().async {
+        if isAnswer {
 
-            CallManager.shared.session?.hangUp(userInfo)
+            CallManager.shared.hangupCall()
+
+        } else {
+
+            CallManager.shared.rejectCall(for: CallManager.shared.session)
 
         }
 
+    }
+
+}
+
+extension IncommingCallViewController: QBRTCClientDelegate {
+
+    func session(_ session: QBRTCBaseSession, connectedToUser userID: NSNumber) {
+
+        incomingCallLabel.textColor = UIColor.clear
+
+        timerLabel.isHidden = false
+
+        CallManager.shared.startCountingTime(timerLabel: timerLabel)
+    }
+
+    func session(_ session: QBRTCBaseSession, disconnectedFromUser userID: NSNumber) {
+
+        CallManager.shared.stopCountingTime(timerLabel: timerLabel)
+
+    }
+
+    func session(_ session: QBRTCBaseSession, connectionClosedForUser userID: NSNumber) {
+
+        CallManager.shared.stopCountingTime(timerLabel: timerLabel)
+
+    }
+
+    func session(_ session: QBRTCSession, hungUpByUser userID: NSNumber, userInfo: [String: String]? = nil) {
+
+        CallManager.shared.hangupCall()
+
+    }
+
+    func sessionDidClose(_ session: QBRTCSession) {
+
         CallManager.shared.session = nil
 
-        self.dismiss(animated: true)
+        RingtonePlayer.shared.stopPhoneRing()
 
-    }
+        self.dismiss(animated: false, completion: nil)
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.view.backgroundColor = UIColor.yellow
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
