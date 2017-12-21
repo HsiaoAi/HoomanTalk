@@ -24,6 +24,10 @@ enum IconImage {
 
     case microphoneOff
 
+    case cameraOff
+
+    case cameraOn
+
 }
 
 extension IconImage {
@@ -45,6 +49,10 @@ extension IconImage {
         case .microphoneOn: return #imageLiteral(resourceName: "icon-microphoneOn")
 
         case .microphoneOff: return #imageLiteral(resourceName: "icon-microphoneOff")
+
+        case .cameraOn: return #imageLiteral(resourceName: "icon-cameraOn")
+
+        case .cameraOff: return #imageLiteral(resourceName: "icon-cameraOff")
 
         }
 

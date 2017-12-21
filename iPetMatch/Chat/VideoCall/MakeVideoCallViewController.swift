@@ -130,6 +130,8 @@ extension MakeVideoCallViewController: QBRTCClientDelegate {
 
         self.dismiss(animated: false, completion: nil)
 
+        QBRTCAudioSession.instance().deinitialize()
+
     }
 
 }

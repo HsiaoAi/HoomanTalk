@@ -203,6 +203,8 @@ extension IncommingCallViewController: QBRTCClientDelegate {
 
         self.dismiss(animated: false, completion: nil)
 
+        QBRTCAudioSession.instance().deinitialize()
+
     }
 
 }

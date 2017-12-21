@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		693E86532A574593235778FC /* Pods_iPetMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA9B305BF331FC6F95E0DA0D /* Pods_iPetMatch.framework */; };
 		870327631FEADC4F009D2FF3 /* IconEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870327621FEADC4F009D2FF3 /* IconEnum.swift */; };
-		870327651FEB0553009D2FF3 /* VideoCallControllerPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870327641FEB0553009D2FF3 /* VideoCallControllerPanelView.swift */; };
-		870327671FEB0579009D2FF3 /* VideoCallControllerPanelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 870327661FEB0579009D2FF3 /* VideoCallControllerPanelView.xib */; };
 		8703276F1FEB22DC009D2FF3 /* AudioCall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8703276E1FEB22DA009D2FF3 /* AudioCall.gif */; };
 		87126BE51FE18B09009D0188 /* LandingViewControViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126BE31FE18B09009D0188 /* LandingViewControViewController.swift */; };
 		87126BE61FE18B09009D0188 /* LandingViewControViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87126BE41FE18B09009D0188 /* LandingViewControViewController.xib */; };
@@ -75,8 +73,6 @@
 
 /* Begin PBXFileReference section */
 		870327621FEADC4F009D2FF3 /* IconEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconEnum.swift; sourceTree = "<group>"; };
-		870327641FEB0553009D2FF3 /* VideoCallControllerPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCallControllerPanelView.swift; sourceTree = "<group>"; };
-		870327661FEB0579009D2FF3 /* VideoCallControllerPanelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoCallControllerPanelView.xib; sourceTree = "<group>"; };
 		8703276E1FEB22DA009D2FF3 /* AudioCall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = AudioCall.gif; sourceTree = "<group>"; };
 		87126BE11FE183C5009D0188 /* bridge_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bridge_Header.h; path = iPetMatch/bridge_Header.h; sourceTree = SOURCE_ROOT; };
 		87126BE31FE18B09009D0188 /* LandingViewControViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewControViewController.swift; sourceTree = "<group>"; };
@@ -246,8 +242,6 @@
 				872D9CD31FE65CF80008C8AA /* MakeVideoCallViewController.swift */,
 				872D9CD11FE65CF80008C8AA /* MakeVideoCallViewController.xib */,
 				872D9CD21FE65CF80008C8AA /* LocalVideoView.swift */,
-				870327641FEB0553009D2FF3 /* VideoCallControllerPanelView.swift */,
-				870327661FEB0579009D2FF3 /* VideoCallControllerPanelView.xib */,
 			);
 			name = VideoCall;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/VideoCall;
@@ -460,7 +454,6 @@
 				8797E6571FE10D5800C9002F /* Assets.xcassets in Resources */,
 				8703276F1FEB22DC009D2FF3 /* AudioCall.gif in Resources */,
 				874D943A1FE2CEAE0009C9F3 /* IncommingCallViewController.xib in Resources */,
-				870327671FEB0579009D2FF3 /* VideoCallControllerPanelView.xib in Resources */,
 				87C179A91FEB588800815A47 /* VideoCall.gif in Resources */,
 				8797E6551FE10D5800C9002F /* Main.storyboard in Resources */,
 				87DDA8E11FE907A600A917A8 /* dog.mp3 in Resources */,
@@ -566,7 +559,6 @@
 				87126BE51FE18B09009D0188 /* LandingViewControViewController.swift in Sources */,
 				874D94321FE250F00009C9F3 /* SweetAlert.swift in Sources */,
 				879FB12C1FE2E2F4002332EF /* AppDelegateExtensions.swift in Sources */,
-				870327651FEB0553009D2FF3 /* VideoCallControllerPanelView.swift in Sources */,
 				87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */,
 				8797E67F1FE1174100C9002F /* QuickbloxAdmin.swift in Sources */,
 				87E8A92C1FE5932100726A2E /* ChatListTableViewController.swift in Sources */,

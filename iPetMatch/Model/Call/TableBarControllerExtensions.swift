@@ -58,6 +58,8 @@ extension TabBarController: QBRTCClientDelegate {
 
         RingtonePlayer.shared.stopPhoneRing()
 
+        QBRTCAudioSession.instance().deinitialize()
+
     }
 
     // Make Call

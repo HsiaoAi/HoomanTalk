@@ -51,7 +51,7 @@ class LandingViewControViewController: UIViewController {
 
         let currentUser = QBUUser()
 
-        currentUser.login = loginID
+        currentUser.login = "ilct23"
 
         currentUser.password = password
 
