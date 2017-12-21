@@ -27,6 +27,6 @@ struct User {
 
 extension User {
 
-    let imageUrl: String?
+    // var imageUrl: String?
 
 }

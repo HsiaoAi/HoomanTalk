@@ -20,7 +20,6 @@
 @import Foundation;
 @import Fabric;
 @import Crashlytics;
-@import IHKeyboardAvoiding;
 @import SCLAlertView;
 @import AVFoundation;
 @import MZTimerLabel;
@@ -30,12 +29,7 @@
 @import LGButton;
 @import FLAnimatedImage;
 @import SDWebImage;
-@import Koloda;
-
-
-
-
-
+@import IQKeyboardManagerSwift;
 
 
 

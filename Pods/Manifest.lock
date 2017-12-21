@@ -4,12 +4,9 @@ PODS:
   - Fabric (1.7.2)
   - FaveButton (2.0.3)
   - FLAnimatedImage (1.0.12)
-  - IHKeyboardAvoiding (4.1)
-  - Koloda (4.3.1):
-    - pop (~> 1.0)
+  - IQKeyboardManagerSwift (5.0.6)
   - LGButton (1.0.4)
   - MZTimerLabel (0.5.4)
-  - pop (1.0.10)
   - QuickBlox (2.14)
   - Quickblox-WebRTC (2.6.3):
     - QuickBlox (>= 2.7)
@@ -27,8 +24,7 @@ DEPENDENCIES:
   - Fabric
   - FaveButton (~> 2.0.3)
   - FLAnimatedImage (~> 1.0)
-  - IHKeyboardAvoiding
-  - Koloda (~> 4.3.1)
+  - IQKeyboardManagerSwift
   - LGButton
   - MZTimerLabel (~> 0.5)
   - QuickBlox
@@ -53,11 +49,9 @@ SPEC CHECKSUMS:
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   FaveButton: cfcbc5e73da159c4f916613da5687357b5bb4783
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  IHKeyboardAvoiding: 5f42b8ff1f64144ea425b1954e4311eb6bf9077a
-  Koloda: 0d39b2aa188ccd1fac48d752acaf9802e683c625
+  IQKeyboardManagerSwift: 02bfbb0dff71c66d0ab77d80d25dfce0c3717735
   LGButton: 40c36e2b7a274d9cb263420e568bc8890832954e
   MZTimerLabel: cd9bfb9304540ef2a9e163384fca9c978f0dbf83
-  pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   QuickBlox: d40cd742985908ce7809058e5a63f1e3581165a0
   Quickblox-WebRTC: 1838368795c479dd61796a3423ce9e74a90fe939
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
@@ -66,6 +60,6 @@ SPEC CHECKSUMS:
   SwiftTimer: 4d25ff045d81c3132e1161a3ba2353d06ff63c30
   UIImageView+Extension: 0c4aafa145d9e36a8154bf5f5e9698dea04fd410
 
-PODFILE CHECKSUM: 2572caf277a9187543e60d15c0110d5c7cf4b886
+PODFILE CHECKSUM: 058a0d96a83e9178577e8398d51a8a3a38ecdaba
 
 COCOAPODS: 1.3.1

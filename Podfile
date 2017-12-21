@@ -14,7 +14,6 @@ target 'iPetMatch' do
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
   pod 'Fabric'
   pod 'Crashlytics'
-  pod 'IHKeyboardAvoiding'
   pod 'SCLAlertView'
   pod 'MZTimerLabel', '~> 0.5'
   pod 'SwiftTimer'
@@ -23,5 +22,6 @@ target 'iPetMatch' do
   pod 'UIImageView+Extension', '~> 0.2'
   pod 'SDWebImage/GIF'
   pod 'FLAnimatedImage', '~> 1.0'
-  pod 'Koloda', '~> 4.3.1'
+  pod 'IQKeyboardManagerSwift'
+
 end

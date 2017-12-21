@@ -31,7 +31,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="peZ-iI-Dmf">
-                            <rect key="frame" x="30" y="444" width="354" height="129.33333333333337"/>
+                            <rect key="frame" x="30" y="449" width="354" height="124.33333333333337"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v8s-ih-OZN" userLabel="CallInfoView">
@@ -49,7 +49,7 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userImage" translatesAutoresizingMaskIntoConstraints="NO" id="bA8-re-Kda" userLabel="UserImage">
-                            <rect key="frame" x="20" y="55" width="375" height="389"/>
+                            <rect key="frame" x="25" y="60" width="365" height="389"/>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="70s-0N-SR8" userLabel="afterAnswerButtonStack">
                             <rect key="frame" x="57.666666666666657" y="603.33333333333337" width="299" height="82.666666666666629"/>
@@ -133,7 +133,7 @@
                             <viewLayoutGuide key="safeArea" id="uxQ-6F-5mO"/>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WSz-HA-P3Z">
-                            <rect key="frame" x="60.000000000000014" y="482.66666666666669" width="220.33333333333337" height="51.333333333333314"/>
+                            <rect key="frame" x="60.000000000000014" y="485.33333333333331" width="220.33333333333337" height="51.333333333333314"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calling To" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsE-Rs-4lz">
                                     <rect key="frame" x="0.0" y="0.0" width="78" height="21.333333333333332"/>
@@ -143,7 +143,7 @@
                                     <color key="shadowColor" red="0.67041194439999996" green="0.70198559760000001" blue="0.69011390210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hsiao Ai" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pye-3m-8ji">
-                                    <rect key="frame" x="0.0" y="26.333333333333314" width="72" height="25"/>
+                                    <rect key="frame" x="0.0" y="26.333333333333371" width="72" height="25"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -152,7 +152,7 @@
                             </subviews>
                         </stackView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rf2-bK-uko" customClass="FLAnimatedImageView">
-                            <rect key="frame" x="290.33333333333331" y="473" width="63.666666666666686" height="71"/>
+                            <rect key="frame" x="290.33333333333331" y="475.66666666666669" width="63.666666666666686" height="71.000000000000057"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                     <real key="value" value="5"/>
@@ -163,7 +163,7 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incoming Call From" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urd-La-2W0" customClass="MZTimerLabel">
-                            <rect key="frame" x="60.000000000000014" y="482.66666666666669" width="153.33333333333337" height="21.333333333333314"/>
+                            <rect key="frame" x="60.000000000000014" y="485.33333333333331" width="153.33333333333337" height="21.333333333333314"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                             <color key="textColor" red="0.3217366934" green="0.25888746979999999" blue="0.25097307559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -189,8 +189,8 @@
                         <constraint firstItem="v8s-ih-OZN" firstAttribute="centerX" secondItem="gaL-0a-ISl" secondAttribute="centerX" id="bBU-oh-ox0"/>
                         <constraint firstItem="Rf2-bK-uko" firstAttribute="centerY" secondItem="WSz-HA-P3Z" secondAttribute="centerY" id="cTD-cM-MWY"/>
                         <constraint firstItem="v8s-ih-OZN" firstAttribute="top" secondItem="mDw-zu-AxW" secondAttribute="top" constant="35" id="dcg-LN-K76"/>
-                        <constraint firstItem="bA8-re-Kda" firstAttribute="leading" secondItem="v8s-ih-OZN" secondAttribute="leading" id="f3J-RL-EE3"/>
-                        <constraint firstItem="bA8-re-Kda" firstAttribute="top" secondItem="v8s-ih-OZN" secondAttribute="top" id="fTr-Xj-BDT"/>
+                        <constraint firstItem="bA8-re-Kda" firstAttribute="leading" secondItem="v8s-ih-OZN" secondAttribute="leading" constant="5" id="f3J-RL-EE3"/>
+                        <constraint firstItem="bA8-re-Kda" firstAttribute="top" secondItem="v8s-ih-OZN" secondAttribute="top" constant="5" id="fTr-Xj-BDT"/>
                         <constraint firstItem="peZ-iI-Dmf" firstAttribute="leading" secondItem="v8s-ih-OZN" secondAttribute="leading" constant="10" id="lsS-ja-Aum"/>
                         <constraint firstItem="bA8-re-Kda" firstAttribute="centerX" secondItem="v8s-ih-OZN" secondAttribute="centerX" id="pEr-vu-4v5"/>
                         <constraint firstItem="bA8-re-Kda" firstAttribute="height" secondItem="v8s-ih-OZN" secondAttribute="height" multiplier="0.75" id="qNO-QY-wFi"/>

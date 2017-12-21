@@ -149,7 +149,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="hangUpCall:" destination="-1" eventType="valueChanged" id="ans-RZ-4A9"/>
+                                <action selector="hangUpCall:" destination="-1" eventType="touchUpInside" id="wMv-Gl-HWQ"/>
                             </connections>
                         </view>
                     </subviews>

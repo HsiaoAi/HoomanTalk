@@ -22,7 +22,7 @@ extension AppDelegate {
         // return TabBarController(itemTypes: [.chat])
 
         // if not login
-        return LandingViewControViewController()
+        return UIViewController()
     }
 
 }

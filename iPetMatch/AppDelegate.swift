@@ -18,26 +18,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        // Farbric
-
-        Fabric.with([Crashlytics.self])
-
-        application.applicationIconBadgeNumber = 0
-
         // Set rootViewController
-        let landingViewController = LandingViewControViewController()
-
-        let navigationController = UINavigationController(rootViewController: landingViewController)
+        let langdingStoryboard = UIStoryboard(name: "Landing", bundle: nil)
+        let landingViewController = langdingStoryboard.instantiateViewController(withIdentifier: "LandingViewController")
 
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        let vc = ChatListTableViewController()
+        //let vc = LandingViewControViewController()
 
-        //window?.rootViewController = vc
+        //let navigationController = UINavigationController(rootViewController: vc)
 
-        window?.rootViewController = navigationController
+        window?.rootViewController = landingViewController
 
         window?.makeKeyAndVisible()
+
+        // IQKeyboard
+
+        IQKeyboardManager.sharedManager().enable = true
 
         // Quickblox API
 
@@ -114,11 +111,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             // Login Page
 
-            let landingViewController = LandingViewControViewController()
+            //let landingViewController = LandingViewController()
 
-            let navigationController = UINavigationController(rootViewController: landingViewController)
-
-            window?.rootViewController = navigationController
+//            let navigationController = UINavigationController(rootViewController: landingViewController)
+//
+//            window?.rootViewController = navigationController
 
         }
 

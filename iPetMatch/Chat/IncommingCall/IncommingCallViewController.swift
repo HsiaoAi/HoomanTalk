@@ -39,7 +39,7 @@ class IncommingCallViewController: UIViewController {
 
         afterAnswerBurronStack.isHidden = true
 
-        setupAudioSignImageView()
+        //setupAudioSignImageView(
 
         QBRTCClient.instance().add(self)
 
