@@ -27,6 +27,8 @@ class IncommingCallViewController: UIViewController {
 
     @IBOutlet weak var microphoneButton: LGButton!
 
+    @IBOutlet weak var audioSignImageView: UIImageView!
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -36,6 +38,8 @@ class IncommingCallViewController: UIViewController {
         timerLabel.isHidden = true
 
         afterAnswerBurronStack.isHidden = true
+
+        setupAudioSignImageView()
 
         QBRTCClient.instance().add(self)
 
@@ -47,7 +51,30 @@ class IncommingCallViewController: UIViewController {
 
         CallManager.shared.timerReset(timerLabel: timerLabel)
 
-        // Rest microPhone
+    }
+
+    func setupAudioSignImageView() {
+
+        switch CallManager.shared.session!.conferenceType {
+
+        case .audio:
+
+            let path = Bundle.main.path(forResource: "AudioCall.gif", ofType: nil)!
+
+            let url = URL(fileURLWithPath: path)
+
+            audioSignImageView.sd_setImage(with: url, placeholderImage: nil)
+
+        case .video:
+
+            let path = Bundle.main.path(forResource: "VideoCall.gif", ofType: nil)!
+
+            let url = URL(fileURLWithPath: path)
+
+            audioSignImageView.sd_setImage(with: url, placeholderImage: nil)
+
+        }
+
     }
 
     func turnOffSpeaker() {
@@ -108,6 +135,8 @@ class IncommingCallViewController: UIViewController {
             beforeAnswerButtonsStack.isHidden = true
 
             afterAnswerBurronStack.isHidden = false
+
+            audioSignImageView.stopAnimating()
 
             turnOffSpeaker()
 

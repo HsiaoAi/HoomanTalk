@@ -18,6 +18,8 @@ class MakeAudioCallViewController: UIViewController {
 
     @IBOutlet weak var microphoneButton: LGButton!
 
+    @IBOutlet weak var audioSignGifView: FLAnimatedImageView!
+
     @IBAction func declineButton(_ sender: Any) {
 
         let userInfo: [String: String] = ["key": "value"]
@@ -33,12 +35,25 @@ class MakeAudioCallViewController: UIViewController {
 
         self.timerLabel.isHidden = true
 
+        setupAudioSignImageView()
+
         QBRTCClient.instance().add(self)
 
         CallManager.shared.audioManager.currentAudioDevice = QBRTCAudioDevice.receiver
 
         self.navigationController?.isNavigationBarHidden = true
     }
+
+    func setupAudioSignImageView() {
+
+        let path = Bundle.main.path(forResource: "AudioCall.gif", ofType: nil)!
+
+        let url = URL(fileURLWithPath: path)
+
+        audioSignGifView.sd_setImage(with: url, placeholderImage: nil)
+
+    }
+
     @IBAction func switchSpeakerMode(_ sender: Any) {
 
         if CallManager.shared.audioManager.currentAudioDevice == .receiver {
@@ -104,6 +119,10 @@ extension MakeAudioCallViewController: QBRTCClientDelegate {
 
         timerLabel.isHidden = false
 
+        callingToLabel.textColor = UIColor.clear
+
+        audioSignGifView.stopAnimating()
+
         CallManager.shared.startCountingTime(timerLabel: timerLabel)
     }
 
@@ -127,7 +146,7 @@ extension MakeAudioCallViewController: QBRTCClientDelegate {
 
         RingtonePlayer.shared.stopPhoneRing()
 
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
 
     }
 

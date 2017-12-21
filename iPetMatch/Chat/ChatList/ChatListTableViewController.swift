@@ -72,7 +72,7 @@ class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
         switch components[section] {
 
         case .user:
-            return 10
+            return 50
 
         case .buttons:
             return 1
@@ -120,6 +120,8 @@ class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
             cell.userNumberLabel.text = "\(indexPath.row)"
 
             cell.userNameLabel.text = "UserID"
+
+            cell.backgroundColor = .blue
 
             return cell
 

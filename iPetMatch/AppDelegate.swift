@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        let vc = IncommingCallViewController()
+        let vc = ChatListTableViewController()
 
         //window?.rootViewController = vc
 

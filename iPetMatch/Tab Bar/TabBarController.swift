@@ -48,7 +48,11 @@ class TabBarController: UITabBarController {
 
         tabBar.barStyle = .default
 
-        tabBar.isTranslucent = false
+        let frost = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+
+        frost.frame = self.tabBar.bounds
+
+        self.tabBar.insertSubview(frost, at: 0)
 
         tabBar.tintColor = UIColor.lightGray
 

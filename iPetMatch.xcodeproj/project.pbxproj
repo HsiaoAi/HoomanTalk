@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		693E86532A574593235778FC /* Pods_iPetMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA9B305BF331FC6F95E0DA0D /* Pods_iPetMatch.framework */; };
 		870327631FEADC4F009D2FF3 /* IconEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870327621FEADC4F009D2FF3 /* IconEnum.swift */; };
+		870327651FEB0553009D2FF3 /* VideoCallControllerPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870327641FEB0553009D2FF3 /* VideoCallControllerPanelView.swift */; };
+		870327671FEB0579009D2FF3 /* VideoCallControllerPanelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 870327661FEB0579009D2FF3 /* VideoCallControllerPanelView.xib */; };
+		8703276F1FEB22DC009D2FF3 /* AudioCall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8703276E1FEB22DA009D2FF3 /* AudioCall.gif */; };
 		87126BE51FE18B09009D0188 /* LandingViewControViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126BE31FE18B09009D0188 /* LandingViewControViewController.swift */; };
 		87126BE61FE18B09009D0188 /* LandingViewControViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87126BE41FE18B09009D0188 /* LandingViewControViewController.xib */; };
 		87126BFA1FE19B2A009D0188 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126BF91FE19B2A009D0188 /* Identifiable.swift */; };
@@ -45,6 +48,7 @@
 		879FB12A1FE2DF92002332EF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB1291FE2DF92002332EF /* TabBarController.swift */; };
 		879FB12C1FE2E2F4002332EF /* AppDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB12B1FE2E2F4002332EF /* AppDelegateExtensions.swift */; };
 		879FB12E1FE2E75A002332EF /* TableBarControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB12D1FE2E75A002332EF /* TableBarControllerExtensions.swift */; };
+		87C179A91FEB588800815A47 /* VideoCall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 87C179A81FEB588800815A47 /* VideoCall.gif */; };
 		87DDA8E11FE907A600A917A8 /* dog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 87DDA8E01FE907A600A917A8 /* dog.mp3 */; };
 		87DDA8E31FE90CC500A917A8 /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DDA8E21FE90CC500A917A8 /* UserSetting.swift */; };
 		87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */; };
@@ -71,6 +75,9 @@
 
 /* Begin PBXFileReference section */
 		870327621FEADC4F009D2FF3 /* IconEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconEnum.swift; sourceTree = "<group>"; };
+		870327641FEB0553009D2FF3 /* VideoCallControllerPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCallControllerPanelView.swift; sourceTree = "<group>"; };
+		870327661FEB0579009D2FF3 /* VideoCallControllerPanelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoCallControllerPanelView.xib; sourceTree = "<group>"; };
+		8703276E1FEB22DA009D2FF3 /* AudioCall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = AudioCall.gif; sourceTree = "<group>"; };
 		87126BE11FE183C5009D0188 /* bridge_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bridge_Header.h; path = iPetMatch/bridge_Header.h; sourceTree = SOURCE_ROOT; };
 		87126BE31FE18B09009D0188 /* LandingViewControViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewControViewController.swift; sourceTree = "<group>"; };
 		87126BE41FE18B09009D0188 /* LandingViewControViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LandingViewControViewController.xib; sourceTree = "<group>"; };
@@ -115,6 +122,7 @@
 		879FB1291FE2DF92002332EF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		879FB12B1FE2E2F4002332EF /* AppDelegateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensions.swift; sourceTree = "<group>"; };
 		879FB12D1FE2E75A002332EF /* TableBarControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableBarControllerExtensions.swift; sourceTree = "<group>"; };
+		87C179A81FEB588800815A47 /* VideoCall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = VideoCall.gif; sourceTree = "<group>"; };
 		87DDA8E01FE907A600A917A8 /* dog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog.mp3; sourceTree = "<group>"; };
 		87DDA8E21FE90CC500A917A8 /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
 		87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersListTableViewCell.swift; sourceTree = "<group>"; };
@@ -217,6 +225,8 @@
 				8727F72D1FE85E060027859D /* RingtonePlayer.swift */,
 				87DDA8E01FE907A600A917A8 /* dog.mp3 */,
 				8727F7321FE8B61D0027859D /* Mewo.mp3 */,
+				87C179A81FEB588800815A47 /* VideoCall.gif */,
+				8703276E1FEB22DA009D2FF3 /* AudioCall.gif */,
 			);
 			path = Ringtones;
 			sourceTree = "<group>";
@@ -236,6 +246,8 @@
 				872D9CD31FE65CF80008C8AA /* MakeVideoCallViewController.swift */,
 				872D9CD11FE65CF80008C8AA /* MakeVideoCallViewController.xib */,
 				872D9CD21FE65CF80008C8AA /* LocalVideoView.swift */,
+				870327641FEB0553009D2FF3 /* VideoCallControllerPanelView.swift */,
+				870327661FEB0579009D2FF3 /* VideoCallControllerPanelView.xib */,
 			);
 			name = VideoCall;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/VideoCall;
@@ -446,7 +458,10 @@
 				8727F7351FE8B61E0027859D /* Mewo.mp3 in Resources */,
 				872D9CD51FE65EFD0008C8AA /* MakeVideoCallViewController.xib in Resources */,
 				8797E6571FE10D5800C9002F /* Assets.xcassets in Resources */,
+				8703276F1FEB22DC009D2FF3 /* AudioCall.gif in Resources */,
 				874D943A1FE2CEAE0009C9F3 /* IncommingCallViewController.xib in Resources */,
+				870327671FEB0579009D2FF3 /* VideoCallControllerPanelView.xib in Resources */,
+				87C179A91FEB588800815A47 /* VideoCall.gif in Resources */,
 				8797E6551FE10D5800C9002F /* Main.storyboard in Resources */,
 				87DDA8E11FE907A600A917A8 /* dog.mp3 in Resources */,
 			);
@@ -480,6 +495,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/FaveButton/FaveButton.framework",
 				"${BUILT_PRODUCTS_DIR}/IHKeyboardAvoiding/IHKeyboardAvoiding.framework",
 				"${BUILT_PRODUCTS_DIR}/LGButton/LGButton.framework",
@@ -487,12 +503,14 @@
 				"${PODS_ROOT}/QuickBlox/Quickblox.framework",
 				"${PODS_ROOT}/Quickblox-WebRTC/QuickbloxWebRTC.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftTimer/SwiftTimer.framework",
 				"${BUILT_PRODUCTS_DIR}/UIImageView+Extension/UIImageView_Extension.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FaveButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IHKeyboardAvoiding.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGButton.framework",
@@ -500,6 +518,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quickblox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickbloxWebRTC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTimer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageView_Extension.framework",
@@ -547,6 +566,7 @@
 				87126BE51FE18B09009D0188 /* LandingViewControViewController.swift in Sources */,
 				874D94321FE250F00009C9F3 /* SweetAlert.swift in Sources */,
 				879FB12C1FE2E2F4002332EF /* AppDelegateExtensions.swift in Sources */,
+				870327651FEB0553009D2FF3 /* VideoCallControllerPanelView.swift in Sources */,
 				87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */,
 				8797E67F1FE1174100C9002F /* QuickbloxAdmin.swift in Sources */,
 				87E8A92C1FE5932100726A2E /* ChatListTableViewController.swift in Sources */,
