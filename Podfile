@@ -22,5 +22,6 @@ target 'iPetMatch' do
   pod 'FaveButton', '~> 2.0.3'
   pod 'UIImageView+Extension', '~> 0.2'
   pod 'SDWebImage/GIF'
-pod 'FLAnimatedImage', '~> 1.0'
+  pod 'FLAnimatedImage', '~> 1.0'
+  pod 'Koloda', '~> 4.3.1'
 end

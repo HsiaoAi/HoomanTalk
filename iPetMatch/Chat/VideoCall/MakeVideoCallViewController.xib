@@ -14,8 +14,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MakeVideoCallViewController" customModule="iPetMatch" customModuleProvider="target">
             <connections>
+                <outlet property="cameraButton" destination="BGe-Vj-8Ri" id="7r0-bc-dVr"/>
+                <outlet property="cameraPositionButton" destination="PX9-kH-L6g" id="FCR-W5-SEm"/>
+                <outlet property="controlPanelStackView" destination="MTM-zC-jaZ" id="lk8-id-tT0"/>
                 <outlet property="localVideoView" destination="cEs-TL-hUX" id="TCC-Xt-7El"/>
-                <outlet property="makeCallResponseView" destination="E1m-uD-lzj" id="eFm-L3-c1g"/>
+                <outlet property="microphoneButton" destination="XCX-o8-owX" id="DYo-r7-sS6"/>
                 <outlet property="opponentVideoView" destination="Q4E-sl-0BN" id="mDJ-rs-hje"/>
                 <outlet property="timerLabel" destination="0xS-bZ-lYE" id="5yw-H2-NqW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -34,16 +37,24 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q4E-sl-0BN" customClass="QBRTCRemoteVideoView">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                 </view>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="pL7-IV-5ML" userLabel="afterAnswerButtonStack">
-                    <rect key="frame" x="20.333333333333343" y="641.33333333333337" width="373.66666666666663" height="74.666666666666629"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEs-TL-hUX" customClass="LocalVideoView" customModule="iPetMatch" customModuleProvider="target">
+                    <rect key="frame" x="10" y="10" width="120" height="150"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="KUT-1I-m8e"/>
+                        <constraint firstAttribute="width" constant="120" id="tJB-pt-4Xm"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MTM-zC-jaZ" userLabel="controlPanel">
+                    <rect key="frame" x="28.333333333333343" y="641.33333333333337" width="357.33333333333326" height="74.666666666666629"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G6u-6h-JV5" customClass="LGButton" customModule="LGButton">
-                            <rect key="frame" x="0.0" y="0.0" width="74.666666666666671" height="74.666666666666671"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BGe-Vj-8Ri" customClass="LGButton" customModule="LGButton">
+                            <rect key="frame" x="0.0" y="0.0" width="74.333333333333329" height="74.666666666666671"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="G6u-6h-JV5" secondAttribute="height" multiplier="1:1" id="ELR-SD-REZ"/>
+                                <constraint firstAttribute="width" secondItem="BGe-Vj-8Ri" secondAttribute="height" multiplier="1:1" id="BaT-H5-Emu"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
@@ -58,13 +69,43 @@
                                     <real key="value" value="10"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="number" keyPath="rightImageHeight">
-                                    <real key="value" value="50"/>
+                                    <real key="value" value="44"/>
                                 </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="image" keyPath="rightImageSrc" value="icon-cameraOff"/>
+                                <userDefinedRuntimeAttribute type="image" keyPath="rightImageSrc" value="icon-cameraOn"/>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="switchCameraEnabled:" destination="-1" eventType="touchUpInside" id="wfy-8h-kZC"/>
+                            </connections>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M6q-eV-vyE" customClass="LGButton" customModule="LGButton">
-                            <rect key="frame" x="99.666666666666657" y="0.0" width="74.666666666666657" height="74.666666666666671"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PX9-kH-L6g" customClass="LGButton" customModule="LGButton">
+                            <rect key="frame" x="94.333333333333343" y="0.0" width="74.333333333333343" height="74.666666666666671"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                    <color key="value" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="showTouchFeedback" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="fullyRoundedCorners" value="YES"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                    <color key="value" red="0.67041194439999996" green="0.70198559760000001" blue="0.69011390210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="rightImageHeight">
+                                    <real key="value" value="46"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="image" keyPath="rightImageSrc" value="icon-cameraPosition"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="rightImageWidth">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="switchCameraPoistion:" destination="-1" eventType="touchUpInside" id="dpa-19-BSY"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XCX-o8-owX" customClass="LGButton" customModule="LGButton">
+                            <rect key="frame" x="188.66666666666666" y="0.0" width="74.333333333333343" height="74.666666666666671"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
@@ -83,30 +124,12 @@
                                     <real key="value" value="44"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="switchMicrophoneMode:" destination="-1" eventType="touchUpInside" id="tLp-YE-eVs"/>
+                            </connections>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YnD-U4-ewo" customClass="LGButton" customModule="LGButton">
-                            <rect key="frame" x="199.33333333333331" y="0.0" width="74.666666666666686" height="74.666666666666671"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
-                                    <color key="value" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="showTouchFeedback" value="YES"/>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="fullyRoundedCorners" value="YES"/>
-                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                    <color key="value" red="0.67041194439999996" green="0.70198559760000001" blue="0.69011390210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                    <real key="value" value="10"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="image" keyPath="rightImageSrc" value="icon-cameraPosition"/>
-                                <userDefinedRuntimeAttribute type="number" keyPath="rightImageHeight">
-                                    <real key="value" value="50"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igX-1b-eHZ" customClass="LGButton" customModule="LGButton">
-                            <rect key="frame" x="299" y="0.0" width="74.666666666666686" height="74.666666666666671"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yH-PN-Mrn" customClass="LGButton" customModule="LGButton">
+                            <rect key="frame" x="283" y="0.0" width="74.333333333333314" height="74.666666666666671"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
@@ -125,45 +148,22 @@
                                     <real key="value" value="44"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="hangUpCall:" destination="-1" eventType="valueChanged" id="ans-RZ-4A9"/>
+                            </connections>
                         </view>
                     </subviews>
-                    <viewLayoutGuide key="safeArea" id="kBW-nj-GfQ"/>
+                    <viewLayoutGuide key="safeArea" id="9Oh-QZ-Q8J"/>
                 </stackView>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E1m-uD-lzj">
-                    <rect key="frame" x="0.0" y="300" width="375" height="67"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ck3-ct-zeY">
-                            <rect key="frame" x="140" y="18" width="96" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.93457251789999995" green="0.3537055254" blue="0.34148138760000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal" title="Decline">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="hangUpCall:" destination="-1" eventType="touchUpInside" id="vQm-8y-AFV"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEs-TL-hUX" customClass="LocalVideoView" customModule="iPetMatch" customModuleProvider="target">
-                    <rect key="frame" x="10" y="10" width="120" height="150"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="150" id="KUT-1I-m8e"/>
-                        <constraint firstAttribute="width" constant="120" id="tJB-pt-4Xm"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="G6u-6h-JV5" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.18" id="1jg-UM-eyb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0xS-bZ-lYE" secondAttribute="trailing" constant="20" id="AoB-yT-61K"/>
-                <constraint firstItem="pL7-IV-5ML" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ikd-sI-LZ7"/>
+                <constraint firstItem="BGe-Vj-8Ri" firstAttribute="width" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.18" priority="999" id="EgR-lV-b9z"/>
                 <constraint firstItem="0xS-bZ-lYE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="JaF-wM-gHv"/>
                 <constraint firstItem="Q4E-sl-0BN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="KhW-jX-y1f"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="pL7-IV-5ML" secondAttribute="bottom" constant="20" id="OQh-Jk-9U2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="MTM-zC-jaZ" secondAttribute="bottom" constant="20" id="Nt9-ic-fzG"/>
+                <constraint firstItem="MTM-zC-jaZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Q9a-en-wTR"/>
                 <constraint firstAttribute="trailing" secondItem="Q4E-sl-0BN" secondAttribute="trailing" id="bNp-jD-i7V"/>
                 <constraint firstItem="cEs-TL-hUX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="bmC-D5-sja"/>
                 <constraint firstAttribute="bottom" secondItem="Q4E-sl-0BN" secondAttribute="bottom" id="dqc-MO-GQm"/>
@@ -172,11 +172,11 @@
                 <constraint firstItem="cEs-TL-hUX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="wqu-AQ-zub"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="268" y="-21"/>
+            <point key="canvasLocation" x="267.5" y="-21.5"/>
         </view>
     </objects>
     <resources>
-        <image name="icon-cameraOff" width="56" height="50"/>
+        <image name="icon-cameraOn" width="56" height="35"/>
         <image name="icon-cameraPosition" width="205" height="156"/>
         <image name="icon-endPhone" width="74" height="59"/>
         <image name="icon-microphoneOn" width="33" height="44"/>

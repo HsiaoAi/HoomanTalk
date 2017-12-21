@@ -30,6 +30,8 @@
 @import LGButton;
 @import FLAnimatedImage;
 @import SDWebImage;
+@import Koloda;
+
 
 
 

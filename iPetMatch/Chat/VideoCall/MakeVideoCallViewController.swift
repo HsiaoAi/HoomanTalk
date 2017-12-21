@@ -14,7 +14,7 @@ class MakeVideoCallViewController: UIViewController {
 
     @IBOutlet weak var localVideoView: LocalVideoView!
 
-    @IBOutlet weak var makeCallResponseView: UIView!
+    @IBOutlet weak var controlPanelStackView: UIStackView!
 
     @IBOutlet weak var opponentVideoView: QBRTCRemoteVideoView!
 
@@ -25,6 +25,71 @@ class MakeVideoCallViewController: UIViewController {
         let userInfo: [String: String] = ["key": "value"]
 
         CallManager.shared.session?.hangUp(userInfo)
+
+    }
+
+    @IBOutlet weak var cameraPositionButton: LGButton!
+
+    @IBAction func switchCameraPoistion(_ sender: Any) {
+
+        if let position = self.videoCapture?.position {
+
+            switch position {
+
+            case .front:
+
+                self.videoCapture?.position = .back
+
+            case .back:
+
+                self.videoCapture?.position = .front
+
+            case .unspecified:
+
+                self.videoCapture?.position = .front
+
+            }
+        }
+
+    }
+
+    @IBOutlet weak var cameraButton: LGButton!
+
+    @IBAction func switchCameraEnabled(_ sender: Any) {
+
+        if CallManager.shared.session!.localMediaStream.videoTrack.isEnabled {
+
+            CallManager.shared.session!.localMediaStream.videoTrack.isEnabled = false
+
+            cameraButton.rightImageSrc = IconImage.cameraOff.image
+
+        } else {
+
+            CallManager.shared.session!.localMediaStream.videoTrack.isEnabled = true
+
+            cameraButton.rightImageSrc = IconImage.cameraOn.image
+
+        }
+
+    }
+
+    @IBOutlet weak var microphoneButton: LGButton!
+
+    @IBAction func switchMicrophoneMode(_ sender: Any) {
+
+        if CallManager.shared.session!.localMediaStream.audioTrack.isEnabled {
+
+            CallManager.shared.session!.localMediaStream.audioTrack.isEnabled = false
+
+            microphoneButton.rightImageSrc = IconImage.microphoneOff.image
+
+        } else {
+
+            CallManager.shared.session!.localMediaStream.audioTrack.isEnabled = true
+
+            microphoneButton.rightImageSrc = IconImage.microphoneOn.image
+
+        }
 
     }
 

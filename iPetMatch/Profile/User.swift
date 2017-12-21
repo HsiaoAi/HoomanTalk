@@ -8,8 +8,25 @@
 
 struct User {
 
-    let loginID: String
+    let firebaseLoginID: String
 
-    let password: String
+    let firbasePassword: String
+
+    let email: String
+
+    var QBLoginID: String {
+
+        return firebaseLoginID
+    }
+
+    let QBPassword: String
+
+    let name: String
+
+}
+
+extension User {
+
+    let imageUrl: String?
 
 }

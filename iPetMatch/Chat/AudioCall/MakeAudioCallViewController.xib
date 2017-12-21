@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina3_5" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -24,18 +24,18 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gaL-0a-ISl">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="peZ-iI-Dmf">
-                            <rect key="frame" x="30" y="266" width="260" height="70"/>
+                            <rect key="frame" x="30" y="444" width="354" height="129.33333333333337"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v8s-ih-OZN" userLabel="CallInfoView">
-                            <rect key="frame" x="20" y="55" width="280" height="281"/>
+                            <rect key="frame" x="20" y="55" width="374" height="518.33333333333337"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                     <real key="value" value="10"/>
@@ -49,13 +49,13 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userImage" translatesAutoresizingMaskIntoConstraints="NO" id="bA8-re-Kda" userLabel="UserImage">
-                            <rect key="frame" x="20" y="55" width="281" height="211"/>
+                            <rect key="frame" x="20" y="55" width="375" height="389"/>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="70s-0N-SR8" userLabel="afterAnswerButtonStack">
-                            <rect key="frame" x="39" y="366" width="242" height="64"/>
+                            <rect key="frame" x="57.666666666666657" y="603.33333333333337" width="299" height="82.666666666666629"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSC-ol-2vG" customClass="LGButton" customModule="LGButton">
-                                    <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="83" height="82.666666666666671"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="gSC-ol-2vG" secondAttribute="height" multiplier="1:1" id="1KB-m2-kcY"/>
@@ -82,7 +82,7 @@
                                     </connections>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6MI-JH-ehd" customClass="LGButton" customModule="LGButton">
-                                    <rect key="frame" x="89" y="0.0" width="64" height="64"/>
+                                    <rect key="frame" x="108" y="0.0" width="83" height="82.666666666666671"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
@@ -106,7 +106,7 @@
                                     </connections>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iqH-CM-nNe" customClass="LGButton" customModule="LGButton">
-                                    <rect key="frame" x="178" y="0.0" width="64" height="64"/>
+                                    <rect key="frame" x="216" y="0.0" width="83" height="82.666666666666671"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
@@ -133,17 +133,17 @@
                             <viewLayoutGuide key="safeArea" id="uxQ-6F-5mO"/>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WSz-HA-P3Z">
-                            <rect key="frame" x="60" y="275" width="143.5" height="51.5"/>
+                            <rect key="frame" x="60.000000000000014" y="482.66666666666669" width="220.33333333333337" height="51.333333333333314"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calling To" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsE-Rs-4lz">
-                                    <rect key="frame" x="0.0" y="0.0" width="78" height="21.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="78" height="21.333333333333332"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                     <color key="textColor" red="0.3217366934" green="0.25888746979999999" blue="0.25097307559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                     <color key="shadowColor" red="0.67041194439999996" green="0.70198559760000001" blue="0.69011390210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hsiao Ai" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pye-3m-8ji">
-                                    <rect key="frame" x="0.0" y="26.5" width="72" height="25"/>
+                                    <rect key="frame" x="0.0" y="26.333333333333314" width="72" height="25"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -152,7 +152,7 @@
                             </subviews>
                         </stackView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rf2-bK-uko" customClass="FLAnimatedImageView">
-                            <rect key="frame" x="213.5" y="275" width="46.5" height="52"/>
+                            <rect key="frame" x="290.33333333333331" y="473" width="63.666666666666686" height="71"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                     <real key="value" value="5"/>
@@ -163,7 +163,7 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incoming Call From" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urd-La-2W0" customClass="MZTimerLabel">
-                            <rect key="frame" x="60" y="275" width="153.5" height="21.5"/>
+                            <rect key="frame" x="60.000000000000014" y="482.66666666666669" width="153.33333333333337" height="21.333333333333314"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                             <color key="textColor" red="0.3217366934" green="0.25888746979999999" blue="0.25097307559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -210,9 +210,9 @@
         </view>
     </objects>
     <resources>
-        <image name="icon-endPhone" width="75" height="59"/>
-        <image name="icon-microphoneOn" width="37" height="50"/>
-        <image name="icon-speakerOff" width="64" height="60"/>
+        <image name="icon-endPhone" width="74" height="59"/>
+        <image name="icon-microphoneOn" width="33" height="44"/>
+        <image name="icon-speakerOff" width="57" height="53"/>
         <image name="userImage" width="95" height="76"/>
     </resources>
 </document>

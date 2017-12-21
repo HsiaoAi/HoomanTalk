@@ -36,8 +36,6 @@ class TabBarController: UITabBarController {
 
         QBRTCClient.instance().add(self)
 
-        QBRTCAudioSession.instance().initialize()
-
     }
 
     // MARK: Set up tab bar

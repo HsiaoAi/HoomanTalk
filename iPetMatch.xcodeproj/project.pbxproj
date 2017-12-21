@@ -47,6 +47,7 @@
 		879FB12C1FE2E2F4002332EF /* AppDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB12B1FE2E2F4002332EF /* AppDelegateExtensions.swift */; };
 		879FB12E1FE2E75A002332EF /* TableBarControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB12D1FE2E75A002332EF /* TableBarControllerExtensions.swift */; };
 		87C179A91FEB588800815A47 /* VideoCall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 87C179A81FEB588800815A47 /* VideoCall.gif */; };
+		87C179AB1FEBFDB200815A47 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C179AA1FEBFDB200815A47 /* UserManager.swift */; };
 		87DDA8E11FE907A600A917A8 /* dog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 87DDA8E01FE907A600A917A8 /* dog.mp3 */; };
 		87DDA8E31FE90CC500A917A8 /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DDA8E21FE90CC500A917A8 /* UserSetting.swift */; };
 		87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */; };
@@ -119,6 +120,7 @@
 		879FB12B1FE2E2F4002332EF /* AppDelegateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensions.swift; sourceTree = "<group>"; };
 		879FB12D1FE2E75A002332EF /* TableBarControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableBarControllerExtensions.swift; sourceTree = "<group>"; };
 		87C179A81FEB588800815A47 /* VideoCall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = VideoCall.gif; sourceTree = "<group>"; };
+		87C179AA1FEBFDB200815A47 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		87DDA8E01FE907A600A917A8 /* dog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog.mp3; sourceTree = "<group>"; };
 		87DDA8E21FE90CC500A917A8 /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
 		87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersListTableViewCell.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			children = (
 				874D94341FE2B2B00009C9F3 /* User.swift */,
 				87DDA8E21FE90CC500A917A8 /* UserSetting.swift */,
+				87C179AA1FEBFDB200815A47 /* UserManager.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -417,6 +420,11 @@
 					8797E64B1FE10D5800C9002F = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -491,6 +499,7 @@
 				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/FaveButton/FaveButton.framework",
 				"${BUILT_PRODUCTS_DIR}/IHKeyboardAvoiding/IHKeyboardAvoiding.framework",
+				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
 				"${BUILT_PRODUCTS_DIR}/LGButton/LGButton.framework",
 				"${BUILT_PRODUCTS_DIR}/MZTimerLabel/MZTimerLabel.framework",
 				"${PODS_ROOT}/QuickBlox/Quickblox.framework",
@@ -500,12 +509,14 @@
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftTimer/SwiftTimer.framework",
 				"${BUILT_PRODUCTS_DIR}/UIImageView+Extension/UIImageView_Extension.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FaveButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IHKeyboardAvoiding.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MZTimerLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quickblox.framework",
@@ -515,6 +526,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTimer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageView_Extension.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -562,6 +574,7 @@
 				87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */,
 				8797E67F1FE1174100C9002F /* QuickbloxAdmin.swift in Sources */,
 				87E8A92C1FE5932100726A2E /* ChatListTableViewController.swift in Sources */,
+				87C179AB1FEBFDB200815A47 /* UserManager.swift in Sources */,
 				8737143A1FE40612009C440F /* MakeAudioCallViewController.swift in Sources */,
 				879FB12A1FE2DF92002332EF /* TabBarController.swift in Sources */,
 				87126BFA1FE19B2A009D0188 /* Identifiable.swift in Sources */,

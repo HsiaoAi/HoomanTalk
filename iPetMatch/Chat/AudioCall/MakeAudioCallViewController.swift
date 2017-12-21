@@ -152,4 +152,17 @@ extension MakeAudioCallViewController: QBRTCClientDelegate {
 
     }
 
+    func session(_ session: QBRTCBaseSession, didChange state: QBRTCSessionState) {
+
+        if state == .closed && CallManager.shared.session != nil {
+
+            //
+            print("==============Your friend disconnect this call")
+
+            self.dismiss(animated: false, completion: nil)
+
+        }
+
+    }
+
 }

@@ -18,7 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        // Try function
+        // Farbric
+
+        Fabric.with([Crashlytics.self])
+
+        application.applicationIconBadgeNumber = 0
 
         // Set rootViewController
         let landingViewController = LandingViewControViewController()
@@ -37,52 +41,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Quickblox API
 
-        guard let APIKeysPath = Bundle.main.path(forResource: "QuickBloxKey", ofType: "plist") else {
+        // Set QuickBlox credentials (You must create application in admin.quickblox.com).
 
-            print(QuickBloxAdminError.plistFileNotFound)
+        guard
 
-            return false
+            let APIKeysPath = Bundle.main.path(forResource: "QuickBloxKey", ofType: "plist"),
+
+            let plistDic = NSDictionary(contentsOfFile: APIKeysPath) as? [String: Any],
+
+            let accountKey = plistDic[QuickBloxAdmin.accountKey] as? String,
+
+            let applicationID = plistDic[QuickBloxAdmin.applicationID] as? UInt,
+
+            let authKey = plistDic[QuickBloxAdmin.authKey] as? String,
+
+            let authSecret = plistDic[QuickBloxAdmin.authSecret] as? String else {
+
+                print("QuickBlox credentials fail")
+
+                return false
 
         }
-
-        guard let plistDic = NSDictionary(contentsOfFile: APIKeysPath) as? [String: Any] else {
-
-            print(QuickBloxAdminError.invalidRootDictionary)
-
-            return false
-
-        }
-
-        guard let accountKey = plistDic[QuickBloxAdmin.accountKey] as? String else {
-
-            print(QuickBloxAdminError.invalidAccountKey)
-
-            return false }
-
-        guard let applicationID = plistDic[QuickBloxAdmin.applicationID] as? UInt else {
-
-            print(QuickBloxAdminError.invalidApplicationID)
-
-            return false }
-
-        guard let authKey = plistDic[QuickBloxAdmin.authKey] as? String else {
-
-            print(QuickBloxAdminError.invalidAuthKey)
-
-            return false }
-
-        guard let authSecret = plistDic[QuickBloxAdmin.authSecret] as? String else {
-
-            print(QuickBloxAdminError.invalidAuthSecret)
-
-            return false }
 
         QBSettings.accountKey = accountKey
         QBSettings.applicationID = applicationID
         QBSettings.authKey = authKey
         QBSettings.authSecret = authSecret
 
-        QBSettings.logLevel = .debug
+        QBSettings.logLevel = .errors
         QBSettings.enableXMPPLogging()
 
         QBRTCConfig.setAnswerTimeInterval(kQBAnswerTimeInterval)
@@ -115,6 +101,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if QBChat.instance.isConnected {
 
             // Main Page
+
+            print(QBChat.instance.isConnected)
 
             let chatListTableViewController = ChatListTableViewController()
 
