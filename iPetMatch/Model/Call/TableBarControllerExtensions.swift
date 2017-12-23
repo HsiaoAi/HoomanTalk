@@ -24,26 +24,9 @@ extension TabBarController: QBRTCClientDelegate {
 
             RingtonePlayer.shared.startPhoneRing(callRole: .receiver)
 
-            switch session.conferenceType {
+            let incommingCallViewController = IncommingCallViewController()
 
-            case .audio:
-
-                let incommingCallViewController = IncommingCallViewController()
-
-                let navigationController = UINavigationController(rootViewController: incommingCallViewController)
-
-                self.present(navigationController,
-                             animated: true,
-                             completion: nil)
-
-            case .video:
-
-                let incommingCallViewController = IncommingCallViewController()
-
-               // let navigationController = UINavigationController(rootViewController: incommingCallViewController)
-
-                self.present(incommingCallViewController, animated: true, completion: nil)
-            }
+            self.present(incommingCallViewController, animated: true, completion: nil)
 
         }
 
@@ -58,7 +41,7 @@ extension TabBarController: QBRTCClientDelegate {
 
         RingtonePlayer.shared.stopPhoneRing()
 
-        QBRTCAudioSession.instance().deinitialize()
+        self.dismiss(animated: false, completion: nil)
 
     }
 
@@ -139,6 +122,17 @@ extension TabBarController: QBRTCClientDelegate {
         // TODO: Alert
         RingtonePlayer.shared.stopPhoneRing()
         print("***connectionFailedForUser***")
+
+    }
+
+    func session(_ session: QBRTCBaseSession, didChange state: QBRTCConnectionState, forUser userID: NSNumber) {
+        if CallManager.shared.session != nil && state == .disconnected {
+
+            CallManager.shared.session = nil
+
+            self.dismiss(animated: false, completion: nil)
+
+        }
 
     }
 

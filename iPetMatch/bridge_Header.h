@@ -30,6 +30,7 @@
 @import FLAnimatedImage;
 @import SDWebImage;
 @import IQKeyboardManagerSwift;
+@import PushKit;
 
 
 

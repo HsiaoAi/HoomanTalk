@@ -103,6 +103,8 @@ extension MakeVideoCallViewController {
 
         super.viewDidLoad()
 
+        //QBRTCAudioSession.instance().initialize()
+
         opponentVideoView.videoGravity = "AVLayerVideoGravityResizeAspect"
 
         CallManager.shared.audioManager.currentAudioDevice = QBRTCAudioDevice.speaker
@@ -126,6 +128,8 @@ extension MakeVideoCallViewController {
             self.prepareLocalVideoTrack()
 
             CallManager.shared.session?.startCall(nil)
+
+            sendPushToOpponentsAboutNewCall()
 
             RingtonePlayer.shared.startPhoneRing(callRole: .host)
 
@@ -189,13 +193,7 @@ extension MakeVideoCallViewController: QBRTCClientDelegate {
 
     func sessionDidClose(_ session: QBRTCSession) {
 
-        CallManager.shared.session = nil
-
         self.videoCapture?.stopSession()
-
-        self.dismiss(animated: false, completion: nil)
-
-        QBRTCAudioSession.instance().deinitialize()
 
     }
 
@@ -237,6 +235,34 @@ extension MakeVideoCallViewController: UIDropInteractionDelegate {
 
         sender.setTranslation(CGPoint.zero, in: self.view)
 
+    }
+
+}
+
+// Push notification
+
+extension MakeVideoCallViewController {
+
+    func sendPushToOpponentsAboutNewCall() {
+
+        var pushMessage = QBMPushMessage(payload: ["custom": "ilct23", "text": "Hello World !"])
+
+        var userID = "38863883"
+
+        QBRequest.sendVoipPush(pushMessage,
+
+                               toUsers: userID,
+
+                               successBlock: {(_, _) -> Void in
+
+                                print("+++Push Done")
+                                },
+
+                               errorBlock: {(_ error: QBError) -> Void in
+
+                                print("Push error \(error)")
+
+        })
     }
 
 }

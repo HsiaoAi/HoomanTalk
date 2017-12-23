@@ -131,6 +131,7 @@
 		87E8A9271FE5932100726A2E /* ChatListButtonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatListButtonsTableViewCell.swift; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/ChatList/ChatListButtonsTableViewCell.swift; sourceTree = "<absolute>"; };
 		87E8A9281FE5932100726A2E /* ChatListButtonsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ChatListButtonsTableViewCell.xib; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/ChatList/ChatListButtonsTableViewCell.xib; sourceTree = "<absolute>"; };
 		87E8A9291FE5932100726A2E /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
+		87EBEEB81FEEA28F00C62D89 /* iPetMatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iPetMatch.entitlements; sourceTree = "<group>"; };
 		87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		92EBCC34EEE82B0C93315475 /* Pods-iPetMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPetMatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch.release.xcconfig"; sourceTree = "<group>"; };
 		BA9B305BF331FC6F95E0DA0D /* Pods_iPetMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iPetMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,9 +178,9 @@
 			isa = PBXGroup;
 			children = (
 				87126BE31FE18B09009D0188 /* LandingViewController.swift */,
-				87C179AC1FEC0C7A00815A47 /* Landing.storyboard */,
 				87C179AE1FEC0FD900815A47 /* LoginViewController.swift */,
 				87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */,
+				87C179AC1FEC0C7A00815A47 /* Landing.storyboard */,
 			);
 			path = Landing;
 			sourceTree = "<group>";
@@ -314,6 +315,7 @@
 		8797E64E1FE10D5800C9002F /* iPetMatch */ = {
 			isa = PBXGroup;
 			children = (
+				87EBEEB81FEEA28F00C62D89 /* iPetMatch.entitlements */,
 				8735E6181FE56A4400C85442 /* AppDelegate.swift */,
 				879FB12B1FE2E2F4002332EF /* AppDelegateExtensions.swift */,
 				8727F72F1FE8B3B20027859D /* Sound */,
@@ -425,9 +427,12 @@
 				TargetAttributes = {
 					8797E64B1FE10D5800C9002F = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -737,8 +742,10 @@
 			baseConfigurationReference = BFD6D953E11E9C1079F2E543 /* Pods-iPetMatch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9HJSE6P56D;
+				CODE_SIGN_ENTITLEMENTS = iPetMatch/iPetMatch.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DTTYHBEAZE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -746,8 +753,10 @@
 				INFOPLIST_FILE = iPetMatch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.bcd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.iPetMatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e903e18d-a2b1-419c-b578-5f71ecbbdbd6";
+				PROVISIONING_PROFILE_SPECIFIER = "Notification iPetMatch Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = iPetMatch/bridge_Header.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -759,8 +768,10 @@
 			baseConfigurationReference = 92EBCC34EEE82B0C93315475 /* Pods-iPetMatch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9HJSE6P56D;
+				CODE_SIGN_ENTITLEMENTS = iPetMatch/iPetMatch.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DTTYHBEAZE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -768,8 +779,10 @@
 				INFOPLIST_FILE = iPetMatch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.bcd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.iPetMatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e903e18d-a2b1-419c-b578-5f71ecbbdbd6";
+				PROVISIONING_PROFILE_SPECIFIER = "Notification iPetMatch Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = iPetMatch/bridge_Header.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

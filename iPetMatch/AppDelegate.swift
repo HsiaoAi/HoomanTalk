@@ -75,39 +75,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setDefaultMaskType(.gradient)
         QBRTCClient.initializeRTC()
 
-        QBRTCAudioSession.instance().initialize()
-
         // loading settings
         //Settings.instance()
 
+        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.alert, UIUserNotificationType.badge, UIUserNotificationType.sound]
+
+        let pushNotificationSettings = UIUserNotificationSettings(types: notificationTypes, categories: nil)
+
+        application.registerUserNotificationSettings(pushNotificationSettings)
+
+        application.registerForRemoteNotifications()
+
         return true
-    }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
 
         // 判斷是否登入
 
-        if QBChat.instance.isConnected {
-
-            // Main Page
-
-            print(QBChat.instance.isConnected)
-
-            let chatListTableViewController = ChatListTableViewController()
-
-            let navigationController = UINavigationController(rootViewController: chatListTableViewController)
-
-            window?.rootViewController = navigationController
-
-        } else {
+//        if QBChat.instance.isConnected {
+//
+//            // Main Page
+//
+//            print(QBChat.instance.isConnected)
+//
+//            let chatListTableViewController = ChatListTableViewController()
+//
+//            let navigationController = UINavigationController(rootViewController: chatListTableViewController)
+//
+//            window?.rootViewController = navigationController
+//
+//        } else {
 
             // Login Page
 
@@ -119,13 +117,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         }
 
+    // MARK: - Remote Notifictions
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+
+        if notificationSettings.types != .none {
+
+            print("Did register user notificaiton settings")
+
+            application.registerForRemoteNotifications()
+
+        }
+
     }
 
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+
+        let deviceIdentifier = UIDevice.current.identifierForVendor?.uuidString
+
+        let subscription = QBMSubscription()
+
+        subscription.notificationChannel = .APNS
+
+        subscription.deviceUDID = deviceIdentifier
+
+        subscription.deviceToken = deviceToken
+
+        QBRequest.createSubscription(subscription,
+
+                                     successBlock: {  (_ response: QBResponse,
+                                        _ subscription: [QBMSubscription]?) -> Void in
+
+                                        print("Push Subscroption Response: \(response)")
+
+                                         },
+
+                                     errorBlock: {(_ response: QBResponse) in
+
+                                        print("Push Subscroption Error: \(response)")
+
+        })
+
+    }
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+
+        print("Did receive remote notification", userInfo)
+
     }
 
-    func applicationWillTerminate(_ application: UIApplication) {
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+
+        print("Did receive remote notification", error.localizedDescription)
 
     }
 

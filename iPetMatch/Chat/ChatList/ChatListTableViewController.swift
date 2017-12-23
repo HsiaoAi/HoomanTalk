@@ -25,6 +25,8 @@ class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
 
     override func viewDidLoad() {
 
+        QBRTCAudioSession.instance().initialize
+
         super.viewDidLoad()
 
         self.navigationItem.hidesBackButton = false

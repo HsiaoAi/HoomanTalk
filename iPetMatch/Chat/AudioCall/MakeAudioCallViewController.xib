@@ -50,6 +50,11 @@
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userImage" translatesAutoresizingMaskIntoConstraints="NO" id="bA8-re-Kda" userLabel="UserImage">
                             <rect key="frame" x="25" y="60" width="365" height="389"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="70s-0N-SR8" userLabel="afterAnswerButtonStack">
                             <rect key="frame" x="57.666666666666657" y="603.33333333333337" width="299" height="82.666666666666629"/>

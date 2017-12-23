@@ -33,6 +33,8 @@ class MakeAudioCallViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+       // QBRTCAudioSession.instance().initialize()
+
         self.timerLabel.isHidden = true
 
         setupAudioSignImageView()
@@ -147,8 +149,6 @@ extension MakeAudioCallViewController: QBRTCClientDelegate {
         RingtonePlayer.shared.stopPhoneRing()
 
         self.dismiss(animated: false, completion: nil)
-
-        QBRTCAudioSession.instance().deinitialize()
 
     }
 

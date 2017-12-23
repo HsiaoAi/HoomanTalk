@@ -39,7 +39,7 @@ class IncommingCallViewController: UIViewController {
 
         afterAnswerBurronStack.isHidden = true
 
-        //setupAudioSignImageView(
+        setupAudioSignImageView()
 
         QBRTCClient.instance().add(self)
 
@@ -202,8 +202,6 @@ extension IncommingCallViewController: QBRTCClientDelegate {
         RingtonePlayer.shared.stopPhoneRing()
 
         self.dismiss(animated: false, completion: nil)
-
-        QBRTCAudioSession.instance().deinitialize()
 
     }
 
