@@ -53,7 +53,7 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="Login in"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="Log in"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="titleFontSize">
                                         <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
@@ -104,6 +104,14 @@
                                     <action selector="tapSignupButton:" destination="roJ-9C-2e5" eventType="touchUpInside" id="4Sg-hN-kHw"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFv-Eg-glS">
+                                <rect key="frame" x="288" y="161" width="52" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log out"/>
+                                <connections>
+                                    <action selector="tapLogOut:" destination="roJ-9C-2e5" eventType="touchUpInside" id="7s2-Fi-OK5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>

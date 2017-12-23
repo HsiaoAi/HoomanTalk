@@ -33,6 +33,8 @@ class MakeAudioCallViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        sendPushToOpponentsAboutNewCall()
+
        // QBRTCAudioSession.instance().initialize()
 
         self.timerLabel.isHidden = true
@@ -163,6 +165,33 @@ extension MakeAudioCallViewController: QBRTCClientDelegate {
 
         }
 
+    }
+
+}
+
+// Push notification
+
+extension MakeAudioCallViewController {
+
+    func sendPushToOpponentsAboutNewCall() {
+
+        var pushMessage = QBMPushMessage(payload: ["custom": "ilct23", "text": "Hello World !"])
+
+        var userID = "38863883"
+
+        QBRequest.sendPush(withText: "Audio Call From ilct23",
+
+                           toUsers: userID,
+
+                           successBlock: {(_, _) -> Void in
+
+                            print("+++Push Done")},
+
+                           errorBlock: {(_ error: QBError) -> Void in
+
+                            print("Push error \(error)")
+
+        })
     }
 
 }

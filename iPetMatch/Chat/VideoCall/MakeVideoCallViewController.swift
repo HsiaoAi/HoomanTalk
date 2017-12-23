@@ -249,18 +249,17 @@ extension MakeVideoCallViewController {
 
         var userID = "38863883"
 
-        QBRequest.sendVoipPush(pushMessage,
+        QBRequest.sendPush(withText: "Video Call From ilct23",
 
-                               toUsers: userID,
+                           toUsers: userID,
 
-                               successBlock: {(_, _) -> Void in
+                           successBlock: {(_, _) -> Void in
 
-                                print("+++Push Done")
-                                },
+                            print("+++Push Done")},
 
-                               errorBlock: {(_ error: QBError) -> Void in
+                           errorBlock: {(_ error: QBError) -> Void in
 
-                                print("Push error \(error)")
+                            print("Push error \(error)")
 
         })
     }

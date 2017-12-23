@@ -98,6 +98,24 @@ extension TabBarController: QBRTCClientDelegate {
     func session(_ session: QBRTCBaseSession, connectionClosedForUser userID: NSNumber) {
 
         RingtonePlayer.shared.stopPhoneRing()
+
+        //
+        var userID = "38863883"
+
+        QBRequest.sendPush(withText: "Miss Call From ilct23",
+
+                           toUsers: userID,
+
+                           successBlock: {(_, _) -> Void in
+
+                            print("+++Push Done")},
+
+                           errorBlock: {(_ error: QBError) -> Void in
+
+                            print("Push error \(error)")
+
+        })
+        //
         print("***connectionClosedForUser***")
 
     }

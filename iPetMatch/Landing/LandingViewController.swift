@@ -63,4 +63,10 @@ class LandingViewController: UIViewController {
         self.view.bringSubview(toFront: sender)
     }
 
+    @IBAction func tapLogOut(_ sender: Any) {
+
+        QBRequest.logOut(successBlock: nil, errorBlock: nil)
+
+    }
+
 }
