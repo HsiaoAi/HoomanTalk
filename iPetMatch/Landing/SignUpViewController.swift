@@ -16,9 +16,15 @@ class SignUpViewController: UIViewController {
 
     @IBOutlet weak var passwordTextField: UITextField!
 
+    @IBOutlet weak var userImageView: UIImageView!
+
     var petPersonType: PetPersonType = .none
 
-    var userImage: String?
+    var isCatPerson: Bool = false
+
+    var isDogPerson: Bool = false
+
+    var userImage: UIImage?
 
     override func viewDidLoad() {
 
@@ -34,9 +40,54 @@ class SignUpViewController: UIViewController {
 
     }
 
-    @IBAction func tapAddPict(_ sender: Any) {
+    @IBAction func addUserImage (_ sender: Any) {
 
-        print("Tap")
+        self.setupFusumaImagePicker()
+
+    }
+
+    @IBAction func tapCatPerson(_ sender: LGButton) {
+
+        if !sender.isSelected {
+
+            sender.isSelected = true
+
+            isCatPerson = true
+
+            sender.rightImageSrc = IconImage.catPersonSelected.image
+
+        } else {
+
+            sender.isSelected = false
+
+            isCatPerson = false
+
+            sender.rightImageSrc = IconImage.catPerson.image
+
+        }
+
+    }
+
+    @IBAction func tapDogPerson(_ sender: LGButton) {
+
+        if !sender.isSelected {
+
+            sender.isSelected = true
+
+            isDogPerson = true
+
+            sender.rightImageSrc = IconImage.dogPersonSelected.image
+
+        } else {
+
+            sender.isSelected = false
+
+            isDogPerson = false
+
+            sender.rightImageSrc = IconImage.dogPerson.image
+
+        }
+
     }
 
     func signUp() {
@@ -98,24 +149,42 @@ extension SignUpViewController: FusumaDelegate {
 
         fusuma.delegate = self
 
-        fusuma.hasVideo = false
+        fusuma.cropHeightRatio = 1.0
+
+        fusuma.allowMultipleSelection = false
+
+        self.present(fusuma, animated: true, completion: nil)
 
     }
 
     // Delegate Methods
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
 
+        self.userImage = image
+
+        userImageView.image = image
+
+        userImageView.contentMode = .scaleAspectFill
+
+        userImageView.clipsToBounds = true
+
+        // Upload image to Firebase and get the url
+
     }
 
+    // When camera roll is not authorized, this method is called.
+    func fusumaCameraRollUnauthorized() {
+
+        print("Camera roll unauthorized")
+
+    }
+
+    // Empty delegate functions
     func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
 
     }
 
     func fusumaVideoCompleted(withFileURL fileURL: URL) {
-
-    }
-
-    func fusumaCameraRollUnauthorized() {
 
     }
 

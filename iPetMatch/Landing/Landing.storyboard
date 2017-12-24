@@ -334,11 +334,10 @@
                                     <action selector="tapSignupButton:" destination="TwC-ZU-Kqx" eventType="touchUpInside" id="Qwj-Mi-lFW"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTf-hi-zVs" userLabel="Add pic Button">
-                                <rect key="frame" x="20" y="15" width="125" height="124.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTf-hi-zVs" userLabel="Add pic Button">
+                                <rect key="frame" x="20" y="20" width="145" height="145"/>
                                 <connections>
-                                    <action selector="tapAddPict:" destination="TwC-ZU-Kqx" eventType="touchUpInside" id="LIh-pE-BWf"/>
+                                    <action selector="addUserImage:" destination="TwC-ZU-Kqx" eventType="touchUpInside" id="gIe-fq-lWJ"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="b2A-kI-JEK">
@@ -359,6 +358,9 @@
                                                 <real key="value" value="60"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="tapCatPerson:" destination="TwC-ZU-Kqx" eventType="touchUpInside" id="xP1-KI-Q74"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaf-mK-oc0" customClass="LGButton" customModule="LGButton">
                                         <rect key="frame" x="79" y="0.0" width="63.5" height="76"/>
@@ -375,6 +377,9 @@
                                                 <real key="value" value="60"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="tapDogPerson:" destination="TwC-ZU-Kqx" eventType="touchUpInside" id="KmH-mq-1Cj"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -405,8 +410,10 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="wTf-hi-zVs" firstAttribute="centerX" secondItem="JfZ-lp-3jS" secondAttribute="centerX" id="1uN-aM-zbt"/>
                             <constraint firstItem="dzz-Zw-neT" firstAttribute="height" secondItem="bDq-r4-E34" secondAttribute="height" multiplier="0.1" id="5Pg-f7-Bcd"/>
                             <constraint firstItem="Nat-sR-tMW" firstAttribute="leading" secondItem="bDq-r4-E34" secondAttribute="leading" constant="20" id="6qk-5F-FYz"/>
+                            <constraint firstItem="wTf-hi-zVs" firstAttribute="centerY" secondItem="JfZ-lp-3jS" secondAttribute="centerY" id="8zs-7S-aDK"/>
                             <constraint firstItem="JCv-hF-JMg" firstAttribute="top" secondItem="bDq-r4-E34" secondAttribute="top" constant="5" id="Ger-uZ-FsX"/>
                             <constraint firstItem="JCv-hF-JMg" firstAttribute="top" secondItem="JfZ-lp-3jS" secondAttribute="top" constant="-15" id="L6o-eR-9Qv"/>
                             <constraint firstItem="qgQ-gR-yc2" firstAttribute="leading" secondItem="JfZ-lp-3jS" secondAttribute="trailing" constant="10" id="LKt-f9-bz8"/>
@@ -422,8 +429,10 @@
                             <constraint firstItem="JCv-hF-JMg" firstAttribute="leading" secondItem="bDq-r4-E34" secondAttribute="leading" constant="5" id="guz-FE-FNO"/>
                             <constraint firstItem="MGA-uX-uuc" firstAttribute="height" secondItem="bDq-r4-E34" secondAttribute="height" multiplier="0.08" id="hz2-5c-FPy"/>
                             <constraint firstItem="Nat-sR-tMW" firstAttribute="centerX" secondItem="bDq-r4-E34" secondAttribute="centerX" id="jy7-VU-7SU"/>
+                            <constraint firstItem="wTf-hi-zVs" firstAttribute="height" secondItem="JfZ-lp-3jS" secondAttribute="height" id="k7v-Le-HQ6"/>
                             <constraint firstItem="Wpz-cY-IOx" firstAttribute="bottom" secondItem="JCv-hF-JMg" secondAttribute="bottom" constant="5" id="qnw-b7-lfj"/>
                             <constraint firstAttribute="trailing" secondItem="JCv-hF-JMg" secondAttribute="trailing" constant="5" id="qyi-q0-fHD"/>
+                            <constraint firstItem="wTf-hi-zVs" firstAttribute="width" secondItem="JfZ-lp-3jS" secondAttribute="width" id="s6w-Kt-czh"/>
                             <constraint firstItem="Nat-sR-tMW" firstAttribute="top" secondItem="JfZ-lp-3jS" secondAttribute="bottom" constant="15" id="zaW-1Y-9SS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wpz-cY-IOx"/>
@@ -432,6 +441,7 @@
                         <outlet property="emailTextField" destination="MGA-uX-uuc" id="zTI-bn-0Sp"/>
                         <outlet property="nameTextField" destination="JKh-pL-v4M" id="ObX-If-SeK"/>
                         <outlet property="passwordTextField" destination="SXi-pT-Gux" id="ddJ-fA-b1D"/>
+                        <outlet property="userImageView" destination="JfZ-lp-3jS" id="RAf-3o-Q5H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wev-qO-3nW" userLabel="First Responder" sceneMemberID="firstResponder"/>

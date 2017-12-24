@@ -32,6 +32,7 @@
 @import IQKeyboardManagerSwift;
 @import PushKit;
 @import Fusuma;
+@import FaceAware;
 
 
 
