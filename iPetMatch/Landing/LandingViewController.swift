@@ -39,7 +39,7 @@ class LandingViewController: UIViewController {
 
         self.view.bringSubview(toFront: loginButton)
 
-        loginButton.titleColor = UIColor.Custom.greyishBrown
+        loginButton.titleColor = .white
 
         signupButton.titleColor = .white
 
@@ -50,10 +50,6 @@ class LandingViewController: UIViewController {
         loginView.isHidden = false
 
         signupView.isHidden = true
-
-        sender.titleColor = UIColor.Custom.greyishBrown
-
-        signupButton.titleColor = .white
 
         self.view.bringSubview(toFront: loginView)
 
@@ -67,10 +63,6 @@ class LandingViewController: UIViewController {
 
         loginView.isHidden = true
 
-        sender.titleColor = UIColor.Custom.greyishBrown
-
-        loginButton.titleColor = .white
-
         self.view.bringSubview(toFront: signupView)
 
         self.view.bringSubview(toFront: sender)
@@ -82,4 +74,11 @@ class LandingViewController: UIViewController {
 
     }
 
+}
+
+extension LandingViewController {
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }

@@ -23,5 +23,6 @@ target 'iPetMatch' do
   pod 'SDWebImage/GIF'
   pod 'FLAnimatedImage', '~> 1.0'
   pod 'IQKeyboardManagerSwift'
+  pod 'Fusuma', '1.2.4'
 
 end

@@ -10,15 +10,21 @@ import UIKit
 
 class SignUpViewController: UIViewController {
 
-    @IBOutlet weak var userIDTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
 
-    @IBOutlet weak var userEmailTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
 
-    @IBOutlet weak var userPasswordTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+
+    var petPersonType: PetPersonType = .none
+
+    var userImage: String?
 
     override func viewDidLoad() {
 
         super.viewDidLoad()
+
+        setupFusumaImagePicker()
 
     }
 
@@ -35,15 +41,30 @@ class SignUpViewController: UIViewController {
 
     func signUp() {
 
-        let loginID = userIDTextField.text!
+        // Todo: Alert
 
-        let email = userEmailTextField.text!
+        guard let email = emailTextField.text else {
 
-        let password = userPasswordTextField.text!
+            return
+
+        }
+
+        guard let name = nameTextField.text else {
+
+            return
+        }
+
+        guard let password = passwordTextField.text,
+
+            password.characters.count > 5 else {
+
+                return
+
+        }
 
         var currentUser = QBUUser()
 
-        currentUser.login = loginID
+        currentUser.login = email
 
         currentUser.password = password
 
@@ -65,6 +86,37 @@ class SignUpViewController: UIViewController {
             successBlock: nil,
             errorBlock: nil
         )
+    }
+
+}
+
+extension SignUpViewController: FusumaDelegate {
+
+    func setupFusumaImagePicker() {
+
+        let fusuma = FusumaViewController()
+
+        fusuma.delegate = self
+
+        fusuma.hasVideo = false
+
+    }
+
+    // Delegate Methods
+    func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
+
+    }
+
+    func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
+
+    }
+
+    func fusumaVideoCompleted(withFileURL fileURL: URL) {
+
+    }
+
+    func fusumaCameraRollUnauthorized() {
+
     }
 
 }

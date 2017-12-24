@@ -23,10 +23,18 @@ struct User {
 
     let name: String
 
+    var petPersonType: PetPersonType
+
 }
 
 extension User {
 
     // var imageUrl: String?
+
+}
+
+enum PetPersonType {
+
+    case dog, cat, both, none
 
 }

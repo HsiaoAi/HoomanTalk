@@ -31,6 +31,7 @@
 @import SDWebImage;
 @import IQKeyboardManagerSwift;
 @import PushKit;
+@import Fusuma;
 
 
 
