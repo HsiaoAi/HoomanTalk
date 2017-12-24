@@ -14,6 +14,7 @@ class LandingViewController: UIViewController {
 
     @IBOutlet weak var loginButton: LGButton!
 
+    @IBOutlet weak var signupButton: LGButton!
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -38,13 +39,21 @@ class LandingViewController: UIViewController {
 
         self.view.bringSubview(toFront: loginButton)
 
+        loginButton.titleColor = UIColor.Custom.greyishBrown
+
+        signupButton.titleColor = .white
+
     }
 
-    @IBAction func touchLoginButton(_ sender: UIButton) {
+    @IBAction func touchLoginButton(_ sender: LGButton) {
 
         loginView.isHidden = false
 
         signupView.isHidden = true
+
+        sender.titleColor = UIColor.Custom.greyishBrown
+
+        signupButton.titleColor = .white
 
         self.view.bringSubview(toFront: loginView)
 
@@ -57,6 +66,10 @@ class LandingViewController: UIViewController {
         signupView.isHidden = false
 
         loginView.isHidden = true
+
+        sender.titleColor = UIColor.Custom.greyishBrown
+
+        loginButton.titleColor = .white
 
         self.view.bringSubview(toFront: signupView)
 

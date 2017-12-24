@@ -28,6 +28,11 @@ class SignUpViewController: UIViewController {
 
     }
 
+    @IBAction func tapAddPict(_ sender: Any) {
+
+        print("Tap")
+    }
+
     func signUp() {
 
         let loginID = userIDTextField.text!
