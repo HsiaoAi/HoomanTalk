@@ -15,10 +15,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var nameTextField: SkyFloatingLabelTextField!
 
     @IBOutlet weak var passwordTextField: SkyFloatingLabelTextField!
-    
-    
+
     @IBOutlet weak var birthDayTextField: SkyFloatingLabelTextField!
-    
+
     @IBOutlet weak var userImageView: UIImageView!
 
     @IBOutlet weak var genderControl: BetterSegmentedControl!
@@ -42,19 +41,18 @@ class SignUpViewController: UIViewController {
         genderControl.titles = ["♂︎", "♀︎"]
 
     }
-    
-    
+
     @IBAction func pickBirthDay(_ sender: UITextField) {
-        
+
         let datePickerView = UIDatePicker()
-        
+
         datePickerView.datePickerMode = .date
-        
+
         sender.inputView = datePickerView
-        
+
         datePickerView.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
     }
-    
+
     @IBAction func tapGenderControl(_ sender: BetterSegmentedControl) {
 
       self.gender = ( sender.index == 0) ? Gender.male: Gender.female
@@ -176,17 +174,17 @@ class SignUpViewController: UIViewController {
 
 // Selector functions
 extension SignUpViewController {
-    
-    @objc func datePickerValueChanged(_ sender:UIDatePicker) {
-        
+
+    @objc func datePickerValueChanged(_ sender: UIDatePicker) {
+
         let dateFormatter = DateFormatter()
-        
+
         dateFormatter.dateStyle = .medium
-        
+
         birthDayTextField.text = dateFormatter.string(from: sender.date)
-        
+
     }
-    
+
 }
 
 extension SignUpViewController: FusumaDelegate {

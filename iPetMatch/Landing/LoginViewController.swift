@@ -10,9 +10,10 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var emailTextFied: SkyFloatingLabelTextFieldWithIcon!
+    @IBOutlet weak var emailTextFied: SkyFloatingLabelTextField!
 
-    @IBOutlet weak var passwordTextFied: SkyFloatingLabelTextFieldWithIcon!
+    @IBOutlet weak var passwordTextFied: SkyFloatingLabelTextField!
+
     override func viewDidLoad() {
 
         super.viewDidLoad()

@@ -53,7 +53,7 @@ class LandingViewController: UIViewController {
 
         self.view.bringSubview(toFront: loginView)
 
-        self.view.bringSubview(toFront: sender)
+        self.view.bringSubview(toFront: loginButton)
 
     }
 

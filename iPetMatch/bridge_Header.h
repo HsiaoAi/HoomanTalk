@@ -15,7 +15,6 @@
 #import <Quickblox/Quickblox.h>
 #import <QuickbloxWebRTC/QuickbloxWebRTC.h>
 
-
 @import UIKit;
 @import SVProgressHUD;
 @import Foundation;
@@ -35,6 +34,7 @@
 @import Fusuma;
 @import SkyFloatingLabelTextField;
 @import BetterSegmentedControl;
+@import Ophiuchus;
 
 
 #endif /* bridge_Header_h */
