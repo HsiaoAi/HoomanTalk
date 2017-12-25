@@ -1,0 +1,6 @@
+framework module Ophiuchus {
+  umbrella header "Ophiuchus-umbrella.h"
+
+  export *
+  module * { export * }
+}

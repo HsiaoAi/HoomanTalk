@@ -24,5 +24,8 @@ target 'iPetMatch' do
   pod 'FLAnimatedImage', '~> 1.0'
   pod 'IQKeyboardManagerSwift'
   pod 'Fusuma', '1.2.4'
-
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
+  pod 'SwiftIcons', '~> 2.0'
+  pod 'BetterSegmentedControl', '~> 0.9'  
+    pod 'Ophiuchus', '~> 1.0.3'
 end

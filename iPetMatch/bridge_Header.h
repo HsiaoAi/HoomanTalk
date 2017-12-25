@@ -15,6 +15,7 @@
 #import <Quickblox/Quickblox.h>
 #import <QuickbloxWebRTC/QuickbloxWebRTC.h>
 
+
 @import UIKit;
 @import SVProgressHUD;
 @import Foundation;
@@ -32,8 +33,8 @@
 @import IQKeyboardManagerSwift;
 @import PushKit;
 @import Fusuma;
-@import FaceAware;
-
+@import SkyFloatingLabelTextField;
+@import BetterSegmentedControl;
 
 
 #endif /* bridge_Header_h */

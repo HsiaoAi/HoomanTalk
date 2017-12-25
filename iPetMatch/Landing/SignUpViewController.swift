@@ -10,13 +10,18 @@ import UIKit
 
 class SignUpViewController: UIViewController {
 
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var emailTextField: SkyFloatingLabelTextField!
 
-    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var nameTextField: SkyFloatingLabelTextField!
 
-    @IBOutlet weak var passwordTextField: UITextField!
-
+    @IBOutlet weak var passwordTextField: SkyFloatingLabelTextField!
+    
+    
+    @IBOutlet weak var birthDayTextField: SkyFloatingLabelTextField!
+    
     @IBOutlet weak var userImageView: UIImageView!
+
+    @IBOutlet weak var genderControl: BetterSegmentedControl!
 
     var petPersonType: PetPersonType = .none
 
@@ -26,11 +31,35 @@ class SignUpViewController: UIViewController {
 
     var userImage: UIImage?
 
+    var gender: Gender = .male
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
 
         setupFusumaImagePicker()
+
+        genderControl.titles = ["♂︎", "♀︎"]
+
+    }
+    
+    
+    @IBAction func pickBirthDay(_ sender: UITextField) {
+        
+        let datePickerView = UIDatePicker()
+        
+        datePickerView.datePickerMode = .date
+        
+        sender.inputView = datePickerView
+        
+        datePickerView.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
+    }
+    
+    @IBAction func tapGenderControl(_ sender: BetterSegmentedControl) {
+
+      self.gender = ( sender.index == 0) ? Gender.male: Gender.female
+
+        print(self.gender)
 
     }
 
@@ -94,7 +123,11 @@ class SignUpViewController: UIViewController {
 
         // Todo: Alert
 
-        guard let email = emailTextField.text else {
+        let email = emailTextField.text!
+
+        guard email != "" else {
+
+            SCLAlertView().showInfo("Imcompleted Info", subTitle: "Please enter your email")
 
             return
 
@@ -107,7 +140,7 @@ class SignUpViewController: UIViewController {
 
         guard let password = passwordTextField.text,
 
-            password.characters.count > 5 else {
+            password.count > 5 else {
 
                 return
 
@@ -139,6 +172,21 @@ class SignUpViewController: UIViewController {
         )
     }
 
+}
+
+// Selector functions
+extension SignUpViewController {
+    
+    @objc func datePickerValueChanged(_ sender:UIDatePicker) {
+        
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateStyle = .medium
+        
+        birthDayTextField.text = dateFormatter.string(from: sender.date)
+        
+    }
+    
 }
 
 extension SignUpViewController: FusumaDelegate {
