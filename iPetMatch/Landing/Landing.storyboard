@@ -221,7 +221,7 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Password"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Password(6-20 Characters)"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Password (8-20 Characters)"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
@@ -500,7 +500,7 @@
                                                                 <color key="value" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Password"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="6-20 Characters"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="8-20 Characters"/>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>

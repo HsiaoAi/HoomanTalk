@@ -128,7 +128,7 @@ class SignUpViewController: UIViewController {
     func signUp() {
 
         let email = emailTextField.text!
-        guard email != nil else {
+        guard email != "" else {
 
             SCLAlertView().showWarning(
                 NSLocalizedString("Warning", comment: ""),
@@ -255,19 +255,19 @@ class SignUpViewController: UIViewController {
 
         switch (isCatPerson, isDogPerson) {
 
-        case (true, true): self.petPersonType = .both
+            case (true, true): self.petPersonType = .both
 
-                            break
+                                break
 
-        case (true, false): self.petPersonType = .cat
+            case (true, false): self.petPersonType = .cat
 
-                            break
+                                break
 
-        case (false, true): self.petPersonType = .dog
+            case (false, true): self.petPersonType = .dog
 
-                            break
+                                break
 
-        default: self.petPersonType = .none
+            default: self.petPersonType = .none
 
         }
 
@@ -287,87 +287,75 @@ class SignUpViewController: UIViewController {
                         case .emailAlreadyInUse:
 
                             SCLAlertView().showError(
-
                                 NSLocalizedString("Error", comment: ""),
-
                                 subTitle: NSLocalizedString("Email is already in use", comment: "")
                             )
-
                             break
 
                         case .invalidEmail:
-
                             SCLAlertView().showError(
-
                                 NSLocalizedString("Error", comment: ""),
-
                                 subTitle: NSLocalizedString("Invalid email", comment: "")
                             )
-
                             break
 
                         case .weakPassword, .wrongPassword:
-
                             SCLAlertView().showError(
-
                                 NSLocalizedString("Error", comment: ""),
-
                                 subTitle: NSLocalizedString("Invalid password", comment: "")
                             )
-
                             break
 
                         default:
-
                             SCLAlertView().showError(
-
                                 NSLocalizedString("Error", comment: ""),
-
                                 subTitle: NSLocalizedString("Something wrong, plese sign up again", comment: "")
-
                             )
 
                     }
 
                 }
+            }
+            
+            // Success
 
-                // Success
+            guard let firebaseUid = user?.uid else { return }
 
-                guard let firebaseUid = user?.uid else { return }
+            let QBCurrentUser = QBUUser()
 
-                let QBCurrentUser = QBUUser()
+            QBCurrentUser.login = firebaseUid
 
-                QBCurrentUser.login = firebaseUid
+            QBCurrentUser.password = password
 
-                QBCurrentUser.password = password
+            // Upload images to Firebase Storage
+            let userImageName = UUID().uuidString
 
-                // Upload images to Firebase Storage
-                let userImageName = UUID().uuidString
+            let storageRef = Storage.storage().reference().child("usersImage").child(firebaseUid).child("\(userImageName).png")
 
-                let storageRef = Storage.storage().reference().child("usersImage").child(firebaseUid).child("\(userImageName).png")
+            let metadata = StorageMetadata()
 
-                let metadata = StorageMetadata()
+            metadata.contentType = "image/png"
 
-                metadata.contentType = "image/png"
+            storageRef.putData(UIImagePNGRepresentation(userImage)!, metadata: metadata, completion: { (data, error) in
 
-                storageRef.putData(UIImagePNGRepresentation(userImage)!, metadata: metadata, completion: { (data, error) in
+                if error != nil {
 
-                    if error != nil {
+                    SCLAlertView().showError(
 
-                        SCLAlertView().showError(
+                        NSLocalizedString("Image Error", comment: ""),
 
-                            NSLocalizedString("Image Error", comment: ""),
+                        subTitle: NSLocalizedString("\(error!.localizedDescription)", comment: "")
 
-                            subTitle: NSLocalizedString("\(error!.localizedDescription)", comment: "")
+                    )
+                }
 
-                        )
-                    }
+                if let userImageURL = data?.downloadURL() {
 
-                    if let userImageURL = data?.downloadURL() {
+                    print(userImageURL)
+            
+                }
 
-                    }
-
-                })
+            })
 
             // QBSignUp
 
@@ -379,9 +367,12 @@ class SignUpViewController: UIViewController {
 
                                 print("+++++++++++++++\(QBCurrentUser.blobID)")
 
-                                //                            let tabBarController = TabBarController(itemTypes: [.chat])
-                                //
-                                //                            AppDelegate.shared.window?.rootViewController = tabBarController }
+                                self.signUpButton.isLoading = false
+                                
+                                let tabBarController = TabBarController(itemTypes: [.chat])
+                                
+                                AppDelegate.shared.window?.rootViewController = tabBarController
+                                
             },
 
                              errorBlock: { (errorResponse) in
@@ -395,7 +386,6 @@ class SignUpViewController: UIViewController {
                                 )
 
                 })
-            }
 
         }
     }
@@ -456,7 +446,7 @@ extension SignUpViewController: UITextFieldDelegate {
 
                     floatingLabelTextField.errorMessage = "Invalid Email"
 
-                } else if textField.tag == 2 && text.count < 5 {
+                } else if textField.tag == 2 && text.count < 7 {
                     floatingLabelTextField.errorMessage = "Invalid Password"
 
                 } else {
