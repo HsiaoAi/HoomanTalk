@@ -23,7 +23,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var genderControl: BetterSegmentedControl!
 
     @IBOutlet weak var signUpButton: LGButton!
-    
+
     var petPersonType: PetPersonType = .none
 
     var isCatPerson: Bool = false
@@ -33,6 +33,8 @@ class SignUpViewController: UIViewController {
     var userImage: UIImage?
 
     var gender: Gender = .male
+
+    // Firebase properties
 
     override func viewDidLoad() {
 
@@ -126,10 +128,12 @@ class SignUpViewController: UIViewController {
     func signUp() {
 
         let email = emailTextField.text!
+        guard email != nil else {
 
-        guard email != "" else {
-
-            SCLAlertView().showWarning("Warning", subTitle: "Please enter your email")
+            SCLAlertView().showWarning(
+                NSLocalizedString("Warning", comment: ""),
+                subTitle: NSLocalizedString("Please enter your email", comment: "")
+            )
 
             return
 
@@ -137,7 +141,13 @@ class SignUpViewController: UIViewController {
 
         guard emailTextField.errorMessage == "" else {
 
-            SCLAlertView().showWarning("Warning", subTitle: emailTextField.errorMessage!)
+            SCLAlertView().showWarning(
+
+                NSLocalizedString("Warning", comment: ""),
+
+                subTitle: NSLocalizedString("emailTextField.errorMessage!", comment: "")
+
+            )
 
             return
 
@@ -150,7 +160,13 @@ class SignUpViewController: UIViewController {
 
         else {
 
-            SCLAlertView().showWarning("Warning", subTitle: "Please enter your name")
+            SCLAlertView().showWarning(
+
+                NSLocalizedString("Warning", comment: ""),
+
+                subTitle: NSLocalizedString("Please enter your name", comment: "")
+
+            )
 
             return
         }
@@ -163,7 +179,13 @@ class SignUpViewController: UIViewController {
 
         else {
 
-            SCLAlertView().showWarning("Warning", subTitle: "Please enter password")
+            SCLAlertView().showWarning(
+
+                NSLocalizedString("Warning", comment: ""),
+
+                subTitle: NSLocalizedString("Please enter password", comment: "")
+
+            )
 
             return
 
@@ -171,7 +193,13 @@ class SignUpViewController: UIViewController {
 
         guard passwordTextField.errorMessage == "" else {
 
-            SCLAlertView().showWarning("Warning", subTitle: passwordTextField.errorMessage!)
+            SCLAlertView().showWarning(
+
+                NSLocalizedString("Warning", comment: ""),
+
+                subTitle: NSLocalizedString(passwordTextField.errorMessage!, comment: "")
+
+            )
 
             return
 
@@ -185,15 +213,45 @@ class SignUpViewController: UIViewController {
 
             else {
 
-                SCLAlertView().showWarning("Warning", subTitle: "Please enter your birthday")
+                SCLAlertView().showWarning(
+
+                    NSLocalizedString("Warning", comment: ""),
+
+                    subTitle: NSLocalizedString("Please enter your birthday", comment: "")
+
+                )
 
                 return
 
         }
-        
-        
 
-        let yearOfBirth = birthDay.components(separatedBy: ", ")[1]
+        guard let yearOfBirth = Int(birthDay.components(separatedBy: ", ")[2]) else {
+
+            SCLAlertView().showWarning(
+
+                NSLocalizedString("Warning", comment: ""),
+
+                subTitle: NSLocalizedString("Wrong birthday format", comment: "")
+
+            )
+
+            return
+
+        }
+
+        guard let userImage = self.userImage else {
+
+             SCLAlertView().showWarning(
+
+                NSLocalizedString("Warning", comment: ""),
+
+                subTitle: NSLocalizedString("Please pick your picture", comment: "")
+
+            )
+
+            return
+
+        }
 
         switch (isCatPerson, isDogPerson) {
 
@@ -212,29 +270,134 @@ class SignUpViewController: UIViewController {
         default: self.petPersonType = .none
 
         }
-        
+
         signUpButton.isLoading = true
         // Firebase Sign up
-        //Auth.auth()
-        
-        
 
-        var currentUser = QBUUser()
+        Auth.auth().createUser(withEmail: email, password: password) { (user: User?, error) in
 
-        currentUser.login = email
+            // handel error
 
-        currentUser.password = password
+            if error != nil {
 
-        QBRequest.signUp(currentUser,
+                if let errCode = AuthErrorCode(rawValue: error!._code) {
 
-                         successBlock: { _, _ in
+                    switch errCode {
 
-                            let tabBarController = TabBarController(itemTypes: [.chat])
+                        case .emailAlreadyInUse:
 
-                            AppDelegate.shared.window?.rootViewController = tabBarController },
+                            SCLAlertView().showError(
 
-                         errorBlock: nil )
+                                NSLocalizedString("Error", comment: ""),
 
+                                subTitle: NSLocalizedString("Email is already in use", comment: "")
+                            )
+
+                            break
+
+                        case .invalidEmail:
+
+                            SCLAlertView().showError(
+
+                                NSLocalizedString("Error", comment: ""),
+
+                                subTitle: NSLocalizedString("Invalid email", comment: "")
+                            )
+
+                            break
+
+                        case .weakPassword, .wrongPassword:
+
+                            SCLAlertView().showError(
+
+                                NSLocalizedString("Error", comment: ""),
+
+                                subTitle: NSLocalizedString("Invalid password", comment: "")
+                            )
+
+                            break
+
+                        default:
+
+                            SCLAlertView().showError(
+
+                                NSLocalizedString("Error", comment: ""),
+
+                                subTitle: NSLocalizedString("Something wrong, plese sign up again", comment: "")
+
+                            )
+
+                    }
+
+                }
+
+                // Success
+
+                guard let firebaseUid = user?.uid else { return }
+
+                let QBCurrentUser = QBUUser()
+
+                QBCurrentUser.login = firebaseUid
+
+                QBCurrentUser.password = password
+
+                // Upload images to Firebase Storage
+                let userImageName = UUID().uuidString
+
+                let storageRef = Storage.storage().reference().child("usersImage").child(firebaseUid).child("\(userImageName).png")
+
+                let metadata = StorageMetadata()
+
+                metadata.contentType = "image/png"
+
+                storageRef.putData(UIImagePNGRepresentation(userImage)!, metadata: metadata, completion: { (data, error) in
+
+                    if error != nil {
+
+                        SCLAlertView().showError(
+
+                            NSLocalizedString("Image Error", comment: ""),
+
+                            subTitle: NSLocalizedString("\(error!.localizedDescription)", comment: "")
+
+                        )
+                    }
+
+                    if let userImageURL = data?.downloadURL() {
+
+                    }
+
+                })
+
+            // QBSignUp
+
+            QBRequest.signUp(QBCurrentUser,
+
+                             successBlock: { ( _, QBuser ) in
+
+                                QBCurrentUser.blobID = QBuser.blobID
+
+                                print("+++++++++++++++\(QBCurrentUser.blobID)")
+
+                                //                            let tabBarController = TabBarController(itemTypes: [.chat])
+                                //
+                                //                            AppDelegate.shared.window?.rootViewController = tabBarController }
+            },
+
+                             errorBlock: { (errorResponse) in
+
+                                SCLAlertView().showError(
+
+                                    NSLocalizedString("QuickBlox Error", comment: ""),
+
+                                    subTitle: NSLocalizedString("\(errorResponse)", comment: "")
+
+                                )
+
+                })
+            }
+
+        }
     }
 
     func logOut() {
@@ -256,7 +419,7 @@ extension SignUpViewController {
 
         sender.maximumDate = Date()
 
-        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "dd, MMM, yyyy"
 
         birthDayTextField.text = dateFormatter.string(from: sender.date)
 
@@ -322,9 +485,8 @@ extension SignUpViewController: FusumaDelegate {
         fusuma.cropHeightRatio = 1.0
 
         fusuma.allowMultipleSelection = false
-        
+
         fusuma.cameraPosition = .front
-        
 
         userImageView.clipsToBounds = true
 
@@ -346,7 +508,7 @@ extension SignUpViewController: FusumaDelegate {
     // When camera roll is not authorized, this method is called.
     func fusumaCameraRollUnauthorized() {
 
-        print("Camera roll unauthorized")
+        SCLAlertView().showWarning("Warning", subTitle: "Camera roll unauthorized")
 
     }
 

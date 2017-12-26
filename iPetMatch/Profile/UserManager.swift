@@ -12,7 +12,7 @@ class UserManager {
 
     static let instance = UserManager()
 
-    var currentUser: User?
+    var currentUser: CurrentUser?
 
 //    func login() {
 //

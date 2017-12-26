@@ -4,6 +4,7 @@ disabled_rules:
 - function_body_length
 - syntactic_sugar
 - large_tuple
+- cyclomatic_complexity
 
 excluded:
 

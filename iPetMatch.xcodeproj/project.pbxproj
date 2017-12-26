@@ -24,7 +24,7 @@
 		8737143A1FE40612009C440F /* MakeAudioCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873714381FE40612009C440F /* MakeAudioCallViewController.swift */; };
 		8737143B1FE40612009C440F /* MakeAudioCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 873714391FE40612009C440F /* MakeAudioCallViewController.xib */; };
 		874D94321FE250F00009C9F3 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94311FE250EF0009C9F3 /* SweetAlert.swift */; };
-		874D94351FE2B2B00009C9F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94341FE2B2B00009C9F3 /* User.swift */; };
+		874D94351FE2B2B00009C9F3 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94341FE2B2B00009C9F3 /* CurrentUser.swift */; };
 		874D94391FE2CEAE0009C9F3 /* IncommingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94371FE2CEAE0009C9F3 /* IncommingCallViewController.swift */; };
 		874D943A1FE2CEAE0009C9F3 /* IncommingCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 874D94381FE2CEAE0009C9F3 /* IncommingCallViewController.xib */; };
 		878282EC1FF0115B006C9E20 /* UIColerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878282EB1FF0115B006C9E20 /* UIColerExtension.swift */; };
@@ -95,7 +95,7 @@
 		873714381FE40612009C440F /* MakeAudioCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAudioCallViewController.swift; sourceTree = "<group>"; };
 		873714391FE40612009C440F /* MakeAudioCallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MakeAudioCallViewController.xib; sourceTree = "<group>"; };
 		874D94311FE250EF0009C9F3 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
-		874D94341FE2B2B00009C9F3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		874D94341FE2B2B00009C9F3 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		874D94371FE2CEAE0009C9F3 /* IncommingCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncommingCallViewController.swift; sourceTree = "<group>"; };
 		874D94381FE2CEAE0009C9F3 /* IncommingCallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncommingCallViewController.xib; sourceTree = "<group>"; };
 		878282EB1FF0115B006C9E20 /* UIColerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColerExtension.swift; sourceTree = "<group>"; };
@@ -264,7 +264,7 @@
 		874D94331FE2B28E0009C9F3 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				874D94341FE2B2B00009C9F3 /* User.swift */,
+				874D94341FE2B2B00009C9F3 /* CurrentUser.swift */,
 				87DDA8E21FE90CC500A917A8 /* UserSetting.swift */,
 				87C179AA1FEBFDB200815A47 /* UserManager.swift */,
 			);
@@ -529,7 +529,6 @@
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftIcons/SwiftIcons.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftTimer/SwiftTimer.framework",
 				"${BUILT_PRODUCTS_DIR}/UIImageView+Extension/UIImageView_Extension.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -552,7 +551,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftIcons.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTimer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageView_Extension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -623,7 +621,7 @@
 				879FB1281FE2DE54002332EF /* TabBarItemType.swift in Sources */,
 				870327631FEADC4F009D2FF3 /* IconEnum.swift in Sources */,
 				87F3B6711FEC1CD9000E5045 /* SignUpViewController.swift in Sources */,
-				874D94351FE2B2B00009C9F3 /* User.swift in Sources */,
+				874D94351FE2B2B00009C9F3 /* CurrentUser.swift in Sources */,
 				878282EC1FF0115B006C9E20 /* UIColerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

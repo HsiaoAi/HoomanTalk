@@ -35,5 +35,8 @@
 @import SkyFloatingLabelTextField;
 @import BetterSegmentedControl;
 @import Firebase;
+@import FirebaseAuth;
+@import FirebaseStorage;
+
 
 #endif /* bridge_Header_h */

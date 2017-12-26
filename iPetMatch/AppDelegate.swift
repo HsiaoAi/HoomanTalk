@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         QBSettings.authKey = authKey
         QBSettings.authSecret = authSecret
 
-        QBSettings.logLevel = .nothing
+        QBSettings.logLevel = .debug
         QBSettings.enableXMPPLogging()
 
         QBRTCConfig.setAnswerTimeInterval(kQBAnswerTimeInterval)

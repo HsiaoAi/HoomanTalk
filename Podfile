@@ -25,7 +25,6 @@ target 'iPetMatch' do
   pod 'IQKeyboardManagerSwift'
   pod 'Fusuma'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
-  pod 'SwiftIcons', '~> 2.0'
   pod 'BetterSegmentedControl', '~> 0.9' 
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
