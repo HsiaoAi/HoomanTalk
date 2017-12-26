@@ -14,6 +14,8 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var passwordTextFied: SkyFloatingLabelTextField!
 
+    @IBOutlet weak var loginButton: LGButton!
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -21,6 +23,58 @@ class LoginViewController: UIViewController {
         setupErrorTextFieldHandeler()
 
     }
+
+    @IBAction func tapForgetPassword(_ sender: UIButton) {
+
+        let email = emailTextFied.text!
+        guard email != "" else {
+
+            SCLAlertView().showWarning(
+                NSLocalizedString("Warning", comment: ""),
+                subTitle: NSLocalizedString("Please enter your email", comment: "")
+            )
+
+            return
+
+        }
+
+        guard emailTextFied.errorMessage == "" else {
+
+            SCLAlertView().showWarning(
+
+                NSLocalizedString("Warning", comment: ""),
+
+                subTitle: NSLocalizedString("emailTextField.errorMessage!", comment: "")
+
+            )
+
+            return
+
+        }
+
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+
+            guard error == nil else {
+
+                SCLAlertView().showError(
+                    NSLocalizedString("Error", comment: ""),
+                    subTitle: NSLocalizedString("User not found with this email", comment: "")
+                )
+
+                return
+            }
+
+            SCLAlertView().showInfo(
+                NSLocalizedString("Information", comment: ""),
+                subTitle: NSLocalizedString("Please check the password reset email", comment: "")
+            )
+
+        }
+        
+        return
+
+    }
+
 
     @IBAction func tapLogin(_ sender: Any) {
 
@@ -30,33 +84,139 @@ class LoginViewController: UIViewController {
 
     func login() {
 
-            let loginID = emailTextFied.text!
+        let email = emailTextFied.text!
+        guard email != "" else {
 
-            let password = passwordTextFied.text!
+            SCLAlertView().showWarning(
+                NSLocalizedString("Warning", comment: ""),
+                subTitle: NSLocalizedString("Please enter your email", comment: "")
+            )
 
-            let currentUser = QBUUser()
+            return
 
-            currentUser.login = loginID
-
-            currentUser.password = password
-
-            QBRequest.logIn(withUserLogin: loginID, password: "12341234",
-
-                            successBlock: { _, user in QBChat.instance.connect(
-
-                                with: user,
-
-                                completion: { error in
-
-                                    if error != nil { print(error) }
-
-                                    let tabBarController = TabBarController(itemTypes: [.chat])
-
-                                    AppDelegate.shared.window?.rootViewController = tabBarController
-                            }) },
-
-                            errorBlock: nil )
         }
+
+        guard emailTextFied.errorMessage == "" else {
+
+            SCLAlertView().showWarning(
+
+                NSLocalizedString("Warning", comment: ""),
+
+                subTitle: NSLocalizedString("emailTextField.errorMessage!", comment: "")
+
+            )
+
+            return
+
+        }
+
+        guard
+
+            let password = passwordTextFied.text,
+
+            password != ""
+
+            else {
+
+                SCLAlertView().showWarning(
+
+                    NSLocalizedString("Warning", comment: ""),
+
+                    subTitle: NSLocalizedString("Please enter password", comment: "")
+
+                )
+
+                return
+
+        }
+
+        guard passwordTextFied.errorMessage == "" else {
+
+            SCLAlertView().showWarning(
+
+                NSLocalizedString("Warning", comment: ""),
+
+                subTitle: NSLocalizedString(passwordTextFied.errorMessage!, comment: "")
+
+            )
+
+            return
+
+        }
+
+        loginButton.isLoading = true
+
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+
+            if let authError = error {
+
+                if let errCode = AuthErrorCode(rawValue: authError._code) {
+
+                    self.loginButton.isLoading = false
+
+                    switch errCode {
+
+                    case.wrongPassword:
+
+                        SCLAlertView().showError(
+                            NSLocalizedString("Error", comment: ""),
+                            subTitle: NSLocalizedString("Wrong password", comment: "")
+                        )
+
+                        break
+
+                    case .userNotFound:
+
+                        SCLAlertView().showError(
+                            NSLocalizedString("Error", comment: ""),
+                            subTitle: NSLocalizedString("Wrong email", comment: "")
+                        )
+                        break
+
+                    default:
+
+                        SCLAlertView().showError(
+                            NSLocalizedString("Error", comment: ""),
+                            subTitle: NSLocalizedString("Something wrong, plese log in again.", comment: "")
+                        )
+
+                        self.emailTextFied.text = ""
+
+                        self.passwordTextFied.text = ""
+
+                        return
+
+                    }
+
+            }
+        }
+
+            if let loginUser = user {
+
+                let uid = loginUser.uid
+
+                QBRequest.logIn(withUserEmail: email, password: uid, successBlock: { (_, _) in
+
+                    self.loginButton.isLoading = false
+
+                    AppDelegate.shared.enterPassByLandingView()
+
+                }, errorBlock: { ( errorResponse) in
+
+                    self.loginButton.isLoading = false
+
+                    SCLAlertView().showError(
+                        NSLocalizedString("Error", comment: ""),
+                        subTitle: NSLocalizedString("Something wrong, plese log in again: \(errorResponse)", comment: "")
+                    )
+
+                    return
+
+                })
+
+            }
+        }
+    }
 
 }
 

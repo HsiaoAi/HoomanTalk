@@ -18,20 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        // Set rootViewController
-        let langdingStoryboard = UIStoryboard(name: "Landing", bundle: nil)
-        let landingViewController = langdingStoryboard.instantiateViewController(withIdentifier: "LandingViewController")
-
-        window = UIWindow(frame: UIScreen.main.bounds)
-
-        //let vc = LandingViewControViewController()
-
-        //let navigationController = UINavigationController(rootViewController: vc)
-
-        window?.rootViewController = landingViewController
-
-        window?.makeKeyAndVisible()
-
         // Firebase
 
         FirebaseApp.configure()
@@ -74,7 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         QBRTCConfig.setDialingTimeInterval(kQBDialingTimeInterval)
         QBRTCConfig.setStatsReportTimeInterval(1.0)
 
-        SVProgressHUD.setDefaultMaskType(.gradient)
         QBRTCClient.initializeRTC()
 
         // loading settings
@@ -88,35 +73,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         application.registerForRemoteNotifications()
 
-        return true
-    }
+        // Set rootViewController
+        window = UIWindow(frame: UIScreen.main.bounds)
 
-    func applicationWillEnterForeground(_ application: UIApplication) {
+        window?.makeKeyAndVisible()
+
+        guard
+
+            let user = Auth.auth().currentUser,
+
+            let email = user.email
+
+            else {
+
+                enterLandingView()
+
+                return true }
+
+        //enterLandingView()
+
+        enterPassByLandingView()
+
+        QBRequest.logIn(withUserEmail: email, password: user.uid, successBlock: nil, errorBlock: nil)
+
+        return true
+
+    }
 
         // 判斷是否登入
 
-//        if QBChat.instance.isConnected {
-//
-//            // Main Page
-//
-//            print(QBChat.instance.isConnected)
-//
-//            let chatListTableViewController = ChatListTableViewController()
-//
-//            let navigationController = UINavigationController(rootViewController: chatListTableViewController)
-//
-//            window?.rootViewController = navigationController
-//
-//        } else {
+        func applicationWillEnterForeground(_ application: UIApplication) {
 
-            // Login Page
+            if QBChat.instance.isConnected == false {
 
-            //let landingViewController = LandingViewController()
+                UIApplication.shared.beginIgnoringInteractionEvents()
 
-//            let navigationController = UINavigationController(rootViewController: landingViewController)
-//
-//            window?.rootViewController = navigationController
+              SCLAlertView().showWait("", subTitle: "Loading", duration: 3, animationStyle: .bottomToTop)
 
+                guard let user = Auth.auth().currentUser else {
+
+                    enterLandingView()
+
+                    UserManager.instance.currentUser = nil
+
+                    return
+
+                }
+
+                if let email = user.email {
+
+                    QBRequest.logIn(withUserEmail: email, password: user.uid, successBlock: { (_, _) in
+
+                        print("done")}, errorBlock: nil)
+
+                }
+
+                enterPassByLandingView()
+
+            }
         }
 
     // MARK: - Remote Notifictions
@@ -170,6 +184,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
 
         print("Did receive remote notification", error.localizedDescription)
+
+    }
+
+    func enterLandingView() {
+
+        let langdingStoryboard = UIStoryboard(name: "Landing", bundle: nil)
+
+        let landingViewController = langdingStoryboard.instantiateViewController(withIdentifier: "LandingViewController")
+
+        window?.rootViewController = landingViewController
+
+    }
+
+    func enterPassByLandingView() {
+
+        let chatListTableViewController = ChatListTableViewController()
+
+        let tabBarController = TabBarController(itemTypes: [.chat])
+
+        self.window?.rootViewController = tabBarController
 
     }
 

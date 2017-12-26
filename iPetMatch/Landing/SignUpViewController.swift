@@ -275,11 +275,15 @@ class SignUpViewController: UIViewController {
 
         // Firebase Sign up
 
+        self.signUpButton.isLoading = true
+
         Auth.auth().createUser(withEmail: email, password: password) { (user: User?, error) in
 
             // handel error
 
             if error != nil {
+
+                self.signUpButton.isLoading = false
 
                 if let errCode = AuthErrorCode(rawValue: error!._code) {
 
@@ -314,6 +318,10 @@ class SignUpViewController: UIViewController {
                             )
 
                     }
+
+                    self.signUpButton.isLoading = false
+
+                    return
 
                 }
             }
@@ -364,68 +372,68 @@ class SignUpViewController: UIViewController {
 
                                     let callingID = QBuser.id
 
-                                    UserManager.instance.currentUser = CurrentUser(loginEmail: email, firebaseUid: firebaseUid, name: name, petPersonType: self.petPersonType, gender: self.gender, yearOfBirth: yearOfBirth, imageURL: self.imageURLString!, callingID: callingID)
-                                    
-                                    
+                                    UserManager.instance.currentUser = CurrentUser(loginEmail: email, name: name, petPersonType: self.petPersonType, gender: self.gender, yearOfBirth: yearOfBirth, imageURL: self.imageURLString, callingID: callingID, password: password)
+
                                     let userRef = Database.database().reference().child("users").child(firebaseUid)
-                                    
+
                                     let values: [String: Any] = [
-                                        
+
                                         CurrentUser.Schema.loginEmail: email,
-                                        
-                                        CurrentUser.Schema.firebaseUid: firebaseUid,
-                                        
+
                                         CurrentUser.Schema.name: name,
-                                        
+
                                         CurrentUser.Schema.petPersonType: self.petPersonType.rawValue,
-                                        
+
                                         CurrentUser.Schema.gender: self.gender.rawValue,
-                                        
+
                                         CurrentUser.Schema.yearOfBirth: yearOfBirth,
-                                        
-                                        CurrentUser.Schema.imageURL: self.imageURLString!,
-                                        
+
+                                        CurrentUser.Schema.imageURL: self.imageURLString ?? "",
+
                                         CurrentUser.Schema.callingID: callingID
-                                        
+
                                     ]
-                                    
+
                                     userRef.updateChildValues(values,
-                                                              
-                                                              withCompletionBlock: { (error, data) in
-                                                                
+
+                                                              withCompletionBlock: { (error, _) in
+
                                                                 if error != nil {
-                                                                    
+
                                                                     SCLAlertView().showError(
-                                                                        
+
                                                                         NSLocalizedString("Firebase Error", comment: ""),
-                                                                        
+
                                                                         subTitle: NSLocalizedString("\(error?.localizedDescription)", comment: "")
-                                                                        
+
                                                                     )
-                                                                    
+
                                                                 }
-                                                                
+
                                                                 self.signUpButton.isLoading = false
-                                                                
-                                                                
+
                                                                 let tabBarController = TabBarController(itemTypes: [.chat])
-                                                                
+
                                                                 AppDelegate.shared.window?.rootViewController = tabBarController
-                                                                
-                                                                
+
                                     })
 
                 },
 
-                                 errorBlock: { (errorResponse) in
+                                 errorBlock: { (_) in
 
                                     SCLAlertView().showError(
 
                                         NSLocalizedString("QuickBlox Error", comment: ""),
 
-                                        subTitle: NSLocalizedString("\(errorResponse)", comment: "")
+                                        subTitle: NSLocalizedString("Sign up successfully, please log in again", comment: "")
 
                                     )
+
+                                    let langdingStoryboard = UIStoryboard(name: "Landing", bundle: nil)
+                                    let landingViewController = langdingStoryboard.instantiateViewController(withIdentifier: "LandingViewController")
+
+                                    AppDelegate.shared.window?.rootViewController = landingViewController
 
                 })
 
@@ -490,7 +498,7 @@ extension SignUpViewController: UITextFieldDelegate {
 
                     floatingLabelTextField.errorMessage = "Invalid Email"
 
-                } else if textField.tag == 2 && text.count < 7 {
+                } else if textField.tag == 2 && text.count < 5 {
                     floatingLabelTextField.errorMessage = "Invalid Password"
 
                 } else {

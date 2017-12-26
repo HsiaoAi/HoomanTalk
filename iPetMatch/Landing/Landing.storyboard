@@ -58,7 +58,7 @@
                                 </connections>
                             </containerView>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5f-lY-c3h" userLabel="sign upButton" customClass="LGButton" customModule="LGButton">
-                                <rect key="frame" x="127.5" y="75.5" width="101" height="51.5"/>
+                                <rect key="frame" x="128.5" y="76" width="101.5" height="51"/>
                                 <color key="backgroundColor" red="0.31441432237625122" green="0.6938052773475647" blue="0.51619786024093628" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
@@ -90,7 +90,7 @@
                                 </connections>
                             </view>
                             <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KLZ-Uw-kho" customClass="LGButton" customModule="LGButton">
-                                <rect key="frame" x="27" y="76" width="100.5" height="51.5"/>
+                                <rect key="frame" x="27" y="76.5" width="101.5" height="51"/>
                                 <color key="backgroundColor" red="0.96603089570999146" green="0.76517516374588013" blue="0.34517872333526611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
@@ -217,11 +217,11 @@
                                         <rect key="frame" x="0.0" y="50.5" width="294.5" height="40.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Password"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Password (8-20 Characters)"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Password (6-20 Characters)"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
@@ -247,12 +247,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQf-Sd-v0a">
                                 <rect key="frame" x="0.0" y="252.5" width="337.5" height="161.5"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fogot Password?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdL-dS-q6R">
-                                <rect key="frame" x="30" y="367.5" width="278.5" height="16"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FyV-ro-oNB">
+                                <rect key="frame" x="117" y="364.5" width="104" height="28"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="Fogot Password?">
+                                    <color key="titleColor" red="0.99994784589999997" green="1" blue="0.99987405539999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.3217366934" green="0.25888746979999999" blue="0.25097307559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapForgetPassword:" destination="pQ7-Qb-AWS" eventType="touchUpInside" id="gdK-i4-4y4"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="89Q-Mq-XoB" customClass="LGButton" customModule="LGButton">
                                 <rect key="frame" x="51" y="309" width="236.5" height="48.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -291,6 +296,13 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                         <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="loadingSpinnerColor">
+                                        <color key="value" red="0.96126145119999995" green="0.65947264429999997" blue="0.19407713409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="loadingColor">
+                                        <color key="value" red="0.20326057080000001" green="0.59547084569999997" blue="0.85841131209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="loadingString" value="Loading"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="tapLogin:" destination="pQ7-Qb-AWS" eventType="touchUpInside" id="FzZ-Fz-JQr"/>
@@ -312,6 +324,7 @@
                         <constraints>
                             <constraint firstItem="89Q-Mq-XoB" firstAttribute="height" secondItem="pQf-Sd-v0a" secondAttribute="height" multiplier="0.3" id="0KG-Rp-Ae2"/>
                             <constraint firstItem="mhe-oG-B8T" firstAttribute="leading" secondItem="NRs-37-4fa" secondAttribute="leading" constant="5" id="18h-Ea-oz0"/>
+                            <constraint firstItem="89Q-Mq-XoB" firstAttribute="bottom" secondItem="FyV-ro-oNB" secondAttribute="top" constant="-7" id="2Hg-CF-21k"/>
                             <constraint firstItem="NRs-37-4fa" firstAttribute="trailing" secondItem="mhe-oG-B8T" secondAttribute="trailing" constant="5" id="3ks-dF-4Rh"/>
                             <constraint firstItem="pQf-Sd-v0a" firstAttribute="top" secondItem="xm4-he-zIT" secondAttribute="bottom" id="8mY-bI-h3S"/>
                             <constraint firstItem="89Q-Mq-XoB" firstAttribute="width" secondItem="pQf-Sd-v0a" secondAttribute="width" multiplier="0.7" id="90a-34-UDP"/>
@@ -321,13 +334,11 @@
                             <constraint firstItem="dvo-qn-t6F" firstAttribute="height" secondItem="mhe-oG-B8T" secondAttribute="height" multiplier="0.1" id="Hih-Qz-IGI"/>
                             <constraint firstItem="h8X-xh-lIp" firstAttribute="top" secondItem="NRs-37-4fa" secondAttribute="top" constant="5" id="NI0-3j-hAM"/>
                             <constraint firstItem="89Q-Mq-XoB" firstAttribute="centerX" secondItem="pQf-Sd-v0a" secondAttribute="centerX" id="PRG-OJ-bkA"/>
-                            <constraint firstItem="wdL-dS-q6R" firstAttribute="top" secondItem="89Q-Mq-XoB" secondAttribute="bottom" constant="10" id="R2o-75-mpw"/>
+                            <constraint firstItem="FyV-ro-oNB" firstAttribute="centerX" secondItem="nKa-6f-2UB" secondAttribute="centerX" id="UF7-63-dHz"/>
                             <constraint firstItem="av6-gu-4P8" firstAttribute="centerX" secondItem="nKa-6f-2UB" secondAttribute="centerX" id="ZGG-g7-bkU"/>
                             <constraint firstItem="av6-gu-4P8" firstAttribute="height" secondItem="mhe-oG-B8T" secondAttribute="height" multiplier="0.3" id="Zno-5s-jh4"/>
-                            <constraint firstItem="wdL-dS-q6R" firstAttribute="leading" secondItem="NRs-37-4fa" secondAttribute="leading" constant="30" id="bdH-dZ-FIn"/>
                             <constraint firstItem="xm4-he-zIT" firstAttribute="centerX" secondItem="nKa-6f-2UB" secondAttribute="centerX" id="fcV-vR-fgL"/>
                             <constraint firstItem="pQf-Sd-v0a" firstAttribute="leading" secondItem="NRs-37-4fa" secondAttribute="leading" id="jwR-cq-WDK"/>
-                            <constraint firstItem="wdL-dS-q6R" firstAttribute="centerX" secondItem="89Q-Mq-XoB" secondAttribute="centerX" id="k5B-Rg-vvp"/>
                             <constraint firstItem="NRs-37-4fa" firstAttribute="trailing" secondItem="pQf-Sd-v0a" secondAttribute="trailing" id="kAi-l5-Wgb"/>
                             <constraint firstItem="av6-gu-4P8" firstAttribute="top" secondItem="NRs-37-4fa" secondAttribute="top" constant="25" id="kJe-JB-wp0"/>
                             <constraint firstItem="xm4-he-zIT" firstAttribute="centerY" secondItem="nKa-6f-2UB" secondAttribute="centerY" id="oRM-1j-OVe"/>
@@ -341,6 +352,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextFied" destination="dvo-qn-t6F" id="2gY-Rk-Qtm"/>
+                        <outlet property="loginButton" destination="89Q-Mq-XoB" id="bJY-il-GKd"/>
                         <outlet property="passwordTextFied" destination="3yx-Jg-14O" id="8fC-GZ-r1T"/>
                     </connections>
                 </viewController>
@@ -372,10 +384,10 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Nat-sR-tMW">
-                                <rect key="frame" x="20" y="164" width="297.5" height="143"/>
+                                <rect key="frame" x="20" y="164" width="297.5" height="141.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jCd-bt-Kve" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="0.0" y="0.0" width="297.5" height="41"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="297.5" height="40.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" textContentType="email"/>
@@ -404,10 +416,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oy5-Qk-sy4">
-                                        <rect key="frame" x="0.0" y="51" width="297.5" height="41"/>
+                                        <rect key="frame" x="0.0" y="50.5" width="297.5" height="40.5"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JKh-pL-v4M" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="0.0" y="0.0" width="163.5" height="41"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="163.5" height="40.5"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="username"/>
@@ -436,7 +448,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Age" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z7n-2t-GIx" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="173.5" y="0.0" width="124" height="41"/>
+                                                <rect key="frame" x="173.5" y="0.0" width="124" height="40.5"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="email"/>
@@ -470,13 +482,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="M3y-GL-Z0h">
-                                        <rect key="frame" x="0.0" y="102" width="297.5" height="41"/>
+                                        <rect key="frame" x="0.0" y="101" width="297.5" height="40.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="g3Q-OF-aO4">
-                                                <rect key="frame" x="0.0" y="0.0" width="297.5" height="41"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="297.5" height="40.5"/>
                                                 <subviews>
                                                     <textField opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I3m-WH-QeP" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="163.5" height="41"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="163.5" height="40.5"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
@@ -500,12 +512,12 @@
                                                                 <color key="value" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Password"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="8-20 Characters"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="6-20 Characters"/>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lcr-hj-GHa" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
-                                                        <rect key="frame" x="173.5" y="0.0" width="124" height="41"/>
+                                                        <rect key="frame" x="173.5" y="0.0" width="124" height="40.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="indicatorViewBackgroundColor">
@@ -617,10 +629,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PsR-EX-ojr">
-                                <rect key="frame" x="20" y="307" width="297.5" height="102"/>
+                                <rect key="frame" x="20" y="305.5" width="297.5" height="103.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzz-Zw-neT" customClass="LGButton" customModule="LGButton">
-                                        <rect key="frame" x="44.5" y="28" width="208.5" height="46"/>
+                                        <rect key="frame" x="44.5" y="29.5" width="208.5" height="45.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="Sign up"/>

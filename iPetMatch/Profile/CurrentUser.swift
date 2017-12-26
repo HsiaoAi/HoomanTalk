@@ -12,8 +12,6 @@ struct CurrentUser {
 
         public static let loginEmail = "loginEmail"
 
-        public static let firebaseUid = "firebaseUid"
-
         public static let name = "name"
 
         public static let petPersonType = "petPersonType"
@@ -30,8 +28,6 @@ struct CurrentUser {
 
     let loginEmail: String
 
-    let firebaseUid: String
-
     let name: String
 
     var petPersonType: PetPersonType
@@ -40,9 +36,11 @@ struct CurrentUser {
 
     let yearOfBirth: Int
 
-    let imageURL: String
+    let imageURL: String?
 
     let callingID: UInt
+
+    let password: String
 
 }
 

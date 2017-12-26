@@ -21,6 +21,8 @@ class LandingViewController: UIViewController {
 
         setup()
 
+        SCLAlertView().dismiss(animated: true, completion: nil)
+
     }
 
     required init?(coder aDecoder: NSCoder) {
