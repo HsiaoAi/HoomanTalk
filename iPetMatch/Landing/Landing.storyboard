@@ -632,7 +632,7 @@
                                 <rect key="frame" x="20" y="305.5" width="297.5" height="103.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzz-Zw-neT" customClass="LGButton" customModule="LGButton">
-                                        <rect key="frame" x="44.5" y="29.5" width="208.5" height="45.5"/>
+                                        <rect key="frame" x="44.5" y="29" width="208.5" height="46.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="Sign up"/>

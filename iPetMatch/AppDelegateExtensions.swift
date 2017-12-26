@@ -18,10 +18,6 @@ extension AppDelegate {
 
     func makeEntryController() -> UIViewController {
 
-        // if login
-        // return TabBarController(itemTypes: [.chat])
-
-        // if not login
         return UIViewController()
     }
 

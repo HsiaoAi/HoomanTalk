@@ -70,11 +70,10 @@ class LoginViewController: UIViewController {
             )
 
         }
-        
+
         return
 
     }
-
 
     @IBAction func tapLogin(_ sender: Any) {
 
@@ -195,13 +194,26 @@ class LoginViewController: UIViewController {
 
                 let uid = loginUser.uid
 
-                QBRequest.logIn(withUserEmail: email, password: uid, successBlock: { (_, _) in
+                QBRequest.logIn(withUserEmail: email, password: uid, successBlock: { (_, QBUser) in
 
-                    self.loginButton.isLoading = false
+                    QBChat.instance.connect(with: QBUser, completion: { (error) in
 
-                    AppDelegate.shared.enterPassByLandingView()
+                        guard error == nil else {
 
-                }, errorBlock: { ( errorResponse) in
+                            SCLAlertView().showError(
+                                NSLocalizedString("Error", comment: ""),
+                                subTitle: NSLocalizedString("Something wrong, plese log in again: \(error!)", comment: "")
+                            )
+
+                            return
+
+                        }
+                        self.loginButton.isLoading = false
+
+                        AppDelegate.shared.enterPassByLandingView()
+                    })
+
+                }, errorBlock: { ( errorResponse ) in
 
                     self.loginButton.isLoading = false
 
