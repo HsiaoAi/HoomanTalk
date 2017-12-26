@@ -37,6 +37,7 @@
 @import Firebase;
 @import FirebaseAuth;
 @import FirebaseStorage;
+@import KeychainAccess;
 
 
 #endif /* bridge_Header_h */

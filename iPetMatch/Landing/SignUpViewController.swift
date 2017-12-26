@@ -34,6 +34,8 @@ class SignUpViewController: UIViewController {
 
     var gender: Gender = .male
 
+    var imageURLString: String?
+
     // Firebase properties
 
     override func viewDidLoad() {
@@ -255,23 +257,22 @@ class SignUpViewController: UIViewController {
 
         switch (isCatPerson, isDogPerson) {
 
-            case (true, true): self.petPersonType = .both
+        case (true, true): self.petPersonType = .both
 
-                                break
+                            break
 
-            case (true, false): self.petPersonType = .cat
+        case (true, false): self.petPersonType = .cat
 
-                                break
+                            break
 
-            case (false, true): self.petPersonType = .dog
+        case (false, true): self.petPersonType = .dog
 
-                                break
+                            break
 
-            default: self.petPersonType = .none
+        default: self.petPersonType = .none
 
         }
 
-        signUpButton.isLoading = true
         // Firebase Sign up
 
         Auth.auth().createUser(withEmail: email, password: password) { (user: User?, error) in
@@ -316,16 +317,16 @@ class SignUpViewController: UIViewController {
 
                 }
             }
-            
+
             // Success
 
             guard let firebaseUid = user?.uid else { return }
 
             let QBCurrentUser = QBUUser()
 
-            QBCurrentUser.login = firebaseUid
+            QBCurrentUser.email = email
 
-            QBCurrentUser.password = password
+            QBCurrentUser.password = firebaseUid
 
             // Upload images to Firebase Storage
             let userImageName = UUID().uuidString
@@ -349,43 +350,86 @@ class SignUpViewController: UIViewController {
                     )
                 }
 
-                if let userImageURL = data?.downloadURL() {
+                if let userImageURL = data?.downloadURL()?.absoluteString {
 
-                    print(userImageURL)
-            
+                    self.imageURLString = userImageURL
+
                 }
 
-            })
+                // QBSignUp
 
-            // QBSignUp
+                QBRequest.signUp(QBCurrentUser,
 
-            QBRequest.signUp(QBCurrentUser,
+                                 successBlock: { ( _, QBuser ) in
 
-                             successBlock: { ( _, QBuser ) in
+                                    let callingID = QBuser.id
 
-                                QBCurrentUser.blobID = QBuser.blobID
+                                    UserManager.instance.currentUser = CurrentUser(loginEmail: email, firebaseUid: firebaseUid, name: name, petPersonType: self.petPersonType, gender: self.gender, yearOfBirth: yearOfBirth, imageURL: self.imageURLString!, callingID: callingID)
+                                    
+                                    
+                                    let userRef = Database.database().reference().child("users").child(firebaseUid)
+                                    
+                                    let values: [String: Any] = [
+                                        
+                                        CurrentUser.Schema.loginEmail: email,
+                                        
+                                        CurrentUser.Schema.firebaseUid: firebaseUid,
+                                        
+                                        CurrentUser.Schema.name: name,
+                                        
+                                        CurrentUser.Schema.petPersonType: self.petPersonType.rawValue,
+                                        
+                                        CurrentUser.Schema.gender: self.gender.rawValue,
+                                        
+                                        CurrentUser.Schema.yearOfBirth: yearOfBirth,
+                                        
+                                        CurrentUser.Schema.imageURL: self.imageURLString!,
+                                        
+                                        CurrentUser.Schema.callingID: callingID
+                                        
+                                    ]
+                                    
+                                    userRef.updateChildValues(values,
+                                                              
+                                                              withCompletionBlock: { (error, data) in
+                                                                
+                                                                if error != nil {
+                                                                    
+                                                                    SCLAlertView().showError(
+                                                                        
+                                                                        NSLocalizedString("Firebase Error", comment: ""),
+                                                                        
+                                                                        subTitle: NSLocalizedString("\(error?.localizedDescription)", comment: "")
+                                                                        
+                                                                    )
+                                                                    
+                                                                }
+                                                                
+                                                                self.signUpButton.isLoading = false
+                                                                
+                                                                
+                                                                let tabBarController = TabBarController(itemTypes: [.chat])
+                                                                
+                                                                AppDelegate.shared.window?.rootViewController = tabBarController
+                                                                
+                                                                
+                                    })
 
-                                print("+++++++++++++++\(QBCurrentUser.blobID)")
+                },
 
-                                self.signUpButton.isLoading = false
-                                
-                                let tabBarController = TabBarController(itemTypes: [.chat])
-                                
-                                AppDelegate.shared.window?.rootViewController = tabBarController
-                                
-            },
+                                 errorBlock: { (errorResponse) in
 
-                             errorBlock: { (errorResponse) in
+                                    SCLAlertView().showError(
 
-                                SCLAlertView().showError(
+                                        NSLocalizedString("QuickBlox Error", comment: ""),
 
-                                    NSLocalizedString("QuickBlox Error", comment: ""),
+                                        subTitle: NSLocalizedString("\(errorResponse)", comment: "")
 
-                                    subTitle: NSLocalizedString("\(errorResponse)", comment: "")
-
-                                )
+                                    )
 
                 })
+
+            })
 
         }
     }

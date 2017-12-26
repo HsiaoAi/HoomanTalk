@@ -8,9 +8,27 @@
 
 struct CurrentUser {
 
-    let loginEmail: String
+     struct Schema {
 
-    let password: String
+        public static let loginEmail = "loginEmail"
+
+        public static let firebaseUid = "firebaseUid"
+
+        public static let name = "name"
+
+        public static let petPersonType = "petPersonType"
+
+        public static let gender = "gender"
+
+        public static let yearOfBirth = "yearOfBirth"
+
+        public static let imageURL = "imageURL"
+
+        public static let callingID = "callingID"
+
+    }
+
+    let loginEmail: String
 
     let firebaseUid: String
 
@@ -24,7 +42,7 @@ struct CurrentUser {
 
     let imageURL: String
 
-    let callingID: String
+    let callingID: UInt
 
 }
 
@@ -44,7 +62,7 @@ enum Gender: String {
 
 }
 
-enum PetPersonType {
+enum PetPersonType: String {
 
     case dog, cat, both, none
 

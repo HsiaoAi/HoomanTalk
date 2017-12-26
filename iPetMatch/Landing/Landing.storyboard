@@ -254,7 +254,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="89Q-Mq-XoB" customClass="LGButton" customModule="LGButton">
-                                <rect key="frame" x="102" y="309" width="134.5" height="48.5"/>
+                                <rect key="frame" x="51" y="309" width="236.5" height="48.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
@@ -314,7 +314,7 @@
                             <constraint firstItem="mhe-oG-B8T" firstAttribute="leading" secondItem="NRs-37-4fa" secondAttribute="leading" constant="5" id="18h-Ea-oz0"/>
                             <constraint firstItem="NRs-37-4fa" firstAttribute="trailing" secondItem="mhe-oG-B8T" secondAttribute="trailing" constant="5" id="3ks-dF-4Rh"/>
                             <constraint firstItem="pQf-Sd-v0a" firstAttribute="top" secondItem="xm4-he-zIT" secondAttribute="bottom" id="8mY-bI-h3S"/>
-                            <constraint firstItem="89Q-Mq-XoB" firstAttribute="width" secondItem="pQf-Sd-v0a" secondAttribute="width" multiplier="0.4" id="90a-34-UDP"/>
+                            <constraint firstItem="89Q-Mq-XoB" firstAttribute="width" secondItem="pQf-Sd-v0a" secondAttribute="width" multiplier="0.7" id="90a-34-UDP"/>
                             <constraint firstItem="NRs-37-4fa" firstAttribute="trailing" secondItem="h8X-xh-lIp" secondAttribute="trailing" constant="5" id="AFg-PS-ofD"/>
                             <constraint firstItem="NRs-37-4fa" firstAttribute="bottom" secondItem="mhe-oG-B8T" secondAttribute="bottom" constant="5" id="EMa-nK-4w7"/>
                             <constraint firstItem="h8X-xh-lIp" firstAttribute="leading" secondItem="NRs-37-4fa" secondAttribute="leading" constant="5" id="GKw-jY-aBi"/>
@@ -620,7 +620,7 @@
                                 <rect key="frame" x="20" y="307" width="297.5" height="102"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzz-Zw-neT" customClass="LGButton" customModule="LGButton">
-                                        <rect key="frame" x="89" y="28" width="119.5" height="46"/>
+                                        <rect key="frame" x="44.5" y="28" width="208.5" height="46"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="Sign up"/>
@@ -655,10 +655,10 @@
                                                 <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="loadingSpinnerColor">
-                                                <color key="value" red="0.3217366934" green="0.25888746979999999" blue="0.25097307559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="0.96126145119999995" green="0.65947264429999997" blue="0.19407713409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="loadingColor">
-                                                <color key="value" red="0.20326057080000001" green="0.59547084569999997" blue="0.85841131209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="0.99994784589999997" green="1" blue="0.99987405539999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="gradientStartColor">
                                                 <color key="value" red="0.31440544129999998" green="0.69420671460000005" blue="0.51775223020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -669,7 +669,7 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="gradientRotation">
                                                 <real key="value" value="180"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="loadingString" value="Sign up"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="loadingString" value="Loading"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="tapSignupButton:" destination="TwC-ZU-Kqx" eventType="touchUpInside" id="Qwj-Mi-lFW"/>
@@ -680,7 +680,7 @@
                                     <constraint firstItem="dzz-Zw-neT" firstAttribute="centerX" secondItem="PsR-EX-ojr" secondAttribute="centerX" id="4Ya-nY-RG1"/>
                                     <constraint firstItem="dzz-Zw-neT" firstAttribute="height" secondItem="PsR-EX-ojr" secondAttribute="height" multiplier="0.45" id="H1v-HD-Zt4"/>
                                     <constraint firstItem="dzz-Zw-neT" firstAttribute="centerY" secondItem="PsR-EX-ojr" secondAttribute="centerY" id="cnd-RF-elK"/>
-                                    <constraint firstItem="dzz-Zw-neT" firstAttribute="width" secondItem="PsR-EX-ojr" secondAttribute="width" multiplier="0.4" id="dG9-4m-3re"/>
+                                    <constraint firstItem="dzz-Zw-neT" firstAttribute="width" secondItem="PsR-EX-ojr" secondAttribute="width" multiplier="0.7" id="dG9-4m-3re"/>
                                 </constraints>
                             </view>
                         </subviews>

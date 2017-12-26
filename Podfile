@@ -30,4 +30,5 @@ target 'iPetMatch' do
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
+  pod 'KeychainAccess'
 end
