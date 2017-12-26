@@ -18,9 +18,19 @@ struct User {
 
     let gender: Gender
 
-    let birthYear: Int
+    let yearOfBirth: Int
 
-    let imageURL: URL
+    let imageURL: String
+
+}
+
+extension User {
+
+    var userImage: UIImage? {
+
+        return UIImage()
+
+    }
 
 }
 

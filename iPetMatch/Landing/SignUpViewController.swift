@@ -22,6 +22,8 @@ class SignUpViewController: UIViewController {
 
     @IBOutlet weak var genderControl: BetterSegmentedControl!
 
+    @IBOutlet weak var signUpButton: LGButton!
+    
     var petPersonType: PetPersonType = .none
 
     var isCatPerson: Bool = false
@@ -61,9 +63,7 @@ class SignUpViewController: UIViewController {
 
     @IBAction func tapGenderControl(_ sender: BetterSegmentedControl) {
 
-      self.gender = ( sender.index == 0) ? Gender.male: Gender.female
-
-        print(self.gender)
+      self.gender = (sender.index == 0) ? Gender.male: Gender.female
 
     }
 
@@ -124,8 +124,6 @@ class SignUpViewController: UIViewController {
     }
 
     func signUp() {
-
-        // Todo: Alert
 
         let email = emailTextField.text!
 
@@ -192,6 +190,34 @@ class SignUpViewController: UIViewController {
                 return
 
         }
+        
+        
+
+        let yearOfBirth = birthDay.components(separatedBy: ", ")[1]
+
+        switch (isCatPerson, isDogPerson) {
+
+        case (true, true): self.petPersonType = .both
+
+                            break
+
+        case (true, false): self.petPersonType = .cat
+
+                            break
+
+        case (false, true): self.petPersonType = .dog
+
+                            break
+
+        default: self.petPersonType = .none
+
+        }
+        
+        signUpButton.isLoading = true
+        // Firebase Sign up
+        //Auth.auth()
+        
+        
 
         var currentUser = QBUUser()
 
@@ -296,6 +322,11 @@ extension SignUpViewController: FusumaDelegate {
         fusuma.cropHeightRatio = 1.0
 
         fusuma.allowMultipleSelection = false
+        
+        fusuma.cameraPosition = .front
+        
+
+        userImageView.clipsToBounds = true
 
         self.present(fusuma, animated: true, completion: nil)
 
@@ -306,13 +337,9 @@ extension SignUpViewController: FusumaDelegate {
 
         self.userImage = image
 
-        userImageView.image = image
-
         userImageView.contentMode = .scaleAspectFill
 
-        userImageView.clipsToBounds = true
-
-        // Upload image to Firebase and get the url
+        userImageView.image = image
 
     }
 
