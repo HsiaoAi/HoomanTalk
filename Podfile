@@ -26,5 +26,6 @@ target 'iPetMatch' do
   pod 'Fusuma', '1.2.4'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'SwiftIcons', '~> 2.0'
-  pod 'BetterSegmentedControl', '~> 0.9'  
+  pod 'BetterSegmentedControl', '~> 0.9' 
+  pod 'Firebase/Core'
 end

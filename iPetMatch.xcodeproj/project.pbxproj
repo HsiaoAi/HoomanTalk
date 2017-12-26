@@ -20,6 +20,7 @@
 		872D9CD71FE65F110008C8AA /* LocalVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D9CD21FE65CF80008C8AA /* LocalVideoView.swift */; };
 		8735E6191FE56A4500C85442 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8735E6181FE56A4400C85442 /* AppDelegate.swift */; };
 		8735E6331FE58EF000C85442 /* QuickBloxKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8735E6321FE58EF000C85442 /* QuickBloxKey.plist */; };
+		873702451FF1E7B1007B5977 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 873702441FF1E7B1007B5977 /* GoogleService-Info.plist */; };
 		8737143A1FE40612009C440F /* MakeAudioCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873714381FE40612009C440F /* MakeAudioCallViewController.swift */; };
 		8737143B1FE40612009C440F /* MakeAudioCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 873714391FE40612009C440F /* MakeAudioCallViewController.xib */; };
 		874D94321FE250F00009C9F3 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94311FE250EF0009C9F3 /* SweetAlert.swift */; };
@@ -90,6 +91,7 @@
 		872D9CD31FE65CF80008C8AA /* MakeVideoCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeVideoCallViewController.swift; sourceTree = "<group>"; };
 		8735E6181FE56A4400C85442 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8735E6321FE58EF000C85442 /* QuickBloxKey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = QuickBloxKey.plist; sourceTree = "<group>"; };
+		873702441FF1E7B1007B5977 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		873714381FE40612009C440F /* MakeAudioCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAudioCallViewController.swift; sourceTree = "<group>"; };
 		873714391FE40612009C440F /* MakeAudioCallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MakeAudioCallViewController.xib; sourceTree = "<group>"; };
 		874D94311FE250EF0009C9F3 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 		8797E67B1FE116C200C9002F /* Key */ = {
 			isa = PBXGroup;
 			children = (
+				873702441FF1E7B1007B5977 /* GoogleService-Info.plist */,
 				8735E6321FE58EF000C85442 /* QuickBloxKey.plist */,
 			);
 			path = Key;
@@ -467,6 +470,7 @@
 			files = (
 				8735E6331FE58EF000C85442 /* QuickBloxKey.plist in Resources */,
 				87E8A92E1FE596C200726A2E /* ChatUsersListTableViewCell.xib in Resources */,
+				873702451FF1E7B1007B5977 /* GoogleService-Info.plist in Resources */,
 				8737143B1FE40612009C440F /* MakeAudioCallViewController.xib in Resources */,
 				87E8A92D1FE596BC00726A2E /* ChatListButtonsTableViewCell.xib in Resources */,
 				8797E65A1FE10D5800C9002F /* LaunchScreen.storyboard in Resources */,
@@ -514,6 +518,7 @@
 				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/FaveButton/FaveButton.framework",
 				"${BUILT_PRODUCTS_DIR}/Fusuma/Fusuma.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/LGButton/LGButton.framework",
 				"${BUILT_PRODUCTS_DIR}/MZTimerLabel/MZTimerLabel.framework",
@@ -526,6 +531,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftIcons/SwiftIcons.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftTimer/SwiftTimer.framework",
 				"${BUILT_PRODUCTS_DIR}/UIImageView+Extension/UIImageView_Extension.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -533,6 +539,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FaveButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fusuma.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MZTimerLabel.framework",
@@ -545,6 +552,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftIcons.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTimer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageView_Extension.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

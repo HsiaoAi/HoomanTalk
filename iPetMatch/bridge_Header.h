@@ -34,6 +34,6 @@
 @import Fusuma;
 @import SkyFloatingLabelTextField;
 @import BetterSegmentedControl;
-
+@import Firebase;
 
 #endif /* bridge_Header_h */

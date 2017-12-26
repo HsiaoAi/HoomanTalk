@@ -37,7 +37,7 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
 
         setupFusumaImagePicker()
-        
+
         setupErrorTextFieldHandeler()
 
         genderControl.titles = ["♂︎", "♀︎"]
@@ -45,6 +45,10 @@ class SignUpViewController: UIViewController {
     }
 
     @IBAction func pickBirthDay(_ sender: UITextField) {
+
+        sender.delegate = self
+
+        sender.tag = 3
 
         let datePickerView = UIDatePicker()
 
@@ -127,20 +131,63 @@ class SignUpViewController: UIViewController {
 
         guard email != "" else {
 
-            SCLAlertView().showInfo("Imcompleted Info", subTitle: "Please enter your email")
+            SCLAlertView().showWarning("Warning", subTitle: "Please enter your email")
 
             return
 
         }
 
-        guard let name = nameTextField.text else {
+        guard emailTextField.errorMessage == "" else {
+
+            SCLAlertView().showWarning("Warning", subTitle: emailTextField.errorMessage!)
+
+            return
+
+        }
+
+        guard
+            let name = nameTextField.text,
+
+            name != ""
+
+        else {
+
+            SCLAlertView().showWarning("Warning", subTitle: "Please enter your name")
 
             return
         }
 
-        guard let password = passwordTextField.text,
+        guard
 
-            password.count > 5 else {
+            let password = passwordTextField.text,
+
+            password != ""
+
+        else {
+
+            SCLAlertView().showWarning("Warning", subTitle: "Please enter password")
+
+            return
+
+        }
+
+        guard passwordTextField.errorMessage == "" else {
+
+            SCLAlertView().showWarning("Warning", subTitle: passwordTextField.errorMessage!)
+
+            return
+
+        }
+
+        guard
+
+            let birthDay = birthDayTextField.text,
+
+            birthDay != ""
+
+            else {
+
+                SCLAlertView().showWarning("Warning", subTitle: "Please enter your birthday")
 
                 return
 
@@ -181,6 +228,8 @@ extension SignUpViewController {
 
         let dateFormatter = DateFormatter()
 
+        sender.maximumDate = Date()
+
         dateFormatter.dateStyle = .medium
 
         birthDayTextField.text = dateFormatter.string(from: sender.date)
@@ -190,43 +239,49 @@ extension SignUpViewController {
 }
 
 extension SignUpViewController: UITextFieldDelegate {
-    
+
     func setupErrorTextFieldHandeler() {
-        
+
         emailTextField.delegate = self
-        
+
         emailTextField.tag = 1
-        
+
         passwordTextField.delegate = self
-        
+
         passwordTextField.tag = 2
     }
-    
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        if let text = textField.text {
-            
-            if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
-                
-                if textField.tag == 1 && (text.count < 3 || !text.contains("@")) {
-                    
-                    floatingLabelTextField.errorMessage = "Invalid email"
-                    
-                } else if textField.tag == 2 && text.count < 5 {
-                    floatingLabelTextField.errorMessage = "Invalid password"
-                    
-                } else {
-                    
-                    floatingLabelTextField.errorMessage = ""
-                    
-                }
-                
-            }
-            
+
+        if textField.tag == 3 {
+
+            return false
+
         }
-        
+
+        if let text = textField.text {
+
+            if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
+
+                if textField.tag == 1 && (text.count < 3 || !text.contains("@")) {
+
+                    floatingLabelTextField.errorMessage = "Invalid Email"
+
+                } else if textField.tag == 2 && text.count < 5 {
+                    floatingLabelTextField.errorMessage = "Invalid Password"
+
+                } else {
+
+                    floatingLabelTextField.errorMessage = ""
+
+                }
+
+            }
+
+        }
+
         return true
-        
+
     }
 }
 

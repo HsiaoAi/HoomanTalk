@@ -32,13 +32,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window?.makeKeyAndVisible()
 
+        // Firebase
+
+        FirebaseApp.configure()
+
         // IQKeyboard
 
         IQKeyboardManager.sharedManager().enable = true
 
         // Quickblox API
-
-        // Set QuickBlox credentials (You must create application in admin.quickblox.com).
 
         guard
 

@@ -38,6 +38,8 @@ enum IconImage {
 
     case plus
 
+    case warning
+
 }
 
 extension IconImage {
@@ -72,7 +74,9 @@ extension IconImage {
 
         case .catPersonSelected: return #imageLiteral(resourceName: "catPersionSelected")
 
-        case .plus: return #imageLiteral(resourceName: "icon_plus")
+        case .plus: return#imageLiteral(resourceName: "icon_plus")
+
+        case .warning: return #imageLiteral(resourceName: "icon-warning")
 
         }
 

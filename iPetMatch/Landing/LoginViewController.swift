@@ -81,10 +81,10 @@ extension LoginViewController: UITextFieldDelegate {
 
                 if textField.tag == 1 && (text.count < 3 || !text.contains("@")) {
 
-                    floatingLabelTextField.errorMessage = "Invalid email"
+                    floatingLabelTextField.errorMessage = "Invalid Email"
 
                 } else if textField.tag == 2 && text.count < 5 {
-                    floatingLabelTextField.errorMessage = "Invalid password"
+                    floatingLabelTextField.errorMessage = "Invalid Password"
 
                 } else {
 

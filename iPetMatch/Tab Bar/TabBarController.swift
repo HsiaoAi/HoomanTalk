@@ -40,6 +40,12 @@ class TabBarController: UITabBarController {
 
     }
 
+    override var prefersStatusBarHidden: Bool {
+
+        return false
+
+    }
+
     // MARK: Set up tab bar
 
     func setUpTabBar() {
