@@ -37,6 +37,8 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
 
         setupFusumaImagePicker()
+        
+        setupErrorTextFieldHandeler()
 
         genderControl.titles = ["♂︎", "♀︎"]
 
@@ -185,6 +187,47 @@ extension SignUpViewController {
 
     }
 
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    
+    func setupErrorTextFieldHandeler() {
+        
+        emailTextField.delegate = self
+        
+        emailTextField.tag = 1
+        
+        passwordTextField.delegate = self
+        
+        passwordTextField.tag = 2
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if let text = textField.text {
+            
+            if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
+                
+                if textField.tag == 1 && (text.count < 3 || !text.contains("@")) {
+                    
+                    floatingLabelTextField.errorMessage = "Invalid email"
+                    
+                } else if textField.tag == 2 && text.count < 5 {
+                    floatingLabelTextField.errorMessage = "Invalid password"
+                    
+                } else {
+                    
+                    floatingLabelTextField.errorMessage = ""
+                    
+                }
+                
+            }
+            
+        }
+        
+        return true
+        
+    }
 }
 
 extension SignUpViewController: FusumaDelegate {

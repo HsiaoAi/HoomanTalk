@@ -18,6 +18,8 @@ class LoginViewController: UIViewController {
 
         super.viewDidLoad()
 
+        setupErrorTextFieldHandeler()
+
     }
 
     @IBAction func tapLogin(_ sender: Any) {
@@ -59,5 +61,43 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: UITextFieldDelegate {
+
+    func setupErrorTextFieldHandeler() {
+
+        emailTextFied.delegate = self
+
+        emailTextFied.tag = 1
+
+        passwordTextFied.delegate = self
+
+        passwordTextFied.tag = 2
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        if let text = textField.text {
+
+            if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
+
+                if textField.tag == 1 && (text.count < 3 || !text.contains("@")) {
+
+                    floatingLabelTextField.errorMessage = "Invalid email"
+
+                } else if textField.tag == 2 && text.count < 5 {
+                    floatingLabelTextField.errorMessage = "Invalid password"
+
+                } else {
+
+                    floatingLabelTextField.errorMessage = ""
+
+                }
+
+            }
+
+        }
+
+        return true
+
+    }
 
 }

@@ -34,7 +34,6 @@
 @import Fusuma;
 @import SkyFloatingLabelTextField;
 @import BetterSegmentedControl;
-@import Ophiuchus;
 
 
 #endif /* bridge_Header_h */

@@ -27,5 +27,4 @@ target 'iPetMatch' do
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'SwiftIcons', '~> 2.0'
   pod 'BetterSegmentedControl', '~> 0.9'  
-    pod 'Ophiuchus', '~> 1.0.3'
 end
