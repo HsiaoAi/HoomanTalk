@@ -53,10 +53,25 @@ class MatchViewController: UIViewController {
 
         setupKolodaView()
 
-        FetchUsersManager.instance.delegate = self
-
         FetchUsersManager.instance.query()
 
+        FetchUsersManager.instance.delegate = self
+
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+
+        super.viewWillAppear(animated)
+
+        self.kolodaView.isHidden = false
+
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+
+        super.viewDidDisappear(animated)
+
+        self.matchUsers = [MatchUser]()
     }
 
 }
@@ -66,6 +81,8 @@ extension MatchViewController: FetchUsersManagerProtocol {
     func didFetchUsers(_ fetchUsers: [MatchUser]) {
 
         self.matchUsers = fetchUsers
+
+        FetchUsersManager.instance.matchUsers = [MatchUser]()
 
         DispatchQueue.main.async {
 
@@ -112,6 +129,10 @@ extension MatchViewController: KolodaViewDelegate {
         }
 
         alertView.addButton(NSLocalizedString("No", comment: "")) {
+
+            self.kolodaView.isHidden = true
+
+            self.kolodaView.resetCurrentCardIndex()
 
             SCLAlertView().showInfo(
                 NSLocalizedString("Information", comment: ""),
@@ -162,10 +183,10 @@ extension MatchViewController: KolodaViewDataSource {
             let matchUser = self.matchUsers[index]
 
             matchCardView.userInfo.text = "\(matchUser.name), \(todayYear - matchUser.yearOfBirth)"
-            
+
             let imageAdress = matchUser.imageURL
             if let imageURL = URL(string: imageAdress!) {
-                
+
                 Nuke.loadImage(
                     with: imageURL,
                     into: matchCardView.userImageView

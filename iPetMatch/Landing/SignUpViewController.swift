@@ -538,7 +538,7 @@ extension SignUpViewController: FusumaDelegate {
 
     // Delegate Methods
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
-        
+
         let correctImage = image.fixedOrientation()
 
         self.userImage = correctImage

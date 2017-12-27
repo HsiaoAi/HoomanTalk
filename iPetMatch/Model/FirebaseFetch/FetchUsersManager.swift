@@ -30,7 +30,7 @@ class FetchUsersManager {
 
         let matchUsersRef = Database.database().reference().child(FirebaseSchema.users.rawValue)
 
-        matchUsersRef.queryOrdered(byChild: MatchUser.Schema.petPersonType).observeSingleEvent(of: .value) { (snapShot) in
+        matchUsersRef.queryOrdered(byChild: MatchUser.Schema.petPersonType).observe(.value) { (snapShot) in
 
             guard let data = snapShot.value as? [String: AnyObject] else {
 

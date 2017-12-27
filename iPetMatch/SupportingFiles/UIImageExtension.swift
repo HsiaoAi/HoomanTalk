@@ -6,14 +6,13 @@
 //  Copyright © 2017 Hsiao Ai LEE. All rights reserved.
 //
 extension UIImage {
-    func fixedOrientation() -> UIImage
-    {
+    func fixedOrientation() -> UIImage {
         if self.imageOrientation == .up {
             return self
         }
-        
+
         var transform: CGAffineTransform = CGAffineTransform.identity
-        
+
         switch imageOrientation {
         case .down, .downMirrored:
             transform = transform.translatedBy(x: size.width, y: size.height)
@@ -40,11 +39,11 @@ extension UIImage {
         default:
             break
         }
-        
+
         let ctx: CGContext = CGContext(data: nil, width: Int(size.width), height: Int(size.height), bitsPerComponent: self.cgImage!.bitsPerComponent, bytesPerRow: 0, space: self.cgImage!.colorSpace!, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
-        
+
         ctx.concatenate(transform)
-        
+
         switch imageOrientation {
         case .left, .leftMirrored, .right, .rightMirrored:
             ctx.draw(self.cgImage!, in: CGRect(x: 0, y: 0, width: size.height, height: size.width))
@@ -52,10 +51,8 @@ extension UIImage {
             ctx.draw(self.cgImage!, in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
             break
         }
-        
+
         return UIImage(cgImage: ctx.makeImage()!)
     }
 
-    
 }
-

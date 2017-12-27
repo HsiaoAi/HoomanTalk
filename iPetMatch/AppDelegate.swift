@@ -90,10 +90,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
                 enterLandingView()
 
-                return true }
+                return true
+
+        }
 
         showLoading()
-        //enterLandingView()
 
         enterPassByLandingView()
 
