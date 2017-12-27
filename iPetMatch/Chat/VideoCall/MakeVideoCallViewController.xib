@@ -39,7 +39,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="795-y5-mKr" userLabel="CallInfoView">
-                            <rect key="frame" x="20" y="60" width="335" height="488"/>
+                            <rect key="frame" x="20" y="60" width="335" height="487.5"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                     <real key="value" value="10"/>
@@ -62,7 +62,7 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nmj-p0-mKi" customClass="FLAnimatedImageView">
-                            <rect key="frame" x="247.5" y="457" width="67.5" height="75"/>
+                            <rect key="frame" x="247.5" y="456.5" width="67.5" height="75"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                     <real key="value" value="10"/>
@@ -74,14 +74,14 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incoming Call From" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpa-Dz-koU" customClass="MZTimerLabel">
-                            <rect key="frame" x="60" y="469" width="153.5" height="21.5"/>
+                            <rect key="frame" x="60" y="468.5" width="153.5" height="21.5"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                             <color key="textColor" red="0.3217366934" green="0.25888746979999999" blue="0.25097307559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                             <color key="shadowColor" red="0.67041194439999996" green="0.70198559760000001" blue="0.69011390210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DSU-sy-5bD">
-                            <rect key="frame" x="60" y="469" width="153.5" height="51.5"/>
+                            <rect key="frame" x="60" y="468.5" width="153.5" height="51.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calling To" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nw1-Xg-gSZ">
                                     <rect key="frame" x="0.0" y="0.0" width="153.5" height="21.5"/>
@@ -133,10 +133,10 @@
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MTM-zC-jaZ" userLabel="controlPanel">
-                    <rect key="frame" x="19.5" y="578" width="336" height="69"/>
+                    <rect key="frame" x="19.5" y="577.5" width="336" height="69.5"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BGe-Vj-8Ri" customClass="LGButton" customModule="LGButton">
-                            <rect key="frame" x="0.0" y="0.0" width="69" height="69"/>
+                            <rect key="frame" x="0.0" y="0.0" width="69" height="69.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="BGe-Vj-8Ri" secondAttribute="height" multiplier="1:1" id="BaT-H5-Emu"/>
@@ -163,7 +163,7 @@
                             </connections>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PX9-kH-L6g" customClass="LGButton" customModule="LGButton">
-                            <rect key="frame" x="89" y="0.0" width="69" height="69"/>
+                            <rect key="frame" x="89" y="0.0" width="69" height="69.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
@@ -190,7 +190,7 @@
                             </connections>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XCX-o8-owX" customClass="LGButton" customModule="LGButton">
-                            <rect key="frame" x="178" y="0.0" width="69" height="69"/>
+                            <rect key="frame" x="178" y="0.0" width="69" height="69.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
@@ -214,7 +214,7 @@
                             </connections>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yH-PN-Mrn" customClass="LGButton" customModule="LGButton">
-                            <rect key="frame" x="267" y="0.0" width="69" height="69"/>
+                            <rect key="frame" x="267" y="0.0" width="69" height="69.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="color" keyPath="bgColor">

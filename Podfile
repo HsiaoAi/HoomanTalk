@@ -32,4 +32,5 @@ target 'iPetMatch' do
   pod 'KeychainAccess'
   pod 'Koloda', '~> 4.3.1'
     pod 'WCLShineButton'
+    pod 'Nuke'
 end

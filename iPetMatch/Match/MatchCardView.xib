@@ -29,7 +29,7 @@
                             <color key="value" red="0.3217366934" green="0.25888746979999999" blue="0.25097307559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                            <real key="value" value="10"/>
+                            <real key="value" value="5"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </imageView>
@@ -127,8 +127,9 @@
             <connections>
                 <outlet property="infoView" destination="P8G-AP-kUY" id="AOn-M0-w9b"/>
                 <outlet property="likeButton" destination="uWU-1R-BeX" id="DmJ-Jl-OwJ"/>
+                <outlet property="matchCardView" destination="WEw-0W-0sw" id="Uum-Hj-dU3"/>
                 <outlet property="petCollectionView" destination="gDK-ES-eXL" id="utu-v1-gnr"/>
-                <outlet property="userImageView" destination="WEw-0W-0sw" id="2Ps-Tt-Ucs"/>
+                <outlet property="userImageView" destination="RU8-fl-Buz" id="jhR-gS-4Cz"/>
                 <outlet property="userInfo" destination="iV5-LA-waT" id="vRh-ts-TeL"/>
             </connections>
             <point key="canvasLocation" x="26" y="52.5"/>

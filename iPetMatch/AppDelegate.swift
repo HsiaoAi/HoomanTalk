@@ -124,11 +124,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 guard let user = Auth.auth().currentUser else {
 
                     enterLandingView()
-                    
+
                     SVProgressHUD.dismiss()
-                    
+
                     UIApplication.shared.endIgnoringInteractionEvents()
-                    
+
                     UserManager.instance.currentUser = nil
 
                     return

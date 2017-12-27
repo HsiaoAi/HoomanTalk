@@ -10,6 +10,18 @@ class MatchViewController: UIViewController {
 
     @IBOutlet weak var kolodaView: KolodaView!
 
+    var matchUsers = [MatchUser]()
+
+    var todayYear: Int {
+
+        let todayDate: Date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        let todayYesrString = dateFormatter.string(from: todayDate)
+        return Int(todayYesrString)!
+
+    }
+
     @IBAction func logout(_ sender: Any) {
 
         do {
@@ -41,6 +53,30 @@ class MatchViewController: UIViewController {
 
         setupKolodaView()
 
+        FetchUsersManager.instance.delegate = self
+
+        FetchUsersManager.instance.query()
+
+    }
+
+}
+
+extension MatchViewController: FetchUsersManagerProtocol {
+
+    func didFetchUsers(_ fetchUsers: [MatchUser]) {
+
+        self.matchUsers = fetchUsers
+
+        DispatchQueue.main.async {
+
+            self.kolodaView.reloadData()
+
+        }
+
+    }
+
+    func didFetchUsersError(_ fetchUserError: Error) {
+
     }
 
 }
@@ -63,23 +99,48 @@ extension MatchViewController: KolodaViewDelegate {
 
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
 
-        kolodaView.resetCurrentCardIndex()
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+
+        let alertView = SCLAlertView(appearance: appearance)
+
+        alertView.addButton(NSLocalizedString("Yes", comment: "")) {
+
+            self.kolodaView.resetCurrentCardIndex()
+
+        }
+
+        alertView.addButton(NSLocalizedString("No", comment: "")) {
+
+            SCLAlertView().showInfo(
+                NSLocalizedString("Information", comment: ""),
+                subTitle: NSLocalizedString("Tip: Change setting to explore more cards", comment: "")
+            )
+
+            return
+
+        }
+
+        alertView.showInfo(NSLocalizedString("Information", comment: ""),
+
+                             subTitle: NSLocalizedString("Run out of cards, want to reload cards?", comment: ""))
 
     }
 
     // DidselectCardAt: 看詳細資料
-    
+
     func kolodaShouldApplyAppearAnimation(_ koloda: KolodaView) -> Bool {
         return true
     }
-    
+
 }
 
 extension MatchViewController: KolodaViewDataSource {
 
     func kolodaNumberOfCards(_ koloda: KolodaView) -> Int {
 
-        return 5
+        return self.matchUsers.count
 
     }
 
@@ -96,16 +157,29 @@ extension MatchViewController: KolodaViewDataSource {
             return UIView()
         }
 
-        var colors: [UIColor] = [.yellow, .red, .blue, .black, .green]
+        if self.matchUsers.count > index {
 
-        matchCardView.userImageView.backgroundColor = colors[index]
+            let matchUser = self.matchUsers[index]
+
+            matchCardView.userInfo.text = "\(matchUser.name), \(todayYear - matchUser.yearOfBirth)"
+            
+            let imageAdress = matchUser.imageURL
+            if let imageURL = URL(string: imageAdress!) {
+                
+                Nuke.loadImage(
+                    with: imageURL,
+                    into: matchCardView.userImageView
+                )
+            }
+
+        }
 
         return matchCardView
 
     }
-    
+
     func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
-        
+
         return Bundle.main.loadNibNamed("MatchOverlayView", owner: self, options: nil)?[0] as? OverlayView
     }
 

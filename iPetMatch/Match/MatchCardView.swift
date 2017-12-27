@@ -10,6 +10,8 @@ import UIKit
 
 class MatchCardView: UIView {
 
+    @IBOutlet weak var matchCardView: UIImageView!
+
     @IBOutlet weak var userImageView: UIImageView!
 
     @IBOutlet weak var petCollectionView: UICollectionView!
@@ -34,6 +36,10 @@ class MatchCardView: UIView {
     override func awakeFromNib() {
 
         setupLikeButton()
+
+        matchCardView.layer.borderWidth = 0.5
+
+        matchCardView.layer.borderColor = UIColor.Custom.greyishBrown.cgColor
 
     }
 

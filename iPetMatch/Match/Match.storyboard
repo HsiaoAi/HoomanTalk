@@ -21,7 +21,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqt-JO-YIH" customClass="KolodaView" customModule="Koloda">
                                 <rect key="frame" x="19" y="70" width="338" height="547"/>
-                                <color key="backgroundColor" red="0.60911864039999997" green="0.34837087989999999" blue="0.71336013080000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9pT-LJ-nfR">
                                 <rect key="frame" x="290" y="32" width="44" height="30"/>

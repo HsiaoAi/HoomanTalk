@@ -15,14 +15,14 @@ class MatchOverlayView: OverlayView {
 
     @IBOutlet lazy var overlayImageView: UIImageView! = {
         [unowned self] in
-        
+
         var imageView = UIImageView(frame: self.bounds)
         self.addSubview(imageView)
-        
+
         return imageView
         }()
-    
-    override var overlayState: SwipeResultDirection?  {
+
+    override var overlayState: SwipeResultDirection? {
         didSet {
             switch overlayState {
             case .left? :
@@ -32,7 +32,7 @@ class MatchOverlayView: OverlayView {
             default:
                 overlayImageView.image = nil
             }
-            
+
         }
     }
 
