@@ -28,10 +28,7 @@ final class FSAlbumViewCell: UICollectionViewCell {
         super.awakeFromNib()
         self.isSelected = false
         
-        selectedLayer.borderColor = UIColor(red: 255 / 255, green: 94 / 255, blue: 89 / 255, alpha: 1).cgColor
-        
-        selectedLayer.borderWidth = 1.2
-        
+        selectedLayer.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5).cgColor
     }
     
     override var isSelected : Bool {

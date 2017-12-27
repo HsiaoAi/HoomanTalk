@@ -22,7 +22,7 @@ target 'iPetMatch' do
   pod 'SDWebImage/GIF'
   pod 'FLAnimatedImage', '~> 1.0'
   pod 'IQKeyboardManagerSwift'
-  pod 'Fusuma'
+    pod 'Fusuma'                                                                                                                
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'BetterSegmentedControl', '~> 0.9' 
   pod 'Firebase/Auth'

@@ -20,15 +20,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqt-JO-YIH" customClass="KolodaView" customModule="Koloda">
-                                <rect key="frame" x="19" y="70" width="337.5" height="547"/>
+                                <rect key="frame" x="19" y="70" width="338" height="547"/>
                                 <color key="backgroundColor" red="0.60911864039999997" green="0.34837087989999999" blue="0.71336013080000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9pT-LJ-nfR">
+                                <rect key="frame" x="290" y="32" width="44" height="30"/>
+                                <state key="normal" title="logput"/>
+                                <connections>
+                                    <action selector="logout:" destination="WZY-Af-c5M" eventType="touchUpInside" id="QxM-Bj-7ox"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="hqt-JO-YIH" firstAttribute="top" secondItem="9pT-LJ-nfR" secondAttribute="bottom" constant="8" symbolic="YES" id="2pa-E9-BFJ"/>
                             <constraint firstItem="BiB-k3-VxE" firstAttribute="bottom" secondItem="hqt-JO-YIH" secondAttribute="bottom" constant="50" id="Kdb-kF-uom"/>
                             <constraint firstItem="hqt-JO-YIH" firstAttribute="centerX" secondItem="M9r-TQ-gOb" secondAttribute="centerX" id="Qoe-UV-4lu"/>
                             <constraint firstItem="hqt-JO-YIH" firstAttribute="width" secondItem="M9r-TQ-gOb" secondAttribute="width" multiplier="0.9" id="bcM-7G-VDh"/>
+                            <constraint firstItem="9pT-LJ-nfR" firstAttribute="leading" secondItem="BiB-k3-VxE" secondAttribute="leading" constant="290" id="hHc-hd-On1"/>
                             <constraint firstItem="hqt-JO-YIH" firstAttribute="top" secondItem="BiB-k3-VxE" secondAttribute="top" constant="50" id="w9F-gh-90c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BiB-k3-VxE"/>

@@ -176,7 +176,7 @@ class LoginViewController: UIViewController {
 
                         SCLAlertView().showError(
                             NSLocalizedString("Error", comment: ""),
-                            subTitle: NSLocalizedString("Something wrong, plese log in again.", comment: "")
+                            subTitle: NSLocalizedString("Something wrong, plese log in again.\(errCode)", comment: "")
                         )
 
                         self.emailTextFied.text = ""
@@ -198,24 +198,32 @@ class LoginViewController: UIViewController {
 
                 QBRequest.logIn(withUserEmail: email, password: uid, successBlock: { (_, QBUser) in
 
-                    QBChat.instance.connect(with: QBUser, completion: { (error) in
+                    if QBChat.instance.isConnected == false {
 
-                        guard error == nil else {
+                        QBChat.instance.connect(with: QBUser, completion: { (error) in
 
+                            guard error == nil else {
+
+                                self.loginButton.isLoading = false
+
+                                SCLAlertView().showError(
+                                    NSLocalizedString("Error", comment: ""),
+                                    subTitle: NSLocalizedString("Something wrong, plese log in again", comment: "")
+                                )
+
+                                return
+
+                            }
                             self.loginButton.isLoading = false
 
-                            SCLAlertView().showError(
-                                NSLocalizedString("Error", comment: ""),
-                                subTitle: NSLocalizedString("Something wrong, plese log in again", comment: "")
-                            )
+                            AppDelegate.shared.enterPassByLandingView()
+                        })
 
-                            return
+                    }
 
-                        }
-                        self.loginButton.isLoading = false
+                    self.loginButton.isLoading = false
 
-                        AppDelegate.shared.enterPassByLandingView()
-                    })
+                    AppDelegate.shared.enterPassByLandingView()
 
                 }, errorBlock: { ( errorResponse ) in
 

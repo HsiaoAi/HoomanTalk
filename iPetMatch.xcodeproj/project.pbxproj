@@ -32,6 +32,8 @@
 		874D94351FE2B2B00009C9F3 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94341FE2B2B00009C9F3 /* CurrentUser.swift */; };
 		874D94391FE2CEAE0009C9F3 /* IncommingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94371FE2CEAE0009C9F3 /* IncommingCallViewController.swift */; };
 		874D943A1FE2CEAE0009C9F3 /* IncommingCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 874D94381FE2CEAE0009C9F3 /* IncommingCallViewController.xib */; };
+		8760A82D1FF4183700EE409E /* MatchOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A82C1FF4183700EE409E /* MatchOverlayView.swift */; };
+		8760A82F1FF4184800EE409E /* MatchOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8760A82E1FF4184800EE409E /* MatchOverlayView.xib */; };
 		878282EC1FF0115B006C9E20 /* UIColerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878282EB1FF0115B006C9E20 /* UIColerExtension.swift */; };
 		8797E6521FE10D5800C9002F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797E6511FE10D5800C9002F /* ViewController.swift */; };
 		8797E6571FE10D5800C9002F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6561FE10D5800C9002F /* Assets.xcassets */; };
@@ -107,6 +109,8 @@
 		874D94341FE2B2B00009C9F3 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		874D94371FE2CEAE0009C9F3 /* IncommingCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncommingCallViewController.swift; sourceTree = "<group>"; };
 		874D94381FE2CEAE0009C9F3 /* IncommingCallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncommingCallViewController.xib; sourceTree = "<group>"; };
+		8760A82C1FF4183700EE409E /* MatchOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchOverlayView.swift; sourceTree = "<group>"; };
+		8760A82E1FF4184800EE409E /* MatchOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchOverlayView.xib; sourceTree = "<group>"; };
 		878282EB1FF0115B006C9E20 /* UIColerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColerExtension.swift; sourceTree = "<group>"; };
 		8797E64C1FE10D5800C9002F /* iPetMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPetMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8797E6511FE10D5800C9002F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -236,6 +240,8 @@
 				871F8FF51FF353400020FF35 /* Match.storyboard */,
 				87495FC11FF3B19600FF2C06 /* MatchCardView.swift */,
 				87495FC31FF3B1A700FF2C06 /* MatchCardView.xib */,
+				8760A82E1FF4184800EE409E /* MatchOverlayView.xib */,
+				8760A82C1FF4183700EE409E /* MatchOverlayView.swift */,
 			);
 			path = Match;
 			sourceTree = "<group>";
@@ -500,6 +506,7 @@
 				872D9CD51FE65EFD0008C8AA /* MakeVideoCallViewController.xib in Resources */,
 				8797E6571FE10D5800C9002F /* Assets.xcassets in Resources */,
 				8703276F1FEB22DC009D2FF3 /* AudioCall.gif in Resources */,
+				8760A82F1FF4184800EE409E /* MatchOverlayView.xib in Resources */,
 				874D943A1FE2CEAE0009C9F3 /* IncommingCallViewController.xib in Resources */,
 				87C179AD1FEC0C7A00815A47 /* Landing.storyboard in Resources */,
 				87C179A91FEB588800815A47 /* VideoCall.gif in Resources */,
@@ -642,6 +649,7 @@
 				879FB1261FE2DCFD002332EF /* TabBarItem.swift in Sources */,
 				8727F72E1FE85E060027859D /* RingtonePlayer.swift in Sources */,
 				879FB12E1FE2E75A002332EF /* TableBarControllerExtensions.swift in Sources */,
+				8760A82D1FF4183700EE409E /* MatchOverlayView.swift in Sources */,
 				8797E6521FE10D5800C9002F /* ViewController.swift in Sources */,
 				871F8FD51FF28E8B0020FF35 /* KeyChainSchema.swift in Sources */,
 				87DDA8E31FE90CC500A917A8 /* UserSetting.swift in Sources */,

@@ -10,6 +10,31 @@ class MatchViewController: UIViewController {
 
     @IBOutlet weak var kolodaView: KolodaView!
 
+    @IBAction func logout(_ sender: Any) {
+
+        do {
+
+            try Auth.auth().signOut()
+
+        } catch {
+
+            SCLAlertView().showError(
+
+                NSLocalizedString("Error", comment: ""),
+                subTitle: NSLocalizedString("Something wrong, please try again", comment: "")
+            )
+
+            print(error)
+        }
+
+        QBRequest.logOut(successBlock: { _ in
+
+            AppDelegate.shared.enterLandingView()
+
+        }, errorBlock: nil)
+
+    }
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -28,17 +53,26 @@ extension MatchViewController: KolodaViewDelegate {
 
         kolodaView.delegate = self
 
-        self.modalTransitionStyle = .coverVertical
+        kolodaView.alphaValueSemiTransparent = 0.1
+
+        self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
 
     }
 
+   // @objc func
+
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
 
-        koloda.reloadData()
+        kolodaView.resetCurrentCardIndex()
 
     }
 
     // DidselectCardAt: 看詳細資料
+    
+    func kolodaShouldApplyAppearAnimation(_ koloda: KolodaView) -> Bool {
+        return true
+    }
+    
 }
 
 extension MatchViewController: KolodaViewDataSource {
@@ -51,7 +85,7 @@ extension MatchViewController: KolodaViewDataSource {
 
     func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
 
-        return .fast
+        return .default
 
     }
 
@@ -68,6 +102,11 @@ extension MatchViewController: KolodaViewDataSource {
 
         return matchCardView
 
+    }
+    
+    func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
+        
+        return Bundle.main.loadNibNamed("MatchOverlayView", owner: self, options: nil)?[0] as? OverlayView
     }
 
 }

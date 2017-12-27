@@ -412,9 +412,11 @@ class SignUpViewController: UIViewController {
 
                                                                 self.signUpButton.isLoading = false
 
-                                                                let tabBarController = TabBarController(itemTypes: [.chat])
+                                                                AppDelegate.shared.enterPassByLandingView()
 
-                                                                AppDelegate.shared.window?.rootViewController = tabBarController
+//                                                                let tabBarController = TabBarController(itemTypes: [.chat])
+//
+//                                                                AppDelegate.shared.window?.rootViewController = tabBarController
 
                                     })
 
@@ -527,8 +529,6 @@ extension SignUpViewController: FusumaDelegate {
         fusuma.cropHeightRatio = 1.0
 
         fusuma.allowMultipleSelection = false
-
-        fusuma.cameraPosition = .front
 
         userImageView.clipsToBounds = true
 
