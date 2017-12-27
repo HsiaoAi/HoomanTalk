@@ -78,6 +78,18 @@ class TabBarController: UITabBarController {
 
             return navigationController
 
+        case .match:
+
+            let langdingStoryboard = UIStoryboard(name: "Match", bundle: nil)
+
+            let matchViewController = langdingStoryboard.instantiateViewController(withIdentifier: "MatchViewController")
+
+            let navigationController = UINavigationController(rootViewController: matchViewController)
+
+            navigationController.tabBarItem = TabBarItem(itemType: itemType)
+
+            return navigationController
+
         }
 
     }

@@ -9,7 +9,8 @@ disabled_rules:
 excluded:
 
 - Pods/
-- Library/SweetAlert.swift 
+- Library/SweetAlert.swift
+- iPetMatch/CardView
 
 identifier_name:
     excluded:

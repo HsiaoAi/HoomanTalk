@@ -18,7 +18,6 @@ target 'iPetMatch' do
   pod 'MZTimerLabel', '~> 0.5'
   pod 'SwiftTimer'
   pod 'LGButton'
-  pod 'FaveButton', '~> 2.0.3'
   pod 'UIImageView+Extension', '~> 0.2'
   pod 'SDWebImage/GIF'
   pod 'FLAnimatedImage', '~> 1.0'
@@ -31,4 +30,6 @@ target 'iPetMatch' do
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
   pod 'KeychainAccess'
+  pod 'Koloda', '~> 4.3.1'
+    pod 'WCLShineButton'
 end

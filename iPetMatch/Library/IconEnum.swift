@@ -40,6 +40,8 @@ enum IconImage {
 
     case warning
 
+    case heart
+
 }
 
 extension IconImage {
@@ -77,6 +79,8 @@ extension IconImage {
         case .plus: return#imageLiteral(resourceName: "icon_plus")
 
         case .warning: return #imageLiteral(resourceName: "icon-warning")
+
+        case .heart: return #imageLiteral(resourceName: "icon-heart")
 
         }
 

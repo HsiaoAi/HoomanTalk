@@ -24,7 +24,6 @@
 @import AVFoundation;
 @import MZTimerLabel;
 @import SwiftTimer;
-@import FaveButton;
 @import UIImageView_Extension;
 @import LGButton;
 @import FLAnimatedImage;
@@ -38,6 +37,8 @@
 @import FirebaseAuth;
 @import FirebaseStorage;
 @import KeychainAccess;
+@import Koloda;
+@import WCLShineButton;
 
 
 #endif /* bridge_Header_h */

@@ -194,15 +194,19 @@ class LoginViewController: UIViewController {
 
                 let uid = loginUser.uid
 
+                QBRequest.logOut(successBlock: nil, errorBlock: nil)
+
                 QBRequest.logIn(withUserEmail: email, password: uid, successBlock: { (_, QBUser) in
 
                     QBChat.instance.connect(with: QBUser, completion: { (error) in
 
                         guard error == nil else {
 
+                            self.loginButton.isLoading = false
+
                             SCLAlertView().showError(
                                 NSLocalizedString("Error", comment: ""),
-                                subTitle: NSLocalizedString("Something wrong, plese log in again: \(error!)", comment: "")
+                                subTitle: NSLocalizedString("Something wrong, plese log in again", comment: "")
                             )
 
                             return

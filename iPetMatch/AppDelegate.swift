@@ -62,6 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         QBRTCClient.initializeRTC()
 
+        SVProgressHUD.setDefaultMaskType(.gradient)
+
         // loading settings
         //Settings.instance()
 
@@ -90,11 +92,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
                 return true }
 
+        showLoading()
         //enterLandingView()
 
         enterPassByLandingView()
 
-        QBRequest.logIn(withUserEmail: email, password: user.uid, successBlock: nil, errorBlock: nil)
+        QBRequest.logIn(withUserEmail: email, password: user.uid, successBlock: { (_, QBuser) in
+
+            QBChat.instance.connect(with: QBuser, completion: {
+
+                _ in SVProgressHUD.dismiss()
+
+            })
+
+            print("done")}, errorBlock: nil)
 
         return true
 
@@ -106,9 +117,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             if QBChat.instance.isConnected == false {
 
-                UIApplication.shared.beginIgnoringInteractionEvents()
+                showLoading()
 
-              SCLAlertView().showWait("", subTitle: "Loading", duration: 3, animationStyle: .bottomToTop)
+                UIApplication.shared.beginIgnoringInteractionEvents()
 
                 guard let user = Auth.auth().currentUser else {
 
@@ -122,7 +133,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
                 if let email = user.email {
 
-                    QBRequest.logIn(withUserEmail: email, password: user.uid, successBlock: { (_, _) in
+                    QBRequest.logIn(withUserEmail: email, password: user.uid, successBlock: { (_, QBuser) in
+
+                        QBChat.instance.connect(with: QBuser, completion: {
+
+                            _ in
+
+                            SVProgressHUD.dismiss()
+                        })
 
                         print("done")}, errorBlock: nil)
 
@@ -201,9 +219,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let chatListTableViewController = ChatListTableViewController()
 
-        let tabBarController = TabBarController(itemTypes: [.chat])
+        let tabBarController = TabBarController(itemTypes: [.match, .chat])
 
         self.window?.rootViewController = tabBarController
+
+    }
+
+    func showLoading() {
+
+        SVProgressHUD.show(withStatus: NSLocalizedString("Loading", comment: ""))
 
     }
 
