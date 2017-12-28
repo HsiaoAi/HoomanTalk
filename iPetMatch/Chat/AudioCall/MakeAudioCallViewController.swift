@@ -18,6 +18,8 @@ class MakeAudioCallViewController: UIViewController {
 
     @IBOutlet weak var microphoneButton: LGButton!
 
+    @IBOutlet weak var audioSignGifView: FLAnimatedImageView!
+
     @IBAction func declineButton(_ sender: Any) {
 
         let userInfo: [String: String] = ["key": "value"]
@@ -31,7 +33,13 @@ class MakeAudioCallViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        sendPushToOpponentsAboutNewCall()
+
+       // QBRTCAudioSession.instance().initialize()
+
         self.timerLabel.isHidden = true
+
+        setupAudioSignImageView()
 
         QBRTCClient.instance().add(self)
 
@@ -39,6 +47,17 @@ class MakeAudioCallViewController: UIViewController {
 
         self.navigationController?.isNavigationBarHidden = true
     }
+
+    func setupAudioSignImageView() {
+
+        let path = Bundle.main.path(forResource: "AudioCall.gif", ofType: nil)!
+
+        let url = URL(fileURLWithPath: path)
+
+        audioSignGifView.sd_setImage(with: url, placeholderImage: nil)
+
+    }
+
     @IBAction func switchSpeakerMode(_ sender: Any) {
 
         if CallManager.shared.audioManager.currentAudioDevice == .receiver {
@@ -104,6 +123,10 @@ extension MakeAudioCallViewController: QBRTCClientDelegate {
 
         timerLabel.isHidden = false
 
+        callingToLabel.textColor = UIColor.clear
+
+        audioSignGifView.stopAnimating()
+
         CallManager.shared.startCountingTime(timerLabel: timerLabel)
     }
 
@@ -127,8 +150,48 @@ extension MakeAudioCallViewController: QBRTCClientDelegate {
 
         RingtonePlayer.shared.stopPhoneRing()
 
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
 
+    }
+
+    func session(_ session: QBRTCBaseSession, didChange state: QBRTCSessionState) {
+
+        if state == .closed && CallManager.shared.session != nil {
+
+            //
+            print("==============Your friend disconnect this call")
+
+            self.dismiss(animated: false, completion: nil)
+
+        }
+
+    }
+
+}
+
+// Push notification
+
+extension MakeAudioCallViewController {
+
+    func sendPushToOpponentsAboutNewCall() {
+
+        var pushMessage = QBMPushMessage(payload: ["custom": "ilct23", "text": "Hello World !"])
+
+        var userID = "38863883"
+
+        QBRequest.sendPush(withText: "Audio Call From ilct23",
+
+                           toUsers: userID,
+
+                           successBlock: {(_, _) -> Void in
+
+                            print("+++Push Done")},
+
+                           errorBlock: {(_ error: QBError) -> Void in
+
+                            print("Push error \(error)")
+
+        })
     }
 
 }

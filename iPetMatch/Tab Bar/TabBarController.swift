@@ -40,6 +40,12 @@ class TabBarController: UITabBarController {
 
     }
 
+    override var prefersStatusBarHidden: Bool {
+
+        return false
+
+    }
+
     // MARK: Set up tab bar
 
     func setUpTabBar() {
@@ -48,7 +54,11 @@ class TabBarController: UITabBarController {
 
         tabBar.barStyle = .default
 
-        tabBar.isTranslucent = false
+        let frost = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+
+        frost.frame = self.tabBar.bounds
+
+        self.tabBar.insertSubview(frost, at: 0)
 
         tabBar.tintColor = UIColor.lightGray
 
@@ -63,6 +73,18 @@ class TabBarController: UITabBarController {
             let chatListTableViewController = ChatListTableViewController()
 
             let navigationController = UINavigationController(rootViewController: chatListTableViewController)
+
+            navigationController.tabBarItem = TabBarItem(itemType: itemType)
+
+            return navigationController
+
+        case .match:
+
+            let langdingStoryboard = UIStoryboard(name: "Match", bundle: nil)
+
+            let matchViewController = langdingStoryboard.instantiateViewController(withIdentifier: "MatchViewController")
+
+            let navigationController = UINavigationController(rootViewController: matchViewController)
 
             navigationController.tabBarItem = TabBarItem(itemType: itemType)
 

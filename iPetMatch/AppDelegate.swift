@@ -18,64 +18,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        // Try function
+        // Firebase
 
-        // Set rootViewController
-        let landingViewController = LandingViewControViewController()
+        FirebaseApp.configure()
 
-        let navigationController = UINavigationController(rootViewController: landingViewController)
+        // IQKeyboard
 
-        window = UIWindow(frame: UIScreen.main.bounds)
-
-        let vc = IncommingCallViewController()
-
-        //window?.rootViewController = vc
-
-        window?.rootViewController = navigationController
-
-        window?.makeKeyAndVisible()
+        IQKeyboardManager.sharedManager().enable = true
 
         // Quickblox API
 
-        guard let APIKeysPath = Bundle.main.path(forResource: "QuickBloxKey", ofType: "plist") else {
+        guard
 
-            print(QuickBloxAdminError.plistFileNotFound)
+            let APIKeysPath = Bundle.main.path(forResource: "QuickBloxKey", ofType: "plist"),
 
-            return false
+            let plistDic = NSDictionary(contentsOfFile: APIKeysPath) as? [String: Any],
+
+            let accountKey = plistDic[QuickBloxAdmin.accountKey] as? String,
+
+            let applicationID = plistDic[QuickBloxAdmin.applicationID] as? UInt,
+
+            let authKey = plistDic[QuickBloxAdmin.authKey] as? String,
+
+            let authSecret = plistDic[QuickBloxAdmin.authSecret] as? String else {
+
+                print("QuickBlox credentials fail")
+
+                return false
 
         }
-
-        guard let plistDic = NSDictionary(contentsOfFile: APIKeysPath) as? [String: Any] else {
-
-            print(QuickBloxAdminError.invalidRootDictionary)
-
-            return false
-
-        }
-
-        guard let accountKey = plistDic[QuickBloxAdmin.accountKey] as? String else {
-
-            print(QuickBloxAdminError.invalidAccountKey)
-
-            return false }
-
-        guard let applicationID = plistDic[QuickBloxAdmin.applicationID] as? UInt else {
-
-            print(QuickBloxAdminError.invalidApplicationID)
-
-            return false }
-
-        guard let authKey = plistDic[QuickBloxAdmin.authKey] as? String else {
-
-            print(QuickBloxAdminError.invalidAuthKey)
-
-            return false }
-
-        guard let authSecret = plistDic[QuickBloxAdmin.authSecret] as? String else {
-
-            print(QuickBloxAdminError.invalidAuthSecret)
-
-            return false }
 
         QBSettings.accountKey = accountKey
         QBSettings.applicationID = applicationID
@@ -89,58 +60,183 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         QBRTCConfig.setDialingTimeInterval(kQBDialingTimeInterval)
         QBRTCConfig.setStatsReportTimeInterval(1.0)
 
-        SVProgressHUD.setDefaultMaskType(.gradient)
         QBRTCClient.initializeRTC()
 
-        QBRTCAudioSession.instance().initialize()
+        SVProgressHUD.setDefaultMaskType(.gradient)
 
         // loading settings
         //Settings.instance()
 
+        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.alert, UIUserNotificationType.badge, UIUserNotificationType.sound]
+
+        let pushNotificationSettings = UIUserNotificationSettings(types: notificationTypes, categories: nil)
+
+        application.registerUserNotificationSettings(pushNotificationSettings)
+
+        application.registerForRemoteNotifications()
+
+        // Set rootViewController
+        window = UIWindow(frame: UIScreen.main.bounds)
+
+        window?.makeKeyAndVisible()
+
+        guard
+
+            let user = Auth.auth().currentUser,
+
+            let email = user.email
+
+            else {
+
+                enterLandingView()
+
+                return true
+
+        }
+        
+        UserManager.instance.getCurrentUserInfo(user)
+        
+        showLoading()
+
+        enterPassByLandingView()
+
+        QBRequest.logIn(withUserEmail: email, password: user.uid, successBlock: { (_, QBuser) in
+
+            QBChat.instance.connect(with: QBuser, completion: {
+
+                _ in SVProgressHUD.dismiss()
+
+            })
+
+            print("done")}, errorBlock: nil)
+
         return true
-    }
-
-    func applicationWillResignActive(_ application: UIApplication) {
 
     }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
 
         // 判斷是否登入
 
-        if QBChat.instance.isConnected {
+        func applicationWillEnterForeground(_ application: UIApplication) {
 
-            // Main Page
+            if QBChat.instance.isConnected == false {
 
-            let chatListTableViewController = ChatListTableViewController()
+                showLoading()
 
-            let navigationController = UINavigationController(rootViewController: chatListTableViewController)
+                UIApplication.shared.beginIgnoringInteractionEvents()
 
-            window?.rootViewController = navigationController
+                guard let user = Auth.auth().currentUser else {
 
-        } else {
+                    enterLandingView()
 
-            // Login Page
+                    SVProgressHUD.dismiss()
 
-            let landingViewController = LandingViewControViewController()
+                    UIApplication.shared.endIgnoringInteractionEvents()
 
-            let navigationController = UINavigationController(rootViewController: landingViewController)
+                    UserManager.instance.currentUser = nil
 
-            window?.rootViewController = navigationController
+                    return
+
+                }
+                
+                UserManager.instance.getCurrentUserInfo(user)
+
+                if let email = user.email {
+
+                    QBRequest.logIn(withUserEmail: email, password: user.uid, successBlock: { (_, QBuser) in
+
+                        QBChat.instance.connect(with: QBuser, completion: {
+
+                            _ in
+
+                            SVProgressHUD.dismiss()
+                        })
+
+                        print("done")}, errorBlock: nil)
+
+                }
+
+                enterPassByLandingView()
+
+            }
+        }
+
+    // MARK: - Remote Notifictions
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+
+        if notificationSettings.types != .none {
+
+            print("Did register user notificaiton settings")
+
+            application.registerForRemoteNotifications()
 
         }
 
     }
 
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+
+        let deviceIdentifier = UIDevice.current.identifierForVendor?.uuidString
+
+        let subscription = QBMSubscription()
+
+        subscription.notificationChannel = .APNS
+
+        subscription.deviceUDID = deviceIdentifier
+
+        subscription.deviceToken = deviceToken
+
+        QBRequest.createSubscription(subscription,
+
+                                     successBlock: {  (_ response: QBResponse,
+                                        _ subscription: [QBMSubscription]?) -> Void in
+
+                                        print("Push Subscroption Response: \(response)")
+
+                                         },
+
+                                     errorBlock: {(_ response: QBResponse) in
+
+                                        print("Push Subscroption Error: \(response)")
+
+        })
+
     }
 
-    func applicationWillTerminate(_ application: UIApplication) {
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+
+        print("Did receive remote notification", userInfo)
+
+    }
+
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+
+        print("Did receive remote notification", error.localizedDescription)
+
+    }
+
+    func enterLandingView() {
+
+        let langdingStoryboard = UIStoryboard(name: "Landing", bundle: nil)
+
+        let landingViewController = langdingStoryboard.instantiateViewController(withIdentifier: "LandingViewController")
+
+        window?.rootViewController = landingViewController
+
+    }
+
+    func enterPassByLandingView() {
+
+        let chatListTableViewController = ChatListTableViewController()
+
+        let tabBarController = TabBarController(itemTypes: [.match, .chat])
+
+        self.window?.rootViewController = tabBarController
+
+    }
+
+    func showLoading() {
+
+        SVProgressHUD.show(withStatus: NSLocalizedString("Loading", comment: ""))
 
     }
 

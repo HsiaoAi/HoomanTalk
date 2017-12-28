@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		693E86532A574593235778FC /* Pods_iPetMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA9B305BF331FC6F95E0DA0D /* Pods_iPetMatch.framework */; };
 		870327631FEADC4F009D2FF3 /* IconEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870327621FEADC4F009D2FF3 /* IconEnum.swift */; };
-		87126BE51FE18B09009D0188 /* LandingViewControViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126BE31FE18B09009D0188 /* LandingViewControViewController.swift */; };
-		87126BE61FE18B09009D0188 /* LandingViewControViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87126BE41FE18B09009D0188 /* LandingViewControViewController.xib */; };
+		8703276F1FEB22DC009D2FF3 /* AudioCall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8703276E1FEB22DA009D2FF3 /* AudioCall.gif */; };
+		87126BE51FE18B09009D0188 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126BE31FE18B09009D0188 /* LandingViewController.swift */; };
 		87126BFA1FE19B2A009D0188 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126BF91FE19B2A009D0188 /* Identifiable.swift */; };
 		87126C011FE2412F009D0188 /* CallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126C001FE2412F009D0188 /* CallManager.swift */; };
+		871F8FD51FF28E8B0020FF35 /* KeyChainSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871F8FD41FF28E8B0020FF35 /* KeyChainSchema.swift */; };
+		871F8FE01FF3443A0020FF35 /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871F8FDE1FF3443A0020FF35 /* MatchViewController.swift */; };
+		871F8FF61FF353400020FF35 /* Match.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 871F8FF51FF353400020FF35 /* Match.storyboard */; };
 		8727F72E1FE85E060027859D /* RingtonePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8727F72D1FE85E060027859D /* RingtonePlayer.swift */; };
 		8727F7351FE8B61E0027859D /* Mewo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8727F7321FE8B61D0027859D /* Mewo.mp3 */; };
 		872D9CD51FE65EFD0008C8AA /* MakeVideoCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 872D9CD11FE65CF80008C8AA /* MakeVideoCallViewController.xib */; };
@@ -20,14 +23,24 @@
 		872D9CD71FE65F110008C8AA /* LocalVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D9CD21FE65CF80008C8AA /* LocalVideoView.swift */; };
 		8735E6191FE56A4500C85442 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8735E6181FE56A4400C85442 /* AppDelegate.swift */; };
 		8735E6331FE58EF000C85442 /* QuickBloxKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8735E6321FE58EF000C85442 /* QuickBloxKey.plist */; };
+		873702451FF1E7B1007B5977 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 873702441FF1E7B1007B5977 /* GoogleService-Info.plist */; };
 		8737143A1FE40612009C440F /* MakeAudioCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873714381FE40612009C440F /* MakeAudioCallViewController.swift */; };
 		8737143B1FE40612009C440F /* MakeAudioCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 873714391FE40612009C440F /* MakeAudioCallViewController.xib */; };
+		87495FC21FF3B19600FF2C06 /* MatchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87495FC11FF3B19600FF2C06 /* MatchCardView.swift */; };
+		87495FC41FF3B1A700FF2C06 /* MatchCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87495FC31FF3B1A700FF2C06 /* MatchCardView.xib */; };
 		874D94321FE250F00009C9F3 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94311FE250EF0009C9F3 /* SweetAlert.swift */; };
-		874D94351FE2B2B00009C9F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94341FE2B2B00009C9F3 /* User.swift */; };
 		874D94391FE2CEAE0009C9F3 /* IncommingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94371FE2CEAE0009C9F3 /* IncommingCallViewController.swift */; };
 		874D943A1FE2CEAE0009C9F3 /* IncommingCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 874D94381FE2CEAE0009C9F3 /* IncommingCallViewController.xib */; };
+		8760A82D1FF4183700EE409E /* MatchOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A82C1FF4183700EE409E /* MatchOverlayView.swift */; };
+		8760A82F1FF4184800EE409E /* MatchOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8760A82E1FF4184800EE409E /* MatchOverlayView.xib */; };
+		8760A8321FF422A700EE409E /* MatchCardUsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A8311FF422A700EE409E /* MatchCardUsersManager.swift */; };
+		8760A8341FF4238900EE409E /* MatchCardUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A8331FF4238900EE409E /* MatchCardUser.swift */; };
+		8760A8361FF4249000EE409E /* FirebaseSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A8351FF4249000EE409E /* FirebaseSchema.swift */; };
+		8760A83A1FF43EBF00EE409E /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A8391FF43EBF00EE409E /* UIImageExtension.swift */; };
+		8760A83C1FF4BAD200EE409E /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A83B1FF4BAD200EE409E /* CurrentUser.swift */; };
+		87641DE11FF559AC00FDD08A /* LikedUsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87641DE01FF559AC00FDD08A /* LikedUsersManager.swift */; };
+		878282EC1FF0115B006C9E20 /* UIColerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878282EB1FF0115B006C9E20 /* UIColerExtension.swift */; };
 		8797E6521FE10D5800C9002F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797E6511FE10D5800C9002F /* ViewController.swift */; };
-		8797E6551FE10D5800C9002F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6531FE10D5800C9002F /* Main.storyboard */; };
 		8797E6571FE10D5800C9002F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6561FE10D5800C9002F /* Assets.xcassets */; };
 		8797E65A1FE10D5800C9002F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6581FE10D5800C9002F /* LaunchScreen.storyboard */; };
 		8797E6641FE113DA00C9002F /* QuickbloxWebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6631FE113D900C9002F /* QuickbloxWebRTC.framework */; };
@@ -45,6 +58,10 @@
 		879FB12A1FE2DF92002332EF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB1291FE2DF92002332EF /* TabBarController.swift */; };
 		879FB12C1FE2E2F4002332EF /* AppDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB12B1FE2E2F4002332EF /* AppDelegateExtensions.swift */; };
 		879FB12E1FE2E75A002332EF /* TableBarControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB12D1FE2E75A002332EF /* TableBarControllerExtensions.swift */; };
+		87C179A91FEB588800815A47 /* VideoCall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 87C179A81FEB588800815A47 /* VideoCall.gif */; };
+		87C179AB1FEBFDB200815A47 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C179AA1FEBFDB200815A47 /* UserManager.swift */; };
+		87C179AD1FEC0C7A00815A47 /* Landing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87C179AC1FEC0C7A00815A47 /* Landing.storyboard */; };
+		87C179AF1FEC0FD900815A47 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C179AE1FEC0FD900815A47 /* LoginViewController.swift */; };
 		87DDA8E11FE907A600A917A8 /* dog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 87DDA8E01FE907A600A917A8 /* dog.mp3 */; };
 		87DDA8E31FE90CC500A917A8 /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DDA8E21FE90CC500A917A8 /* UserSetting.swift */; };
 		87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */; };
@@ -52,6 +69,7 @@
 		87E8A92C1FE5932100726A2E /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E8A9291FE5932100726A2E /* ChatListTableViewController.swift */; };
 		87E8A92D1FE596BC00726A2E /* ChatListButtonsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E8A9281FE5932100726A2E /* ChatListButtonsTableViewCell.xib */; };
 		87E8A92E1FE596C200726A2E /* ChatUsersListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */; };
+		87F3B6711FEC1CD9000E5045 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -71,11 +89,14 @@
 
 /* Begin PBXFileReference section */
 		870327621FEADC4F009D2FF3 /* IconEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconEnum.swift; sourceTree = "<group>"; };
+		8703276E1FEB22DA009D2FF3 /* AudioCall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = AudioCall.gif; sourceTree = "<group>"; };
 		87126BE11FE183C5009D0188 /* bridge_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bridge_Header.h; path = iPetMatch/bridge_Header.h; sourceTree = SOURCE_ROOT; };
-		87126BE31FE18B09009D0188 /* LandingViewControViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewControViewController.swift; sourceTree = "<group>"; };
-		87126BE41FE18B09009D0188 /* LandingViewControViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LandingViewControViewController.xib; sourceTree = "<group>"; };
+		87126BE31FE18B09009D0188 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		87126BF91FE19B2A009D0188 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		87126C001FE2412F009D0188 /* CallManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallManager.swift; sourceTree = "<group>"; };
+		871F8FD41FF28E8B0020FF35 /* KeyChainSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainSchema.swift; sourceTree = "<group>"; };
+		871F8FDE1FF3443A0020FF35 /* MatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
+		871F8FF51FF353400020FF35 /* Match.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Match.storyboard; sourceTree = "<group>"; };
 		8727F72D1FE85E060027859D /* RingtonePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtonePlayer.swift; sourceTree = "<group>"; };
 		8727F7321FE8B61D0027859D /* Mewo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mewo.mp3; sourceTree = "<group>"; };
 		8727F7371FE8BF310027859D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -84,15 +105,25 @@
 		872D9CD31FE65CF80008C8AA /* MakeVideoCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeVideoCallViewController.swift; sourceTree = "<group>"; };
 		8735E6181FE56A4400C85442 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8735E6321FE58EF000C85442 /* QuickBloxKey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = QuickBloxKey.plist; sourceTree = "<group>"; };
+		873702441FF1E7B1007B5977 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		873714381FE40612009C440F /* MakeAudioCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAudioCallViewController.swift; sourceTree = "<group>"; };
 		873714391FE40612009C440F /* MakeAudioCallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MakeAudioCallViewController.xib; sourceTree = "<group>"; };
+		87495FC11FF3B19600FF2C06 /* MatchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardView.swift; sourceTree = "<group>"; };
+		87495FC31FF3B1A700FF2C06 /* MatchCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchCardView.xib; sourceTree = "<group>"; };
 		874D94311FE250EF0009C9F3 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
-		874D94341FE2B2B00009C9F3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		874D94371FE2CEAE0009C9F3 /* IncommingCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncommingCallViewController.swift; sourceTree = "<group>"; };
 		874D94381FE2CEAE0009C9F3 /* IncommingCallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncommingCallViewController.xib; sourceTree = "<group>"; };
+		8760A82C1FF4183700EE409E /* MatchOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchOverlayView.swift; sourceTree = "<group>"; };
+		8760A82E1FF4184800EE409E /* MatchOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchOverlayView.xib; sourceTree = "<group>"; };
+		8760A8311FF422A700EE409E /* MatchCardUsersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardUsersManager.swift; sourceTree = "<group>"; };
+		8760A8331FF4238900EE409E /* MatchCardUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardUser.swift; sourceTree = "<group>"; };
+		8760A8351FF4249000EE409E /* FirebaseSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSchema.swift; sourceTree = "<group>"; };
+		8760A8391FF43EBF00EE409E /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		8760A83B1FF4BAD200EE409E /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CurrentUser.swift; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Model/Users/CurrentUser.swift; sourceTree = "<absolute>"; };
+		87641DE01FF559AC00FDD08A /* LikedUsersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedUsersManager.swift; sourceTree = "<group>"; };
+		878282EB1FF0115B006C9E20 /* UIColerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColerExtension.swift; sourceTree = "<group>"; };
 		8797E64C1FE10D5800C9002F /* iPetMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPetMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8797E6511FE10D5800C9002F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8797E6541FE10D5800C9002F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8797E6561FE10D5800C9002F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8797E6591FE10D5800C9002F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8797E65B1FE10D5800C9002F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Info.plist; sourceTree = "<absolute>"; };
@@ -115,6 +146,10 @@
 		879FB1291FE2DF92002332EF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		879FB12B1FE2E2F4002332EF /* AppDelegateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensions.swift; sourceTree = "<group>"; };
 		879FB12D1FE2E75A002332EF /* TableBarControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableBarControllerExtensions.swift; sourceTree = "<group>"; };
+		87C179A81FEB588800815A47 /* VideoCall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = VideoCall.gif; sourceTree = "<group>"; };
+		87C179AA1FEBFDB200815A47 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		87C179AC1FEC0C7A00815A47 /* Landing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Landing.storyboard; sourceTree = "<group>"; };
+		87C179AE1FEC0FD900815A47 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		87DDA8E01FE907A600A917A8 /* dog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog.mp3; sourceTree = "<group>"; };
 		87DDA8E21FE90CC500A917A8 /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
 		87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersListTableViewCell.swift; sourceTree = "<group>"; };
@@ -122,6 +157,8 @@
 		87E8A9271FE5932100726A2E /* ChatListButtonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatListButtonsTableViewCell.swift; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/ChatList/ChatListButtonsTableViewCell.swift; sourceTree = "<absolute>"; };
 		87E8A9281FE5932100726A2E /* ChatListButtonsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ChatListButtonsTableViewCell.xib; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/ChatList/ChatListButtonsTableViewCell.xib; sourceTree = "<absolute>"; };
 		87E8A9291FE5932100726A2E /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
+		87EBEEB81FEEA28F00C62D89 /* iPetMatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iPetMatch.entitlements; sourceTree = "<group>"; };
+		87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		92EBCC34EEE82B0C93315475 /* Pods-iPetMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPetMatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch.release.xcconfig"; sourceTree = "<group>"; };
 		BA9B305BF331FC6F95E0DA0D /* Pods_iPetMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iPetMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD6D953E11E9C1079F2E543 /* Pods-iPetMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPetMatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch.debug.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +195,7 @@
 		87126BE01FE18351009D0188 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				8760A8391FF43EBF00EE409E /* UIImageExtension.swift */,
 			);
 			name = SupportingFiles;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/SupportingFiles;
@@ -166,8 +204,10 @@
 		87126BE21FE18A20009D0188 /* Landing */ = {
 			isa = PBXGroup;
 			children = (
-				87126BE31FE18B09009D0188 /* LandingViewControViewController.swift */,
-				87126BE41FE18B09009D0188 /* LandingViewControViewController.xib */,
+				87126BE31FE18B09009D0188 /* LandingViewController.swift */,
+				87C179AE1FEC0FD900815A47 /* LoginViewController.swift */,
+				87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */,
+				87C179AC1FEC0C7A00815A47 /* Landing.storyboard */,
 			);
 			path = Landing;
 			sourceTree = "<group>";
@@ -187,6 +227,7 @@
 		87126BF81FE19B10009D0188 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				878282EB1FF0115B006C9E20 /* UIColerExtension.swift */,
 				874D94311FE250EF0009C9F3 /* SweetAlert.swift */,
 				870327621FEADC4F009D2FF3 /* IconEnum.swift */,
 				87126BF91FE19B2A009D0188 /* Identifiable.swift */,
@@ -203,6 +244,19 @@
 			path = Call;
 			sourceTree = "<group>";
 		};
+		871F8FDD1FF344020020FF35 /* Match */ = {
+			isa = PBXGroup;
+			children = (
+				871F8FDE1FF3443A0020FF35 /* MatchViewController.swift */,
+				871F8FF51FF353400020FF35 /* Match.storyboard */,
+				87495FC11FF3B19600FF2C06 /* MatchCardView.swift */,
+				87495FC31FF3B1A700FF2C06 /* MatchCardView.xib */,
+				8760A82E1FF4184800EE409E /* MatchOverlayView.xib */,
+				8760A82C1FF4183700EE409E /* MatchOverlayView.swift */,
+			);
+			path = Match;
+			sourceTree = "<group>";
+		};
 		8727F72F1FE8B3B20027859D /* Sound */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +271,8 @@
 				8727F72D1FE85E060027859D /* RingtonePlayer.swift */,
 				87DDA8E01FE907A600A917A8 /* dog.mp3 */,
 				8727F7321FE8B61D0027859D /* Mewo.mp3 */,
+				87C179A81FEB588800815A47 /* VideoCall.gif */,
+				8703276E1FEB22DA009D2FF3 /* AudioCall.gif */,
 			);
 			path = Ringtones;
 			sourceTree = "<group>";
@@ -224,7 +280,9 @@
 		872D9CCF1FE65C180008C8AA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8760A8301FF4228900EE409E /* FirebaseFetch */,
 				87126C021FE2413D009D0188 /* Call */,
+				874D94331FE2B28E0009C9F3 /* Users */,
 			);
 			name = Model;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Model;
@@ -241,14 +299,18 @@
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/VideoCall;
 			sourceTree = "<absolute>";
 		};
-		874D94331FE2B28E0009C9F3 /* Profile */ = {
+		874D94331FE2B28E0009C9F3 /* Users */ = {
 			isa = PBXGroup;
 			children = (
-				874D94341FE2B2B00009C9F3 /* User.swift */,
 				87DDA8E21FE90CC500A917A8 /* UserSetting.swift */,
+				87C179AA1FEBFDB200815A47 /* UserManager.swift */,
+				871F8FD41FF28E8B0020FF35 /* KeyChainSchema.swift */,
+				8760A8331FF4238900EE409E /* MatchCardUser.swift */,
+				8760A83B1FF4BAD200EE409E /* CurrentUser.swift */,
 			);
-			path = Profile;
-			sourceTree = "<group>";
+			name = Users;
+			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Model/Users;
+			sourceTree = "<absolute>";
 		};
 		874D94361FE2CA3B0009C9F3 /* IncommingCall */ = {
 			isa = PBXGroup;
@@ -263,7 +325,6 @@
 			isa = PBXGroup;
 			children = (
 				8797E6581FE10D5800C9002F /* LaunchScreen.storyboard */,
-				8797E6531FE10D5800C9002F /* Main.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -277,6 +338,17 @@
 			);
 			path = "Tab Bar";
 			sourceTree = "<group>";
+		};
+		8760A8301FF4228900EE409E /* FirebaseFetch */ = {
+			isa = PBXGroup;
+			children = (
+				8760A8311FF422A700EE409E /* MatchCardUsersManager.swift */,
+				8760A8351FF4249000EE409E /* FirebaseSchema.swift */,
+				87641DE01FF559AC00FDD08A /* LikedUsersManager.swift */,
+			);
+			name = FirebaseFetch;
+			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Model/FirebaseFetch;
+			sourceTree = "<absolute>";
 		};
 		8797E6431FE10D5700C9002F = {
 			isa = PBXGroup;
@@ -299,14 +371,15 @@
 		8797E64E1FE10D5800C9002F /* iPetMatch */ = {
 			isa = PBXGroup;
 			children = (
+				87EBEEB81FEEA28F00C62D89 /* iPetMatch.entitlements */,
 				8735E6181FE56A4400C85442 /* AppDelegate.swift */,
 				879FB12B1FE2E2F4002332EF /* AppDelegateExtensions.swift */,
 				8727F72F1FE8B3B20027859D /* Sound */,
 				872D9CCF1FE65C180008C8AA /* Model */,
 				874D943C1FE2D1660009C9F3 /* Tab Bar */,
 				87126BE21FE18A20009D0188 /* Landing */,
+				871F8FDD1FF344020020FF35 /* Match */,
 				87126BEB1FE18CC7009D0188 /* Chat */,
-				874D94331FE2B28E0009C9F3 /* Profile */,
 				87126BF81FE19B10009D0188 /* Library */,
 				8797E67B1FE116C200C9002F /* Key */,
 				874D943B1FE2D0A80009C9F3 /* StoryBoard */,
@@ -323,6 +396,7 @@
 		8797E67B1FE116C200C9002F /* Key */ = {
 			isa = PBXGroup;
 			children = (
+				873702441FF1E7B1007B5977 /* GoogleService-Info.plist */,
 				8735E6321FE58EF000C85442 /* QuickBloxKey.plist */,
 			);
 			path = Key;
@@ -410,7 +484,15 @@
 				TargetAttributes = {
 					8797E64B1FE10D5800C9002F = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -437,17 +519,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87126BE61FE18B09009D0188 /* LandingViewControViewController.xib in Resources */,
 				8735E6331FE58EF000C85442 /* QuickBloxKey.plist in Resources */,
 				87E8A92E1FE596C200726A2E /* ChatUsersListTableViewCell.xib in Resources */,
+				873702451FF1E7B1007B5977 /* GoogleService-Info.plist in Resources */,
 				8737143B1FE40612009C440F /* MakeAudioCallViewController.xib in Resources */,
+				87495FC41FF3B1A700FF2C06 /* MatchCardView.xib in Resources */,
+				871F8FF61FF353400020FF35 /* Match.storyboard in Resources */,
 				87E8A92D1FE596BC00726A2E /* ChatListButtonsTableViewCell.xib in Resources */,
 				8797E65A1FE10D5800C9002F /* LaunchScreen.storyboard in Resources */,
 				8727F7351FE8B61E0027859D /* Mewo.mp3 in Resources */,
 				872D9CD51FE65EFD0008C8AA /* MakeVideoCallViewController.xib in Resources */,
 				8797E6571FE10D5800C9002F /* Assets.xcassets in Resources */,
+				8703276F1FEB22DC009D2FF3 /* AudioCall.gif in Resources */,
+				8760A82F1FF4184800EE409E /* MatchOverlayView.xib in Resources */,
 				874D943A1FE2CEAE0009C9F3 /* IncommingCallViewController.xib in Resources */,
-				8797E6551FE10D5800C9002F /* Main.storyboard in Resources */,
+				87C179AD1FEC0C7A00815A47 /* Landing.storyboard in Resources */,
+				87C179A91FEB588800815A47 /* VideoCall.gif in Resources */,
 				87DDA8E11FE907A600A917A8 /* dog.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,29 +567,53 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FaveButton/FaveButton.framework",
-				"${BUILT_PRODUCTS_DIR}/IHKeyboardAvoiding/IHKeyboardAvoiding.framework",
+				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Fusuma/Fusuma.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
 				"${BUILT_PRODUCTS_DIR}/LGButton/LGButton.framework",
 				"${BUILT_PRODUCTS_DIR}/MZTimerLabel/MZTimerLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${PODS_ROOT}/QuickBlox/Quickblox.framework",
 				"${PODS_ROOT}/Quickblox-WebRTC/QuickbloxWebRTC.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftTimer/SwiftTimer.framework",
 				"${BUILT_PRODUCTS_DIR}/UIImageView+Extension/UIImageView_Extension.framework",
+				"${BUILT_PRODUCTS_DIR}/WCLShineButton/WCLShineButton.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FaveButton.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IHKeyboardAvoiding.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BetterSegmentedControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fusuma.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MZTimerLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quickblox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickbloxWebRTC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTimer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageView_Extension.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WCLShineButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -544,43 +655,48 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87126BE51FE18B09009D0188 /* LandingViewControViewController.swift in Sources */,
+				871F8FE01FF3443A0020FF35 /* MatchViewController.swift in Sources */,
+				8760A8341FF4238900EE409E /* MatchCardUser.swift in Sources */,
+				87126BE51FE18B09009D0188 /* LandingViewController.swift in Sources */,
 				874D94321FE250F00009C9F3 /* SweetAlert.swift in Sources */,
 				879FB12C1FE2E2F4002332EF /* AppDelegateExtensions.swift in Sources */,
+				8760A83C1FF4BAD200EE409E /* CurrentUser.swift in Sources */,
 				87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */,
 				8797E67F1FE1174100C9002F /* QuickbloxAdmin.swift in Sources */,
 				87E8A92C1FE5932100726A2E /* ChatListTableViewController.swift in Sources */,
+				87C179AB1FEBFDB200815A47 /* UserManager.swift in Sources */,
 				8737143A1FE40612009C440F /* MakeAudioCallViewController.swift in Sources */,
 				879FB12A1FE2DF92002332EF /* TabBarController.swift in Sources */,
 				87126BFA1FE19B2A009D0188 /* Identifiable.swift in Sources */,
 				87E8A92B1FE5932100726A2E /* ChatListButtonsTableViewCell.swift in Sources */,
 				87126C011FE2412F009D0188 /* CallManager.swift in Sources */,
+				87641DE11FF559AC00FDD08A /* LikedUsersManager.swift in Sources */,
 				874D94391FE2CEAE0009C9F3 /* IncommingCallViewController.swift in Sources */,
+				87C179AF1FEC0FD900815A47 /* LoginViewController.swift in Sources */,
 				872D9CD71FE65F110008C8AA /* LocalVideoView.swift in Sources */,
 				879FB1261FE2DCFD002332EF /* TabBarItem.swift in Sources */,
 				8727F72E1FE85E060027859D /* RingtonePlayer.swift in Sources */,
+				8760A8321FF422A700EE409E /* MatchCardUsersManager.swift in Sources */,
 				879FB12E1FE2E75A002332EF /* TableBarControllerExtensions.swift in Sources */,
+				8760A82D1FF4183700EE409E /* MatchOverlayView.swift in Sources */,
 				8797E6521FE10D5800C9002F /* ViewController.swift in Sources */,
+				8760A83A1FF43EBF00EE409E /* UIImageExtension.swift in Sources */,
+				871F8FD51FF28E8B0020FF35 /* KeyChainSchema.swift in Sources */,
 				87DDA8E31FE90CC500A917A8 /* UserSetting.swift in Sources */,
 				872D9CD61FE65F030008C8AA /* MakeVideoCallViewController.swift in Sources */,
 				8735E6191FE56A4500C85442 /* AppDelegate.swift in Sources */,
+				8760A8361FF4249000EE409E /* FirebaseSchema.swift in Sources */,
 				879FB1281FE2DE54002332EF /* TabBarItemType.swift in Sources */,
 				870327631FEADC4F009D2FF3 /* IconEnum.swift in Sources */,
-				874D94351FE2B2B00009C9F3 /* User.swift in Sources */,
+				87F3B6711FEC1CD9000E5045 /* SignUpViewController.swift in Sources */,
+				87495FC21FF3B19600FF2C06 /* MatchCardView.swift in Sources */,
+				878282EC1FF0115B006C9E20 /* UIColerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8797E6531FE10D5800C9002F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8797E6541FE10D5800C9002F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8797E6581FE10D5800C9002F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -704,8 +820,10 @@
 			baseConfigurationReference = BFD6D953E11E9C1079F2E543 /* Pods-iPetMatch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9HJSE6P56D;
+				CODE_SIGN_ENTITLEMENTS = iPetMatch/iPetMatch.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DTTYHBEAZE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -713,8 +831,10 @@
 				INFOPLIST_FILE = iPetMatch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.bcd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.iPetMatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e903e18d-a2b1-419c-b578-5f71ecbbdbd6";
+				PROVISIONING_PROFILE_SPECIFIER = "Notification iPetMatch Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = iPetMatch/bridge_Header.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -726,8 +846,10 @@
 			baseConfigurationReference = 92EBCC34EEE82B0C93315475 /* Pods-iPetMatch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9HJSE6P56D;
+				CODE_SIGN_ENTITLEMENTS = iPetMatch/iPetMatch.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DTTYHBEAZE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -735,8 +857,10 @@
 				INFOPLIST_FILE = iPetMatch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.bcd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.iPetMatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e903e18d-a2b1-419c-b578-5f71ecbbdbd6";
+				PROVISIONING_PROFILE_SPECIFIER = "Notification iPetMatch Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = iPetMatch/bridge_Header.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

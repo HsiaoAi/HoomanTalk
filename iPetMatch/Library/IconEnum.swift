@@ -24,6 +24,24 @@ enum IconImage {
 
     case microphoneOff
 
+    case cameraOff
+
+    case cameraOn
+
+    case dogPerson
+
+    case dogPersonSelected
+
+    case catPerson
+
+    case catPersonSelected
+
+    case plus
+
+    case warning
+
+    case heart
+
 }
 
 extension IconImage {
@@ -45,6 +63,24 @@ extension IconImage {
         case .microphoneOn: return #imageLiteral(resourceName: "icon-microphoneOn")
 
         case .microphoneOff: return #imageLiteral(resourceName: "icon-microphoneOff")
+
+        case .cameraOn: return #imageLiteral(resourceName: "icon-cameraOn")
+
+        case .cameraOff: return #imageLiteral(resourceName: "icon-cameraOff")
+
+        case .dogPerson: return #imageLiteral(resourceName: "dogPerson")
+
+        case .dogPersonSelected: return #imageLiteral(resourceName: "dogPersonSelected")
+
+        case .catPerson: return #imageLiteral(resourceName: "catPerson")
+
+        case .catPersonSelected: return #imageLiteral(resourceName: "catPersionSelected")
+
+        case .plus: return#imageLiteral(resourceName: "icon_plus")
+
+        case .warning: return #imageLiteral(resourceName: "icon-warning")
+
+        case .heart: return #imageLiteral(resourceName: "icon-heart")
 
         }
 

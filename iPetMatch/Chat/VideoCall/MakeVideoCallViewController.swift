@@ -14,7 +14,7 @@ class MakeVideoCallViewController: UIViewController {
 
     @IBOutlet weak var localVideoView: LocalVideoView!
 
-    @IBOutlet weak var makeCallResponseView: UIView!
+    @IBOutlet weak var controlPanelStackView: UIStackView!
 
     @IBOutlet weak var opponentVideoView: QBRTCRemoteVideoView!
 
@@ -28,6 +28,71 @@ class MakeVideoCallViewController: UIViewController {
 
     }
 
+    @IBOutlet weak var cameraPositionButton: LGButton!
+
+    @IBAction func switchCameraPoistion(_ sender: Any) {
+
+        if let position = self.videoCapture?.position {
+
+            switch position {
+
+            case .front:
+
+                self.videoCapture?.position = .back
+
+            case .back:
+
+                self.videoCapture?.position = .front
+
+            case .unspecified:
+
+                self.videoCapture?.position = .front
+
+            }
+        }
+
+    }
+
+    @IBOutlet weak var cameraButton: LGButton!
+
+    @IBAction func switchCameraEnabled(_ sender: Any) {
+
+        if CallManager.shared.session!.localMediaStream.videoTrack.isEnabled {
+
+            CallManager.shared.session!.localMediaStream.videoTrack.isEnabled = false
+
+            cameraButton.rightImageSrc = IconImage.cameraOff.image
+
+        } else {
+
+            CallManager.shared.session!.localMediaStream.videoTrack.isEnabled = true
+
+            cameraButton.rightImageSrc = IconImage.cameraOn.image
+
+        }
+
+    }
+
+    @IBOutlet weak var microphoneButton: LGButton!
+
+    @IBAction func switchMicrophoneMode(_ sender: Any) {
+
+        if CallManager.shared.session!.localMediaStream.audioTrack.isEnabled {
+
+            CallManager.shared.session!.localMediaStream.audioTrack.isEnabled = false
+
+            microphoneButton.rightImageSrc = IconImage.microphoneOff.image
+
+        } else {
+
+            CallManager.shared.session!.localMediaStream.audioTrack.isEnabled = true
+
+            microphoneButton.rightImageSrc = IconImage.microphoneOn.image
+
+        }
+
+    }
+
 }
 
 // View life cycle
@@ -37,6 +102,8 @@ extension MakeVideoCallViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
+
+        //QBRTCAudioSession.instance().initialize()
 
         opponentVideoView.videoGravity = "AVLayerVideoGravityResizeAspect"
 
@@ -61,6 +128,8 @@ extension MakeVideoCallViewController {
             self.prepareLocalVideoTrack()
 
             CallManager.shared.session?.startCall(nil)
+
+            sendPushToOpponentsAboutNewCall()
 
             RingtonePlayer.shared.startPhoneRing(callRole: .host)
 
@@ -124,11 +193,7 @@ extension MakeVideoCallViewController: QBRTCClientDelegate {
 
     func sessionDidClose(_ session: QBRTCSession) {
 
-        CallManager.shared.session = nil
-
         self.videoCapture?.stopSession()
-
-        self.dismiss(animated: false, completion: nil)
 
     }
 
@@ -170,6 +235,33 @@ extension MakeVideoCallViewController: UIDropInteractionDelegate {
 
         sender.setTranslation(CGPoint.zero, in: self.view)
 
+    }
+
+}
+
+// Push notification
+
+extension MakeVideoCallViewController {
+
+    func sendPushToOpponentsAboutNewCall() {
+
+        var pushMessage = QBMPushMessage(payload: ["custom": "ilct23", "text": "Hello World !"])
+
+        var userID = "38863883"
+
+        QBRequest.sendPush(withText: "Video Call From ilct23",
+
+                           toUsers: userID,
+
+                           successBlock: {(_, _) -> Void in
+
+                            print("+++Push Done")},
+
+                           errorBlock: {(_ error: QBError) -> Void in
+
+                            print("Push error \(error)")
+
+        })
     }
 
 }

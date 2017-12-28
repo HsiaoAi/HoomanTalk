@@ -17,6 +17,7 @@ class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
     }
 
     // MARK: Property
+    var friendList = ["Hsiao Ai", "Sugar"]
 
     private var callToUserID: UInt?
 
@@ -25,6 +26,10 @@ class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
     override func viewDidLoad() {
 
         super.viewDidLoad()
+
+        SCLAlertView().dismiss(animated: true, completion: nil)
+
+        QBRTCAudioSession.instance().initialize
 
         self.navigationItem.hidesBackButton = false
 
@@ -72,7 +77,7 @@ class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
         switch components[section] {
 
         case .user:
-            return 10
+            return friendList.count
 
         case .buttons:
             return 1
@@ -92,7 +97,7 @@ class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
 
         case .user:
 
-            return 20.0
+            return 40.0
 
         case .buttons:
 
@@ -117,9 +122,11 @@ class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
 
                 return UITableViewCell() }
 
+            let friend = friendList[indexPath.row]
+
             cell.userNumberLabel.text = "\(indexPath.row)"
 
-            cell.userNameLabel.text = "UserID"
+            cell.userNameLabel.text = friend
 
             return cell
 
@@ -128,8 +135,6 @@ class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
             let identifier = ChatListButtonsTableViewCell.identifier
 
             guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? ChatListButtonsTableViewCell else { return UITableViewCell() }
-
-            cell.audioButton.backgroundColor = UIColor.blue
 
             self.callToUserID = 38863883
 
