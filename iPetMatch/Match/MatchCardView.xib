@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -33,11 +33,11 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HsaioAi" translatesAutoresizingMaskIntoConstraints="NO" id="RU8-fl-Buz">
-                    <rect key="frame" x="5" y="5" width="328" height="465.5"/>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userImage" translatesAutoresizingMaskIntoConstraints="NO" id="RU8-fl-Buz">
+                    <rect key="frame" x="5" y="5" width="328" height="465.66666666666669"/>
                 </imageView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gDK-ES-eXL" userLabel="petCollectionView">
-                    <rect key="frame" x="5" y="372" width="205" height="98.5"/>
+                    <rect key="frame" x="5" y="372" width="205" height="98.666666666666686"/>
                     <color key="backgroundColor" red="0.98600811430000002" green="0.37649227769999999" blue="0.36726083949999999" alpha="0.90341395550000003" colorSpace="custom" customColorSpace="sRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SkF-Fm-L2o">
                         <size key="itemSize" width="50" height="50"/>
@@ -47,10 +47,10 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8G-AP-kUY">
-                    <rect key="frame" x="5" y="470.5" width="328" height="74.5"/>
+                    <rect key="frame" x="5" y="470.66666666666669" width="328" height="74.333333333333314"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emily, 23" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iV5-LA-waT">
-                            <rect key="frame" x="40" y="26" width="78.5" height="24"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explored All Cards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iV5-LA-waT">
+                            <rect key="frame" x="40" y="26" width="159" height="24"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                             <color key="textColor" red="0.1641129851" green="0.50144350530000004" blue="0.72513860460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -63,7 +63,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HCs-Ez-Ywq" customClass="LGButton" customModule="LGButton">
-                    <rect key="frame" x="223.5" y="422.5" width="94.5" height="94.5"/>
+                    <rect key="frame" x="223.66666666666666" y="422.66666666666669" width="94.333333333333343" height="94.333333333333314"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="HCs-Ez-Ywq" secondAttribute="height" multiplier="1:1" id="Ctz-99-mvy"/>
@@ -127,6 +127,7 @@
             <connections>
                 <outlet property="infoView" destination="P8G-AP-kUY" id="AOn-M0-w9b"/>
                 <outlet property="likeButton" destination="uWU-1R-BeX" id="DmJ-Jl-OwJ"/>
+                <outlet property="likeButtonBorderView" destination="HCs-Ez-Ywq" id="dn5-1k-vCB"/>
                 <outlet property="matchCardView" destination="WEw-0W-0sw" id="Uum-Hj-dU3"/>
                 <outlet property="petCollectionView" destination="gDK-ES-eXL" id="utu-v1-gnr"/>
                 <outlet property="userImageView" destination="RU8-fl-Buz" id="jhR-gS-4Cz"/>
@@ -136,6 +137,6 @@
         </view>
     </objects>
     <resources>
-        <image name="HsaioAi" width="194" height="210"/>
+        <image name="userImage" width="95" height="76"/>
     </resources>
 </document>

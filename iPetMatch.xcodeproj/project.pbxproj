@@ -280,6 +280,7 @@
 			children = (
 				8760A8301FF4228900EE409E /* FirebaseFetch */,
 				87126C021FE2413D009D0188 /* Call */,
+				874D94331FE2B28E0009C9F3 /* Users */,
 			);
 			name = Model;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Model;
@@ -296,7 +297,7 @@
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/VideoCall;
 			sourceTree = "<absolute>";
 		};
-		874D94331FE2B28E0009C9F3 /* Profile */ = {
+		874D94331FE2B28E0009C9F3 /* Users */ = {
 			isa = PBXGroup;
 			children = (
 				874D94341FE2B2B00009C9F3 /* CurrentUser.swift */,
@@ -305,8 +306,9 @@
 				871F8FD41FF28E8B0020FF35 /* KeyChainSchema.swift */,
 				8760A8331FF4238900EE409E /* MatchUser.swift */,
 			);
-			path = Profile;
-			sourceTree = "<group>";
+			name = Users;
+			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Model/Users;
+			sourceTree = "<absolute>";
 		};
 		874D94361FE2CA3B0009C9F3 /* IncommingCall */ = {
 			isa = PBXGroup;
@@ -375,7 +377,6 @@
 				87126BE21FE18A20009D0188 /* Landing */,
 				871F8FDD1FF344020020FF35 /* Match */,
 				87126BEB1FE18CC7009D0188 /* Chat */,
-				874D94331FE2B28E0009C9F3 /* Profile */,
 				87126BF81FE19B10009D0188 /* Library */,
 				8797E67B1FE116C200C9002F /* Key */,
 				874D943B1FE2D0A80009C9F3 /* StoryBoard */,
@@ -569,7 +570,6 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
 				"${BUILT_PRODUCTS_DIR}/LGButton/LGButton.framework",
 				"${BUILT_PRODUCTS_DIR}/MZTimerLabel/MZTimerLabel.framework",
@@ -595,7 +595,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MZTimerLabel.framework",

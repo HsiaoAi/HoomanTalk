@@ -82,6 +82,8 @@ extension MatchViewController: FetchUsersManagerProtocol {
 
         self.matchUsers = fetchUsers
 
+        print(self.matchUsers)
+
         FetchUsersManager.instance.matchUsers = [MatchUser]()
 
         DispatchQueue.main.async {
@@ -112,44 +114,24 @@ extension MatchViewController: KolodaViewDelegate {
 
     }
 
-   // @objc func
-
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
 
-        let appearance = SCLAlertView.SCLAppearance(
-            showCloseButton: false
+        SCLAlertView().showInfo(
+            NSLocalizedString("Run out of cards", comment: ""),
+            subTitle: NSLocalizedString("Tip: Change setting to explore more cards", comment: "")
         )
 
-        let alertView = SCLAlertView(appearance: appearance)
-
-        alertView.addButton(NSLocalizedString("Yes", comment: "")) {
-
-            self.kolodaView.resetCurrentCardIndex()
-
-        }
-
-        alertView.addButton(NSLocalizedString("No", comment: "")) {
-
-            self.kolodaView.isHidden = true
-
-            self.kolodaView.resetCurrentCardIndex()
-
-            SCLAlertView().showInfo(
-                NSLocalizedString("Information", comment: ""),
-                subTitle: NSLocalizedString("Tip: Change setting to explore more cards", comment: "")
-            )
-
-            return
-
-        }
-
-        alertView.showInfo(NSLocalizedString("Information", comment: ""),
-
-                             subTitle: NSLocalizedString("Run out of cards, want to reload cards?", comment: ""))
+        self.kolodaView.resetCurrentCardIndex()
 
     }
 
+    // ToDo: version 1.1
     // DidselectCardAt: 看詳細資料
+    func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
+
+        print("here")
+
+    }
 
     func kolodaShouldApplyAppearAnimation(_ koloda: KolodaView) -> Bool {
         return true
@@ -182,7 +164,11 @@ extension MatchViewController: KolodaViewDataSource {
 
             let matchUser = self.matchUsers[index]
 
+            matchCardView.likeButton.addTarget(self, action: #selector(tagLikeButton(_:)), for: .touchUpInside)
+
             matchCardView.userInfo.text = "\(matchUser.name), \(todayYear - matchUser.yearOfBirth)"
+
+            matchCardView.userImageView.contentMode = .scaleToFill
 
             let imageAdress = matchUser.imageURL
             if let imageURL = URL(string: imageAdress!) {
@@ -195,13 +181,39 @@ extension MatchViewController: KolodaViewDataSource {
 
         }
 
-        return matchCardView
+            return matchCardView
 
     }
 
-    func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
+    // ToDo: version 1.1
 
-        return Bundle.main.loadNibNamed("MatchOverlayView", owner: self, options: nil)?[0] as? OverlayView
+//    func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
+//
+//        return Bundle.main.loadNibNamed("MatchOverlayView", owner: self, options: nil)?[0] as? OverlayView
+//    }
+
+}
+
+// Selector functions
+extension  MatchViewController {
+
+    @objc func tagLikeButton(_ sender: WCLShineButton) {
+
+        let index = self.kolodaView.currentCardIndex
+
+        if let matchCardView = sender.superview as? MatchCardView {
+
+            matchCardView.likeButtonBorderView.layer.borderColor = UIColor.Custom.lightishRed.cgColor
+            matchCardView.likeButtonBorderView.layer.borderWidth = 2
+
+        }
+
+        Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false, block: { _ in
+
+            self.kolodaView.swipe(.right)
+
+        })
+
     }
 
 }

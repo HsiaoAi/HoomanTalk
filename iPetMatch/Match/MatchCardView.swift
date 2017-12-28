@@ -22,6 +22,8 @@ class MatchCardView: UIView {
 
     @IBOutlet weak var likeButton: WCLShineButton!
 
+    @IBOutlet weak var likeButtonBorderView: LGButton!
+
     override init(frame: CGRect) {
 
         super.init(frame: frame)

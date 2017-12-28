@@ -343,9 +343,9 @@ class SignUpViewController: UIViewController {
 
             let metadata = StorageMetadata()
 
-            metadata.contentType = "image/png"
+            metadata.contentType = "image/jpeg"
 
-            storageRef.putData(UIImagePNGRepresentation(userImage)!, metadata: metadata, completion: { (data, error) in
+            storageRef.putData(UIImageJPEGRepresentation(userImage, 0.5)!, metadata: metadata, completion: { (data, error) in
 
                 if error != nil {
 
@@ -372,7 +372,7 @@ class SignUpViewController: UIViewController {
 
                                     let callingID = QBuser.id
 
-                                    UserManager.instance.currentUser = CurrentUser(loginEmail: email, name: name, petPersonType: self.petPersonType, gender: self.gender, yearOfBirth: yearOfBirth, imageURL: self.imageURLString, callingID: callingID, password: password)
+                                    UserManager.instance.currentUser = CurrentUser(loginEmail: email, name: name, petPersonType: self.petPersonType, gender: self.gender, yearOfBirth: yearOfBirth, imageURL: self.imageURLString, callingID: callingID)
 
                                     let userRef = Database.database().reference().child("users").child(firebaseUid)
 
@@ -413,10 +413,6 @@ class SignUpViewController: UIViewController {
                                                                 self.signUpButton.isLoading = false
 
                                                                 AppDelegate.shared.enterPassByLandingView()
-
-//                                                                let tabBarController = TabBarController(itemTypes: [.chat])
-//
-//                                                                AppDelegate.shared.window?.rootViewController = tabBarController
 
                                     })
 

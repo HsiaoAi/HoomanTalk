@@ -40,8 +40,6 @@ struct CurrentUser {
 
     let callingID: UInt
 
-    let password: String
-
 }
 
 extension CurrentUser {

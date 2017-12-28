@@ -26,11 +26,9 @@ class FetchUsersManager {
 
     func query() {
 
-        var isFoundMyself = false
-
         let matchUsersRef = Database.database().reference().child(FirebaseSchema.users.rawValue)
 
-        matchUsersRef.queryOrdered(byChild: MatchUser.Schema.petPersonType).observe(.value) { (snapShot) in
+        matchUsersRef.queryOrdered(byChild: MatchUser.Schema.petPersonType).observe(.value) {[weak self] (snapShot) in
 
             guard let data = snapShot.value as? [String: AnyObject] else {
 
@@ -64,13 +62,16 @@ class FetchUsersManager {
 
                     let matchUser = MatchUser(name: name, petPersonType: PetPersonType(rawValue: petPersionType)!, gender: Gender(rawValue: gender)!, yearOfBirth: yearOfBirth, imageURL: imageURL, callingID: UInt(callingID))
 
-                    self.matchUsers.append(matchUser)
+                    self?.matchUsers.append(matchUser)
 
                 }
 
             }
+            if let matchUsers = self?.matchUsers {
 
-            self.delegate?.didFetchUsers(self.matchUsers)
+                self?.delegate?.didFetchUsers(matchUsers)
+
+            }
 
         }
 
