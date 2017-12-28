@@ -10,7 +10,9 @@ class MatchViewController: UIViewController {
 
     @IBOutlet weak var kolodaView: KolodaView!
 
-    var matchUsers = [MatchUser]()
+    var matchCardUsers = [MatchCardUser]()
+    
+    var likedMeUsers = [MatchCardUser]()
 
     var todayYear: Int {
 
@@ -53,17 +55,17 @@ class MatchViewController: UIViewController {
 
         setupKolodaView()
 
-        FetchUsersManager.instance.query()
-
-        FetchUsersManager.instance.delegate = self
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
 
         super.viewWillAppear(animated)
-
-        self.kolodaView.isHidden = false
+        
+        MatchCardUsersManager.instance.observeMatchCardUsers()
+        MatchCardUsersManager.instance.delegate = self
+        
+        LikedUsersManger.instance.delegate = self
+        LikedUsersManger.instance.observeReceivedLikes()
 
     }
 
@@ -71,31 +73,28 @@ class MatchViewController: UIViewController {
 
         super.viewDidDisappear(animated)
 
-        self.matchUsers = [MatchUser]()
+        self.matchCardUsers = [MatchCardUser]()
+        
     }
 
 }
 
-extension MatchViewController: FetchUsersManagerProtocol {
-
-    func didFetchUsers(_ fetchUsers: [MatchUser]) {
-
-        self.matchUsers = fetchUsers
-
-        print(self.matchUsers)
-
-        FetchUsersManager.instance.matchUsers = [MatchUser]()
-
+extension MatchViewController: MatchCardUsersManagerProtocol {
+    func didObserveMatchCardUsers(_ matchCardUsers: [MatchCardUser]) {
+        
+        self.matchCardUsers = matchCardUsers
+        
+        MatchCardUsersManager.instance.matchCardUsers = [MatchCardUser]()
+        
         DispatchQueue.main.async {
-
+            
             self.kolodaView.reloadData()
-
+            
         }
-
     }
-
-    func didFetchUsersError(_ fetchUserError: Error) {
-
+    
+    func observeMatchCardUsersError(_ error: Error) {
+    
     }
 
 }
@@ -143,7 +142,7 @@ extension MatchViewController: KolodaViewDataSource {
 
     func kolodaNumberOfCards(_ koloda: KolodaView) -> Int {
 
-        return self.matchUsers.count
+        return self.matchCardUsers.count
 
     }
 
@@ -160,9 +159,9 @@ extension MatchViewController: KolodaViewDataSource {
             return UIView()
         }
 
-        if self.matchUsers.count > index {
+        if self.matchCardUsers.count > index {
 
-            let matchUser = self.matchUsers[index]
+            let matchUser = self.matchCardUsers[index]
 
             matchCardView.likeButton.addTarget(self, action: #selector(tagLikeButton(_:)), for: .touchUpInside)
 
@@ -195,7 +194,7 @@ extension MatchViewController: KolodaViewDataSource {
 }
 
 // Selector functions
-extension  MatchViewController {
+extension MatchViewController {
 
     @objc func tagLikeButton(_ sender: WCLShineButton) {
 
@@ -213,7 +212,27 @@ extension  MatchViewController {
             self.kolodaView.swipe(.right)
 
         })
+        let likeUser = self.matchCardUsers[index]
+
+        LikedUsersManger.instance.didLikeUser(with: likeUser)
 
     }
 
+}
+
+extension MatchViewController: LikedUsersMangerProtocol {
+    func didObserveReceivedLikes(_ likedMeUsers: [LikeMe]) {
+        print("+++++++++++", likedMeUsers)
+        
+        
+    }
+    
+    
+    func observeReceivedLikesError(_ error: Error) {
+        
+    }
+    
+    
+    
+    
 }

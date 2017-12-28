@@ -191,6 +191,8 @@ class LoginViewController: UIViewController {
         }
 
             if let loginUser = user {
+                
+                UserManager.instance.getCurrentUserInfo(loginUser)
 
                 let uid = loginUser.uid
 
@@ -237,35 +239,6 @@ class LoginViewController: UIViewController {
                     return
 
                 })
-
-                Database.database().reference().child(FirebaseSchema.users.rawValue).child(uid).observeSingleEvent(
-                of: .value) {
-
-                    snapShot in
-
-                    guard let userDic = snapShot.value as? [String: Any] else {
-
-                        return
-                    }
-
-                    guard
-                        let name = userDic[CurrentUser.Schema.name] as? String,
-                        let email = userDic[CurrentUser.Schema.loginEmail] as? String,
-                        let imageURL = userDic[CurrentUser.Schema.imageURL] as? String,
-                        let callingID = userDic[CurrentUser.Schema.callingID] as? Int,
-                        let yearOfBirth = userDic[CurrentUser.Schema.yearOfBirth] as? Int,
-                        let gender = userDic[CurrentUser.Schema.gender] as? String,
-                        let petPersionType = userDic[CurrentUser.Schema.petPersonType] as? String else {
-
-                            return
-
-                    }
-
-                    UserManager.instance.currentUser = CurrentUser(loginEmail: email, name: name, petPersonType: PetPersonType(rawValue: petPersionType)!, gender: Gender(rawValue: gender)!, yearOfBirth: yearOfBirth, imageURL: imageURL, callingID: UInt(callingID))
-
-                    print(UserManager.instance.currentUser)
-
-                }
 
             }
         }

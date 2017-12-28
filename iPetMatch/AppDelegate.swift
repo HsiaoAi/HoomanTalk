@@ -93,7 +93,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return true
 
         }
-
+        
+        UserManager.instance.getCurrentUserInfo(user)
+        
         showLoading()
 
         enterPassByLandingView()
@@ -135,6 +137,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     return
 
                 }
+                
+                UserManager.instance.getCurrentUserInfo(user)
 
                 if let email = user.email {
 

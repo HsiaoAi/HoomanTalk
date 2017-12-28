@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,11 +16,12 @@
             <objects>
                 <viewController storyboardIdentifier="MatchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WZY-Af-c5M" customClass="MatchViewController" customModule="iPetMatch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M9r-TQ-gOb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqt-JO-YIH" customClass="KolodaView" customModule="Koloda">
-                                <rect key="frame" x="19" y="70" width="338" height="547"/>
+                                <rect key="frame" x="16" y="70" width="288" height="360"/>
+                                <color key="backgroundColor" red="0.2224183058375635" green="0.2224183058375635" blue="0.2224183058375635" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9pT-LJ-nfR">
                                 <rect key="frame" x="290" y="32" width="44" height="30"/>
@@ -29,14 +30,30 @@
                                     <action selector="logout:" destination="WZY-Af-c5M" eventType="touchUpInside" id="QxM-Bj-7ox"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="←→SWIPE TO DISMISS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKa-if-BxX">
+                                <rect key="frame" x="21" y="435" width="121" height="14"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                <color key="textColor" red="0.3217366934" green="0.25888746979999999" blue="0.25097307559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HIT BUTTON TO LIKE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e50-KN-5uU">
+                                <rect key="frame" x="186" y="435" width="113" height="14"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                <color key="textColor" red="0.3217366934" green="0.25888746979999999" blue="0.25097307559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hqt-JO-YIH" firstAttribute="top" secondItem="9pT-LJ-nfR" secondAttribute="bottom" constant="8" symbolic="YES" id="2pa-E9-BFJ"/>
+                            <constraint firstItem="dKa-if-BxX" firstAttribute="top" secondItem="hqt-JO-YIH" secondAttribute="bottom" constant="5" id="7Qy-Tf-mkQ"/>
+                            <constraint firstItem="e50-KN-5uU" firstAttribute="centerY" secondItem="dKa-if-BxX" secondAttribute="centerY" id="J3F-aq-A3I"/>
                             <constraint firstItem="BiB-k3-VxE" firstAttribute="bottom" secondItem="hqt-JO-YIH" secondAttribute="bottom" constant="50" id="Kdb-kF-uom"/>
                             <constraint firstItem="hqt-JO-YIH" firstAttribute="centerX" secondItem="M9r-TQ-gOb" secondAttribute="centerX" id="Qoe-UV-4lu"/>
+                            <constraint firstItem="e50-KN-5uU" firstAttribute="trailing" secondItem="hqt-JO-YIH" secondAttribute="trailing" constant="-5" id="agh-rC-36N"/>
                             <constraint firstItem="hqt-JO-YIH" firstAttribute="width" secondItem="M9r-TQ-gOb" secondAttribute="width" multiplier="0.9" id="bcM-7G-VDh"/>
                             <constraint firstItem="9pT-LJ-nfR" firstAttribute="leading" secondItem="BiB-k3-VxE" secondAttribute="leading" constant="290" id="hHc-hd-On1"/>
+                            <constraint firstItem="dKa-if-BxX" firstAttribute="leading" secondItem="hqt-JO-YIH" secondAttribute="leading" constant="5" id="rBO-7B-Tqw"/>
                             <constraint firstItem="hqt-JO-YIH" firstAttribute="top" secondItem="BiB-k3-VxE" secondAttribute="top" constant="50" id="w9F-gh-90c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BiB-k3-VxE"/>

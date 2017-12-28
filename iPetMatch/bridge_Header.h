@@ -40,6 +40,7 @@
 @import WCLShineButton;
 @import pop;
 @import Nuke;
+@import CoreData;
 
 
 #endif /* bridge_Header_h */

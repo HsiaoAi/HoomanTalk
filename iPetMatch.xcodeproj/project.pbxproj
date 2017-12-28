@@ -29,15 +29,16 @@
 		87495FC21FF3B19600FF2C06 /* MatchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87495FC11FF3B19600FF2C06 /* MatchCardView.swift */; };
 		87495FC41FF3B1A700FF2C06 /* MatchCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87495FC31FF3B1A700FF2C06 /* MatchCardView.xib */; };
 		874D94321FE250F00009C9F3 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94311FE250EF0009C9F3 /* SweetAlert.swift */; };
-		874D94351FE2B2B00009C9F3 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94341FE2B2B00009C9F3 /* CurrentUser.swift */; };
 		874D94391FE2CEAE0009C9F3 /* IncommingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94371FE2CEAE0009C9F3 /* IncommingCallViewController.swift */; };
 		874D943A1FE2CEAE0009C9F3 /* IncommingCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 874D94381FE2CEAE0009C9F3 /* IncommingCallViewController.xib */; };
 		8760A82D1FF4183700EE409E /* MatchOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A82C1FF4183700EE409E /* MatchOverlayView.swift */; };
 		8760A82F1FF4184800EE409E /* MatchOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8760A82E1FF4184800EE409E /* MatchOverlayView.xib */; };
-		8760A8321FF422A700EE409E /* FetchUsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A8311FF422A700EE409E /* FetchUsersManager.swift */; };
-		8760A8341FF4238900EE409E /* MatchUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A8331FF4238900EE409E /* MatchUser.swift */; };
+		8760A8321FF422A700EE409E /* MatchCardUsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A8311FF422A700EE409E /* MatchCardUsersManager.swift */; };
+		8760A8341FF4238900EE409E /* MatchCardUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A8331FF4238900EE409E /* MatchCardUser.swift */; };
 		8760A8361FF4249000EE409E /* FirebaseSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A8351FF4249000EE409E /* FirebaseSchema.swift */; };
 		8760A83A1FF43EBF00EE409E /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A8391FF43EBF00EE409E /* UIImageExtension.swift */; };
+		8760A83C1FF4BAD200EE409E /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A83B1FF4BAD200EE409E /* CurrentUser.swift */; };
+		87641DE11FF559AC00FDD08A /* LikedUsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87641DE01FF559AC00FDD08A /* LikedUsersManager.swift */; };
 		878282EC1FF0115B006C9E20 /* UIColerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878282EB1FF0115B006C9E20 /* UIColerExtension.swift */; };
 		8797E6521FE10D5800C9002F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797E6511FE10D5800C9002F /* ViewController.swift */; };
 		8797E6571FE10D5800C9002F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6561FE10D5800C9002F /* Assets.xcassets */; };
@@ -110,15 +111,16 @@
 		87495FC11FF3B19600FF2C06 /* MatchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardView.swift; sourceTree = "<group>"; };
 		87495FC31FF3B1A700FF2C06 /* MatchCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchCardView.xib; sourceTree = "<group>"; };
 		874D94311FE250EF0009C9F3 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
-		874D94341FE2B2B00009C9F3 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		874D94371FE2CEAE0009C9F3 /* IncommingCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncommingCallViewController.swift; sourceTree = "<group>"; };
 		874D94381FE2CEAE0009C9F3 /* IncommingCallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncommingCallViewController.xib; sourceTree = "<group>"; };
 		8760A82C1FF4183700EE409E /* MatchOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchOverlayView.swift; sourceTree = "<group>"; };
 		8760A82E1FF4184800EE409E /* MatchOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchOverlayView.xib; sourceTree = "<group>"; };
-		8760A8311FF422A700EE409E /* FetchUsersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUsersManager.swift; sourceTree = "<group>"; };
-		8760A8331FF4238900EE409E /* MatchUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchUser.swift; sourceTree = "<group>"; };
+		8760A8311FF422A700EE409E /* MatchCardUsersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardUsersManager.swift; sourceTree = "<group>"; };
+		8760A8331FF4238900EE409E /* MatchCardUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardUser.swift; sourceTree = "<group>"; };
 		8760A8351FF4249000EE409E /* FirebaseSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSchema.swift; sourceTree = "<group>"; };
 		8760A8391FF43EBF00EE409E /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		8760A83B1FF4BAD200EE409E /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CurrentUser.swift; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Model/Users/CurrentUser.swift; sourceTree = "<absolute>"; };
+		87641DE01FF559AC00FDD08A /* LikedUsersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedUsersManager.swift; sourceTree = "<group>"; };
 		878282EB1FF0115B006C9E20 /* UIColerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColerExtension.swift; sourceTree = "<group>"; };
 		8797E64C1FE10D5800C9002F /* iPetMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPetMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8797E6511FE10D5800C9002F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -300,11 +302,11 @@
 		874D94331FE2B28E0009C9F3 /* Users */ = {
 			isa = PBXGroup;
 			children = (
-				874D94341FE2B2B00009C9F3 /* CurrentUser.swift */,
 				87DDA8E21FE90CC500A917A8 /* UserSetting.swift */,
 				87C179AA1FEBFDB200815A47 /* UserManager.swift */,
 				871F8FD41FF28E8B0020FF35 /* KeyChainSchema.swift */,
-				8760A8331FF4238900EE409E /* MatchUser.swift */,
+				8760A8331FF4238900EE409E /* MatchCardUser.swift */,
+				8760A83B1FF4BAD200EE409E /* CurrentUser.swift */,
 			);
 			name = Users;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Model/Users;
@@ -340,8 +342,9 @@
 		8760A8301FF4228900EE409E /* FirebaseFetch */ = {
 			isa = PBXGroup;
 			children = (
-				8760A8311FF422A700EE409E /* FetchUsersManager.swift */,
+				8760A8311FF422A700EE409E /* MatchCardUsersManager.swift */,
 				8760A8351FF4249000EE409E /* FirebaseSchema.swift */,
+				87641DE01FF559AC00FDD08A /* LikedUsersManager.swift */,
 			);
 			name = FirebaseFetch;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Model/FirebaseFetch;
@@ -653,10 +656,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				871F8FE01FF3443A0020FF35 /* MatchViewController.swift in Sources */,
-				8760A8341FF4238900EE409E /* MatchUser.swift in Sources */,
+				8760A8341FF4238900EE409E /* MatchCardUser.swift in Sources */,
 				87126BE51FE18B09009D0188 /* LandingViewController.swift in Sources */,
 				874D94321FE250F00009C9F3 /* SweetAlert.swift in Sources */,
 				879FB12C1FE2E2F4002332EF /* AppDelegateExtensions.swift in Sources */,
+				8760A83C1FF4BAD200EE409E /* CurrentUser.swift in Sources */,
 				87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */,
 				8797E67F1FE1174100C9002F /* QuickbloxAdmin.swift in Sources */,
 				87E8A92C1FE5932100726A2E /* ChatListTableViewController.swift in Sources */,
@@ -666,12 +670,13 @@
 				87126BFA1FE19B2A009D0188 /* Identifiable.swift in Sources */,
 				87E8A92B1FE5932100726A2E /* ChatListButtonsTableViewCell.swift in Sources */,
 				87126C011FE2412F009D0188 /* CallManager.swift in Sources */,
+				87641DE11FF559AC00FDD08A /* LikedUsersManager.swift in Sources */,
 				874D94391FE2CEAE0009C9F3 /* IncommingCallViewController.swift in Sources */,
 				87C179AF1FEC0FD900815A47 /* LoginViewController.swift in Sources */,
 				872D9CD71FE65F110008C8AA /* LocalVideoView.swift in Sources */,
 				879FB1261FE2DCFD002332EF /* TabBarItem.swift in Sources */,
 				8727F72E1FE85E060027859D /* RingtonePlayer.swift in Sources */,
-				8760A8321FF422A700EE409E /* FetchUsersManager.swift in Sources */,
+				8760A8321FF422A700EE409E /* MatchCardUsersManager.swift in Sources */,
 				879FB12E1FE2E75A002332EF /* TableBarControllerExtensions.swift in Sources */,
 				8760A82D1FF4183700EE409E /* MatchOverlayView.swift in Sources */,
 				8797E6521FE10D5800C9002F /* ViewController.swift in Sources */,
@@ -684,7 +689,6 @@
 				879FB1281FE2DE54002332EF /* TabBarItemType.swift in Sources */,
 				870327631FEADC4F009D2FF3 /* IconEnum.swift in Sources */,
 				87F3B6711FEC1CD9000E5045 /* SignUpViewController.swift in Sources */,
-				874D94351FE2B2B00009C9F3 /* CurrentUser.swift in Sources */,
 				87495FC21FF3B19600FF2C06 /* MatchCardView.swift in Sources */,
 				878282EC1FF0115B006C9E20 /* UIColerExtension.swift in Sources */,
 			);
