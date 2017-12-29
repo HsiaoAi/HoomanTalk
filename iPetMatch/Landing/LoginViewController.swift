@@ -101,7 +101,7 @@ class LoginViewController: UIViewController {
 
                 NSLocalizedString("Warning", comment: ""),
 
-                subTitle: NSLocalizedString("emailTextField.errorMessage!", comment: "")
+                subTitle: emailTextFied.errorMessage!
 
             )
 
@@ -191,7 +191,7 @@ class LoginViewController: UIViewController {
         }
 
             if let loginUser = user {
-                
+
                 UserManager.instance.getCurrentUserInfo(loginUser)
 
                 let uid = loginUser.uid
@@ -261,26 +261,24 @@ extension LoginViewController: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
-        if let text = textField.text {
+        if let text = textField.text,
+            let skyFloatLabelTextField = textField as? SkyFloatingLabelTextField {
 
-            if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
+            if skyFloatLabelTextField === emailTextFied && (text.count < 3 || !text.contains("@")) {
 
-                if textField.tag == 1 && (text.count < 3 || !text.contains("@")) {
+                    skyFloatLabelTextField.errorMessage = "Invalid Email"
 
-                    floatingLabelTextField.errorMessage = "Invalid Email"
+                } else if textField === passwordTextFied && text.count < 5 {
 
-                } else if textField.tag == 2 && text.count < 5 {
-                    floatingLabelTextField.errorMessage = "Invalid Password"
+                    skyFloatLabelTextField.errorMessage = "Invalid Password"
 
                 } else {
 
-                    floatingLabelTextField.errorMessage = ""
+                    skyFloatLabelTextField.errorMessage = ""
 
                 }
 
             }
-
-        }
 
         return true
 

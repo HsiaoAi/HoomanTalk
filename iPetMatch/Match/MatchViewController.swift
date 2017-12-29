@@ -6,13 +6,17 @@
 //  Copyright © 2017 Hsiao Ai LEE. All rights reserved.
 //
 
+private let reuseIdentifier = "LikeMeCollectionViewCell"
+
 class MatchViewController: UIViewController {
 
     @IBOutlet weak var kolodaView: KolodaView!
 
-    var matchCardUsers = [MatchCardUser]()
-    
-    var likedMeUsers = [MatchCardUser]()
+    var matchCardUsers = [IPetUser]()
+
+    var likedMeUsers = [IPetUser]()
+
+    @IBOutlet weak var likeMeCollectionView: UICollectionView!
 
     var todayYear: Int {
 
@@ -21,6 +25,41 @@ class MatchViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy"
         let todayYesrString = dateFormatter.string(from: todayDate)
         return Int(todayYesrString)!
+
+    }
+
+    @IBOutlet weak var likeMeButton: UIButton!
+
+    @IBOutlet weak var browseButton: UIButton!
+
+    @IBOutlet weak var hitHearToMatchLabel: UILabel!
+
+    @IBAction func tapLikeMeButton(_ sender: Any) {
+
+         likeMeButton.setTitleColor(UIColor.Custom.greyishBrown, for: .normal)
+
+        browseButton.setTitleColor(.lightGray, for: .normal)
+
+        likeMeCollectionView.isHidden = false
+
+        view.bringSubview(toFront: likeMeCollectionView)
+
+        kolodaView.isHidden = true
+
+        hitHearToMatchLabel.isHidden = false
+
+    }
+
+    @IBAction func tapBrowse(_ sender: UIButton) {
+
+        likeMeButton.setTitleColor(.lightGray, for: .normal)
+        browseButton.setTitleColor(UIColor.Custom.greyishBrown, for: .normal)
+
+        kolodaView.isHidden = false
+
+        likeMeCollectionView.isHidden = true
+
+        hitHearToMatchLabel.isHidden = true
 
     }
 
@@ -53,17 +92,34 @@ class MatchViewController: UIViewController {
 
         super.viewDidLoad()
 
+        kolodaView.isHidden = true
+        likeMeCollectionView.isHidden = true
+
+        hitHearToMatchLabel.isHidden = true
         setupKolodaView()
+
+        SVProgressHUD.dismiss()
+
+        setupLikeMeCollectionView()
 
     }
 
     override func viewWillAppear(_ animated: Bool) {
 
         super.viewWillAppear(animated)
-        
+        SVProgressHUD.show(withStatus: NSLocalizedString("Browsing", comment: ""))
+
+        // ResetView
+        kolodaView.isHidden = true
+
+        likeMeCollectionView.isHidden = true
+        hitHearToMatchLabel.isHidden = true
+        likeMeButton.setTitleColor(.lightGray, for: .normal)
+        browseButton.setTitleColor(UIColor.Custom.greyishBrown, for: .normal)
+
         MatchCardUsersManager.instance.observeMatchCardUsers()
         MatchCardUsersManager.instance.delegate = self
-        
+
         LikedUsersManger.instance.delegate = self
         LikedUsersManger.instance.observeReceivedLikes()
 
@@ -73,28 +129,35 @@ class MatchViewController: UIViewController {
 
         super.viewDidDisappear(animated)
 
-        self.matchCardUsers = [MatchCardUser]()
-        
+        self.matchCardUsers = [IPetUser]()
+        self.likedMeUsers = [IPetUser]()
+
+        self.kolodaView.isHidden = true
+
     }
 
 }
 
 extension MatchViewController: MatchCardUsersManagerProtocol {
-    func didObserveMatchCardUsers(_ matchCardUsers: [MatchCardUser]) {
-        
+    func didObserveMatchCardUsers(_ matchCardUsers: [IPetUser]) {
+
         self.matchCardUsers = matchCardUsers
-        
-        MatchCardUsersManager.instance.matchCardUsers = [MatchCardUser]()
-        
+
+        MatchCardUsersManager.instance.matchCardUsers = [IPetUser]()
+
         DispatchQueue.main.async {
-            
+
+            self.kolodaView.isHidden = false
+
+            SVProgressHUD.dismiss()
+
             self.kolodaView.reloadData()
-            
+
         }
     }
-    
+
     func observeMatchCardUsersError(_ error: Error) {
-    
+
     }
 
 }
@@ -172,10 +235,7 @@ extension MatchViewController: KolodaViewDataSource {
             let imageAdress = matchUser.imageURL
             if let imageURL = URL(string: imageAdress!) {
 
-                Nuke.loadImage(
-                    with: imageURL,
-                    into: matchCardView.userImageView
-                )
+                UserManager.setUserProfileImage(with: imageURL, into: matchCardView.userImageView, activityIndicatorView: matchCardView.activityIndicatorView)
             }
 
         }
@@ -221,18 +281,74 @@ extension MatchViewController {
 }
 
 extension MatchViewController: LikedUsersMangerProtocol {
-    func didObserveReceivedLikes(_ likedMeUsers: [LikeMe]) {
-        print("+++++++++++", likedMeUsers)
-        
-        
+
+    func didObserveReceivedLikes(_ likedMeUsers: [IPetUser]) {
+
+        self.likedMeUsers = likedMeUsers
+
+        DispatchQueue.main.async {
+
+            self.likeMeCollectionView.reloadData()
+
+        }
+
     }
-    
-    
+
     func observeReceivedLikesError(_ error: Error) {
-        
+
     }
-    
-    
-    
-    
+
+}
+
+extension MatchViewController: UICollectionViewDelegateFlowLayout {
+
+    func setupLikeMeCollectionView() {
+
+        self.likeMeCollectionView.delegate = self
+        self.likeMeCollectionView.dataSource = self
+        self.likeMeCollectionView.showsVerticalScrollIndicator = false
+        self.likeMeCollectionView.backgroundColor = .white
+
+        likeMeCollectionView.register(UINib(nibName: "LikeMeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LikeMeCollectionViewCell")
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let width = (self.likeMeCollectionView.bounds.width - 15) / 2
+        return CGSize(width: width, height: width)
+
+    }
+
+}
+
+extension MatchViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+        return self.likedMeUsers.count
+
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? LikeMeCollectionViewCell else { return UICollectionViewCell() }
+
+        if (likedMeUsers.count > indexPath.row) {
+
+            let user = likedMeUsers[indexPath.row]
+
+            cell.userInfoLabel.text = "\(user.name), \(user.petPersonType.rawValue.capitalized) Person"
+
+            cell.userImageView.contentMode = .scaleToFill
+            let imageAdress = user.imageURL
+            if let imageURL = URL(string: imageAdress!) {
+
+                UserManager.setUserProfileImage(with: imageURL, into: cell.userImageView, activityIndicatorView: cell.activityIndicatorView)
+            }
+
+        }
+
+        return cell
+
+    }
+
 }

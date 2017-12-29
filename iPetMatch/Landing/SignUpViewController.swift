@@ -147,7 +147,7 @@ class SignUpViewController: UIViewController {
 
                 NSLocalizedString("Warning", comment: ""),
 
-                subTitle: NSLocalizedString("emailTextField.errorMessage!", comment: "")
+                subTitle: emailTextField.errorMessage!
 
             )
 
@@ -372,25 +372,27 @@ class SignUpViewController: UIViewController {
 
                                     let callingID = QBuser.id
 
-                                    UserManager.instance.currentUser = CurrentUser(loginEmail: email, name: name, petPersonType: self.petPersonType, gender: self.gender, yearOfBirth: yearOfBirth, imageURL: self.imageURLString, callingID: callingID)
+                                    UserManager.instance.currentUser = IPetUser(id: firebaseUid, loginEmail: email, name: name, petPersonType: self.petPersonType, gender: self.gender, yearOfBirth: yearOfBirth, imageURL: self.imageURLString, callingID: callingID)
 
                                     let userRef = Database.database().reference().child("users").child(firebaseUid)
 
                                     let values: [String: Any] = [
 
-                                        CurrentUser.Schema.loginEmail: email,
+                                        IPetUser.Schema.id: firebaseUid,
 
-                                        CurrentUser.Schema.name: name,
+                                        IPetUser.Schema.loginEmail: email,
 
-                                        CurrentUser.Schema.petPersonType: self.petPersonType.rawValue,
+                                        IPetUser.Schema.name: name,
 
-                                        CurrentUser.Schema.gender: self.gender.rawValue,
+                                        IPetUser.Schema.petPersonType: self.petPersonType.rawValue,
 
-                                        CurrentUser.Schema.yearOfBirth: yearOfBirth,
+                                        IPetUser.Schema.gender: self.gender.rawValue,
 
-                                        CurrentUser.Schema.imageURL: self.imageURLString ?? "",
+                                        IPetUser.Schema.yearOfBirth: yearOfBirth,
 
-                                        CurrentUser.Schema.callingID: callingID
+                                        IPetUser.Schema.imageURL: self.imageURLString ?? "",
+
+                                        IPetUser.Schema.callingID: callingID
 
                                     ]
 

@@ -33,8 +33,14 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userImage" translatesAutoresizingMaskIntoConstraints="NO" id="RU8-fl-Buz">
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RU8-fl-Buz">
                     <rect key="frame" x="5" y="5" width="328" height="465.66666666666669"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="focusOnFaces" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </imageView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gDK-ES-eXL" userLabel="petCollectionView">
                     <rect key="frame" x="5" y="372" width="205" height="98.666666666666686"/>
@@ -96,6 +102,19 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="98E-US-zbW" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                    <rect key="frame" x="136.33333333333334" y="205.33333333333334" width="65.333333333333343" height="65.333333333333343"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="98E-US-zbW" secondAttribute="height" multiplier="1:1" id="kFo-bw-XST"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="pacman"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="color">
+                            <color key="value" red="0.4528620243" green="0.7530148029" blue="0.61181157829999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -105,10 +124,12 @@
                 <constraint firstItem="RU8-fl-Buz" firstAttribute="height" secondItem="WEw-0W-0sw" secondAttribute="height" multiplier="0.85" id="HYu-Jt-ObO"/>
                 <constraint firstItem="uWU-1R-BeX" firstAttribute="centerY" secondItem="HCs-Ez-Ywq" secondAttribute="centerY" id="HuR-1e-AIj"/>
                 <constraint firstItem="gDK-ES-eXL" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.18" id="NVC-8z-jZi"/>
+                <constraint firstItem="98E-US-zbW" firstAttribute="centerX" secondItem="RU8-fl-Buz" secondAttribute="centerX" id="QLQ-VC-n01"/>
                 <constraint firstAttribute="bottom" secondItem="P8G-AP-kUY" secondAttribute="bottom" constant="2" id="QQ8-Df-lXU"/>
                 <constraint firstItem="gDK-ES-eXL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="R0X-Ag-Ssn"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WEw-0W-0sw" secondAttribute="trailing" id="So5-4k-eV1"/>
                 <constraint firstItem="P8G-AP-kUY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="THW-Vp-kE5"/>
+                <constraint firstItem="98E-US-zbW" firstAttribute="centerY" secondItem="RU8-fl-Buz" secondAttribute="centerY" id="TYv-IF-i8F"/>
                 <constraint firstItem="RU8-fl-Buz" firstAttribute="trailing" secondItem="WEw-0W-0sw" secondAttribute="trailing" constant="-5" id="UTN-xX-0Bx"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="WEw-0W-0sw" secondAttribute="bottom" id="a6h-gF-Jwi"/>
                 <constraint firstItem="RU8-fl-Buz" firstAttribute="leading" secondItem="WEw-0W-0sw" secondAttribute="leading" constant="5" id="cF7-Fg-J06"/>
@@ -119,12 +140,14 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HCs-Ez-Ywq" secondAttribute="trailing" constant="20" id="joR-c1-JaQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="HCs-Ez-Ywq" secondAttribute="bottom" constant="30" id="jsz-cq-8PA"/>
                 <constraint firstItem="HCs-Ez-Ywq" firstAttribute="leading" secondItem="gDK-ES-eXL" secondAttribute="trailing" constant="13.5" id="lom-Gw-sBv"/>
+                <constraint firstItem="98E-US-zbW" firstAttribute="width" secondItem="RU8-fl-Buz" secondAttribute="width" multiplier="0.2" id="qoP-QJ-UN6"/>
                 <constraint firstItem="uWU-1R-BeX" firstAttribute="height" secondItem="HCs-Ez-Ywq" secondAttribute="height" multiplier="0.5" id="uZO-hn-laR"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="P8G-AP-kUY" secondAttribute="trailing" constant="5" id="x7h-TP-NA9"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="activityIndicatorView" destination="98E-US-zbW" id="339-U5-Lyh"/>
                 <outlet property="infoView" destination="P8G-AP-kUY" id="AOn-M0-w9b"/>
                 <outlet property="likeButton" destination="uWU-1R-BeX" id="DmJ-Jl-OwJ"/>
                 <outlet property="likeButtonBorderView" destination="HCs-Ez-Ywq" id="dn5-1k-vCB"/>
@@ -136,7 +159,4 @@
             <point key="canvasLocation" x="26" y="52.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="userImage" width="95" height="76"/>
-    </resources>
 </document>

@@ -41,6 +41,8 @@
 @import pop;
 @import Nuke;
 @import CoreData;
+@import NVActivityIndicatorView;
+@import CoreData;
 
 
 #endif /* bridge_Header_h */

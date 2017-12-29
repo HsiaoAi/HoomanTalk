@@ -16,10 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    let subscription = QBMSubscription()
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        // Firebase
+        // Set rootViewController
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
 
+        // Firebase
         FirebaseApp.configure()
 
         // IQKeyboard
@@ -33,19 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let APIKeysPath = Bundle.main.path(forResource: "QuickBloxKey", ofType: "plist"),
 
             let plistDic = NSDictionary(contentsOfFile: APIKeysPath) as? [String: Any],
-
             let accountKey = plistDic[QuickBloxAdmin.accountKey] as? String,
-
             let applicationID = plistDic[QuickBloxAdmin.applicationID] as? UInt,
-
             let authKey = plistDic[QuickBloxAdmin.authKey] as? String,
-
             let authSecret = plistDic[QuickBloxAdmin.authSecret] as? String else {
-
                 print("QuickBlox credentials fail")
-
                 return false
-
         }
 
         QBSettings.accountKey = accountKey
@@ -75,40 +73,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         application.registerForRemoteNotifications()
 
-        // Set rootViewController
-        window = UIWindow(frame: UIScreen.main.bounds)
-
-        window?.makeKeyAndVisible()
-
         guard
-
             let user = Auth.auth().currentUser,
-
             let email = user.email
+        else {
 
-            else {
+            enterLandingView()
 
-                enterLandingView()
+            return true }
 
-                return true
-
-        }
-        
-        UserManager.instance.getCurrentUserInfo(user)
-        
         showLoading()
+
+        UserManager.instance.getCurrentUserInfo(user)
 
         enterPassByLandingView()
 
         QBRequest.logIn(withUserEmail: email, password: user.uid, successBlock: { (_, QBuser) in
 
+            self.subscription.id = QBuser.id
+
             QBChat.instance.connect(with: QBuser, completion: {
 
-                _ in SVProgressHUD.dismiss()
+                _ in
 
             })
 
-            print("done")}, errorBlock: nil)
+            print("done")}, errorBlock: {_ in SVProgressHUD.dismiss() })
 
         return true
 
@@ -137,12 +127,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     return
 
                 }
-                
+
                 UserManager.instance.getCurrentUserInfo(user)
 
                 if let email = user.email {
 
                     QBRequest.logIn(withUserEmail: email, password: user.uid, successBlock: { (_, QBuser) in
+
+                        self.subscription.id = QBuser.id
 
                         QBChat.instance.connect(with: QBuser, completion: {
 
@@ -151,7 +143,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             SVProgressHUD.dismiss()
                         })
 
-                        print("done")}, errorBlock: nil)
+                        print("done")}, errorBlock: {_ in SVProgressHUD.dismiss() })
 
                 }
 
@@ -176,8 +168,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 
         let deviceIdentifier = UIDevice.current.identifierForVendor?.uuidString
-
-        let subscription = QBMSubscription()
 
         subscription.notificationChannel = .APNS
 
@@ -225,8 +215,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func enterPassByLandingView() {
-
-        let chatListTableViewController = ChatListTableViewController()
 
         let tabBarController = TabBarController(itemTypes: [.match, .chat])
 

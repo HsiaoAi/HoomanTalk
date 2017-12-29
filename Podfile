@@ -29,7 +29,10 @@ target 'iPetMatch' do
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
+  pod 'Firebase/Messaging'
   pod 'Koloda', '~> 4.3.1'
     pod 'WCLShineButton'
     pod 'Nuke'
+    pod 'FaceAware'
+    pod 'NVActivityIndicatorView'
 end

@@ -24,6 +24,8 @@ class MatchCardView: UIView {
 
     @IBOutlet weak var likeButtonBorderView: LGButton!
 
+    @IBOutlet weak var activityIndicatorView: NVActivityIndicatorView!
+
     override init(frame: CGRect) {
 
         super.init(frame: frame)
@@ -38,10 +40,6 @@ class MatchCardView: UIView {
     override func awakeFromNib() {
 
         setupLikeButton()
-
-        matchCardView.layer.borderWidth = 0.5
-
-        matchCardView.layer.borderColor = UIColor.Custom.greyishBrown.cgColor
 
     }
 
