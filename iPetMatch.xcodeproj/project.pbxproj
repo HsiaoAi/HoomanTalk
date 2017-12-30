@@ -65,6 +65,7 @@
 		87C179AF1FEC0FD900815A47 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C179AE1FEC0FD900815A47 /* LoginViewController.swift */; };
 		87C5071C1FF6ABC4000797D5 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C5071B1FF6ABC4000797D5 /* CoreDataStack.swift */; };
 		87DD45681FF7DD50002793EE /* FriendsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD45671FF7DD4F002793EE /* FriendsProvider.swift */; };
+		87DD456A1FF80BD9002793EE /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD45691FF80BD8002793EE /* Friend.swift */; };
 		87DDA8E11FE907A600A917A8 /* dog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 87DDA8E01FE907A600A917A8 /* dog.mp3 */; };
 		87DDA8E31FE90CC500A917A8 /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DDA8E21FE90CC500A917A8 /* UserSetting.swift */; };
 		87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */; };
@@ -156,6 +157,7 @@
 		87C179AE1FEC0FD900815A47 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		87C5071B1FF6ABC4000797D5 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		87DD45671FF7DD4F002793EE /* FriendsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsProvider.swift; sourceTree = "<group>"; };
+		87DD45691FF80BD8002793EE /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		87DDA8E01FE907A600A917A8 /* dog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog.mp3; sourceTree = "<group>"; };
 		87DDA8E21FE90CC500A917A8 /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
 		87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersListTableViewCell.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				87C179AA1FEBFDB200815A47 /* UserManager.swift */,
 				871F8FD41FF28E8B0020FF35 /* KeyChainSchema.swift */,
 				8760A83B1FF4BAD200EE409E /* IPetUser.swift */,
+				87DD45691FF80BD8002793EE /* Friend.swift */,
 			);
 			name = Users;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Model/Users;
@@ -703,6 +706,7 @@
 				8727F72E1FE85E060027859D /* RingtonePlayer.swift in Sources */,
 				8760A8321FF422A700EE409E /* MatchCardUsersManager.swift in Sources */,
 				879FB12E1FE2E75A002332EF /* TableBarControllerExtensions.swift in Sources */,
+				87DD456A1FF80BD9002793EE /* Friend.swift in Sources */,
 				8760A82D1FF4183700EE409E /* MatchOverlayView.swift in Sources */,
 				8797E6521FE10D5800C9002F /* ViewController.swift in Sources */,
 				87641DF01FF5976700FDD08A /* LikeMeCollectionViewCell.swift in Sources */,

@@ -46,6 +46,23 @@ struct IPetUser: Equatable {
     let imageURL: String?
 
     let callingID: UInt
+    
+//    init(dictionary: [String: Any]) {
+//
+//        let petPersonType = PetPersonType(rawValue: String(describing: dictionary[IPetUser.Schema.petPersonType]))!
+//        let gender = Gender(rawValue: String(describing: dictionary[IPetUser.Schema.gender]))!
+//
+//
+//        self.id = dictionary[IPetUser.Schema.id] as? String
+//        self.loginEmail = dictionary[IPetUser.Schema.loginEmail] as? String
+//        self.name = dictionary[IPetUser.Schema.name] as? String
+//        self.petPersonType = petPersonType
+//        self.gender = gender
+//        self.yearOfBirth = dictionary[IPetUser.Schema.yearOfBirth] as? Int
+//        self.imageURL = dictionary[IPetUser.Schema.imageURL] as? String
+//        self.callingID = dictionary[IPetUser.Schema.callingID] as? UInt
+//
+//    }
 
 }
 

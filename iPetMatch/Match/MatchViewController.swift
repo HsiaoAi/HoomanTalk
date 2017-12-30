@@ -363,7 +363,7 @@ extension MatchViewController {
                                              IPetUser.Schema.callingID: currentUser.callingID,
                                              IPetUser.Schema.gender: currentUser.gender.rawValue,
                                              IPetUser.Schema.yearOfBirth: currentUser.yearOfBirth,
-                                             IPetUser.Schema.loginEmail: currentUser.loginEmail,
+                                             IPetUser.Schema.loginEmail: matchUser.loginEmail,
                                              IPetUser.Schema.petPersonType: currentUser.petPersonType.rawValue]
 
                 matchUserFriendsRef.updateChildValues(myInfo)

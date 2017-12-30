@@ -18,7 +18,7 @@ class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
     
     let friendsProvider = FriendProvider()
     
-    var myFriens = [IPetUser]()
+    var myFriens = [Friend]()
 
     // MARK: Property
     
@@ -51,7 +51,6 @@ class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        myFriens = [IPetUser]()
     }
 
     private func setUp() {
@@ -87,7 +86,8 @@ class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
 }
 // Fetch friends list
 extension ChatListTableViewController: FriendsProviderProtocol {
-    func didObserveMyFriends(_ provider: FriendProvider, _ friends: [IPetUser]) {
+    func didObserveMyFriends(_ provider: FriendProvider, _ friends: [Friend]) {
+     
         self.myFriens = friends
         
         DispatchQueue.main.async {
@@ -96,8 +96,6 @@ extension ChatListTableViewController: FriendsProviderProtocol {
             
         }
     }
-    
-    
     
 }
  // MARK: - Table view data source
@@ -128,7 +126,8 @@ extension ChatListTableViewController {
         switch components[indexPath.section] {
 
         case .user:
-            return 40.0
+            
+            return (tableView.bounds.height - 64 ) / 7
 
         case .buttons:
             return 40.0
@@ -150,7 +149,7 @@ extension ChatListTableViewController {
 
             let friend = self.myFriens[indexPath.row]
             cell.userNumberLabel.text = friend.name
-            cell.userNameLabel.text = String(friend.callingID)
+            cell.userNameLabel.text = String(describing: friend.callingID)
             return cell
 
         case .buttons:
