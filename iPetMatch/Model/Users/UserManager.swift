@@ -37,7 +37,7 @@ class UserManager {
 
             }
 
-            UserManager.instance.currentUser = IPetUser(id: userDic.keys.first!, loginEmail: email, name: name, petPersonType: PetPersonType(rawValue: petPersionType)!, gender: Gender(rawValue: gender)!, yearOfBirth: yearOfBirth, imageURL: imageURL, callingID: UInt(callingID))
+            UserManager.instance.currentUser = IPetUser(id: snapShot.key, loginEmail: email, name: name, petPersonType: PetPersonType(rawValue: petPersionType)!, gender: Gender(rawValue: gender)!, yearOfBirth: yearOfBirth, imageURL: imageURL, callingID: UInt(callingID))
 
         }
 

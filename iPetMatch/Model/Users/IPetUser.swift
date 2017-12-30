@@ -6,7 +6,10 @@
 //  Copyright © 2017 Hsiao Ai LEE. All rights reserved.
 //
 
-struct IPetUser {
+struct IPetUser: Equatable {
+    static func ==(lhs: IPetUser, rhs: IPetUser) -> Bool {
+        return (lhs.id == rhs.id)
+    }
 
     struct Schema {
 

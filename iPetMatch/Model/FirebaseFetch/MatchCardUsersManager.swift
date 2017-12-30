@@ -12,17 +12,41 @@ protocol MatchCardUsersManagerProtocol: class {
 
     func didObserveMatchCardUsers(_ matchCardUsers: [IPetUser])
 
+    func didobserveLikesSentByCurrentUser(manager: MatchCardUsersManager, usersIdLikedByCurrentUser: [String])
+
     func observeMatchCardUsersError(_ error: Error)
 
 }
 
 class MatchCardUsersManager {
 
-    static var instance = MatchCardUsersManager()
-
     weak var delegate: MatchCardUsersManagerProtocol?
 
     var matchCardUsers = [IPetUser]()
+
+    var usersIdLikedByCurrentUser = [String]()
+
+    func observeLikesSentByCurrentUser() {
+
+        guard let fromId = Auth.auth().currentUser?.uid else { return }
+
+        let ref = Database.database().reference().child("user-sentLikes").child(fromId)
+        ref.queryOrderedByKey().observe(.value) { snapshot in
+
+            guard let usersDic = snapshot.value as? [String: Any] else { return }
+
+            var usersId = [String]()
+            for userId in usersDic.keys {
+
+                usersId.append(userId)
+            }
+
+            self.usersIdLikedByCurrentUser = usersId
+
+            self.delegate?.didobserveLikesSentByCurrentUser(manager: self, usersIdLikedByCurrentUser: self.usersIdLikedByCurrentUser)
+        }
+
+    }
 
     func observeMatchCardUsers() {
 

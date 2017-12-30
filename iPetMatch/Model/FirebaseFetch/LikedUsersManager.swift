@@ -14,11 +14,11 @@ protocol LikedUsersMangerProtocol: class {
 
 class LikedUsersManger {
 
-    static let instance = LikedUsersManger()
     weak var delegate: LikedUsersMangerProtocol?
+
     var likeMeUsers = [IPetUser]()
 
-    func didLikeUser(with user: IPetUser) {
+    func sendLike(to user: IPetUser) {
 
         guard let uid = Auth.auth().currentUser?.uid,
             let currentUser = UserManager.instance.currentUser else {

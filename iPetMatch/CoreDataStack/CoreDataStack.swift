@@ -9,43 +9,43 @@
 class CoreDataStack {
 
     private lazy var persistentContainer: NSPersistentContainer = {
-        
+
         let container = NSPersistentContainer(name: "IPetMatch")
         container.loadPersistentStores(completionHandler: { _, error in
-            
+
             if let error = error as NSError? {
                 fatalError("Unresolved error: \(error), \(error.userInfo)")
             }
-            
-            return container
+
         })
+        return container
     }()
-    
+
     lazy var managedObjectContext: NSManagedObjectContext = {
-        
+
         let container = self.persistentContainer
         return container.viewContext
-        
+
     }()
-    
+
 }
 
-extension CoreDataStack {
-    
-    func saveChanges {
-        
-        if self.saveChanges() {
-            
+extension NSManagedObjectContext {
+
+    func saveChanges() {
+
+        if self.hasChanges {
+
             do {
                 try save()
             } catch {
-                
-                SCLAlertView().showError(NSLocalizedString("Error"),
-                                         subTitle: NSLocalizedString("Error: \(error.localizedDescription)")
-    
+
+                SCLAlertView().showError(NSLocalizedString("Error", comment: ""),
+                                         subTitle: NSLocalizedString("Error: \(error.localizedDescription)", comment: ""))
+
             }
         }
-        
+
     }
-    
+
 }

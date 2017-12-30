@@ -16,6 +16,13 @@ class MatchViewController: UIViewController {
 
     var likedMeUsers = [IPetUser]()
 
+    var isSentLikeInCollectionView = false
+
+    var usersIdLikedByCurrentUser = [String]()
+
+    let matchCardsManager = MatchCardUsersManager()
+    let likedMeManager = LikedUsersManger()
+
     @IBOutlet weak var likeMeCollectionView: UICollectionView!
 
     var todayYear: Int {
@@ -36,7 +43,7 @@ class MatchViewController: UIViewController {
 
     @IBAction func tapLikeMeButton(_ sender: Any) {
 
-         likeMeButton.setTitleColor(UIColor.Custom.greyishBrown, for: .normal)
+        likeMeButton.setTitleColor(UIColor.Custom.greyishBrown, for: .normal)
 
         browseButton.setTitleColor(.lightGray, for: .normal)
 
@@ -79,7 +86,6 @@ class MatchViewController: UIViewController {
 
             print(error)
         }
-
         QBRequest.logOut(successBlock: { _ in
 
             AppDelegate.shared.enterLandingView()
@@ -117,11 +123,12 @@ class MatchViewController: UIViewController {
         likeMeButton.setTitleColor(.lightGray, for: .normal)
         browseButton.setTitleColor(UIColor.Custom.greyishBrown, for: .normal)
 
-        MatchCardUsersManager.instance.observeMatchCardUsers()
-        MatchCardUsersManager.instance.delegate = self
+        matchCardsManager.observeMatchCardUsers()
+        matchCardsManager.observeLikesSentByCurrentUser()
+        matchCardsManager.delegate = self
 
-        LikedUsersManger.instance.delegate = self
-        LikedUsersManger.instance.observeReceivedLikes()
+        likedMeManager.delegate = self
+        likedMeManager.observeReceivedLikes()
 
     }
 
@@ -139,11 +146,25 @@ class MatchViewController: UIViewController {
 }
 
 extension MatchViewController: MatchCardUsersManagerProtocol {
+    func didobserveLikesSentByCurrentUser(manager: MatchCardUsersManager, usersIdLikedByCurrentUser: [String]) {
+
+        self.usersIdLikedByCurrentUser = usersIdLikedByCurrentUser
+        DispatchQueue.main.async {
+            if self.isSentLikeInCollectionView {
+
+                self.kolodaView.reloadData()
+
+            }
+
+            self.likeMeCollectionView.reloadData()
+        }
+    }
+
     func didObserveMatchCardUsers(_ matchCardUsers: [IPetUser]) {
 
         self.matchCardUsers = matchCardUsers
 
-        MatchCardUsersManager.instance.matchCardUsers = [IPetUser]()
+        self.matchCardsManager.matchCardUsers = [IPetUser]()
 
         DispatchQueue.main.async {
 
@@ -171,6 +192,7 @@ extension MatchViewController: KolodaViewDelegate {
         kolodaView.delegate = self
 
         kolodaView.alphaValueSemiTransparent = 0.1
+        kolodaView.countOfVisibleCards = 3
 
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
 
@@ -190,8 +212,6 @@ extension MatchViewController: KolodaViewDelegate {
     // ToDo: version 1.1
     // DidselectCardAt: 看詳細資料
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
-
-        print("here")
 
     }
 
@@ -226,7 +246,15 @@ extension MatchViewController: KolodaViewDataSource {
 
             let matchUser = self.matchCardUsers[index]
 
-            matchCardView.likeButton.addTarget(self, action: #selector(tagLikeButton(_:)), for: .touchUpInside)
+            if self.usersIdLikedByCurrentUser.contains(matchUser.id) {
+
+                matchCardView.likeButton.setClicked(true, animated: false)
+                matchCardView.likeButton.isEnabled = false
+            } else {
+
+                matchCardView.likeButton.addTarget(self, action: #selector(tagLikeButton(_:)), for: .touchUpInside)
+
+            }
 
             matchCardView.userInfo.text = "\(matchUser.name), \(todayYear - matchUser.yearOfBirth)"
 
@@ -258,29 +286,98 @@ extension MatchViewController {
 
     @objc func tagLikeButton(_ sender: WCLShineButton) {
 
+        isSentLikeInCollectionView = false
+
         let index = self.kolodaView.currentCardIndex
 
         if let matchCardView = sender.superview as? MatchCardView {
-
             matchCardView.likeButtonBorderView.layer.borderColor = UIColor.Custom.lightishRed.cgColor
             matchCardView.likeButtonBorderView.layer.borderWidth = 2
-
         }
 
         Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false, block: { _ in
-
             self.kolodaView.swipe(.right)
-
         })
         let likeUser = self.matchCardUsers[index]
+        isSentLikeInCollectionView = false
+        self.likedMeManager.sendLike(to: likeUser)
 
-        LikedUsersManger.instance.didLikeUser(with: likeUser)
+        if self.likedMeUsers.contains(likeUser),
+            let currentUser = UserManager.instance.currentUser {
+            let uid = currentUser.id
+            let myFriendsRef = Database.database().reference().child("user-friends").child(uid).child(likeUser.id)
+            let matchFriendInfo: [String: Any] = [IPetUser.Schema.name: likeUser.name,
+                                             IPetUser.Schema.imageURL: likeUser.imageURL,
+                                             IPetUser.Schema.callingID: likeUser.callingID,
+                                             IPetUser.Schema.gender: likeUser.gender.rawValue,
+                                             IPetUser.Schema.yearOfBirth: likeUser.yearOfBirth,
+                                             IPetUser.Schema.petPersonType: likeUser.petPersonType.rawValue]
+            myFriendsRef.updateChildValues(matchFriendInfo)
 
+            let matchUserFriendsRef = Database.database().reference().child("user-friends").child(likeUser.id).child(uid)
+            let myInfo: [String: Any] = [IPetUser.Schema.name: currentUser.name,
+                                             IPetUser.Schema.id: currentUser.id,
+                                             IPetUser.Schema.imageURL: currentUser.imageURL,
+                                             IPetUser.Schema.callingID: currentUser.callingID,
+                                             IPetUser.Schema.gender: currentUser.gender.rawValue,
+                                             IPetUser.Schema.yearOfBirth: currentUser.yearOfBirth,
+                                             IPetUser.Schema.petPersonType: currentUser.petPersonType.rawValue]
+
+            matchUserFriendsRef.updateChildValues(myInfo)
+        }
+
+    }
+
+    @objc func responseLike(_ sender: WCLShineButton) {
+
+        isSentLikeInCollectionView = true
+
+        if let cell = sender.superview?.superview as? LikeMeCollectionViewCell,
+            let indexPath = likeMeCollectionView.indexPath(for: cell) {
+            let matchUser = self.likedMeUsers[indexPath.row]
+
+            self.likedMeManager.sendLike(to: matchUser)
+            sender.isEnabled = false
+            if let userIndexInMatchCard = matchCardUsers.index(of: matchUser) {
+
+                self.kolodaView.reloadCardsInIndexRange(userIndexInMatchCard..<userIndexInMatchCard + 1)
+            }
+
+            if let currentUser = UserManager.instance.currentUser {
+                let uid = currentUser.id
+                let myFriendsRef = Database.database().reference().child("user-friends").child(uid).child(matchUser.id)
+                let matchFriendInfo: [String: Any] = [IPetUser.Schema.name: matchUser.name,
+                                                      IPetUser.Schema.imageURL: matchUser.imageURL,
+                                                      IPetUser.Schema.callingID: matchUser.callingID,
+                                                      IPetUser.Schema.gender: matchUser.gender.rawValue,
+                                                      IPetUser.Schema.yearOfBirth: matchUser.yearOfBirth,
+                                                      IPetUser.Schema.petPersonType: matchUser.petPersonType.rawValue]
+                myFriendsRef.updateChildValues(matchFriendInfo)
+
+                let matchUserFriendsRef = Database.database().reference().child("user-friends").child(matchUser.id).child(uid)
+                let myInfo: [String: Any] = [IPetUser.Schema.name: currentUser.name,
+                                             IPetUser.Schema.imageURL: currentUser.imageURL,
+                                             IPetUser.Schema.callingID: currentUser.callingID,
+                                             IPetUser.Schema.gender: currentUser.gender.rawValue,
+                                             IPetUser.Schema.yearOfBirth: currentUser.yearOfBirth,
+                                             IPetUser.Schema.petPersonType: currentUser.petPersonType.rawValue]
+
+                matchUserFriendsRef.updateChildValues(myInfo)
+            }
+        }
     }
 
 }
 
 extension MatchViewController: LikedUsersMangerProtocol {
+
+    func didLikeUser() {
+        DispatchQueue.main.async {
+
+            self.kolodaView.reloadData()
+            self.likeMeCollectionView.reloadData()
+        }
+    }
 
     func didObserveReceivedLikes(_ likedMeUsers: [IPetUser]) {
 
@@ -335,6 +432,17 @@ extension MatchViewController: UICollectionViewDataSource {
         if (likedMeUsers.count > indexPath.row) {
 
             let user = likedMeUsers[indexPath.row]
+
+            if self.usersIdLikedByCurrentUser.contains(user.id) {
+
+                cell.likeButton.setClicked(true, animated: false)
+                cell.likeButton.isEnabled = false
+
+            } else {
+
+                cell.likeButton.addTarget(self, action: #selector(responseLike(_:)), for: .touchUpInside)
+
+            }
 
             cell.userInfoLabel.text = "\(user.name), \(user.petPersonType.rawValue.capitalized) Person"
 
