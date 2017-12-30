@@ -311,6 +311,7 @@ extension MatchViewController {
                                              IPetUser.Schema.callingID: likeUser.callingID,
                                              IPetUser.Schema.gender: likeUser.gender.rawValue,
                                              IPetUser.Schema.yearOfBirth: likeUser.yearOfBirth,
+                                             IPetUser.Schema.loginEmail: likeUser.loginEmail,
                                              IPetUser.Schema.petPersonType: likeUser.petPersonType.rawValue]
             myFriendsRef.updateChildValues(matchFriendInfo)
 
@@ -321,6 +322,7 @@ extension MatchViewController {
                                              IPetUser.Schema.callingID: currentUser.callingID,
                                              IPetUser.Schema.gender: currentUser.gender.rawValue,
                                              IPetUser.Schema.yearOfBirth: currentUser.yearOfBirth,
+                                             IPetUser.Schema.loginEmail: currentUser.loginEmail,
                                              IPetUser.Schema.petPersonType: currentUser.petPersonType.rawValue]
 
             matchUserFriendsRef.updateChildValues(myInfo)
@@ -351,6 +353,7 @@ extension MatchViewController {
                                                       IPetUser.Schema.callingID: matchUser.callingID,
                                                       IPetUser.Schema.gender: matchUser.gender.rawValue,
                                                       IPetUser.Schema.yearOfBirth: matchUser.yearOfBirth,
+                                                      IPetUser.Schema.loginEmail: matchUser.loginEmail,
                                                       IPetUser.Schema.petPersonType: matchUser.petPersonType.rawValue]
                 myFriendsRef.updateChildValues(matchFriendInfo)
 
@@ -360,6 +363,7 @@ extension MatchViewController {
                                              IPetUser.Schema.callingID: currentUser.callingID,
                                              IPetUser.Schema.gender: currentUser.gender.rawValue,
                                              IPetUser.Schema.yearOfBirth: currentUser.yearOfBirth,
+                                             IPetUser.Schema.loginEmail: currentUser.loginEmail,
                                              IPetUser.Schema.petPersonType: currentUser.petPersonType.rawValue]
 
                 matchUserFriendsRef.updateChildValues(myInfo)

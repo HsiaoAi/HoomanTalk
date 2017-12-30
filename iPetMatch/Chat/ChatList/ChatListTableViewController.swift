@@ -15,10 +15,13 @@ class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
         case user, buttons
 
     }
+    
+    let friendsProvider = FriendProvider()
+    
+    var myFriens = [IPetUser]()
 
     // MARK: Property
-    var friendList = ["Hsiao Ai", "Sugar"]
-
+    
     private var callToUserID: UInt?
 
     private let components: [ChatListComponent] = [ .user, .buttons ]
@@ -34,7 +37,21 @@ class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
         self.navigationItem.hidesBackButton = false
 
         setUp()
+        
+        friendsProvider.delegate = self
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        friendsProvider.observeMyFriends()
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        myFriens = [IPetUser]()
     }
 
     private func setUp() {
@@ -65,44 +82,56 @@ class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
 
     }
 
-    // MARK: - Table view data source
+   
 
+}
+// Fetch friends list
+extension ChatListTableViewController: FriendsProviderProtocol {
+    func didObserveMyFriends(_ provider: FriendProvider, _ friends: [IPetUser]) {
+        self.myFriens = friends
+        
+        DispatchQueue.main.async {
+            
+            self.tableView.reloadData()
+            
+        }
+    }
+    
+    
+    
+}
+ // MARK: - Table view data source
+extension ChatListTableViewController {
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return components.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         switch components[section] {
-
+        
         case .user:
-            return friendList.count
-
+            return self.myFriens.count
+       
         case .buttons:
             return 1
-
         }
 
     }
 
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-
         return 44.0
-
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch components[indexPath.section] {
 
         case .user:
-
             return 40.0
 
         case .buttons:
-
             return 40.0
-
         }
     }
 
@@ -115,38 +144,32 @@ class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
         case .user :
 
             let identifier = ChatUsersListTableViewCell.identifier
-
             guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? ChatUsersListTableViewCell else {
-
                 print("LoadCellError")
-
                 return UITableViewCell() }
 
-            let friend = friendList[indexPath.row]
-
-            cell.userNumberLabel.text = "\(indexPath.row)"
-
-            cell.userNameLabel.text = friend
-
+            let friend = self.myFriens[indexPath.row]
+            cell.userNumberLabel.text = friend.name
+            cell.userNameLabel.text = String(friend.callingID)
             return cell
 
         case .buttons:
-
+            
             let identifier = ChatListButtonsTableViewCell.identifier
-
             guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? ChatListButtonsTableViewCell else { return UITableViewCell() }
-
             self.callToUserID = 38863883
-
             cell.audioButton.addTarget(self, action: #selector(startAudioCalling), for: .touchUpInside)
-
             cell.videoButton.addTarget(self, action: #selector(startVedioCalling), for: .touchUpInside)
-
+            
             return cell
 
         }
 
     }
+}
+
+// Selector functions
+extension ChatListTableViewController {
 
     @objc func startAudioCalling() {
 
@@ -169,3 +192,4 @@ class ChatListTableViewController: UITableViewController, QBRTCClientDelegate {
     }
 
 }
+
