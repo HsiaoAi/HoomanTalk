@@ -36,19 +36,6 @@ class FriendProvider {
                         }
 
                         let friend = Friend(dictionary: friendDic)
-//                        guard
-//                            //let email = friendDic[IPetUser.Schema.loginEmail] as? String,
-//                            let name = friendDic[IPetUser.Schema.name] as? String,
-//                            let imageURL = friendDic[IPetUser.Schema.imageURL] as? String,
-//                            let callingID = friendDic[IPetUser.Schema.callingID] as? Int,
-//                            let yearOfBirth = friendDic[IPetUser.Schema.yearOfBirth] as? Int,
-//                            let gender = friendDic[IPetUser.Schema.gender] as? String,
-//                            let petPersionType = friendDic[IPetUser.Schema.petPersonType] as? String else {
-//
-//                                return
-//                        }
-//
-//                        let ipetUser = IPetUser(id: friendId, loginEmail:"", name: name, petPersonType: PetPersonType(rawValue: petPersionType)!, gender: Gender(rawValue: gender)!, yearOfBirth: yearOfBirth, imageURL: imageURL, callingID: UInt(callingID))
 
                         myFriends.append(friend)
                     }

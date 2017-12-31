@@ -25,7 +25,6 @@
                         <rect key="frame" x="19" y="99" width="337.5" height="0.5"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="0.5" id="K0G-Xp-W1a"/>
                             <constraint firstAttribute="height" constant="1" id="WTV-99-GJU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CCD-ER-cPq"/>

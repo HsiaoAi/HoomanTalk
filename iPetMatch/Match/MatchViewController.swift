@@ -156,7 +156,7 @@ extension MatchViewController: MatchCardUsersManagerProtocol {
 
             }
 
-            self.likeMeCollectionView.reloadData()
+            // self.likeMeCollectionView.reloadData()
         }
     }
 
@@ -314,7 +314,7 @@ extension MatchViewController {
                                              Friend.Schema.loginEmail: likeUser.loginEmail,
                                              Friend.Schema.id: likeUser.id,
                                              Friend.Schema.petPersonType: likeUser.petPersonType.rawValue]
-            
+
             myFriendsRef.updateChildValues(matchFriendInfo)
 
             let matchUserFriendsRef = Database.database().reference().child("user-friends").child(likeUser.id).child(uid)
@@ -340,8 +340,9 @@ extension MatchViewController {
             let indexPath = likeMeCollectionView.indexPath(for: cell) {
             let matchUser = self.likedMeUsers[indexPath.row]
 
+            print(matchUser)
             self.likedMeManager.sendLike(to: matchUser)
-            sender.isEnabled = false
+            cell.likeButton.isEnabled = false
             if let userIndexInMatchCard = matchCardUsers.index(of: matchUser) {
 
                 self.kolodaView.reloadCardsInIndexRange(userIndexInMatchCard..<userIndexInMatchCard + 1)

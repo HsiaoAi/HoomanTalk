@@ -41,7 +41,8 @@
 		87641DF01FF5976700FDD08A /* LikeMeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87641DEE1FF5976700FDD08A /* LikeMeCollectionViewCell.swift */; };
 		87641DF11FF5976700FDD08A /* LikeMeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87641DEF1FF5976700FDD08A /* LikeMeCollectionViewCell.xib */; };
 		878282EC1FF0115B006C9E20 /* UIColerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878282EB1FF0115B006C9E20 /* UIColerExtension.swift */; };
-		8787CFA71FF90B5C0051AACD /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8787CFA61FF90B5C0051AACD /* FriendsViewController.swift */; };
+		8787CFAC1FF912000051AACD /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8787CFAA1FF912000051AACD /* ChatViewController.swift */; };
+		8787CFAD1FF912000051AACD /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8787CFAB1FF912000051AACD /* ChatViewController.xib */; };
 		8797E6521FE10D5800C9002F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797E6511FE10D5800C9002F /* ViewController.swift */; };
 		8797E6571FE10D5800C9002F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6561FE10D5800C9002F /* Assets.xcassets */; };
 		8797E65A1FE10D5800C9002F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6581FE10D5800C9002F /* LaunchScreen.storyboard */; };
@@ -71,7 +72,6 @@
 		87DDA8E31FE90CC500A917A8 /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DDA8E21FE90CC500A917A8 /* UserSetting.swift */; };
 		87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */; };
 		87E8A92B1FE5932100726A2E /* ChatListButtonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E8A9271FE5932100726A2E /* ChatListButtonsTableViewCell.swift */; };
-		87E8A92C1FE5932100726A2E /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E8A9291FE5932100726A2E /* ChatListTableViewController.swift */; };
 		87E8A92D1FE596BC00726A2E /* ChatListButtonsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E8A9281FE5932100726A2E /* ChatListButtonsTableViewCell.xib */; };
 		87E8A92E1FE596C200726A2E /* ChatUsersListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */; };
 		87F3B6711FEC1CD9000E5045 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */; };
@@ -128,7 +128,8 @@
 		87641DEE1FF5976700FDD08A /* LikeMeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeMeCollectionViewCell.swift; sourceTree = "<group>"; };
 		87641DEF1FF5976700FDD08A /* LikeMeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeMeCollectionViewCell.xib; sourceTree = "<group>"; };
 		878282EB1FF0115B006C9E20 /* UIColerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColerExtension.swift; sourceTree = "<group>"; };
-		8787CFA61FF90B5C0051AACD /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		8787CFAA1FF912000051AACD /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		8787CFAB1FF912000051AACD /* ChatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
 		8797E64C1FE10D5800C9002F /* iPetMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPetMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8797E6511FE10D5800C9002F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8797E6561FE10D5800C9002F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -166,7 +167,6 @@
 		87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatUsersListTableViewCell.xib; sourceTree = "<group>"; };
 		87E8A9271FE5932100726A2E /* ChatListButtonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatListButtonsTableViewCell.swift; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/ChatList/ChatListButtonsTableViewCell.swift; sourceTree = "<absolute>"; };
 		87E8A9281FE5932100726A2E /* ChatListButtonsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ChatListButtonsTableViewCell.xib; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/ChatList/ChatListButtonsTableViewCell.xib; sourceTree = "<absolute>"; };
-		87E8A9291FE5932100726A2E /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
 		87EBEEB81FEEA28F00C62D89 /* iPetMatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iPetMatch.entitlements; sourceTree = "<group>"; };
 		87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		92EBCC34EEE82B0C93315475 /* Pods-iPetMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPetMatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch.release.xcconfig"; sourceTree = "<group>"; };
@@ -419,8 +419,8 @@
 		879FB12F1FE2EF8B002332EF /* ChatList */ = {
 			isa = PBXGroup;
 			children = (
-				8787CFA61FF90B5C0051AACD /* FriendsViewController.swift */,
-				87E8A9291FE5932100726A2E /* ChatListTableViewController.swift */,
+				8787CFAA1FF912000051AACD /* ChatViewController.swift */,
+				8787CFAB1FF912000051AACD /* ChatViewController.xib */,
 				87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */,
 				87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */,
 				87E8A9271FE5932100726A2E /* ChatListButtonsTableViewCell.swift */,
@@ -549,6 +549,7 @@
 				8737143B1FE40612009C440F /* MakeAudioCallViewController.xib in Resources */,
 				87495FC41FF3B1A700FF2C06 /* MatchCardView.xib in Resources */,
 				871F8FF61FF353400020FF35 /* Match.storyboard in Resources */,
+				8787CFAD1FF912000051AACD /* ChatViewController.xib in Resources */,
 				87E8A92D1FE596BC00726A2E /* ChatListButtonsTableViewCell.xib in Resources */,
 				8797E65A1FE10D5800C9002F /* LaunchScreen.storyboard in Resources */,
 				8727F7351FE8B61E0027859D /* Mewo.mp3 in Resources */,
@@ -693,7 +694,6 @@
 				8760A83C1FF4BAD200EE409E /* IPetUser.swift in Sources */,
 				87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */,
 				8797E67F1FE1174100C9002F /* QuickbloxAdmin.swift in Sources */,
-				87E8A92C1FE5932100726A2E /* ChatListTableViewController.swift in Sources */,
 				87C179AB1FEBFDB200815A47 /* UserManager.swift in Sources */,
 				8737143A1FE40612009C440F /* MakeAudioCallViewController.swift in Sources */,
 				879FB12A1FE2DF92002332EF /* TabBarController.swift in Sources */,
@@ -701,9 +701,9 @@
 				87E8A92B1FE5932100726A2E /* ChatListButtonsTableViewCell.swift in Sources */,
 				87126C011FE2412F009D0188 /* CallManager.swift in Sources */,
 				87641DE11FF559AC00FDD08A /* LikedUsersManager.swift in Sources */,
-				8787CFA71FF90B5C0051AACD /* FriendsViewController.swift in Sources */,
 				874D94391FE2CEAE0009C9F3 /* IncommingCallViewController.swift in Sources */,
 				87C5071C1FF6ABC4000797D5 /* CoreDataStack.swift in Sources */,
+				8787CFAC1FF912000051AACD /* ChatViewController.swift in Sources */,
 				87C179AF1FEC0FD900815A47 /* LoginViewController.swift in Sources */,
 				872D9CD71FE65F110008C8AA /* LocalVideoView.swift in Sources */,
 				879FB1261FE2DCFD002332EF /* TabBarItem.swift in Sources */,

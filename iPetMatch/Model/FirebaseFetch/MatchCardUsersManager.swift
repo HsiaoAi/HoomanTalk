@@ -56,8 +56,8 @@ class MatchCardUsersManager {
 
             guard let data = snapShot.value as? [String: AnyObject] else {
 
-                //self.delegate?.observeMatchCardUsersError(Error)
-
+                SCLAlertView().showInfo(NSLocalizedString("No user found", comment: ""),
+                                            subTitle: NSLocalizedString("Change filter to find users", comment: ""))
                 return
             }
 

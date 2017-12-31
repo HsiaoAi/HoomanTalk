@@ -70,10 +70,10 @@ class TabBarController: UITabBarController {
 
         case .chat:
 
-            let chatListTableViewController = FriendsViewController()
-            
+            let chatListTableViewController = ChatViewController()
+
             let navigationController = UINavigationController(rootViewController: chatListTableViewController)
-            
+
             navigationController.tabBarItem = TabBarItem(itemType: itemType)
 
             return navigationController
