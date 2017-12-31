@@ -43,6 +43,8 @@
 		878282EC1FF0115B006C9E20 /* UIColerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878282EB1FF0115B006C9E20 /* UIColerExtension.swift */; };
 		8787CFAC1FF912000051AACD /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8787CFAA1FF912000051AACD /* ChatViewController.swift */; };
 		8787CFAD1FF912000051AACD /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8787CFAB1FF912000051AACD /* ChatViewController.xib */; };
+		8787CFB21FF977C60051AACD /* ChatInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8787CFB11FF977C60051AACD /* ChatInfoView.xib */; };
+		8787CFB41FF979030051AACD /* ChatInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8787CFB31FF979030051AACD /* ChatInfoView.swift */; };
 		8797E6521FE10D5800C9002F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797E6511FE10D5800C9002F /* ViewController.swift */; };
 		8797E6571FE10D5800C9002F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6561FE10D5800C9002F /* Assets.xcassets */; };
 		8797E65A1FE10D5800C9002F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6581FE10D5800C9002F /* LaunchScreen.storyboard */; };
@@ -130,6 +132,8 @@
 		878282EB1FF0115B006C9E20 /* UIColerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColerExtension.swift; sourceTree = "<group>"; };
 		8787CFAA1FF912000051AACD /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		8787CFAB1FF912000051AACD /* ChatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
+		8787CFB11FF977C60051AACD /* ChatInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatInfoView.xib; sourceTree = "<group>"; };
+		8787CFB31FF979030051AACD /* ChatInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInfoView.swift; sourceTree = "<group>"; };
 		8797E64C1FE10D5800C9002F /* iPetMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPetMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8797E6511FE10D5800C9002F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8797E6561FE10D5800C9002F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -421,6 +425,8 @@
 			children = (
 				8787CFAA1FF912000051AACD /* ChatViewController.swift */,
 				8787CFAB1FF912000051AACD /* ChatViewController.xib */,
+				8787CFB11FF977C60051AACD /* ChatInfoView.xib */,
+				8787CFB31FF979030051AACD /* ChatInfoView.swift */,
 				87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */,
 				87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */,
 				87E8A9271FE5932100726A2E /* ChatListButtonsTableViewCell.swift */,
@@ -558,6 +564,7 @@
 				8703276F1FEB22DC009D2FF3 /* AudioCall.gif in Resources */,
 				8760A82F1FF4184800EE409E /* MatchOverlayView.xib in Resources */,
 				874D943A1FE2CEAE0009C9F3 /* IncommingCallViewController.xib in Resources */,
+				8787CFB21FF977C60051AACD /* ChatInfoView.xib in Resources */,
 				87C179AD1FEC0C7A00815A47 /* Landing.storyboard in Resources */,
 				87C179A91FEB588800815A47 /* VideoCall.gif in Resources */,
 				87DDA8E11FE907A600A917A8 /* dog.mp3 in Resources */,
@@ -690,6 +697,7 @@
 				87126BE51FE18B09009D0188 /* LandingViewController.swift in Sources */,
 				874D94321FE250F00009C9F3 /* SweetAlert.swift in Sources */,
 				879FB12C1FE2E2F4002332EF /* AppDelegateExtensions.swift in Sources */,
+				8787CFB41FF979030051AACD /* ChatInfoView.swift in Sources */,
 				87DD45681FF7DD50002793EE /* FriendsProvider.swift in Sources */,
 				8760A83C1FF4BAD200EE409E /* IPetUser.swift in Sources */,
 				87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */,

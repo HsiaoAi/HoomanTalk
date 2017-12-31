@@ -14,8 +14,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MakeAudioCallViewController" customModule="iPetMatch" customModuleProvider="target">
             <connections>
+                <outlet property="acticityIndicatorView" destination="Jpt-XT-rIY" id="eRn-ZV-FGP"/>
                 <outlet property="audioSignGifView" destination="Rf2-bK-uko" id="okr-40-iFZ"/>
                 <outlet property="callingToLabel" destination="QsE-Rs-4lz" id="yvu-AO-pgO"/>
+                <outlet property="friendImageView" destination="bA8-re-Kda" id="pMt-0d-zTG"/>
+                <outlet property="friendNameLabel" destination="pye-3m-8ji" id="pCb-Jy-PN3"/>
                 <outlet property="microphoneButton" destination="6MI-JH-ehd" id="ORZ-vW-Xt0"/>
                 <outlet property="speakerButton" destination="gSC-ol-2vG" id="bNh-3D-7bG"/>
                 <outlet property="timerLabel" destination="Urd-La-2W0" id="kHt-IL-NMq"/>
@@ -48,15 +51,30 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userImage" translatesAutoresizingMaskIntoConstraints="NO" id="bA8-re-Kda" userLabel="UserImage">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bA8-re-Kda" userLabel="UserImage">
                             <rect key="frame" x="25" y="60" width="365" height="389"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                     <real key="value" value="10"/>
                                 </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="debugFaceAware" value="NO"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="focusOnFaces" value="YES"/>
                             </userDefinedRuntimeAttributes>
                         </imageView>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="70s-0N-SR8" userLabel="afterAnswerButtonStack">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jpt-XT-rIY" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                            <rect key="frame" x="171" y="217.66666666666666" width="73" height="72.999999999999972"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Jpt-XT-rIY" secondAttribute="height" multiplier="1:1" id="W1d-Pg-Agc"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballScaleRippleMultiple"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                    <color key="value" red="0.64702028040000004" green="0.66663384439999995" blue="0.69790667299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="70s-0N-SR8" userLabel="buttonPanel">
                             <rect key="frame" x="57.666666666666657" y="603.33333333333337" width="299" height="82.666666666666629"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSC-ol-2vG" customClass="LGButton" customModule="LGButton">
@@ -181,6 +199,7 @@
                         <constraint firstItem="Rf2-bK-uko" firstAttribute="width" secondItem="Rf2-bK-uko" secondAttribute="height" multiplier="0.9:1" id="2XN-Z2-Hsf"/>
                         <constraint firstItem="mDw-zu-AxW" firstAttribute="bottom" secondItem="70s-0N-SR8" secondAttribute="bottom" constant="50" id="4Oh-os-PIK"/>
                         <constraint firstItem="QsE-Rs-4lz" firstAttribute="top" secondItem="Urd-La-2W0" secondAttribute="top" id="5zI-5g-uZk"/>
+                        <constraint firstItem="Jpt-XT-rIY" firstAttribute="width" secondItem="bA8-re-Kda" secondAttribute="width" multiplier="0.2" id="75l-JJ-h6A"/>
                         <constraint firstItem="Rf2-bK-uko" firstAttribute="width" secondItem="peZ-iI-Dmf" secondAttribute="width" multiplier="0.18" id="Bnj-TD-iRI"/>
                         <constraint firstItem="Rf2-bK-uko" firstAttribute="leading" secondItem="WSz-HA-P3Z" secondAttribute="trailing" constant="10" id="DeL-Gd-nmb"/>
                         <constraint firstItem="WSz-HA-P3Z" firstAttribute="leading" secondItem="v8s-ih-OZN" secondAttribute="leading" constant="40" id="F5u-cN-Je9"/>
@@ -188,6 +207,7 @@
                         <constraint firstItem="70s-0N-SR8" firstAttribute="top" secondItem="v8s-ih-OZN" secondAttribute="bottom" constant="30" id="LGX-Ad-msP"/>
                         <constraint firstItem="70s-0N-SR8" firstAttribute="centerX" secondItem="gaL-0a-ISl" secondAttribute="centerX" id="Lj3-sg-QoS"/>
                         <constraint firstItem="peZ-iI-Dmf" firstAttribute="centerX" secondItem="gaL-0a-ISl" secondAttribute="centerX" id="Pia-MX-wXm"/>
+                        <constraint firstItem="Jpt-XT-rIY" firstAttribute="centerY" secondItem="bA8-re-Kda" secondAttribute="centerY" id="ROP-6c-wm7"/>
                         <constraint firstItem="Urd-La-2W0" firstAttribute="leading" secondItem="QsE-Rs-4lz" secondAttribute="leading" id="Y0v-N7-R9b"/>
                         <constraint firstItem="WSz-HA-P3Z" firstAttribute="centerY" secondItem="peZ-iI-Dmf" secondAttribute="centerY" id="YyK-DG-6Mm"/>
                         <constraint firstItem="peZ-iI-Dmf" firstAttribute="bottom" secondItem="v8s-ih-OZN" secondAttribute="bottom" id="b9v-zQ-tNp"/>
@@ -198,6 +218,7 @@
                         <constraint firstItem="bA8-re-Kda" firstAttribute="top" secondItem="v8s-ih-OZN" secondAttribute="top" constant="5" id="fTr-Xj-BDT"/>
                         <constraint firstItem="peZ-iI-Dmf" firstAttribute="leading" secondItem="v8s-ih-OZN" secondAttribute="leading" constant="10" id="lsS-ja-Aum"/>
                         <constraint firstItem="bA8-re-Kda" firstAttribute="centerX" secondItem="v8s-ih-OZN" secondAttribute="centerX" id="pEr-vu-4v5"/>
+                        <constraint firstItem="Jpt-XT-rIY" firstAttribute="centerX" secondItem="bA8-re-Kda" secondAttribute="centerX" id="pZn-6B-POL"/>
                         <constraint firstItem="bA8-re-Kda" firstAttribute="height" secondItem="v8s-ih-OZN" secondAttribute="height" multiplier="0.75" id="qNO-QY-wFi"/>
                         <constraint firstItem="v8s-ih-OZN" firstAttribute="leading" secondItem="mDw-zu-AxW" secondAttribute="leading" constant="20" id="yPt-lV-rUl"/>
                     </constraints>
@@ -218,6 +239,5 @@
         <image name="icon-endPhone" width="74" height="59"/>
         <image name="icon-microphoneOn" width="33" height="44"/>
         <image name="icon-speakerOff" width="57" height="53"/>
-        <image name="userImage" width="95" height="76"/>
     </resources>
 </document>

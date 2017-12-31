@@ -19,14 +19,15 @@ class ChatViewController: UIViewController {
     var filterFriends = [Friend]()
     var shouldShowSearchResults = false
     let searchBar = UISearchBar()
+    var isCellExpaned: Bool = false
+    var didSelectIndexPath: IndexPath?
+    var userInfo: [String: String]?
+    var selectedFriend: Friend?
+    private var callToUserID: UInt?
 
     @IBOutlet weak var tableView: UITableView!
 
     // MARK: Property
-
-    private var callToUserID: UInt?
-
-    private let components: [ChatListComponent] = [ .user ]
 
     override func viewDidLoad() {
 
@@ -37,6 +38,8 @@ class ChatViewController: UIViewController {
         QBRTCAudioSession.instance().initialize
 
         self.navigationItem.hidesBackButton = false
+        tableView.estimatedRowHeight = 60
+        tableView.rowHeight = UITableViewAutomaticDimension
 
         setupSearchBar()
         setUpTableView()
@@ -74,10 +77,15 @@ class ChatViewController: UIViewController {
 
     private func setUpTableView() {
 
+        if let headerView = Bundle.main.loadNibNamed("ChatInfoView", owner: self, options: nil)?.first as? ChatInfoView {
+
+            tableView.tableHeaderView = headerView
+
+        }
         tableView.keyboardDismissMode = .onDrag
-        tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         tableView.alwaysBounceVertical = true
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
 
         let usersListNib = UINib(
             nibName: "ChatUsersListTableViewCell",
@@ -121,89 +129,70 @@ extension ChatViewController: FriendsProviderProtocol {
 // MARK: - Table view data source
 extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return components.count
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        switch components[section] {
-
-        case .user:
             let friendsWillShow = shouldShowSearchResults ? self.filterFriends : self.myFriends
             return friendsWillShow.count
 
-        case .buttons:
-            return 1
-        }
-
-    }
-
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44.0
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch components[indexPath.section] {
+        if indexPath == self.didSelectIndexPath && isCellExpaned {
 
-        case .user:
+            return 165
 
-            return (tableView.bounds.height - 64 ) / 6
+        } else {
 
-        case .buttons:
-            return 40.0
+            return 100
         }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let component = components[indexPath.section]
+        let identifier = ChatUsersListTableViewCell.identifier
 
-        switch component {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? ChatUsersListTableViewCell else {
+            print("LoadCellError")
+            return UITableViewCell() }
 
-        case .user :
+        cell.friendInfoView.backgroundColor = isCellExpaned ? .clear : .white
+        let friend = shouldShowSearchResults ? self.filterFriends[indexPath.row] : self.myFriends[indexPath.row]
+        cell.set(content: friend)
 
-            let identifier = ChatUsersListTableViewCell.identifier
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? ChatUsersListTableViewCell else {
-                print("LoadCellError")
-                return UITableViewCell() }
+        cell.audioCallButton.addTarget(self, action: #selector(startAudioCalling), for: .touchUpInside)
+        cell.videoCallButton.addTarget(self, action: #selector(startVedioCalling), for: .touchUpInside)
 
-            let friendsWillShow = shouldShowSearchResults ? self.filterFriends : self.myFriends
-
-            let friend = friendsWillShow[indexPath.row]
-            cell.userNameLabel.text = friend.name
-            cell.lastCallLabel.text = String(describing: friend.lastCallTime)
-
-            let imageAdress = friend.imageURL
-            if let imageURL = URL(string: imageAdress!) {
-
-                UserManager.setUserProfileImage(with: imageURL, into: cell.userImageLabel, activityIndicatorView: cell.loadingImageView)
-
-            }
-            cell.preservesSuperviewLayoutMargins = false
-            cell.separatorInset = UIEdgeInsets.zero
-            cell.layoutMargins = UIEdgeInsets.zero
-            return cell
-
-        case .buttons:
-
-            let identifier = ChatListButtonsTableViewCell.identifier
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? ChatListButtonsTableViewCell else { return UITableViewCell() }
-            self.callToUserID = 38863883
-            cell.audioButton.addTarget(self, action: #selector(startAudioCalling), for: .touchUpInside)
-            cell.videoButton.addTarget(self, action: #selector(startVedioCalling), for: .touchUpInside)
-
-            return cell
-
-        }
+        return cell
 
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        let friendsWillShow = shouldShowSearchResults ? self.filterFriends : self.myFriends
+        if indexPath == didSelectIndexPath {
+            isCellExpaned = false
+            self.didSelectIndexPath = nil
+        } else {
+            isCellExpaned = true
+            self.didSelectIndexPath = indexPath
 
-        print(friendsWillShow[indexPath.row].callingID)
+        }
+        let friend = shouldShowSearchResults ? self.filterFriends[indexPath.row] : self.myFriends[indexPath.row]
+        self.selectedFriend = friend
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
+        self.callToUserID = friend.callingID
+
+        guard let user = UserManager.instance.currentUser else {
+            SCLAlertView().showError(NSLocalizedString("Error", comment: ""),
+                                     subTitle: NSLocalizedString("Please login again", comment: ""))
+            return
+        }
+
+        let userInfo: [String: String] = [IPetUser.Schema.name: user.name,
+                                            IPetUser.Schema.imageURL: user.imageURL!,
+                                            IPetUser.Schema.callingID: String(describing: user.callingID)]
+        self.userInfo = userInfo
+        CallManager.shared.userInfo = userInfo
     }
 }
 
@@ -212,19 +201,25 @@ extension ChatViewController {
 
     @objc func startAudioCalling() {
 
+        self.isCellExpaned = false
+        self.didSelectIndexPath = nil
+        self.tableView.reloadData()
+
         guard let toUserID = self.callToUserID else { return }
 
         CallManager.shared.makeCall(to: toUserID, with: .audio)
-
         let makeAudioCallViewController = MakeAudioCallViewController()
-
+        makeAudioCallViewController.selectedFriend = self.selectedFriend
         let navigationController = UINavigationController(rootViewController: makeAudioCallViewController)
-
         self.navigationController?.present(navigationController, animated: true, completion: nil)
 
     }
 
     @objc func startVedioCalling() {
+
+        self.isCellExpaned = false
+        self.didSelectIndexPath = nil
+        self.tableView.reloadData()
 
         self.present(MakeVideoCallViewController(), animated: true, completion: nil)
 
