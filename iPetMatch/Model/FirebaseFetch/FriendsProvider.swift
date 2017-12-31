@@ -7,34 +7,34 @@
 //
 
 protocol  FriendsProviderProtocol: class {
-    
+
     func didObserveMyFriends(_ provider: FriendProvider, _ friends: [Friend])
 }
 
 class FriendProvider {
     weak var delegate: FriendsProviderProtocol?
-    
+
     func observeMyFriends() {
         guard let uid = Auth.auth().currentUser?.uid else {
-            
+
             SCLAlertView().showError(NSLocalizedString("Error", comment: ""),
                                      subTitle: NSLocalizedString("User didn't log in", comment: ""))
             return
         }
-        
+
         let ref = Database.database().reference().child("user-friends").child(uid)
         ref.observe(.childAdded) { [weak self] (snapshot) in
             ref.observeSingleEvent(of: .value, with: { snapshot in
                 var myFriends = [Friend]()
                 if let friendsDic = snapshot.value as? [String: Any] {
-                    
+
                     for (friendId, friendData) in friendsDic {
-                        
+
                         guard let friendDic = friendData as? [String: Any] else {
-                            
+
                             return
                         }
-                        
+
                         let friend = Friend(dictionary: friendDic)
 //                        guard
 //                            //let email = friendDic[IPetUser.Schema.loginEmail] as? String,
@@ -49,21 +49,19 @@ class FriendProvider {
 //                        }
 //
 //                        let ipetUser = IPetUser(id: friendId, loginEmail:"", name: name, petPersonType: PetPersonType(rawValue: petPersionType)!, gender: Gender(rawValue: gender)!, yearOfBirth: yearOfBirth, imageURL: imageURL, callingID: UInt(callingID))
-                        
+
                         myFriends.append(friend)
                     }
-                    
+
                     self?.delegate?.didObserveMyFriends(self!, myFriends)
-                    
-                    
+
                 } else {
-                    
+
                     SCLAlertView().showWarning(NSLocalizedString("Warning", comment: ""),
                                              subTitle: NSLocalizedString("You don't have friends", comment: ""))
-                    
+
                 }
             })
         }
     }
 }
-

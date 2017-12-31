@@ -46,7 +46,7 @@ struct IPetUser: Equatable {
     let imageURL: String?
 
     let callingID: UInt
-    
+
 //    init(dictionary: [String: Any]) {
 //
 //        let petPersonType = PetPersonType(rawValue: String(describing: dictionary[IPetUser.Schema.petPersonType]))!

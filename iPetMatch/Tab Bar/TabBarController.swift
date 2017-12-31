@@ -70,19 +70,19 @@ class TabBarController: UITabBarController {
 
         case .chat:
 
-            let chatListTableViewController = ChatListTableViewController()
-
+            let chatListTableViewController = FriendsViewController()
+            
             let navigationController = UINavigationController(rootViewController: chatListTableViewController)
-
+            
             navigationController.tabBarItem = TabBarItem(itemType: itemType)
 
             return navigationController
 
         case .match:
 
-            let langdingStoryboard = UIStoryboard(name: "Match", bundle: nil)
+            let matchStoryBoard = UIStoryboard(name: "Match", bundle: nil)
 
-            let matchViewController = langdingStoryboard.instantiateViewController(withIdentifier: "MatchViewController")
+            let matchViewController = matchStoryBoard.instantiateViewController(withIdentifier: "MatchViewController")
 
             matchViewController.tabBarItem = TabBarItem(itemType: itemType)
 

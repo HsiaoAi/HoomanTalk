@@ -41,6 +41,7 @@
 		87641DF01FF5976700FDD08A /* LikeMeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87641DEE1FF5976700FDD08A /* LikeMeCollectionViewCell.swift */; };
 		87641DF11FF5976700FDD08A /* LikeMeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87641DEF1FF5976700FDD08A /* LikeMeCollectionViewCell.xib */; };
 		878282EC1FF0115B006C9E20 /* UIColerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878282EB1FF0115B006C9E20 /* UIColerExtension.swift */; };
+		8787CFA71FF90B5C0051AACD /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8787CFA61FF90B5C0051AACD /* FriendsViewController.swift */; };
 		8797E6521FE10D5800C9002F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797E6511FE10D5800C9002F /* ViewController.swift */; };
 		8797E6571FE10D5800C9002F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6561FE10D5800C9002F /* Assets.xcassets */; };
 		8797E65A1FE10D5800C9002F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6581FE10D5800C9002F /* LaunchScreen.storyboard */; };
@@ -127,6 +128,7 @@
 		87641DEE1FF5976700FDD08A /* LikeMeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeMeCollectionViewCell.swift; sourceTree = "<group>"; };
 		87641DEF1FF5976700FDD08A /* LikeMeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeMeCollectionViewCell.xib; sourceTree = "<group>"; };
 		878282EB1FF0115B006C9E20 /* UIColerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColerExtension.swift; sourceTree = "<group>"; };
+		8787CFA61FF90B5C0051AACD /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		8797E64C1FE10D5800C9002F /* iPetMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPetMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8797E6511FE10D5800C9002F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8797E6561FE10D5800C9002F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 		879FB12F1FE2EF8B002332EF /* ChatList */ = {
 			isa = PBXGroup;
 			children = (
+				8787CFA61FF90B5C0051AACD /* FriendsViewController.swift */,
 				87E8A9291FE5932100726A2E /* ChatListTableViewController.swift */,
 				87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */,
 				87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */,
@@ -698,6 +701,7 @@
 				87E8A92B1FE5932100726A2E /* ChatListButtonsTableViewCell.swift in Sources */,
 				87126C011FE2412F009D0188 /* CallManager.swift in Sources */,
 				87641DE11FF559AC00FDD08A /* LikedUsersManager.swift in Sources */,
+				8787CFA71FF90B5C0051AACD /* FriendsViewController.swift in Sources */,
 				874D94391FE2CEAE0009C9F3 /* IncommingCallViewController.swift in Sources */,
 				87C5071C1FF6ABC4000797D5 /* CoreDataStack.swift in Sources */,
 				87C179AF1FEC0FD900815A47 /* LoginViewController.swift in Sources */,

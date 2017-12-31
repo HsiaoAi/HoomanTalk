@@ -306,24 +306,26 @@ extension MatchViewController {
             let currentUser = UserManager.instance.currentUser {
             let uid = currentUser.id
             let myFriendsRef = Database.database().reference().child("user-friends").child(uid).child(likeUser.id)
-            let matchFriendInfo: [String: Any] = [IPetUser.Schema.name: likeUser.name,
-                                             IPetUser.Schema.imageURL: likeUser.imageURL,
-                                             IPetUser.Schema.callingID: likeUser.callingID,
-                                             IPetUser.Schema.gender: likeUser.gender.rawValue,
-                                             IPetUser.Schema.yearOfBirth: likeUser.yearOfBirth,
-                                             IPetUser.Schema.loginEmail: likeUser.loginEmail,
-                                             IPetUser.Schema.petPersonType: likeUser.petPersonType.rawValue]
+            let matchFriendInfo: [String: Any] = [Friend.Schema.name: likeUser.name,
+                                             Friend.Schema.imageURL: likeUser.imageURL,
+                                             Friend.Schema.callingID: likeUser.callingID,
+                                             Friend.Schema.gender: likeUser.gender.rawValue,
+                                             Friend.Schema.yearOfBirth: likeUser.yearOfBirth,
+                                             Friend.Schema.loginEmail: likeUser.loginEmail,
+                                             Friend.Schema.id: likeUser.id,
+                                             Friend.Schema.petPersonType: likeUser.petPersonType.rawValue]
+            
             myFriendsRef.updateChildValues(matchFriendInfo)
 
             let matchUserFriendsRef = Database.database().reference().child("user-friends").child(likeUser.id).child(uid)
-            let myInfo: [String: Any] = [IPetUser.Schema.name: currentUser.name,
-                                             IPetUser.Schema.id: currentUser.id,
-                                             IPetUser.Schema.imageURL: currentUser.imageURL,
-                                             IPetUser.Schema.callingID: currentUser.callingID,
-                                             IPetUser.Schema.gender: currentUser.gender.rawValue,
-                                             IPetUser.Schema.yearOfBirth: currentUser.yearOfBirth,
-                                             IPetUser.Schema.loginEmail: currentUser.loginEmail,
-                                             IPetUser.Schema.petPersonType: currentUser.petPersonType.rawValue]
+            let myInfo: [String: Any] = [Friend.Schema.name: currentUser.name,
+                                             Friend.Schema.id: currentUser.id,
+                                             Friend.Schema.imageURL: currentUser.imageURL,
+                                             Friend.Schema.callingID: currentUser.callingID,
+                                             Friend.Schema.gender: currentUser.gender.rawValue,
+                                             Friend.Schema.yearOfBirth: currentUser.yearOfBirth,
+                                             Friend.Schema.loginEmail: currentUser.loginEmail,
+                                             Friend.Schema.petPersonType: currentUser.petPersonType.rawValue]
 
             matchUserFriendsRef.updateChildValues(myInfo)
         }
@@ -348,23 +350,25 @@ extension MatchViewController {
             if let currentUser = UserManager.instance.currentUser {
                 let uid = currentUser.id
                 let myFriendsRef = Database.database().reference().child("user-friends").child(uid).child(matchUser.id)
-                let matchFriendInfo: [String: Any] = [IPetUser.Schema.name: matchUser.name,
-                                                      IPetUser.Schema.imageURL: matchUser.imageURL,
-                                                      IPetUser.Schema.callingID: matchUser.callingID,
-                                                      IPetUser.Schema.gender: matchUser.gender.rawValue,
-                                                      IPetUser.Schema.yearOfBirth: matchUser.yearOfBirth,
-                                                      IPetUser.Schema.loginEmail: matchUser.loginEmail,
-                                                      IPetUser.Schema.petPersonType: matchUser.petPersonType.rawValue]
+                let matchFriendInfo: [String: Any] = [Friend.Schema.name: matchUser.name,
+                                                      Friend.Schema.id: matchUser.id,
+                                                      Friend.Schema.imageURL: matchUser.imageURL,
+                                                      Friend.Schema.callingID: matchUser.callingID,
+                                                      Friend.Schema.gender: matchUser.gender.rawValue,
+                                                      Friend.Schema.yearOfBirth: matchUser.yearOfBirth,
+                                                      Friend.Schema.loginEmail: matchUser.loginEmail,
+                                                      Friend.Schema.petPersonType: matchUser.petPersonType.rawValue]
                 myFriendsRef.updateChildValues(matchFriendInfo)
 
                 let matchUserFriendsRef = Database.database().reference().child("user-friends").child(matchUser.id).child(uid)
-                let myInfo: [String: Any] = [IPetUser.Schema.name: currentUser.name,
-                                             IPetUser.Schema.imageURL: currentUser.imageURL,
-                                             IPetUser.Schema.callingID: currentUser.callingID,
-                                             IPetUser.Schema.gender: currentUser.gender.rawValue,
-                                             IPetUser.Schema.yearOfBirth: currentUser.yearOfBirth,
-                                             IPetUser.Schema.loginEmail: matchUser.loginEmail,
-                                             IPetUser.Schema.petPersonType: currentUser.petPersonType.rawValue]
+                let myInfo: [String: Any] = [Friend.Schema.name: currentUser.name,
+                                             Friend.Schema.id: currentUser.id,
+                                             Friend.Schema.imageURL: currentUser.imageURL,
+                                             Friend.Schema.callingID: currentUser.callingID,
+                                             Friend.Schema.gender: currentUser.gender.rawValue,
+                                             Friend.Schema.yearOfBirth: currentUser.yearOfBirth,
+                                             Friend.Schema.loginEmail: matchUser.loginEmail,
+                                             Friend.Schema.petPersonType: currentUser.petPersonType.rawValue]
 
                 matchUserFriendsRef.updateChildValues(myInfo)
             }
@@ -439,11 +443,13 @@ extension MatchViewController: UICollectionViewDataSource {
 
             if self.usersIdLikedByCurrentUser.contains(user.id) {
 
-                cell.likeButton.setClicked(true, animated: false)
+                cell.likeButton.setClicked(true, animated: true)
                 cell.likeButton.isEnabled = false
 
             } else {
 
+                cell.likeButton.setClicked(false, animated: true)
+                cell.likeButton.isEnabled = true
                 cell.likeButton.addTarget(self, action: #selector(responseLike(_:)), for: .touchUpInside)
 
             }

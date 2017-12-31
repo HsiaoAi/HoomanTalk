@@ -12,9 +12,12 @@ class ChatUsersListTableViewCell: UITableViewCell, Identifiable {
 
     class var identifier: String { return String(describing: self) }
 
+    @IBOutlet weak var loadingImageView: NVActivityIndicatorView!
     @IBOutlet weak var userNameLabel: UILabel!
 
-    @IBOutlet weak var userNumberLabel: UILabel!
+    @IBOutlet weak var lastCallLabel: UILabel!
+
+    @IBOutlet weak var userImageLabel: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
