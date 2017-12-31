@@ -34,6 +34,18 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="focusOnFaces" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sPq-4d-tFU" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                        <rect key="frame" x="60" y="60" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="sPq-4d-tFU" secondAttribute="height" multiplier="1:1" id="TTw-si-nBz"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                <color key="value" red="0.64702028040000004" green="0.66663384439999995" blue="0.69790667299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="squareSpin"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUW-fG-Jkj">
                         <rect key="frame" x="0.0" y="132" width="161" height="29"/>
                         <subviews>
@@ -66,18 +78,6 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                 <real key="value" value="2"/>
                             </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sPq-4d-tFU" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-                        <rect key="frame" x="60.5" y="60.5" width="40" height="40"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="sPq-4d-tFU" secondAttribute="height" multiplier="1:1" id="TTw-si-nBz"/>
-                        </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                <color key="value" red="0.64702028040000004" green="0.66663384439999995" blue="0.69790667299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="squareSpin"/>
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AgT-i4-iMd" customClass="WCLShineButton" customModule="WCLShineButton">

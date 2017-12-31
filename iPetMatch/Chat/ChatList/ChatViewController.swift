@@ -45,13 +45,45 @@ class ChatViewController: UIViewController {
         setUpTableView()
 
         friendsProvider.delegate = self
+        CallManager.shared.delegate = self
 
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        friendsProvider.observeMyFriends()
+        if QBChat.instance.isConnected == false {
+            SVProgressHUD.show(withStatus: NSLocalizedString("Connecting...", comment: ""))
+            UIApplication.shared.beginIgnoringInteractionEvents()
+
+            guard let user = Auth.auth().currentUser else {
+                SVProgressHUD.dismiss()
+                UIApplication.shared.endIgnoringInteractionEvents()
+                SCLAlertView().showError(NSLocalizedString("Error", comment: ""),
+                                         subTitle: NSLocalizedString("Something wrong, please log in again", comment: ""))
+                AppDelegate.shared.enterLandingView()
+                // ToDo: AddLogout!
+                return
+            }
+
+            if let email = user.email {
+                QBRequest.logIn(withUserEmail: email,
+                                password: user.uid,
+                                successBlock: { (_, QBuser) in
+                                    QBChat.instance.connect(with: QBuser, completion: { _ in
+                                        SVProgressHUD.dismiss()
+                                        self.friendsProvider.observeMyFriends()
+                                    })},
+                                errorBlock: {_ in
+                                    SVProgressHUD.dismiss()
+                                    SCLAlertView().showError(NSLocalizedString("Error", comment: ""),
+                                                             subTitle: NSLocalizedString("Something wrong, please log in again", comment: ""))
+                                    AppDelegate.shared.enterLandingView()
+                })
+            }
+        } else {
+            self.friendsProvider.observeMyFriends()
+        }
 
     }
 
@@ -82,10 +114,10 @@ class ChatViewController: UIViewController {
             tableView.tableHeaderView = headerView
 
         }
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 65))
         tableView.keyboardDismissMode = .onDrag
         tableView.showsVerticalScrollIndicator = false
-        tableView.alwaysBounceVertical = true
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
+        tableView.tableFooterView = footerView
 
         let usersListNib = UINib(
             nibName: "ChatUsersListTableViewCell",
@@ -155,7 +187,6 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
             print("LoadCellError")
             return UITableViewCell() }
 
-        cell.friendInfoView.backgroundColor = isCellExpaned ? .clear : .white
         let friend = shouldShowSearchResults ? self.filterFriends[indexPath.row] : self.myFriends[indexPath.row]
         cell.set(content: friend)
 
@@ -191,6 +222,9 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
         let userInfo: [String: String] = [IPetUser.Schema.name: user.name,
                                             IPetUser.Schema.imageURL: user.imageURL!,
                                             IPetUser.Schema.callingID: String(describing: user.callingID)]
+        CallManager.shared.fromId = user.id
+        CallManager.shared.toId = friend.id
+
         self.userInfo = userInfo
         CallManager.shared.userInfo = userInfo
     }
@@ -233,7 +267,6 @@ extension ChatViewController: UISearchBarDelegate {
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
         doSearch()
 
     }
@@ -271,4 +304,12 @@ extension ChatViewController: UISearchBarDelegate {
         self.searchBar.endEditing(true)
     }
 
+}
+
+extension ChatViewController: CallManagerProtocol {
+    func didMakeCall(_ callManager: CallManager) {
+
+        friendsProvider.observeMyFriends()
+
+    }
 }

@@ -106,51 +106,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // 判斷是否登入
 
-        func applicationWillEnterForeground(_ application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
 
-            if QBChat.instance.isConnected == false {
+        if QBChat.instance.isConnected == false {
 
-                showLoading()
+            showLoading()
 
-                UIApplication.shared.beginIgnoringInteractionEvents()
+            UIApplication.shared.beginIgnoringInteractionEvents()
 
-                guard let user = Auth.auth().currentUser else {
+            guard let user = Auth.auth().currentUser else {
 
-                    enterLandingView()
+                enterLandingView()
 
-                    SVProgressHUD.dismiss()
+                SVProgressHUD.dismiss()
 
-                    UIApplication.shared.endIgnoringInteractionEvents()
+                UIApplication.shared.endIgnoringInteractionEvents()
 
-                    UserManager.instance.currentUser = nil
+                UserManager.instance.currentUser = nil
 
-                    return
-
-                }
-
-                UserManager.instance.getCurrentUserInfo(user)
-
-                if let email = user.email {
-
-                    QBRequest.logIn(withUserEmail: email, password: user.uid, successBlock: { (_, QBuser) in
-
-                        self.subscription.id = QBuser.id
-
-                        QBChat.instance.connect(with: QBuser, completion: {
-
-                            _ in
-
-                            SVProgressHUD.dismiss()
-                        })
-
-                        print("done")}, errorBlock: {_ in SVProgressHUD.dismiss() })
-
-                }
-
-                enterPassByLandingView()
+                return
 
             }
+
+            UserManager.instance.getCurrentUserInfo(user)
+
+            if let email = user.email {
+
+                QBRequest.logIn(withUserEmail: email, password: user.uid, successBlock: { (_, QBuser) in
+
+                    self.subscription.id = QBuser.id
+
+                    QBChat.instance.connect(with: QBuser, completion: {
+
+                        _ in
+
+                        SVProgressHUD.dismiss()
+                    })
+
+                    print("done")}, errorBlock: {_ in SVProgressHUD.dismiss() })
+
+            }
+
+            enterPassByLandingView()
+
         }
+    }
 
     // MARK: - Remote Notifictions
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {

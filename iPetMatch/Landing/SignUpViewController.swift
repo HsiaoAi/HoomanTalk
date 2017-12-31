@@ -496,7 +496,7 @@ extension SignUpViewController: UITextFieldDelegate {
 
                 if textField.tag == 1 && (text.count < 3 || !text.contains("@")) {
 
-                    floatingLabelTextField.errorMessage = "Invalid Email"
+                    floatingLabelTextField.errorMessage = "Invalid Email(6-20 Characters)"
 
                 } else if textField.tag == 2 && text.count < 5 {
                     floatingLabelTextField.errorMessage = "Invalid Password"

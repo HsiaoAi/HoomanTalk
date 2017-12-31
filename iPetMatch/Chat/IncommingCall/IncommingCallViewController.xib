@@ -57,6 +57,19 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kic-Dp-joK" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                    <rect key="frame" x="155.5" y="205.5" width="65" height="65"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="kic-Dp-joK" secondAttribute="height" multiplier="1:1" id="TPt-CS-ct4"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballScaleRippleMultiple"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="color">
+                            <color key="value" red="0.64702028040000004" green="0.66663384439999995" blue="0.69790667299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6GW-Ie-ql7" userLabel="UserImage">
                     <rect key="frame" x="25" y="69" width="325" height="336.5"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -238,19 +251,6 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kic-Dp-joK" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-                    <rect key="frame" x="139.5" y="189" width="97.5" height="97.5"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="kic-Dp-joK" secondAttribute="height" multiplier="1:1" id="TPt-CS-ct4"/>
-                    </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballScaleRippleMultiple"/>
-                        <userDefinedRuntimeAttribute type="color" keyPath="color">
-                            <color key="value" red="0.64702028040000004" green="0.66663384439999995" blue="0.69790667299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
@@ -262,7 +262,7 @@
                 <constraint firstItem="him-gQ-3km" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="KOS-2e-Um5"/>
                 <constraint firstItem="ggs-Xg-qMS" firstAttribute="width" secondItem="EQU-up-XkN" secondAttribute="width" multiplier="0.18" id="LK7-8M-wgo"/>
                 <constraint firstItem="hz3-gt-9u7" firstAttribute="top" secondItem="KBH-MD-9Yz" secondAttribute="top" id="LM7-vk-GzI"/>
-                <constraint firstItem="kic-Dp-joK" firstAttribute="width" secondItem="6GW-Ie-ql7" secondAttribute="width" multiplier="0.3" id="M82-2L-r22"/>
+                <constraint firstItem="kic-Dp-joK" firstAttribute="width" secondItem="6GW-Ie-ql7" secondAttribute="width" multiplier="0.2" id="M82-2L-r22"/>
                 <constraint firstItem="B2O-F0-87j" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.2" id="MNu-6d-WIk"/>
                 <constraint firstItem="ggs-Xg-qMS" firstAttribute="leading" secondItem="dQ8-2L-qru" secondAttribute="trailing" constant="10" id="My3-SY-uez"/>
                 <constraint firstItem="EQU-up-XkN" firstAttribute="top" secondItem="6GW-Ie-ql7" secondAttribute="bottom" id="Qt3-lF-rUh"/>

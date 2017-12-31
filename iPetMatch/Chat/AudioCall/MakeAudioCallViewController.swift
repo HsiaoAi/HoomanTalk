@@ -29,7 +29,6 @@ class MakeAudioCallViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        connectQBChat()
         sendPushToOpponentsAboutNewCall()
         self.timerLabel.isHidden = true
         setupAudioSignImageView()
@@ -37,39 +36,6 @@ class MakeAudioCallViewController: UIViewController {
         QBRTCClient.instance().add(self)
         CallManager.shared.audioManager.currentAudioDevice = QBRTCAudioDevice.receiver
         self.navigationController?.isNavigationBarHidden = true
-    }
-
-    func connectQBChat() {
-
-        if QBChat.instance.isConnected == false {
-            SVProgressHUD.show(withStatus: NSLocalizedString("Connecting...", comment: ""))
-            UIApplication.shared.beginIgnoringInteractionEvents()
-
-            guard let user = Auth.auth().currentUser else {
-                SVProgressHUD.dismiss()
-                UIApplication.shared.endIgnoringInteractionEvents()
-                SCLAlertView().showError(NSLocalizedString("Error", comment: ""),
-                                         subTitle: NSLocalizedString("Something wrong, please log in again", comment: ""))
-                AppDelegate.shared.enterLandingView()
-                // ToDo: AddLogout!
-                return
-            }
-
-            if let email = user.email {
-                QBRequest.logIn(withUserEmail: email,
-                                password: user.uid,
-                                successBlock: { (_, QBuser) in
-                                    QBChat.instance.connect(with: QBuser, completion: { _ in
-                                        SVProgressHUD.dismiss()
-                                    })},
-                                errorBlock: {_ in
-                                    SVProgressHUD.dismiss()
-                                    SCLAlertView().showError(NSLocalizedString("Error", comment: ""),
-                                                             subTitle: NSLocalizedString("Something wrong, please log in again", comment: ""))
-                                    AppDelegate.shared.enterLandingView()
-                })
-            }
-        }
     }
 
     func setupCallInfoView() {

@@ -47,6 +47,16 @@ class ChatUsersListTableViewCell: UITableViewCell, Identifiable {
             UserManager.setUserProfileImage(with: imageURL, into: self.userImageLabel, activityIndicatorView: self.loadingImageView)
         }
 
+        if let lastCallType = friend.lastCallType,
+            let lastCallTime = friend.lastCallTime {
+
+            lastCallLabel.text = "\(lastCallType): \(lastCallTime)"
+
+        } else {
+
+            lastCallLabel.text = NSLocalizedString("Click to start your first call!", comment: "")
+        }
+
         self.preservesSuperviewLayoutMargins = false
         self.separatorInset = UIEdgeInsets.zero
         self.layoutMargins = UIEdgeInsets.zero

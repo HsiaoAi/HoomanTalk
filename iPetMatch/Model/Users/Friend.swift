@@ -44,7 +44,7 @@ class Friend {
 
     let callingID: UInt?
 
-    var lastCallTime: Int?
+    var lastCallTime: String?
 
     var lastCallType: String?
 
@@ -68,7 +68,7 @@ class Friend {
         self.yearOfBirth = dictionary[Friend.Schema.yearOfBirth] as? Int
         self.imageURL = dictionary[Friend.Schema.imageURL] as? String
         self.callingID = dictionary[Friend.Schema.callingID] as? UInt
-        self.lastCallTime = dictionary[Friend.Schema.lastCallTime] as? Int
+        self.lastCallTime = dictionary[Friend.Schema.lastCallTime] as? String
         self.lastCallType = dictionary[Friend.Schema.lastCallType] as? String
 
     }

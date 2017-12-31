@@ -270,7 +270,7 @@ extension LoginViewController: UITextFieldDelegate {
 
                 } else if textField === passwordTextFied && text.count < 5 {
 
-                    skyFloatLabelTextField.errorMessage = "Invalid Password"
+                    skyFloatLabelTextField.errorMessage = "Invalid Password (6-20 Characters)"
 
                 } else {
 
