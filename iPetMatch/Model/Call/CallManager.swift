@@ -53,9 +53,11 @@ class CallManager {
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-        let timeZone = TimeZone(secondsFromGMT: -8)
-            dateFormatter.timeZone = timeZone
+        let timeZoneAbbreviation = NSLocalizedString("CTU", comment: "timeZone")
+        let timeZone = TimeZone(abbreviation: timeZoneAbbreviation)
+        dateFormatter.timeZone = timeZone
         let dateString = dateFormatter.string(from: Date())
+
 
         let callInfo = [Friend.Schema.lastCallType: callType,
                         Friend.Schema.lastCallTime: dateString]

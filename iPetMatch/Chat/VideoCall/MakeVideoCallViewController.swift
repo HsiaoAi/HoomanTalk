@@ -66,12 +66,16 @@ class MakeVideoCallViewController: UIViewController {
         if CallManager.shared.session!.localMediaStream.videoTrack.isEnabled {
 
             CallManager.shared.session!.localMediaStream.videoTrack.isEnabled = false
+            
+            self.localVideoView.isHidden = true
 
             cameraButton.rightImageSrc = IconImage.cameraOff.image
 
         } else {
 
             CallManager.shared.session!.localMediaStream.videoTrack.isEnabled = true
+            
+            self.localVideoView.isHidden = false
 
             cameraButton.rightImageSrc = IconImage.cameraOn.image
 
