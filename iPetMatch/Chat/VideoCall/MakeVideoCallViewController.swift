@@ -161,7 +161,7 @@ extension MakeVideoCallViewController {
 
             CallManager.shared.session?.startCall(nil)
 
-            sendPushToOpponentsAboutNewCall()
+            sendPushToOpponentsAboutNewCall(from: UserManager.instance.currentUser!.name, to: "\(callToUser.callingID!)")
 
             RingtonePlayer.shared.startPhoneRing(callRole: .host)
 
@@ -282,24 +282,16 @@ extension MakeVideoCallViewController: UIDropInteractionDelegate {
 
 extension MakeVideoCallViewController {
 
-    func sendPushToOpponentsAboutNewCall() {
+    func sendPushToOpponentsAboutNewCall(from userName: String, to userId: String) {
 
-        var pushMessage = QBMPushMessage(payload: ["custom": "ilct23", "text": "Hello World !"])
+        let pushMessage = NSLocalizedString("Incoming video call from ", comment: "") + "\(userName)"
 
-        var userID = "38863883"
-
-        QBRequest.sendPush(withText: "Video Call From ilct23",
-
-                           toUsers: userID,
-
+        QBRequest.sendPush(withText: pushMessage,
+                           toUsers: userId,
                            successBlock: {(_, _) -> Void in
-
                             print("+++Push Done")},
-
                            errorBlock: {(_ error: QBError) -> Void in
-
                             print("Push error \(error)")
-
         })
     }
 

@@ -370,6 +370,8 @@ extension MatchViewController {
                                              Friend.Schema.petPersonType: currentUser.petPersonType.rawValue]
 
                 matchUserFriendsRef.updateChildValues(myInfo)
+
+                pushNewFriendNotifictaion(user1Id: "\(matchUser.callingID)", user2Id: "\(currentUser.callingID)")
             }
         }
     }
@@ -465,6 +467,42 @@ extension MatchViewController: UICollectionViewDataSource {
         }
 
         return cell
+
+    }
+
+}
+
+extension MatchViewController {
+
+    func pushNewFriendNotifictaion(user1Id: String, user2Id: String) {
+
+        let pushMessage = NSLocalizedString("You got a new friend! Come back to check it.", comment: "")
+
+        QBRequest.sendPush(withText: pushMessage,
+                           toUsers: user1Id,
+
+                           successBlock: {(_, _) -> Void in
+
+                            print("+++Push Done")},
+
+                           errorBlock: {(_ error: QBError) -> Void in
+
+                            print("Push error \(error)")
+
+        })
+
+        QBRequest.sendPush(withText: pushMessage,
+                           toUsers: user2Id,
+
+                           successBlock: {(_, _) -> Void in
+
+                            print("+++Push Done")},
+
+                           errorBlock: {(_ error: QBError) -> Void in
+
+                            print("Push error \(error)")
+
+        })
 
     }
 

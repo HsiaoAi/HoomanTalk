@@ -21,15 +21,13 @@ class MakeAudioCallViewController: UIViewController {
     var selectedFriend: Friend?
     @IBAction func declineButton(_ sender: Any) {
 
-        let userInfo = CallManager.shared.userInfo
-        CallManager.shared.session?.hangUp(userInfo)
+        CallManager.shared.session?.hangUp(nil)
         CallManager.shared.session = nil
 
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        sendPushToOpponentsAboutNewCall()
         self.timerLabel.isHidden = true
         setupAudioSignImageView()
         setupCallInfoView()
@@ -49,6 +47,8 @@ class MakeAudioCallViewController: UIViewController {
         if let imageURL = URL(string: imageAdress!) {
             UserManager.setUserProfileImage(with: imageURL, into: self.friendImageView, activityIndicatorView: self.acticityIndicatorView)
         }
+        sendPushToOpponentsAboutNewCall(from: UserManager.instance.currentUser!.name, to: "\(friend.callingID!)")
+
     }
 
     func setupAudioSignImageView() {
@@ -108,7 +108,7 @@ extension MakeAudioCallViewController: QBRTCClientDelegate {
 
         callingToLabel.text = NSLocalizedString("Rejected by friend", comment: "")
 
-         SCLAlertView().showInfo("Information", subTitle: NSLocalizedString("Rejected by friend", comment: ""))
+        SCLAlertView().showInfo("Information", subTitle: NSLocalizedString("Rejected by friend", comment: ""))
 
     }
 
@@ -170,15 +170,11 @@ extension MakeAudioCallViewController: QBRTCClientDelegate {
 
 extension MakeAudioCallViewController {
 
-    func sendPushToOpponentsAboutNewCall() {
+    func sendPushToOpponentsAboutNewCall(from userName: String, to userId: String) {
 
-        guard let currentUser = UserManager.instance.currentUser,
-            let userId = CallManager.shared.userInfo?[Friend.Schema.callingID]   else {
-            return
-        }
+        let pushMessage = NSLocalizedString("Incoming audio call from ", comment: "") + "\(userName)"
 
-        QBRequest.sendPush(withText: NSLocalizedString("Audio Call From", comment: "") + " \(currentUser.name)",
-
+        QBRequest.sendPush(withText: pushMessage,
                            toUsers: userId,
 
                            successBlock: {(_, _) -> Void in

@@ -20,7 +20,7 @@ class LikedUsersManger {
 
     func sendLike(to user: IPetUser) {
 
-        guard let uid = Auth.auth().currentUser?.uid,
+        guard let fromUser = Auth.auth().currentUser,
             let currentUser = UserManager.instance.currentUser else {
 
             SCLAlertView().showWarning(NSLocalizedString("Warning", comment: ""),
@@ -28,7 +28,7 @@ class LikedUsersManger {
             return
         }
 
-        let fromId = uid
+        let fromId = fromUser.uid
         let toId = user.id
 
         let ref = Database.database().reference().child(FirebaseSchema.likes.rawValue)
@@ -57,6 +57,26 @@ class LikedUsersManger {
         ]
 
         userReceivedLikeRef.updateChildValues(likeInfo)
+        pushReceivedLikeNotifictaion(from: currentUser.name, toUserId: "\(user.callingID)")
+
+    }
+
+    func pushReceivedLikeNotifictaion(from userName: String, toUserId userCallingID: String) {
+
+        let pushMessage = NSLocalizedString("Someone likes you! Come back to check it.", comment: "")
+
+        QBRequest.sendPush(withText: pushMessage,
+                           toUsers: userCallingID,
+
+                           successBlock: {(_, _) -> Void in
+
+                            print("+++Push Done")},
+
+                           errorBlock: {(_ error: QBError) -> Void in
+
+                            print("Push error \(error)")
+
+        })
 
     }
 
