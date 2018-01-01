@@ -36,13 +36,14 @@ class CallManager {
 
         opponents.append(userID)
 
-        let newSession = QBRTCClient.instance().createNewSession(withOpponents: opponents, with: conferenceType)
-
-        newSession.startCall(userInfo)
+        if conferenceType == .audio {
+            let newSession = QBRTCClient.instance().createNewSession(withOpponents: opponents, with: conferenceType)
+            self.session = newSession
+            newSession.startCall(userInfo)
+        }
 
         RingtonePlayer.shared.startPhoneRing(callRole: .host)
 
-        self.session = newSession
 
         let hostRef = Database.database().reference().child("user-friends").child(fromId!).child(toId!)
 
@@ -52,8 +53,8 @@ class CallManager {
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-        let timeZone = TimeZone(abbreviation: "CST")
-        dateFormatter.timeZone = timeZone
+        let timeZone = TimeZone(secondsFromGMT: -8)
+            dateFormatter.timeZone = timeZone
         let dateString = dateFormatter.string(from: Date())
 
         let callInfo = [Friend.Schema.lastCallType: callType,

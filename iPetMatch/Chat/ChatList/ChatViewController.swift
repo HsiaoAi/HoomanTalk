@@ -51,40 +51,7 @@ class ChatViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        if QBChat.instance.isConnected == false {
-            SVProgressHUD.show(withStatus: NSLocalizedString("Connecting...", comment: ""))
-            UIApplication.shared.beginIgnoringInteractionEvents()
-
-            guard let user = Auth.auth().currentUser else {
-                SVProgressHUD.dismiss()
-                UIApplication.shared.endIgnoringInteractionEvents()
-                SCLAlertView().showError(NSLocalizedString("Error", comment: ""),
-                                         subTitle: NSLocalizedString("Something wrong, please log in again", comment: ""))
-                AppDelegate.shared.enterLandingView()
-                // ToDo: AddLogout!
-                return
-            }
-
-            if let email = user.email {
-                QBRequest.logIn(withUserEmail: email,
-                                password: user.uid,
-                                successBlock: { (_, QBuser) in
-                                    QBChat.instance.connect(with: QBuser, completion: { _ in
-                                        SVProgressHUD.dismiss()
-                                        self.friendsProvider.observeMyFriends()
-                                    })},
-                                errorBlock: {_ in
-                                    SVProgressHUD.dismiss()
-                                    SCLAlertView().showError(NSLocalizedString("Error", comment: ""),
-                                                             subTitle: NSLocalizedString("Something wrong, please log in again", comment: ""))
-                                    AppDelegate.shared.enterLandingView()
-                })
-            }
-        } else {
-            self.friendsProvider.observeMyFriends()
-        }
-
+        self.friendsProvider.observeMyFriends()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -207,6 +174,7 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
             self.didSelectIndexPath = indexPath
 
         }
+
         let friend = shouldShowSearchResults ? self.filterFriends[indexPath.row] : self.myFriends[indexPath.row]
         self.selectedFriend = friend
         self.tableView.beginUpdates()
@@ -227,6 +195,38 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
 
         self.userInfo = userInfo
         CallManager.shared.userInfo = userInfo
+
+        if QBChat.instance.isConnected == false {
+            SVProgressHUD.show(withStatus: NSLocalizedString("Loading...", comment: ""))
+            UIApplication.shared.beginIgnoringInteractionEvents()
+
+            guard let user = Auth.auth().currentUser else {
+                SVProgressHUD.dismiss()
+                UIApplication.shared.endIgnoringInteractionEvents()
+                SCLAlertView().showError(NSLocalizedString("Error", comment: ""),
+                                         subTitle: NSLocalizedString("Something wrong, please log in again", comment: ""))
+                AppDelegate.shared.enterLandingView()
+                // ToDo: AddLogout!
+                return
+            }
+
+            if let email = user.email {
+                QBRequest.logIn(withUserEmail: email,
+                                password: user.uid,
+                                successBlock: { (_, QBuser) in
+                                    QBChat.instance.connect(with: QBuser, completion: { _ in
+                                        SVProgressHUD.dismiss()
+                                        UIApplication.shared.endIgnoringInteractionEvents()
+                                        self.friendsProvider.observeMyFriends()
+                                    })},
+                                errorBlock: {_ in
+                                    SVProgressHUD.dismiss()
+                                    SCLAlertView().showError(NSLocalizedString("Error", comment: ""),
+                                                             subTitle: NSLocalizedString("Something wrong, please log in again", comment: ""))
+                                    AppDelegate.shared.enterLandingView()
+                })
+            }
+        }
     }
 }
 
@@ -255,7 +255,11 @@ extension ChatViewController {
         self.didSelectIndexPath = nil
         self.tableView.reloadData()
 
-        self.present(MakeVideoCallViewController(), animated: true, completion: nil)
+        guard let toUserID = self.callToUserID else { return }
+        CallManager.shared.makeCall(to: toUserID, with: .video)
+        let makeVideoCallViewController = MakeVideoCallViewController()
+        makeVideoCallViewController.selectedFriend = self.selectedFriend
+        self.present(makeVideoCallViewController, animated: true, completion: nil)
 
     }
 }

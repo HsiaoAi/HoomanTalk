@@ -141,6 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         _ in
 
                         SVProgressHUD.dismiss()
+                        UIApplication.shared.endIgnoringInteractionEvents()
                     })
 
                     print("done")}, errorBlock: {_ in SVProgressHUD.dismiss() })
