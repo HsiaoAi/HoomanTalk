@@ -116,12 +116,3 @@ class CallManager {
     }
 
 }
-
-// Call sounds
-//extension CallManager {
-//
-//    static func startPlayingSound() {}
-//
-//    static func stopPlayingSound() {}
-//
-//}
