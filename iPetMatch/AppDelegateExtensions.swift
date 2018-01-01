@@ -20,26 +20,26 @@ extension AppDelegate {
 
         return UIViewController()
     }
-    
+
     func enterLandingView() {
-        
+
         let langdingStoryboard = UIStoryboard(name: "Landing", bundle: nil)
         let landingViewController = langdingStoryboard.instantiateViewController(withIdentifier: "LandingViewController")
         window?.rootViewController = landingViewController
-        
+
     }
-    
+
     func enterPassByLandingView() {
-        
+
         let tabBarController = TabBarController(itemTypes: [.match, .chat])
         self.window?.rootViewController = tabBarController
-        
+
     }
-    
+
     func showLoading() {
-        
+
         SVProgressHUD.show(withStatus: NSLocalizedString("Loading", comment: ""))
-        
+
     }
 
 }

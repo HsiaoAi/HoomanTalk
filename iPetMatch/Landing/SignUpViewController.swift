@@ -369,7 +369,7 @@ class SignUpViewController: UIViewController {
                 QBRequest.signUp(QBCurrentUser,
 
                                  successBlock: { ( _, QBuser ) in
-
+                                    UserManager.registerForRemoteNotification()
                                     let callingID = QBuser.id
 
                                     UserManager.instance.currentUser = IPetUser(id: firebaseUid, loginEmail: email, name: name, petPersonType: self.petPersonType, gender: self.gender, yearOfBirth: yearOfBirth, imageURL: self.imageURLString, callingID: callingID)

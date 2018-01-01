@@ -43,6 +43,7 @@
 @import CoreData;
 @import NVActivityIndicatorView;
 @import CoreData;
+@import UserNotifications;
 
 
 #endif /* bridge_Header_h */

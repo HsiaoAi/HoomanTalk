@@ -21,7 +21,7 @@ class MakeVideoCallViewController: UIViewController {
     @IBOutlet weak var videoSignImageView: FLAnimatedImageView!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
-    
+
     @IBOutlet weak var callingFromLabel: UILabel!
     @IBOutlet weak var activityIndicatorView: NVActivityIndicatorView!
     @IBOutlet weak var opponentVideoView: QBRTCRemoteVideoView!
@@ -66,7 +66,7 @@ class MakeVideoCallViewController: UIViewController {
         if CallManager.shared.session!.localMediaStream.videoTrack.isEnabled {
 
             CallManager.shared.session!.localMediaStream.videoTrack.isEnabled = false
-            
+
             self.localVideoView.isHidden = true
 
             cameraButton.rightImageSrc = IconImage.cameraOff.image
@@ -74,7 +74,7 @@ class MakeVideoCallViewController: UIViewController {
         } else {
 
             CallManager.shared.session!.localMediaStream.videoTrack.isEnabled = true
-            
+
             self.localVideoView.isHidden = false
 
             cameraButton.rightImageSrc = IconImage.cameraOn.image
@@ -148,8 +148,8 @@ extension MakeVideoCallViewController {
                 return
             }
 
-            CallManager.shared.session = QBRTCClient.instance().createNewSession(withOpponents: [callingID] , with: .video)
-            
+            CallManager.shared.session = QBRTCClient.instance().createNewSession(withOpponents: [callingID], with: .video)
+
             callingFromLabel.text = NSLocalizedString("Video Calling To", comment: "")
             userNameLabel.text = callToUser.name
             let imageAdress = callToUser.imageURL
@@ -176,15 +176,15 @@ extension MakeVideoCallViewController {
         timerLabel.isHidden = true
 
     }
-    
+
     func setupVideoSignImageView() {
-        
+
         let path = Bundle.main.path(forResource: "VideoCall.gif", ofType: nil)!
-        
+
         let url = URL(fileURLWithPath: path)
-        
+
         videoSignImageView.sd_setImage(with: url, placeholderImage: nil)
-        
+
     }
 
 }

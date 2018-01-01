@@ -14,7 +14,7 @@ class UserManager {
 
     var currentUser: IPetUser?
 
-    func getCurrentUserInfo(_ user: User) {
+    func upDateCurrentUser(_ user: User) {
 
         Database.database().reference().child(FirebaseSchema.users.rawValue).child(user.uid).observeSingleEvent(
         of: .value) {[weak self] snapShot in
@@ -50,6 +50,25 @@ class UserManager {
             imageView.image = response.value
             activityIndicatorView.stopAnimating()
         }
+
+    }
+
+    static func registerForRemoteNotification() {
+
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(settings)
+        }
+        UIApplication.shared.registerForRemoteNotifications()
 
     }
 

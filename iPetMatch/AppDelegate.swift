@@ -13,30 +13,28 @@ let kQBDialingTimeInterval: TimeInterval = 5.0
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+
     var window: UIWindow?
-    
-    let subscription = QBMSubscription()
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+
         // Set rootViewController
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        
+
         // Firebase
         FirebaseApp.configure()
-        
+
         // IQKeyboard
-        
+
         IQKeyboardManager.sharedManager().enable = true
-        
+
         // Quickblox API
-        
+
         guard
-            
+
             let APIKeysPath = Bundle.main.path(forResource: "QuickBloxKey", ofType: "plist"),
-            
+
             let plistDic = NSDictionary(contentsOfFile: APIKeysPath) as? [String: Any],
             let accountKey = plistDic[QuickBloxAdmin.accountKey] as? String,
             let applicationID = plistDic[QuickBloxAdmin.applicationID] as? UInt,
@@ -45,164 +43,155 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("QuickBlox credentials fail")
                 return false
         }
-        
+
         QBSettings.accountKey = accountKey
         QBSettings.applicationID = applicationID
         QBSettings.authKey = authKey
         QBSettings.authSecret = authSecret
-        
+
         QBSettings.logLevel = .debug
         QBSettings.enableXMPPLogging()
-        
+
         QBRTCConfig.setAnswerTimeInterval(kQBAnswerTimeInterval)
         QBRTCConfig.setDialingTimeInterval(kQBDialingTimeInterval)
         QBRTCConfig.setStatsReportTimeInterval(1.0)
-        
+
         QBRTCClient.initializeRTC()
-        
+
         SVProgressHUD.setDefaultMaskType(.gradient)
-        
+
         // loading settings
         //Settings.instance()
-        
-        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.alert, UIUserNotificationType.badge, UIUserNotificationType.sound]
-        
-        let pushNotificationSettings = UIUserNotificationSettings(types: notificationTypes, categories: nil)
-        
-        application.registerUserNotificationSettings(pushNotificationSettings)
-        
-        application.registerForRemoteNotifications()
-        
+
+//        if #available(iOS 10.0, *) {
+//            // For iOS 10 display notification (sent via APNS)
+//            UNUserNotificationCenter.current().delegate = self
+//            
+//            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+//            UNUserNotificationCenter.current().requestAuthorization(
+//                options: authOptions,
+//                completionHandler: {_, _ in })
+//            
+//        } else {
+//            let settings: UIUserNotificationSettings =
+//                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+//            application.registerUserNotificationSettings(settings)
+//        }
+//        
+//        application.registerForRemoteNotifications()
+
         guard
             let user = Auth.auth().currentUser,
             let email = user.email
             else {
-                
+
                 enterLandingView()
-                
+
                 return true }
-        
+
         showLoading()
-        
-        UserManager.instance.getCurrentUserInfo(user)
-        
+
+        UserManager.instance.upDateCurrentUser(user)
+
         enterPassByLandingView()
-        
+
         QBRequest.logIn(withUserEmail: email, password: user.uid, successBlock: { (_, QBuser) in
-            
-            self.subscription.id = QBuser.id
-            
+
             QBChat.instance.connect(with: QBuser, completion: {
-                
+
                 _ in
-                
+
             })
-            
+
             print("done")}, errorBlock: {_ in SVProgressHUD.dismiss() })
-        
+
         return true
-        
+
     }
-    
+
     // 判斷是否登入
-    
+
     func applicationWillEnterForeground(_ application: UIApplication) {
-        
-        if QBChat.instance.isConnected == false {
-            
-            showLoading()
-            
-            UIApplication.shared.beginIgnoringInteractionEvents()
-            
-            guard let user = Auth.auth().currentUser else {
-                
-                enterLandingView()
-                
-                SVProgressHUD.dismiss()
-                
-                UIApplication.shared.endIgnoringInteractionEvents()
-                
-                UserManager.instance.currentUser = nil
-                
-                return
-                
-            }
-            
-            UserManager.instance.getCurrentUserInfo(user)
-            
-            if let email = user.email {
-                
-                QBRequest.logIn(withUserEmail: email, password: user.uid, successBlock: { (_, QBuser) in
-                    
-                    self.subscription.id = QBuser.id
-                    
-                    QBChat.instance.connect(with: QBuser, completion: {
-                        
-                        _ in
-                        
-                        SVProgressHUD.dismiss()
-                        UIApplication.shared.endIgnoringInteractionEvents()
-                    })
-                    
-                    print("done")}, errorBlock: {_ in SVProgressHUD.dismiss() })
-                
-            }
-            
-            enterPassByLandingView()
-            
+
+        showLoading()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+
+        guard let user = Auth.auth().currentUser else {
+            enterLandingView()
+            SVProgressHUD.dismiss()
+            UIApplication.shared.endIgnoringInteractionEvents()
+            UserManager.instance.currentUser = nil
+            return
         }
+
+        UserManager.instance.upDateCurrentUser(user)
+
+        if let email = user.email {
+
+            QBRequest.logIn(withUserEmail: email,
+                            password: user.uid,
+                            successBlock: { (_, QBuser) in
+                                QBChat.instance.connect(with: QBuser,
+                                                        completion: {_ in
+                                                            SVProgressHUD.dismiss()
+                                                            UIApplication.shared.endIgnoringInteractionEvents()})},
+                            errorBlock: {_ in
+                                SVProgressHUD.dismiss()
+                                UIApplication.shared.endIgnoringInteractionEvents()
+                                SCLAlertView().showError(
+                                    NSLocalizedString("Error", comment: ""),
+                                    subTitle: NSLocalizedString("User didn't log in", comment: "")
+                                )
+                                self.enterLandingView()
+            })
+        }
+        UIApplication.shared.endIgnoringInteractionEvents()
+        enterPassByLandingView()
     }
-    
+
     // MARK: - Remote Notifictions
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
-        
+
         if notificationSettings.types != .none {
-            
             print("Did register user notificaiton settings")
-            
             application.registerForRemoteNotifications()
-            
         }
-        
     }
-    
+
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        
+
         let deviceIdentifier = UIDevice.current.identifierForVendor?.uuidString
-        
+        let subscription: QBMSubscription = QBMSubscription()
         subscription.notificationChannel = .APNS
-        
         subscription.deviceUDID = deviceIdentifier
-        
         subscription.deviceToken = deviceToken
-        
         QBRequest.createSubscription(subscription,
-                                     
-                                     successBlock: {  (_ response: QBResponse,
-                                        _ subscription: [QBMSubscription]?) -> Void in
-                                        
-                                        print("Push Subscroption Response: \(response)")
-                                        
-        },
-                                     
-                                     errorBlock: {(_ response: QBResponse) in
-                                        
+                                     successBlock: { (response: QBResponse, _: [QBMSubscription]?) -> Void in
+
+                                        print("Push Subscroption Response: \(response)")},
+                                     errorBlock: {(response: QBResponse) in
                                         print("Push Subscroption Error: \(response)")
-                                        
         })
-        
+
     }
-    
+
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        
         print("Did receive remote notification", userInfo)
-        
     }
-    
+
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        
         print("Did receive remote notification", error.localizedDescription)
-        
     }
-    
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+
+        application.applicationIconBadgeNumber = 0
+        QBChat.instance.disconnect(completionBlock: nil)
+
+    }
+
+    func applicationWillTerminate(_ application: UIApplication) {
+        QBChat.instance.disconnect(completionBlock: nil)
+    }
+
 }

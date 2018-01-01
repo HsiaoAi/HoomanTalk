@@ -100,12 +100,10 @@ class MatchViewController: UIViewController {
 
         kolodaView.isHidden = true
         likeMeCollectionView.isHidden = true
-
         hitHearToMatchLabel.isHidden = true
         setupKolodaView()
 
         SVProgressHUD.dismiss()
-
         setupLikeMeCollectionView()
 
     }

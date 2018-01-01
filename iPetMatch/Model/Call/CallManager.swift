@@ -44,7 +44,6 @@ class CallManager {
 
         RingtonePlayer.shared.startPhoneRing(callRole: .host)
 
-
         let hostRef = Database.database().reference().child("user-friends").child(fromId!).child(toId!)
 
         let receiveRref = Database.database().reference().child("user-friends").child(toId!).child(fromId!)
@@ -57,7 +56,6 @@ class CallManager {
         let timeZone = TimeZone(abbreviation: timeZoneAbbreviation)
         dateFormatter.timeZone = timeZone
         let dateString = dateFormatter.string(from: Date())
-
 
         let callInfo = [Friend.Schema.lastCallType: callType,
                         Friend.Schema.lastCallTime: dateString]
