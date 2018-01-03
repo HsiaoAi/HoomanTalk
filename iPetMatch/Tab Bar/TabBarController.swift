@@ -60,7 +60,13 @@ class TabBarController: UITabBarController {
 
         self.tabBar.insertSubview(frost, at: 0)
 
-        tabBar.tintColor = UIColor.lightGray
+        tabBar.tintColor = UIColor.Custom.karolina
+
+        tabBar.barStyle = .default
+
+        tabBar.barTintColor = UIColor.Custom.karolina
+
+        //tabBar.unselectedItemTintColor = UIColor.Custom.karolina
 
     }
 
@@ -87,6 +93,17 @@ class TabBarController: UITabBarController {
             matchViewController.tabBarItem = TabBarItem(itemType: itemType)
 
             return matchViewController
+
+        case .pet:
+
+            let petsStoryBoard = UIStoryboard(name: "Pets", bundle: nil)
+
+            let petsViewController = petsStoryBoard.instantiateViewController(withIdentifier: "PetsViewController")
+            let navigationController = UINavigationController(rootViewController: petsViewController)
+
+            navigationController.tabBarItem = TabBarItem(itemType: itemType)
+
+            return navigationController
 
         }
 

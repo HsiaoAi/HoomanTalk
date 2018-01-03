@@ -43,12 +43,12 @@ class UserManager {
 
     }
 
-    static func setUserProfileImage(with imageURL: URL, into imageView: UIImageView, activityIndicatorView: NVActivityIndicatorView) {
+    static func setUserProfileImage(with imageURL: URL, into imageView: UIImageView, activityIndicatorView: NVActivityIndicatorView?) {
 
-        activityIndicatorView.startAnimating()
+        activityIndicatorView?.startAnimating()
         Manager.shared.loadImage(with: Request(url: imageURL), into: imageView) { response, _ in
             imageView.image = response.value
-            activityIndicatorView.stopAnimating()
+            activityIndicatorView?.stopAnimating()
         }
 
     }

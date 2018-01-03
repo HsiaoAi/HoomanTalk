@@ -154,11 +154,16 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
             print("LoadCellError")
             return UITableViewCell() }
 
-        let friend = shouldShowSearchResults ? self.filterFriends[indexPath.row] : self.myFriends[indexPath.row]
-        cell.set(content: friend)
+        let friends = shouldShowSearchResults ? self.filterFriends : self.myFriends
 
-        cell.audioCallButton.addTarget(self, action: #selector(startAudioCalling), for: .touchUpInside)
-        cell.videoCallButton.addTarget(self, action: #selector(startVedioCalling), for: .touchUpInside)
+        if friends.count > indexPath.row {
+
+            let friend = friends[indexPath.row]
+            cell.set(content: friend)
+            cell.audioCallButton.addTarget(self, action: #selector(startAudioCalling), for: .touchUpInside)
+            cell.videoCallButton.addTarget(self, action: #selector(startVedioCalling), for: .touchUpInside)
+
+        }
 
         return cell
 

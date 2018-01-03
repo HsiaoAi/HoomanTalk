@@ -2,6 +2,7 @@ PODS:
   - BetterSegmentedControl (0.9)
   - Crashlytics (3.9.3):
     - Fabric (~> 1.7.2)
+  - CZPicker (0.4.3)
   - Fabric (1.7.2)
   - FaceAware (1.2.0)
   - Firebase/Auth (4.8.0):
@@ -66,6 +67,7 @@ PODS:
     - NVActivityIndicatorView/Presenter (= 4.1.1)
   - NVActivityIndicatorView/Presenter (4.1.1)
   - pop (1.0.10)
+  - PreviewTransition (3.0.0)
   - QuickBlox (2.14)
   - Quickblox-WebRTC (2.6.3):
     - QuickBlox (>= 2.7)
@@ -83,6 +85,7 @@ PODS:
 DEPENDENCIES:
   - BetterSegmentedControl (~> 0.9)
   - Crashlytics
+  - CZPicker
   - Fabric
   - FaceAware
   - Firebase/Auth
@@ -97,6 +100,7 @@ DEPENDENCIES:
   - MZTimerLabel (~> 0.5)
   - Nuke
   - NVActivityIndicatorView
+  - PreviewTransition
   - QuickBlox
   - Quickblox-WebRTC (~> 2.6)
   - SCLAlertView
@@ -119,6 +123,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   BetterSegmentedControl: 40b2b6a08bbc59663149624d1b5235efa8d43a3c
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
+  CZPicker: 55aa1751ea26e209814552da1a9a08cba8bbf72a
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   FaceAware: 421436f9d16aacdb26ffcf8e5a39a1dd68630395
   Firebase: 710decbbc6d9d48530e9a5dba3209740c3532e05
@@ -141,6 +146,7 @@ SPEC CHECKSUMS:
   Nuke: d83812262734dad51e3c498cb1c4f7923f2b78c6
   NVActivityIndicatorView: 60109b9bf46efc2e71ab81453196ccdfdfeea870
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
+  PreviewTransition: 74fa14676037521f309d6e4c78bacf814abbf843
   QuickBlox: d40cd742985908ce7809058e5a63f1e3581165a0
   Quickblox-WebRTC: 1838368795c479dd61796a3423ce9e74a90fe939
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
@@ -151,6 +157,6 @@ SPEC CHECKSUMS:
   UIImageView+Extension: 0c4aafa145d9e36a8154bf5f5e9698dea04fd410
   WCLShineButton: d8b979b6f6f9f6709f9e241e6e1a4712a1a9b36b
 
-PODFILE CHECKSUM: 83f0f8a048d9b8977e7e65a92dc9fa8b5ff72273
+PODFILE CHECKSUM: 12d2ff796ede55b06acd24e14a081a7e86a7efaf
 
 COCOAPODS: 1.3.1

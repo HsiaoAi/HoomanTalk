@@ -34,5 +34,6 @@ target 'iPetMatch' do
   pod 'Nuke'
   pod 'FaceAware'
   pod 'NVActivityIndicatorView'
+  pod 'CZPicker'
 
 end
