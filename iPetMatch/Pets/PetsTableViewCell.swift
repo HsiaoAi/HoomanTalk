@@ -24,7 +24,8 @@ class PetsTableViewCell: UITableViewCell {
 
     func set(content pet: Pet) {
 
-        petNameLabel.text = pet.name!
+        let petType = (pet.petType == .dog) ? "🐶": "🐱"
+        petNameLabel.text = pet.name! + petType
 
         let imageAdress = pet.imageURL
         if let imageURL = URL(string: imageAdress!) {

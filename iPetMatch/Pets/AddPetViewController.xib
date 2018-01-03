@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,9 +17,14 @@
                 <outlet property="aboutPetTextField" destination="HBG-48-ZPC" id="wq1-fm-NII"/>
                 <outlet property="birthTextField" destination="lHg-tb-nlX" id="ivQ-AH-bAa"/>
                 <outlet property="breedTextField" destination="B1a-lf-beh" id="fRx-LY-sfR"/>
+                <outlet property="cancelButton" destination="nQP-eO-Nwg" id="kVu-QT-cjm"/>
+                <outlet property="loadingImageView" destination="2eV-5f-rHi" id="p4f-dV-Ayg"/>
                 <outlet property="nameTextField" destination="EPr-KG-d6n" id="mc3-ph-evh"/>
                 <outlet property="petImageView" destination="xI4-o2-Yiu" id="4i6-fe-XYc"/>
                 <outlet property="petTypeSegmentedControl" destination="nNp-Ls-iYN" id="Gwg-Wd-VL2"/>
+                <outlet property="pickImageButton" destination="gi7-SX-0g1" id="fGO-hK-rig"/>
+                <outlet property="pickSizeButton" destination="Rf9-Ka-ckt" id="dis-Hg-UuW"/>
+                <outlet property="saveOrEditButton" destination="jQX-4D-OXb" id="Xdg-ks-bQ7"/>
                 <outlet property="sexSegmentedControl" destination="hHV-iX-i9B" id="agq-fa-MSZ"/>
                 <outlet property="sizeTextField" destination="9c5-yA-56I" id="B9i-wP-nbe"/>
                 <outlet property="view" destination="fqB-Py-47y" id="7kf-ht-Pa9"/>
@@ -293,9 +299,6 @@
                     <state key="normal" title="Save">
                         <color key="titleColor" red="0.3217366934" green="0.25888746979999999" blue="0.25097307559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
-                    <connections>
-                        <action selector="tapSave:" destination="-1" eventType="touchUpInside" id="3pJ-J2-gP3"/>
-                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rf9-Ka-ckt" userLabel="pickSizeButton">
                     <rect key="frame" x="197" y="513" width="150" height="47"/>
@@ -322,15 +325,29 @@
                         <action selector="tapCancel:" destination="-1" eventType="touchUpInside" id="OnS-j1-Go0"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2eV-5f-rHi" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                    <rect key="frame" x="67" y="154" width="240" height="128"/>
+                    <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="2eV-5f-rHi" secondAttribute="height" multiplier="1:1" id="drx-2n-9C3"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="color">
+                            <color key="value" red="0.64702028040000004" green="0.66663384439999995" blue="0.69790667299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="x3r-Z7-Yyq" firstAttribute="bottom" secondItem="h4v-bp-4cu" secondAttribute="bottom" constant="40" id="46n-DN-Xfx"/>
                 <constraint firstItem="xI4-o2-Yiu" firstAttribute="leading" secondItem="LNA-B7-t0J" secondAttribute="leading" constant="2" id="4h4-uH-HNu"/>
+                <constraint firstItem="2eV-5f-rHi" firstAttribute="centerY" secondItem="xI4-o2-Yiu" secondAttribute="centerY" id="5Ha-uK-AEM"/>
                 <constraint firstItem="x3r-Z7-Yyq" firstAttribute="trailing" secondItem="LNA-B7-t0J" secondAttribute="trailing" constant="20" id="88W-w9-tfC"/>
                 <constraint firstItem="Rf9-Ka-ckt" firstAttribute="height" secondItem="9c5-yA-56I" secondAttribute="height" id="89D-IP-EoO"/>
                 <constraint firstItem="YCI-Pm-RYC" firstAttribute="leading" secondItem="h4v-bp-4cu" secondAttribute="leading" constant="5" id="9vD-L3-kgL"/>
                 <constraint firstItem="Rf9-Ka-ckt" firstAttribute="centerX" secondItem="9c5-yA-56I" secondAttribute="centerX" id="9wq-LO-WbV"/>
+                <constraint firstItem="2eV-5f-rHi" firstAttribute="height" secondItem="xI4-o2-Yiu" secondAttribute="height" multiplier="0.3" id="CKT-2g-RYZ"/>
                 <constraint firstItem="LNA-B7-t0J" firstAttribute="height" secondItem="fqB-Py-47y" secondAttribute="height" multiplier="0.4" id="Cb5-Nc-dG6"/>
                 <constraint firstItem="LNA-B7-t0J" firstAttribute="leading" secondItem="x3r-Z7-Yyq" secondAttribute="leading" constant="20" id="CwJ-4P-aGS"/>
                 <constraint firstItem="Rf9-Ka-ckt" firstAttribute="centerY" secondItem="9c5-yA-56I" secondAttribute="centerY" id="F23-ZK-AiW"/>
@@ -338,6 +355,7 @@
                 <constraint firstItem="xI4-o2-Yiu" firstAttribute="centerY" secondItem="LNA-B7-t0J" secondAttribute="centerY" id="HHF-cf-BL9"/>
                 <constraint firstItem="gi7-SX-0g1" firstAttribute="centerX" secondItem="xI4-o2-Yiu" secondAttribute="centerX" id="Hhp-LL-1Kq"/>
                 <constraint firstItem="cTM-NX-z59" firstAttribute="top" secondItem="nQP-eO-Nwg" secondAttribute="bottom" constant="5" id="JRs-3h-bUU"/>
+                <constraint firstItem="2eV-5f-rHi" firstAttribute="centerX" secondItem="xI4-o2-Yiu" secondAttribute="centerX" id="KuT-0a-hpq"/>
                 <constraint firstItem="cTM-NX-z59" firstAttribute="centerX" secondItem="fqB-Py-47y" secondAttribute="centerX" id="OgS-sZ-ZZQ"/>
                 <constraint firstItem="YCI-Pm-RYC" firstAttribute="bottom" secondItem="h4v-bp-4cu" secondAttribute="bottom" id="PS7-jP-lDY"/>
                 <constraint firstItem="h4v-bp-4cu" firstAttribute="leading" secondItem="gi7-SX-0g1" secondAttribute="leading" id="U3z-b9-qoD"/>

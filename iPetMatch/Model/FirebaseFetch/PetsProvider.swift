@@ -27,8 +27,6 @@ class PetsProvider {
         ref.observeSingleEvent(of: .value) { [weak self] (snapshot) in
                 var pets = [Pet]()
                 if let petsDic = snapshot.value as? [String: Any] {
-                    print(snapshot.value)
-
                     for (petId, petDic) in petsDic {
                         guard let petDic = petDic as? [String: Any] else { return }
 

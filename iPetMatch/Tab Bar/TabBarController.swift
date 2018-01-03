@@ -64,10 +64,6 @@ class TabBarController: UITabBarController {
 
         tabBar.barStyle = .default
 
-        tabBar.barTintColor = UIColor.Custom.karolina
-
-        //tabBar.unselectedItemTintColor = UIColor.Custom.karolina
-
     }
 
     static func prepare(for itemType: TabBarItemType) -> UIViewController {
@@ -99,11 +95,10 @@ class TabBarController: UITabBarController {
             let petsStoryBoard = UIStoryboard(name: "Pets", bundle: nil)
 
             let petsViewController = petsStoryBoard.instantiateViewController(withIdentifier: "PetsViewController")
-            let navigationController = UINavigationController(rootViewController: petsViewController)
 
-            navigationController.tabBarItem = TabBarItem(itemType: itemType)
+            petsViewController.tabBarItem = TabBarItem(itemType: itemType)
 
-            return navigationController
+            return petsViewController
 
         }
 

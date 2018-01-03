@@ -175,7 +175,6 @@
 		87B529C01FFC74CE0049E637 /* PetsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsTableViewCell.swift; sourceTree = "<group>"; };
 		87B529C11FFC74CF0049E637 /* PetsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PetsTableViewCell.xib; sourceTree = "<group>"; };
 		87B529C41FFC792C0049E637 /* PetsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsProvider.swift; sourceTree = "<group>"; };
-		87B529C61FFCC6240049E637 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = ../../../../../Desktop/1.png; sourceTree = "<group>"; };
 		87C179A81FEB588800815A47 /* VideoCall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = VideoCall.gif; sourceTree = "<group>"; };
 		87C179AA1FEBFDB200815A47 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		87C179AC1FEC0C7A00815A47 /* Landing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Landing.storyboard; sourceTree = "<group>"; };
@@ -474,7 +473,6 @@
 		879FB1301FE2EFC6002332EF /* AudioCall */ = {
 			isa = PBXGroup;
 			children = (
-				87B529C61FFCC6240049E637 /* 1.png */,
 				873714381FE40612009C440F /* MakeAudioCallViewController.swift */,
 				873714391FE40612009C440F /* MakeAudioCallViewController.xib */,
 			);
@@ -651,7 +649,6 @@
 				"${BUILT_PRODUCTS_DIR}/MZTimerLabel/MZTimerLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
-				"${BUILT_PRODUCTS_DIR}/PreviewTransition/PreviewTransition.framework",
 				"${PODS_ROOT}/QuickBlox/Quickblox.framework",
 				"${PODS_ROOT}/Quickblox-WebRTC/QuickbloxWebRTC.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
@@ -680,7 +677,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MZTimerLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PreviewTransition.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quickblox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickbloxWebRTC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",

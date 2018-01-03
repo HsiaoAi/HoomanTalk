@@ -294,14 +294,13 @@ extension ChatViewController: UISearchBarDelegate {
     func doSearch() {
 
         filterFriends = [Friend]()
-        let searchName = searchBar.text!
+        let searchName = searchBar.text!.capitalized
 
         for friend in self.myFriends {
 
             if let friendName = friend.name,
                 friendName.capitalized.components(separatedBy: " ").contains(searchName) {
                 self.filterFriends.append(friend)
-                print(self.filterFriends)
             }
         }
 

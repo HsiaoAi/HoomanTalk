@@ -10,11 +10,12 @@ import UIKit
 
 class PetsViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    @IBAction func addPet(_ sender: UIBarButtonItem) {
+    @IBAction func addPet(_ sender: UIButton) {
         let addPetViewController = AddPetViewController()
         self.present(addPetViewController, animated: true, completion: nil)
     }
+
+    @IBOutlet weak var tableView: UITableView!
 
     let petProvider = PetsProvider()
     var pets = [Pet]()
@@ -23,6 +24,11 @@ class PetsViewController: UIViewController {
         super.viewDidLoad()
         petProvider.delegate = self
         setupTableView()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        pets = [Pet]()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -58,7 +64,7 @@ extension PetsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-        let contentViewHeight = UIScreen.main.bounds.height - 20 - 44 - 20
+        let contentViewHeight = UIScreen.main.bounds.height - 20 - 20
         return contentViewHeight / 3
 
     }
@@ -74,13 +80,40 @@ extension PetsViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PetsTableViewCell", for: indexPath) as? PetsTableViewCell else { return UITableViewCell()}
 
         if pets.count > indexPath.row {
-
             let pet = pets[indexPath.row]
             cell.set(content: pet)
+        }
+        return cell
+
+    }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+
+        if editingStyle == .delete {
+
+            let pet = pets[indexPath.row]
+            let petRef = Database.database().reference().child("pets").child(pet.id!)
+            petRef.removeValue()
+
+            let userUid = Auth.auth().currentUser?.uid
+            let ownerRef = Database.database().reference().child("user-pets").child(userUid!).child(pet.id!)
+            ownerRef.removeValue()
+
+            pets.remove(at: indexPath.row)
+            tableView.reloadData()
 
         }
+    }
 
-        return cell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let addPetViewController = AddPetViewController()
+        addPetViewController.petToBeEdited = pets[indexPath.row]
+        self.present(addPetViewController, animated: true, completion: nil)
 
     }
 

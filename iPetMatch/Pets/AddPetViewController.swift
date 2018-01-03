@@ -14,7 +14,14 @@ class AddPetViewController: UIViewController {
     var sizes = [String]()
     var petGender: Gender = .male
     var petType: PetType = .dog
+    var petToBeEdited: Pet?
+    var isShowDetail: Bool = false
+    var isUpdate: Bool = false
 
+    @IBOutlet weak var saveOrEditButton: UIButton!
+    @IBOutlet weak var loadingImageView: NVActivityIndicatorView!
+    @IBOutlet weak var pickImageButton: UIButton!
+    @IBOutlet weak var pickSizeButton: UIButton!
     @IBOutlet weak var petImageView: UIImageView!
     @IBOutlet weak var nameTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var petTypeSegmentedControl: BetterSegmentedControl!
@@ -24,11 +31,22 @@ class AddPetViewController: UIViewController {
     @IBOutlet weak var sizeTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var aboutPetTextField: SkyFloatingLabelTextField!
 
+    @IBOutlet weak var cancelButton: UIButton!
     override func viewDidLoad() {
+
         super.viewDidLoad()
+
         setupSizePickView()
         setupSegmentedControls()
+        saveOrEditButton.addTarget(self, action: #selector(tapSave), for: .touchUpInside)
         navigationController?.navigationBar.barTintColor = .white
+        if let pet = petToBeEdited {
+            self.isUpdate = true
+            self.isShowDetail = true
+            showDetail(of: pet)
+        } else {
+
+        }
 
     }
 
@@ -64,8 +82,24 @@ class AddPetViewController: UIViewController {
         self.petType = (sender.index == 0) ? PetType.dog : PetType.cat
     }
 
-    @IBAction func tapSave(_ sender: Any) {
+    @objc func tapSave(_ sender: Any) {
 
+        if isShowDetail {
+            cancelButton.setTitle(NSLocalizedString("Cancel", comment: ""), for: .normal)
+            saveOrEditButton.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
+            nameTextField.isEnabled = true
+            sexSegmentedControl.isEnabled = true
+            petTypeSegmentedControl.isEnabled = true
+            breedTextField.isEnabled = true
+            birthTextField.isEnabled = true
+            sizeTextField.isEnabled = true
+            pickImageButton.isEnabled = true
+            pickSizeButton.isEnabled = true
+            aboutPetTextField.isEnabled = true
+            isShowDetail = false
+            return
+        }
+        let petId = petToBeEdited?.id ?? UUID().uuidString
         guard let name = nameTextField.text,
             !name.isEmpty else {
                 SCLAlertView().showWarning(
@@ -75,13 +109,15 @@ class AddPetViewController: UIViewController {
                 return
         }
 
-        guard let image = petImageView.image else {
+        guard let image = self.petImage else {
             SCLAlertView().showWarning(
                 NSLocalizedString("Warning", comment: ""),
                 subTitle: NSLocalizedString("Please pick pet's picture", comment: "")
             )
             return
         }
+
+        SVProgressHUD.show(withStatus: NSLocalizedString("Uploading", comment: ""))
 
         let breeds = breedTextField.text!
         let birth = birthTextField.text!
@@ -90,7 +126,6 @@ class AddPetViewController: UIViewController {
         var petImageURLString = ""
         guard let owner = UserManager.instance.currentUser else { return }
 
-        let petId = UUID().uuidString
         let petImageName = UUID().uuidString
         let storageRef = Storage.storage().reference().child("petImages").child(petId).child("\(petImageName).png")
 
@@ -121,7 +156,8 @@ class AddPetViewController: UIViewController {
                      Pet.Schema.size: size,
                      Pet.Schema.sex: self.petGender.rawValue,
                      Pet.Schema.imageURL: petImageURLString,
-                     Pet.Schema.about: about
+                     Pet.Schema.about: about,
+                     Pet.Schema.id: petId
         ]
         petRef.updateChildValues(value)
 
@@ -139,9 +175,10 @@ class AddPetViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
 
         }
-
+        SVProgressHUD.dismiss()
+            let successString = self.isUpdate ? NSLocalizedString("Edit Successully", comment: "") : NSLocalizedString("Save Successully", comment: "")
         alertview.showSuccess(NSLocalizedString("Success", comment: ""),
-                              subTitle: NSLocalizedString("Save Successully", comment: ""))
+                              subTitle: successString)
             })
     }
 
@@ -252,4 +289,47 @@ extension AddPetViewController: CZPickerViewDelegate, CZPickerViewDataSource {
         self.sizeTextField.resignFirstResponder()
     }
 
+}
+extension AddPetViewController {
+
+    func showDetail(of pet: Pet) {
+
+        petImageView.contentMode = .scaleAspectFill
+        petImageView.clipsToBounds = true
+        let imageAdress = pet.imageURL
+        if let imageURL = URL(string: imageAdress!) {
+            UserManager.setUserProfileImage(with: imageURL,
+                                            into: petImageView,
+                                            activityIndicatorView: loadingImageView)
+        }
+        self.petImage = petImageView.image
+        nameTextField.isEnabled = false
+        nameTextField.text = pet.name ?? ""
+        sexSegmentedControl.isEnabled = false
+        let sexIndex: UInt = (pet.sex! == .male) ? 0 : 1
+        do {
+            try sexSegmentedControl.setIndex(sexIndex)
+        } catch {
+            print(error)
+        }
+        petTypeSegmentedControl.isEnabled = false
+        let typeIndex: UInt = (pet.petType == .dog) ? 0 : 1
+        do {
+            try petTypeSegmentedControl.setIndex(typeIndex)
+        } catch {
+            print(error)
+        }
+        breedTextField.isEnabled = false
+        breedTextField.text = pet.breeds ?? ""
+        birthTextField.isEnabled = false
+        birthTextField.text = pet.birth ?? ""
+        sizeTextField.isEnabled = false
+        sizeTextField.text = pet.size?.rawValue ?? ""
+        pickImageButton.isEnabled = false
+        pickSizeButton.isEnabled = false
+        aboutPetTextField.text = pet.about ?? ""
+        aboutPetTextField.isEnabled = false
+        cancelButton.setTitle(NSLocalizedString("Back", comment: ""), for: .normal)
+        saveOrEditButton.setTitle(NSLocalizedString("Edit", comment: ""), for: .normal)
+    }
 }

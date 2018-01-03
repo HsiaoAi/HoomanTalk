@@ -19,6 +19,7 @@ class Pet {
         static let size = "size"
         static let ownerId = "ownerId"
         static let about = "about"
+        static let id = "id"
 
     }
 
@@ -31,18 +32,23 @@ class Pet {
     let breeds: String?
     let ownerId: String?
     let about: String?
+    let id: String?
 
     init(dictionary: [String: Any]) {
 
         self.name = dictionary[Pet.Schema.name] as? String
         self.imageURL = dictionary[Pet.Schema.imageURL] as? String
-        self.sex = Gender(rawValue: String(describing: dictionary[Pet.Schema.sex]))
-        self.petType = PetType(rawValue: String(describing: dictionary[Pet.Schema.petType]))
+        let sexRawValue = dictionary[Pet.Schema.sex] as? String ?? ""
+        self.sex = Gender(rawValue: sexRawValue)!
+        let petTypeRawValue = dictionary[Pet.Schema.petType] as? String ?? ""
+        self.petType = PetType(rawValue: petTypeRawValue)!
         self.birth = dictionary[Pet.Schema.birth] as? String
-        self.size = Size(rawValue: String(describing: dictionary[Pet.Schema.size]))
+        let sizeRawValue = dictionary[Pet.Schema.size] as? String ?? ""
+        self.size = Size(rawValue: sizeRawValue)
         self.breeds = dictionary[Pet.Schema.breeds] as? String
         self.ownerId = dictionary[Pet.Schema.ownerId] as? String
         self.about = dictionary[Pet.Schema.about] as? String
+        self.id = dictionary[Pet.Schema.id] as? String
 
     }
 

@@ -23,8 +23,8 @@ extension AppDelegate {
 
     func enterLandingView() {
 
-        let langdingStoryboard = UIStoryboard(name: "Landing", bundle: nil)
-        let landingViewController = langdingStoryboard.instantiateViewController(withIdentifier: "LandingViewController")
+        let landingStoryboard = UIStoryboard(name: "Landing", bundle: nil)
+        let landingViewController = landingStoryboard.instantiateViewController(withIdentifier: "LandingViewController")
         window?.rootViewController = landingViewController
 
     }
