@@ -34,19 +34,13 @@ class LoginViewController: UIViewController {
             return
 
         }
-
-        guard emailTextFied.errorMessage == "" else {
-
+        
+        guard email.contains("@") else {
             SCLAlertView().showWarning(
-
                 NSLocalizedString("Warning", comment: ""),
-
-                subTitle: NSLocalizedString("emailTextField.errorMessage!", comment: "")
-
+                subTitle: NSLocalizedString("Invalid Email", comment: "")
             )
-
             return
-
         }
 
         Auth.auth().sendPasswordReset(withEmail: email) { error in
@@ -127,13 +121,11 @@ class LoginViewController: UIViewController {
                             NSLocalizedString("Error", comment: ""),
                             subTitle: NSLocalizedString("Wrong password", comment: "")
                         )
-                        break
                     case .userNotFound:
                         SCLAlertView().showError(
                             NSLocalizedString("Error", comment: ""),
                             subTitle: NSLocalizedString("Wrong email", comment: "")
                         )
-                        break
                     default:
                         SCLAlertView().showError(
                             NSLocalizedString("Error", comment: ""),
