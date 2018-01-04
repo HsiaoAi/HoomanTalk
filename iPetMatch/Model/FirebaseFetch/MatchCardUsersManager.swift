@@ -52,7 +52,7 @@ class MatchCardUsersManager {
 
         let matchCardUsersRef = Database.database().reference().child(FirebaseSchema.users.rawValue)
 
-        matchCardUsersRef.queryOrdered(byChild: IPetUser.Schema.petPersonType).observe(.value) {[weak self] (snapShot) in
+        matchCardUsersRef.queryOrdered(byChild: IPetUser.Schema.petPersonType).observeSingleEvent(of: .value) {[weak self] (snapShot) in
 
             guard let data = snapShot.value as? [String: AnyObject] else {
 

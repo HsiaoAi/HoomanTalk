@@ -38,7 +38,9 @@ class MatchViewController: UIViewController {
     @IBOutlet weak var likeMeButton: UIButton!
 
     @IBOutlet weak var browseButton: UIButton!
-
+    
+    @IBOutlet weak var runOutofCardView: UIView!
+    
     @IBOutlet weak var hitHearToMatchLabel: UILabel!
 
     @IBAction func tapLikeMeButton(_ sender: Any) {
@@ -67,6 +69,7 @@ class MatchViewController: UIViewController {
         likeMeCollectionView.isHidden = true
 
         hitHearToMatchLabel.isHidden = true
+        runOutofCardView.isHidden = true
 
     }
 
@@ -91,6 +94,7 @@ class MatchViewController: UIViewController {
 
         // ResetView
         kolodaView.isHidden = true
+        runOutofCardView.isHidden = true
 
         likeMeCollectionView.isHidden = true
         hitHearToMatchLabel.isHidden = true
@@ -173,14 +177,25 @@ extension MatchViewController: KolodaViewDelegate {
     }
 
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
-
-        SCLAlertView().showInfo(
-            NSLocalizedString("Run out of cards", comment: ""),
-            subTitle: NSLocalizedString("Tip: Change setting to explore more cards", comment: "")
-        )
-
+        runOutofCardView.isHidden = false
+        self.view.bringSubview(toFront: runOutofCardView)
         self.kolodaView.resetCurrentCardIndex()
-
+        matchCardsManager.observeMatchCardUsers()
+        
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        let alertview = SCLAlertView(appearance: appearance)
+        let buttonYes = NSLocalizedString("Yes", comment: "")
+        let buttonNo = NSLocalizedString("No", comment: "")
+        
+        alertview.addButton(buttonYes) {
+            
+            self.runOutofCardView.isHidden = true
+        }
+        alertview.addButton(buttonNo) { }
+        alertview.showNotice(NSLocalizedString("Notice", comment: ""),
+                             subTitle: NSLocalizedString("Run out of cards\nDo you want to reload cards", comment: ""))
     }
 
     // ToDo: version 1.1
