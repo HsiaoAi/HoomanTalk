@@ -86,8 +86,6 @@
 		87DDA8E11FE907A600A917A8 /* dog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 87DDA8E01FE907A600A917A8 /* dog.mp3 */; };
 		87DDA8E31FE90CC500A917A8 /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DDA8E21FE90CC500A917A8 /* UserSetting.swift */; };
 		87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */; };
-		87E8A92B1FE5932100726A2E /* ChatListButtonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E8A9271FE5932100726A2E /* ChatListButtonsTableViewCell.swift */; };
-		87E8A92D1FE596BC00726A2E /* ChatListButtonsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E8A9281FE5932100726A2E /* ChatListButtonsTableViewCell.xib */; };
 		87E8A92E1FE596C200726A2E /* ChatUsersListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */; };
 		87F3B6711FEC1CD9000E5045 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
@@ -195,8 +193,6 @@
 		87DDA8E21FE90CC500A917A8 /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
 		87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersListTableViewCell.swift; sourceTree = "<group>"; };
 		87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatUsersListTableViewCell.xib; sourceTree = "<group>"; };
-		87E8A9271FE5932100726A2E /* ChatListButtonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatListButtonsTableViewCell.swift; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/ChatList/ChatListButtonsTableViewCell.swift; sourceTree = "<absolute>"; };
-		87E8A9281FE5932100726A2E /* ChatListButtonsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ChatListButtonsTableViewCell.xib; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/ChatList/ChatListButtonsTableViewCell.xib; sourceTree = "<absolute>"; };
 		87EBEEB81FEEA28F00C62D89 /* iPetMatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iPetMatch.entitlements; sourceTree = "<group>"; };
 		87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		92EBCC34EEE82B0C93315475 /* Pods-iPetMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPetMatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch.release.xcconfig"; sourceTree = "<group>"; };
@@ -475,8 +471,6 @@
 				8787CFB31FF979030051AACD /* ChatInfoView.swift */,
 				87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */,
 				87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */,
-				87E8A9271FE5932100726A2E /* ChatListButtonsTableViewCell.swift */,
-				87E8A9281FE5932100726A2E /* ChatListButtonsTableViewCell.xib */,
 			);
 			name = ChatList;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/ChatList;
@@ -614,7 +608,6 @@
 				87495FC41FF3B1A700FF2C06 /* MatchCardView.xib in Resources */,
 				871F8FF61FF353400020FF35 /* Match.storyboard in Resources */,
 				8787CFAD1FF912000051AACD /* ChatViewController.xib in Resources */,
-				87E8A92D1FE596BC00726A2E /* ChatListButtonsTableViewCell.xib in Resources */,
 				87B529C31FFC74CF0049E637 /* PetsTableViewCell.xib in Resources */,
 				8797E65A1FE10D5800C9002F /* LaunchScreen.storyboard in Resources */,
 				8727F7351FE8B61E0027859D /* Mewo.mp3 in Resources */,
@@ -770,7 +763,6 @@
 				8737143A1FE40612009C440F /* MakeAudioCallViewController.swift in Sources */,
 				879FB12A1FE2DF92002332EF /* TabBarController.swift in Sources */,
 				87126BFA1FE19B2A009D0188 /* Identifiable.swift in Sources */,
-				87E8A92B1FE5932100726A2E /* ChatListButtonsTableViewCell.swift in Sources */,
 				87126C011FE2412F009D0188 /* CallManager.swift in Sources */,
 				87641DE11FF559AC00FDD08A /* LikedUsersManager.swift in Sources */,
 				874D94391FE2CEAE0009C9F3 /* IncommingCallViewController.swift in Sources */,

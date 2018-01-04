@@ -23,9 +23,9 @@ extension TabBarController: QBRTCClientDelegate {
             CallManager.shared.session = session
 
             RingtonePlayer.shared.startPhoneRing(callRole: .receiver)
+            CallManager.shared.userInfo = userInfo
 
             let incommingCallViewController = IncommingCallViewController()
-            incommingCallViewController.friendInfo = userInfo
             self.present(incommingCallViewController, animated: true, completion: nil)
 
         }

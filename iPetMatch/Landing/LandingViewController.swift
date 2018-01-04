@@ -15,7 +15,7 @@ class LandingViewController: UIViewController {
     @IBOutlet weak var loginButton: LGButton!
 
     @IBOutlet weak var signupButton: LGButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()

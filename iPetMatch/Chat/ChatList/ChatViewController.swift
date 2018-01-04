@@ -96,16 +96,6 @@ class ChatViewController: UIViewController {
             forCellReuseIdentifier: ChatUsersListTableViewCell.identifier
         )
 
-        let buttonsNib = UINib(
-            nibName: "ChatListButtonsTableViewCell",
-            bundle: nil
-        )
-
-        tableView.register(
-            buttonsNib,
-            forCellReuseIdentifier: ChatListButtonsTableViewCell.identifier
-        )
-
     }
 
 }
@@ -163,6 +153,22 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
             cell.audioCallButton.addTarget(self, action: #selector(startAudioCalling), for: .touchUpInside)
             cell.videoCallButton.addTarget(self, action: #selector(startVedioCalling), for: .touchUpInside)
 
+            let userId = Auth.auth().currentUser?.uid
+            let blockRef = Database.database().reference().child("user-friends").child(friend.id!).child(userId!)
+            blockRef.observeSingleEvent(of: .value) { snapshot in
+
+                if let myDic = snapshot.value as? [String: Any],
+                    let isBlocked = myDic["isBlockedByFriend"] as? String,
+                    isBlocked == "true" {
+                    cell.blockUserButton.titleString = NSLocalizedString("Unblock", comment: "")
+                    cell.blockUserButton.addTarget(self, action: #selector(self.unblockFriend(_:)), for: .touchUpInside)
+
+                } else {
+                    cell.blockUserButton.titleString = NSLocalizedString("Block", comment: "")
+                    cell.blockUserButton.addTarget(self, action: #selector(self.blockFriend(_:)), for: .touchUpInside)
+                }
+            }
+
         }
 
         return cell
@@ -174,10 +180,10 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath == didSelectIndexPath {
             isCellExpaned = false
             self.didSelectIndexPath = nil
+            self.selectedFriend = nil
         } else {
             isCellExpaned = true
             self.didSelectIndexPath = indexPath
-
         }
 
         let friend = shouldShowSearchResults ? self.filterFriends[indexPath.row] : self.myFriends[indexPath.row]
@@ -238,20 +244,57 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
 // Selector functions
 extension ChatViewController {
 
+    @objc func blockFriend(_ sender: LGButton) {
+        guard let blockFriendID = self.selectedFriend?.id,
+        let user = Auth.auth().currentUser else { return }
+        let friendRef = Database.database().reference().child("user-friends").child(blockFriendID).child(user.uid)
+        let value = ["isBlockedByFriend": "true"]
+        friendRef.updateChildValues(value)
+        sender.titleString = NSLocalizedString("Unblock", comment: "")
+        sender.addTarget(self, action: #selector(unblockFriend(_:)), for: .touchUpInside)
+    }
+
+    @objc func unblockFriend(_ sender: LGButton) {
+        guard let blockFriendID = self.selectedFriend?.id,
+            let user = Auth.auth().currentUser else { return }
+        let friendRef = Database.database().reference().child("user-friends").child(blockFriendID).child(user.uid)
+        let value = ["isBlockedByFriend": "false"]
+        friendRef.updateChildValues(value)
+        sender.titleString = NSLocalizedString("Block", comment: "")
+        sender.addTarget(self, action: #selector(blockFriend(_:)), for: .touchUpInside)
+    }
+
     @objc func startAudioCalling() {
 
         self.isCellExpaned = false
         self.didSelectIndexPath = nil
         self.tableView.reloadData()
 
-        guard let toUserID = self.callToUserID else { return }
+        let friendId = self.selectedFriend?.id
+        let userId = Auth.auth().currentUser?.uid
+        let blockRef = Database.database().reference().child("user-friends").child(userId!).child(friendId!)
+        blockRef.observeSingleEvent(of: .value) { snapshot in
 
-        CallManager.shared.makeCall(to: toUserID, with: .audio)
-        let makeAudioCallViewController = MakeAudioCallViewController()
-        makeAudioCallViewController.selectedFriend = self.selectedFriend
-        let navigationController = UINavigationController(rootViewController: makeAudioCallViewController)
-        self.navigationController?.present(navigationController, animated: true, completion: nil)
+            if let myDic = snapshot.value as? [String: Any],
+                let isBlocked = myDic["isBlockedByFriend"] as? String,
+                isBlocked == "true" {
 
+                SCLAlertView().showWarning(NSLocalizedString("Warning", comment: ""),
+                                           subTitle: NSLocalizedString("You can't contact with this friend", comment: "")
+                )
+
+                return
+            } else {
+                guard let toUserID = self.callToUserID else { return }
+
+                CallManager.shared.makeCall(to: toUserID, with: .audio)
+                let makeAudioCallViewController = MakeAudioCallViewController()
+                makeAudioCallViewController.selectedFriend = self.selectedFriend
+                let navigationController = UINavigationController(rootViewController: makeAudioCallViewController)
+                self.navigationController?.present(navigationController, animated: true, completion: nil)
+
+            }
+        }
     }
 
     @objc func startVedioCalling() {
@@ -260,12 +303,30 @@ extension ChatViewController {
         self.didSelectIndexPath = nil
         self.tableView.reloadData()
 
-        guard let toUserID = self.callToUserID else { return }
-        CallManager.shared.makeCall(to: toUserID, with: .video)
-        let makeVideoCallViewController = MakeVideoCallViewController()
-        makeVideoCallViewController.selectedFriend = self.selectedFriend
-        self.present(makeVideoCallViewController, animated: true, completion: nil)
+        let friendId = self.selectedFriend?.id
+        let userId = Auth.auth().currentUser?.uid
+        let blockRef = Database.database().reference().child("user-friends").child(userId!).child(friendId!)
+        blockRef.observeSingleEvent(of: .value) { snapshot in
 
+            if let myDic = snapshot.value as? [String: Any],
+                let isBlocked = myDic["isBlockedByFriend"] as? String,
+                isBlocked == "true" {
+
+                SCLAlertView().showWarning(NSLocalizedString("Warning", comment: ""),
+                                           subTitle: NSLocalizedString("You can't contact with this friend", comment: "")
+                )
+
+                return
+
+            } else {
+                guard let toUserID = self.callToUserID else { return }
+                CallManager.shared.makeCall(to: toUserID, with: .video)
+                let makeVideoCallViewController = MakeVideoCallViewController()
+                makeVideoCallViewController.selectedFriend = self.selectedFriend
+                self.present(makeVideoCallViewController, animated: true, completion: nil)
+
+            }
+        }
     }
 }
 

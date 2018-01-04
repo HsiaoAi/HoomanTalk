@@ -15,7 +15,7 @@ class ChatUsersListTableViewCell: UITableViewCell, Identifiable {
     @IBOutlet weak var loadingImageView: NVActivityIndicatorView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var lastCallLabel: UILabel!
-    @IBOutlet weak var userImageLabel: UIImageView!
+    @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var actionPanelView: UIView!
 
     @IBOutlet weak var audioCallButton: LGButton!
@@ -41,9 +41,10 @@ class ChatUsersListTableViewCell: UITableViewCell, Identifiable {
         self.userNameLabel.text = friend.name
         self.lastCallLabel.text = String(describing: friend.lastCallTime)
 
+        userImageView.image = nil
         let imageAdress = friend.imageURL
         if let imageURL = URL(string: imageAdress!) {
-            UserManager.setUserProfileImage(with: imageURL, into: self.userImageLabel, activityIndicatorView: self.loadingImageView)
+            UserManager.setUserProfileImage(with: imageURL, into: self.userImageView, activityIndicatorView: self.loadingImageView)
         }
 
         if let lastCallType = friend.lastCallType,

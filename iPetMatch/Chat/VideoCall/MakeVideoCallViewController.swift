@@ -13,6 +13,7 @@ class MakeVideoCallViewController: UIViewController {
     var videoCapture: QBRTCCameraCapture?
 
     var selectedFriend: Friend?
+    var callingFriendInfo: [String: String]?
 
     @IBOutlet weak var localVideoView: LocalVideoView!
 
@@ -159,7 +160,7 @@ extension MakeVideoCallViewController {
 
             self.prepareLocalVideoTrack()
 
-            CallManager.shared.session?.startCall(nil)
+            CallManager.shared.session?.startCall(CallManager.shared.userInfo)
 
             sendPushToOpponentsAboutNewCall(from: UserManager.instance.currentUser!.name, to: "\(callToUser.callingID!)")
 
@@ -217,26 +218,28 @@ extension MakeVideoCallViewController: QBRTCClientDelegate {
 
     func session(_ session: QBRTCBaseSession, connectedToUser userID: NSNumber) {
 
-        timerLabel.isHidden = false
-        CallManager.shared.startCountingTime(timerLabel: timerLabel)
+//        callingFromLabel.isHidden = true
+//        timerLabel.isHidden = false
+
+      //  CallManager.shared.startCountingTime(timerLabel: timerLabel)
 
     }
 
     func session(_ session: QBRTCBaseSession, startedConnectingToUser userID: NSNumber) {
 
-        CallManager.shared.startCountingTime(timerLabel: timerLabel)
+      //  CallManager.shared.startCountingTime(timerLabel: timerLabel)
 
     }
 
     func session(_ session: QBRTCBaseSession, disconnectedFromUser userID: NSNumber) {
 
-        CallManager.shared.stopCountingTime(timerLabel: timerLabel)
+     //   CallManager.shared.stopCountingTime(timerLabel: timerLabel)
 
     }
 
     func session(_ session: QBRTCBaseSession, connectionClosedForUser userID: NSNumber) {
 
-        CallManager.shared.stopCountingTime(timerLabel: timerLabel)
+     //   CallManager.shared.stopCountingTime(timerLabel: timerLabel)
 
     }
 

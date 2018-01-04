@@ -38,9 +38,9 @@ class MatchViewController: UIViewController {
     @IBOutlet weak var likeMeButton: UIButton!
 
     @IBOutlet weak var browseButton: UIButton!
-    
+
     @IBOutlet weak var runOutofCardView: UIView!
-    
+
     @IBOutlet weak var hitHearToMatchLabel: UILabel!
 
     @IBAction func tapLikeMeButton(_ sender: Any) {
@@ -181,16 +181,16 @@ extension MatchViewController: KolodaViewDelegate {
         self.view.bringSubview(toFront: runOutofCardView)
         self.kolodaView.resetCurrentCardIndex()
         matchCardsManager.observeMatchCardUsers()
-        
+
         let appearance = SCLAlertView.SCLAppearance(
             showCloseButton: false
         )
         let alertview = SCLAlertView(appearance: appearance)
         let buttonYes = NSLocalizedString("Yes", comment: "")
         let buttonNo = NSLocalizedString("No", comment: "")
-        
+
         alertview.addButton(buttonYes) {
-            
+
             self.runOutofCardView.isHidden = true
         }
         alertview.addButton(buttonNo) { }
@@ -355,7 +355,7 @@ extension MatchViewController {
                                              Friend.Schema.callingID: currentUser.callingID,
                                              Friend.Schema.gender: currentUser.gender.rawValue,
                                              Friend.Schema.yearOfBirth: currentUser.yearOfBirth,
-                                             Friend.Schema.loginEmail: matchUser.loginEmail,
+                                             Friend.Schema.loginEmail: currentUser.loginEmail,
                                              Friend.Schema.petPersonType: currentUser.petPersonType.rawValue]
 
                 matchUserFriendsRef.updateChildValues(myInfo)
@@ -446,6 +446,7 @@ extension MatchViewController: UICollectionViewDataSource {
 
             cell.userInfoLabel.text = "\(user.name), \(user.petPersonType.rawValue.capitalized) Person"
 
+            cell.userImageView.image = nil
             cell.userImageView.contentMode = .scaleToFill
             let imageAdress = user.imageURL
             if let imageURL = URL(string: imageAdress!) {

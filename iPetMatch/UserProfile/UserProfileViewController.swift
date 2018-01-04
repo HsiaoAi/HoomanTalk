@@ -37,13 +37,13 @@ class UserProfileViewController: UIViewController {
         alertview.showNotice(NSLocalizedString("Notice", comment: ""),
                              subTitle: NSLocalizedString("Are you sure to log out?", comment: ""))
     }
-    
+
     func logout() {
-        
+
         do {
             try Auth.auth().signOut()
         } catch {
-            
+
             SCLAlertView().showError(
                 NSLocalizedString("Error", comment: ""),
                 subTitle: NSLocalizedString("Something wrong, please try again", comment: "")
@@ -51,10 +51,10 @@ class UserProfileViewController: UIViewController {
             print(error)
         }
         QBRequest.logOut(successBlock: { _ in
-            
+
             UserManager.instance.currentUser = nil
             AppDelegate.shared.enterLandingView()
-            
+
         }, errorBlock: nil)
     }
 

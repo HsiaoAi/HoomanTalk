@@ -20,8 +20,6 @@ class IncommingCallViewController: UIViewController {
     @IBOutlet weak var speakerButton: LGButton!
     var isAnswer = false
 
-    var friendInfo: [String: String]?
-
     @IBOutlet weak var microphoneButton: LGButton!
 
     @IBOutlet weak var audioSignImageView: UIImageView!
@@ -54,7 +52,7 @@ class IncommingCallViewController: UIViewController {
 
     func setupFriendInfoView() {
 
-        guard let userInfo = self.friendInfo else {
+        guard let userInfo = CallManager.shared.userInfo else {
             SCLAlertView().showError(NSLocalizedString("Error", comment: ""), subTitle: NSLocalizedString("Unknown caller", comment: ""))
             return
         }
@@ -155,7 +153,7 @@ class IncommingCallViewController: UIViewController {
             turnOffSpeaker()
 
         case .video:
-
+            let answerVideoCallViewController = MakeVideoCallViewController()
             self.present(MakeVideoCallViewController(), animated: false, completion: nil)
 
         }

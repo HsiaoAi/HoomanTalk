@@ -357,7 +357,7 @@
                 <outlet property="lastCallLabel" destination="lJN-Hq-zxn" id="qao-cD-whg"/>
                 <outlet property="loadingImageView" destination="fzj-XM-6Jl" id="ZHW-yt-Van"/>
                 <outlet property="reportUSerButton" destination="gIy-sc-2NK" id="81Z-Bh-wIn"/>
-                <outlet property="userImageLabel" destination="M1c-lK-Mjz" id="9eH-0X-jFj"/>
+                <outlet property="userImageView" destination="M1c-lK-Mjz" id="yyl-SI-a6V"/>
                 <outlet property="userNameLabel" destination="EoI-UF-0Zd" id="HAV-Jl-3Ls"/>
                 <outlet property="videoCallButton" destination="BRS-NK-ufT" id="uG2-jN-rmr"/>
             </connections>
