@@ -17,11 +17,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: LGButton!
 
     override func viewDidLoad() {
-
+        
         super.viewDidLoad()
-
-        setupErrorTextFieldHandeler()
-
     }
 
     @IBAction func tapForgetPassword(_ sender: UIButton) {
@@ -92,10 +89,10 @@ class LoginViewController: UIViewController {
             return
         }
 
-        guard emailTextFied.errorMessage == "" else {
+        guard email.contains("@") else {
             SCLAlertView().showWarning(
                 NSLocalizedString("Warning", comment: ""),
-                subTitle: emailTextFied.errorMessage!
+                subTitle: NSLocalizedString("Invalid Email", comment: "")
             )
             return
         }
@@ -111,10 +108,10 @@ class LoginViewController: UIViewController {
                 return
         }
 
-        guard passwordTextFied.errorMessage == "" else {
+        guard password.count > 5 else {
             SCLAlertView().showWarning(
                 NSLocalizedString("Warning", comment: ""),
-                subTitle: NSLocalizedString(passwordTextFied.errorMessage!, comment: "")
+                subTitle: NSLocalizedString("Invalid Password\n(6-20 Characters)", comment: "")
             )
             return
         }
@@ -140,7 +137,7 @@ class LoginViewController: UIViewController {
                     default:
                         SCLAlertView().showError(
                             NSLocalizedString("Error", comment: ""),
-                            subTitle: NSLocalizedString("Something wrong, plese log in again.\(errCode)", comment: "")
+                            subTitle: NSLocalizedString("Something wrong, plese log in again.", comment: "")
                         )
                         self.emailTextFied.text = ""
                         self.passwordTextFied.text = ""
@@ -177,47 +174,12 @@ class LoginViewController: UIViewController {
                                     self.loginButton.isLoading = false
                                     SCLAlertView().showError(
                                         NSLocalizedString("Error", comment: ""),
-                                        subTitle: NSLocalizedString("Something wrong, plese log in again: \(errorResponse)", comment: "")
+                                        subTitle: NSLocalizedString("Something wrong, plese log in again", comment: "")
                                     )
                                     return}
                 )
             }
         }
-    }
-
-}
-
-extension LoginViewController: UITextFieldDelegate {
-
-    func setupErrorTextFieldHandeler() {
-
-        emailTextFied.delegate = self
-        passwordTextFied.delegate = self
-
-    }
-
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
-        if let text = textField.text,
-            let skyFloatLabelTextField = textField as? SkyFloatingLabelTextField {
-
-            if skyFloatLabelTextField === emailTextFied && (text.count < 3 || !text.contains("@")) {
-
-                skyFloatLabelTextField.errorMessage = "Invalid Email"
-
-            } else if textField === passwordTextFied && text.count < 5 {
-
-                skyFloatLabelTextField.errorMessage = "Invalid Password (6-20 Characters)"
-
-            } else {
-
-                skyFloatLabelTextField.errorMessage = ""
-
-            }
-
-        }
-        return true
-
     }
 
 }
