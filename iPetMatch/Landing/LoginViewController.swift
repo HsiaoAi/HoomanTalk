@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: LGButton!
 
     override func viewDidLoad() {
-        
+
         super.viewDidLoad()
     }
 
@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
             return
 
         }
-        
+
         guard email.contains("@") else {
             SCLAlertView().showWarning(
                 NSLocalizedString("Warning", comment: ""),
@@ -162,7 +162,7 @@ class LoginViewController: UIViewController {
                                     self.loginButton.isLoading = false
                                     AppDelegate.shared.enterPassByLandingView()},
 
-                                errorBlock: { ( errorResponse ) in
+                                errorBlock: { ( _ ) in
                                     self.loginButton.isLoading = false
                                     SCLAlertView().showError(
                                         NSLocalizedString("Error", comment: ""),

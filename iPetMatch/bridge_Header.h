@@ -45,6 +45,7 @@
 @import CoreData;
 @import UserNotifications;
 @import CZPicker;
+@import PDFReader;
 
 
 #endif /* bridge_Header_h */

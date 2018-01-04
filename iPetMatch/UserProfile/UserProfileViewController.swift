@@ -20,6 +20,44 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var likedUserLabel: UILabel!
     @IBOutlet weak var friendsNumberLabel: UILabel!
     @IBOutlet weak var loadingImageView: NVActivityIndicatorView!
+
+    @IBAction func tapLogout(_ sender: UIButton) {
+
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        let alertview = SCLAlertView(appearance: appearance)
+        let buttonYes = NSLocalizedString("Yes", comment: "")
+        let buttonNo = NSLocalizedString("No", comment: "")
+
+        alertview.addButton(buttonYes) {
+            self.logout()
+        }
+        alertview.addButton(buttonNo) { }
+        alertview.showNotice(NSLocalizedString("Notice", comment: ""),
+                             subTitle: NSLocalizedString("Are you sure to log out?", comment: ""))
+    }
+    
+    func logout() {
+        
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            
+            SCLAlertView().showError(
+                NSLocalizedString("Error", comment: ""),
+                subTitle: NSLocalizedString("Something wrong, please try again", comment: "")
+            )
+            print(error)
+        }
+        QBRequest.logOut(successBlock: { _ in
+            
+            UserManager.instance.currentUser = nil
+            AppDelegate.shared.enterLandingView()
+            
+        }, errorBlock: nil)
+    }
+
     var friendNumber: Int = 0 {
         didSet {
             friendsNumberLabel.text = NSLocalizedString("Friends", comment: "") + ": \(String(describing: friendNumber))"
@@ -97,10 +135,10 @@ class UserProfileViewController: UIViewController {
         userNameLabel.text = user.name
         switch user.petPersonType {
         case .dog:
-            userPetTypeLabel.text = "🐶" +  NSLocalizedString("person", comment: "")
+            userPetTypeLabel.text = "🐶" +  NSLocalizedString("Person", comment: "")
 
         case .cat:
-            userPetTypeLabel.text = "🐱" +  NSLocalizedString("person", comment: "")
+            userPetTypeLabel.text = "🐱" +  NSLocalizedString("Person", comment: "")
 
         case .both:
             userPetTypeLabel.text = "❤️ 🐶 & 🐱"
@@ -116,6 +154,10 @@ class UserProfileViewController: UIViewController {
         let yearsOld = NSLocalizedString("yrs", comment: "")
         userBirthLabel.text = "\(todayYear - user.yearOfBirth) " + yearsOld
 
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 
 }

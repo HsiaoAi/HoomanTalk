@@ -70,30 +70,6 @@ class MatchViewController: UIViewController {
 
     }
 
-    @IBAction func logout(_ sender: Any) {
-
-        do {
-
-            try Auth.auth().signOut()
-
-        } catch {
-
-            SCLAlertView().showError(
-
-                NSLocalizedString("Error", comment: ""),
-                subTitle: NSLocalizedString("Something wrong, please try again", comment: "")
-            )
-
-            print(error)
-        }
-        QBRequest.logOut(successBlock: { _ in
-
-            AppDelegate.shared.enterLandingView()
-
-        }, errorBlock: nil)
-
-    }
-
     override func viewDidLoad() {
 
         super.viewDidLoad()

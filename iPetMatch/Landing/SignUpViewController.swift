@@ -23,17 +23,19 @@ class SignUpViewController: UIViewController {
     var isDogPerson: Bool = false
     var userImage: UIImage?
     var gender: Gender = .male
+    var isReadEULA: Bool = false
 
+    @IBOutlet weak var readEULAButton: UIButton!
     var imageURLString: String?
-    
+
     var todayYear: Int {
-        
+
         let todayDate: Date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy"
         let todayYesrString = dateFormatter.string(from: todayDate)
         return Int(todayYesrString)!
-        
+
     }
 
     // Firebase properties
@@ -41,6 +43,30 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         genderControl.titles = ["♂︎", "♀︎"]
+        setupReadEULA()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    func setupReadEULA() {
+        readEULAButton.layer.borderColor = UIColor.white.cgColor
+        readEULAButton.layer.borderWidth = 2.0
+        readEULAButton.addTarget(self, action: #selector(openEULA), for: .touchUpInside)
+
+    }
+
+    @objc func openEULA(_ sender: UIButton) {
+        self.isReadEULA = true
+        if let url =  Bundle.main.url(forResource: "EULA", withExtension: "pdf") {
+            let webView = UIWebView(frame: UIScreen.main.bounds)
+            let urlRequest = URLRequest(url: url)
+            webView.loadRequest(urlRequest)
+
+            let eulaViewController = EULAViewController()
+            self.navigationController?.pushViewController(eulaViewController, animated: true)
+        }
     }
 
     @IBAction func pickBirthDay(_ sender: UITextField) {
@@ -71,45 +97,27 @@ class SignUpViewController: UIViewController {
     @IBAction func tapCatPerson(_ sender: LGButton) {
 
         if !sender.isSelected {
-
             sender.isSelected = true
-
             isCatPerson = true
-
             sender.rightImageSrc = IconImage.catPersonSelected.image
-
         } else {
-
             sender.isSelected = false
-
             isCatPerson = false
-
             sender.rightImageSrc = IconImage.catPerson.image
-
         }
-
     }
 
     @IBAction func tapDogPerson(_ sender: LGButton) {
 
         if !sender.isSelected {
-
             sender.isSelected = true
-
             isDogPerson = true
-
             sender.rightImageSrc = IconImage.dogPersonSelected.image
-
         } else {
-
             sender.isSelected = false
-
             isDogPerson = false
-
             sender.rightImageSrc = IconImage.dogPerson.image
-
         }
-
     }
 
     func signUp() {
@@ -194,7 +202,7 @@ class SignUpViewController: UIViewController {
             )
             return
         }
-        
+
         guard (todayYear - yearOfBirth) >= 18 else {
             SCLAlertView().showWarning(
                 NSLocalizedString("Warning", comment: ""),
@@ -206,15 +214,10 @@ class SignUpViewController: UIViewController {
         guard let userImage = self.userImage else {
 
             SCLAlertView().showWarning(
-
                 NSLocalizedString("Warning", comment: ""),
-
                 subTitle: NSLocalizedString("Please pick your picture", comment: "")
-
             )
-
             return
-
         }
 
         switch (isCatPerson, isDogPerson) {
@@ -232,6 +235,16 @@ class SignUpViewController: UIViewController {
             return
         }
 
+        guard isReadEULA == true else {
+
+            SCLAlertView().showWarning(
+                NSLocalizedString("Warning", comment: ""),
+                subTitle: NSLocalizedString("Please read the EULA", comment: "")
+            )
+            return
+
+        }
+
         // Firebase Sign up
 
         self.signUpButton.isLoading = true
@@ -240,9 +253,9 @@ class SignUpViewController: UIViewController {
             if error != nil {
                 self.signUpButton.isLoading = false
                 if let errCode = AuthErrorCode(rawValue: error!._code) {
-                    
+
                     switch errCode {
-                 
+
                     case .emailAlreadyInUse:
                         SCLAlertView().showError(
                             NSLocalizedString("Error", comment: ""),
@@ -254,7 +267,6 @@ class SignUpViewController: UIViewController {
                             NSLocalizedString("Error", comment: ""),
                             subTitle: NSLocalizedString("Invalid email", comment: "")
                         )
-
 
                     case .weakPassword, .wrongPassword:
                         SCLAlertView().showError(

@@ -25,7 +25,8 @@ extension AppDelegate {
 
         let landingStoryboard = UIStoryboard(name: "Landing", bundle: nil)
         let landingViewController = landingStoryboard.instantiateViewController(withIdentifier: "LandingViewController")
-        window?.rootViewController = landingViewController
+        let navigationController = UINavigationController(rootViewController: landingViewController)
+        window?.rootViewController = navigationController
 
     }
 

@@ -10,6 +10,9 @@
 		693E86532A574593235778FC /* Pods_iPetMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA9B305BF331FC6F95E0DA0D /* Pods_iPetMatch.framework */; };
 		870327631FEADC4F009D2FF3 /* IconEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870327621FEADC4F009D2FF3 /* IconEnum.swift */; };
 		8703276F1FEB22DC009D2FF3 /* AudioCall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8703276E1FEB22DA009D2FF3 /* AudioCall.gif */; };
+		8704DBF51FFE498C00446E4F /* EULA.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8704DBF41FFE3CDC00446E4F /* EULA.pdf */; };
+		8704DBFC1FFE545500446E4F /* EULAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DBFA1FFE545500446E4F /* EULAViewController.swift */; };
+		8704DBFD1FFE545500446E4F /* EULAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8704DBFB1FFE545500446E4F /* EULAViewController.xib */; };
 		8708821A1FFBA07C00723149 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870882191FFBA07C00723149 /* Pet.swift */; };
 		87126BE51FE18B09009D0188 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126BE31FE18B09009D0188 /* LandingViewController.swift */; };
 		87126BFA1FE19B2A009D0188 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126BF91FE19B2A009D0188 /* Identifiable.swift */; };
@@ -107,7 +110,9 @@
 /* Begin PBXFileReference section */
 		870327621FEADC4F009D2FF3 /* IconEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconEnum.swift; sourceTree = "<group>"; };
 		8703276E1FEB22DA009D2FF3 /* AudioCall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = AudioCall.gif; sourceTree = "<group>"; };
-		870882181FFB37E500723149 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		8704DBF41FFE3CDC00446E4F /* EULA.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = EULA.pdf; sourceTree = "<group>"; };
+		8704DBFA1FFE545500446E4F /* EULAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EULAViewController.swift; sourceTree = "<group>"; };
+		8704DBFB1FFE545500446E4F /* EULAViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EULAViewController.xib; sourceTree = "<group>"; };
 		870882191FFBA07C00723149 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		87126BE11FE183C5009D0188 /* bridge_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bridge_Header.h; path = iPetMatch/bridge_Header.h; sourceTree = SOURCE_ROOT; };
 		87126BE31FE18B09009D0188 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -230,7 +235,7 @@
 		87126BE01FE18351009D0188 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				870882181FFB37E500723149 /* fontawesome-webfont.ttf */,
+				8704DBF41FFE3CDC00446E4F /* EULA.pdf */,
 				8760A8391FF43EBF00EE409E /* UIImageExtension.swift */,
 			);
 			name = SupportingFiles;
@@ -244,6 +249,8 @@
 				87C179AE1FEC0FD900815A47 /* LoginViewController.swift */,
 				87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */,
 				87C179AC1FEC0C7A00815A47 /* Landing.storyboard */,
+				8704DBFA1FFE545500446E4F /* EULAViewController.swift */,
+				8704DBFB1FFE545500446E4F /* EULAViewController.xib */,
 			);
 			path = Landing;
 			sourceTree = "<group>";
@@ -596,6 +603,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8704DBF51FFE498C00446E4F /* EULA.pdf in Resources */,
+				8704DBFD1FFE545500446E4F /* EULAViewController.xib in Resources */,
 				8735E6331FE58EF000C85442 /* QuickBloxKey.plist in Resources */,
 				87E8A92E1FE596C200726A2E /* ChatUsersListTableViewCell.xib in Resources */,
 				872E97381FFB028700106AF0 /* Pets.storyboard in Resources */,
@@ -768,6 +777,7 @@
 				87C5071C1FF6ABC4000797D5 /* CoreDataStack.swift in Sources */,
 				8787CFAC1FF912000051AACD /* ChatViewController.swift in Sources */,
 				87C179AF1FEC0FD900815A47 /* LoginViewController.swift in Sources */,
+				8704DBFC1FFE545500446E4F /* EULAViewController.swift in Sources */,
 				872D9CD71FE65F110008C8AA /* LocalVideoView.swift in Sources */,
 				879FB1261FE2DCFD002332EF /* TabBarItem.swift in Sources */,
 				8727F72E1FE85E060027859D /* RingtonePlayer.swift in Sources */,
