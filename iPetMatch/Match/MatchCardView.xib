@@ -57,7 +57,7 @@
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gDK-ES-eXL" userLabel="petCollectionView">
                     <rect key="frame" x="5" y="372" width="205" height="98.666666666666686"/>
-                    <color key="backgroundColor" red="0.98600811430000002" green="0.37649227769999999" blue="0.36726083949999999" alpha="0.90341395550000003" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SkF-Fm-L2o">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>

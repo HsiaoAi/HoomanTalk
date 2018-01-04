@@ -296,6 +296,7 @@ extension AddPetViewController {
 
         petImageView.contentMode = .scaleAspectFill
         petImageView.clipsToBounds = true
+        petImageView.image = nil
         let imageAdress = pet.imageURL
         if let imageURL = URL(string: imageAdress!) {
             UserManager.setUserProfileImage(with: imageURL,

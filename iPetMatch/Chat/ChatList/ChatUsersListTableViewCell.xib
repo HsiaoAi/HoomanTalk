@@ -307,6 +307,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <color key="backgroundColor" red="0.64702028040000004" green="0.66663384439999995" blue="0.69790667299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.99994784589999997" green="1" blue="0.99987405539999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -328,11 +329,21 @@
                             <constraint firstItem="dLD-Th-FBA" firstAttribute="centerX" secondItem="bjw-vm-j24" secondAttribute="centerX" id="wpn-zQ-6lu"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnS-XG-HmD">
+                        <rect key="frame" x="-0.5" y="163" width="375" height="1"/>
+                        <color key="backgroundColor" red="0.3217366934" green="0.25888746979999999" blue="0.25097307559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="khS-qI-72q"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="WII-Xw-HIW" firstAttribute="bottom" secondItem="xxi-fl-383" secondAttribute="bottom" id="DL2-cS-jwu"/>
+                    <constraint firstItem="fnS-XG-HmD" firstAttribute="top" secondItem="bjw-vm-j24" secondAttribute="bottom" constant="63" id="F11-E2-pse"/>
                     <constraint firstItem="dMK-hp-Up8" firstAttribute="width" secondItem="dLD-Th-FBA" secondAttribute="width" id="Ovo-DM-KW1"/>
                     <constraint firstItem="bjw-vm-j24" firstAttribute="top" secondItem="WII-Xw-HIW" secondAttribute="top" id="b2b-tG-cB1"/>
+                    <constraint firstItem="fnS-XG-HmD" firstAttribute="leading" secondItem="xxi-fl-383" secondAttribute="leading" id="fO7-k7-b7A"/>
+                    <constraint firstItem="fnS-XG-HmD" firstAttribute="centerX" secondItem="WII-Xw-HIW" secondAttribute="centerX" id="r0I-c5-YH8"/>
                     <constraint firstItem="bjw-vm-j24" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="uLs-Fc-tt4"/>
                     <constraint firstItem="xxi-fl-383" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="yem-41-248"/>
                 </constraints>

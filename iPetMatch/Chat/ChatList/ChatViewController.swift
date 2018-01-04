@@ -85,6 +85,7 @@ class ChatViewController: UIViewController {
         tableView.keyboardDismissMode = .onDrag
         tableView.showsVerticalScrollIndicator = false
         tableView.tableFooterView = footerView
+        tableView.separatorStyle = .none
 
         let usersListNib = UINib(
             nibName: "ChatUsersListTableViewCell",

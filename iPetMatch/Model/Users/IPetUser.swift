@@ -84,6 +84,6 @@ enum Gender: String {
 
 enum PetPersonType: String {
 
-    case dog, cat, both, none
+    case dog, cat, both
 
 }

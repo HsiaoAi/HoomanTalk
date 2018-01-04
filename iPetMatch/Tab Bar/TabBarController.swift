@@ -100,6 +100,13 @@ class TabBarController: UITabBarController {
 
             return petsViewController
 
+        case .profile:
+
+            let profileViewController = UserProfileViewController()
+            profileViewController.tabBarItem = TabBarItem(itemType: itemType)
+
+            return profileViewController
+
         }
 
     }

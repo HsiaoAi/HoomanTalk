@@ -337,8 +337,6 @@ extension MatchViewController {
         if let cell = sender.superview?.superview as? LikeMeCollectionViewCell,
             let indexPath = likeMeCollectionView.indexPath(for: cell) {
             let matchUser = self.likedMeUsers[indexPath.row]
-
-            print(matchUser)
             self.likedMeManager.sendLike(to: matchUser)
             cell.likeButton.isEnabled = false
             if let userIndexInMatchCard = matchCardUsers.index(of: matchUser) {
@@ -351,7 +349,7 @@ extension MatchViewController {
                 let myFriendsRef = Database.database().reference().child("user-friends").child(uid).child(matchUser.id)
                 let matchFriendInfo: [String: Any] = [Friend.Schema.name: matchUser.name,
                                                       Friend.Schema.id: matchUser.id,
-                                                      Friend.Schema.imageURL: matchUser.imageURL,
+                                                      Friend.Schema.imageURL: matchUser.imageURL ?? "",
                                                       Friend.Schema.callingID: matchUser.callingID,
                                                       Friend.Schema.gender: matchUser.gender.rawValue,
                                                       Friend.Schema.yearOfBirth: matchUser.yearOfBirth,
@@ -362,7 +360,7 @@ extension MatchViewController {
                 let matchUserFriendsRef = Database.database().reference().child("user-friends").child(matchUser.id).child(uid)
                 let myInfo: [String: Any] = [Friend.Schema.name: currentUser.name,
                                              Friend.Schema.id: currentUser.id,
-                                             Friend.Schema.imageURL: currentUser.imageURL,
+                                             Friend.Schema.imageURL: currentUser.imageURL ?? "",
                                              Friend.Schema.callingID: currentUser.callingID,
                                              Friend.Schema.gender: currentUser.gender.rawValue,
                                              Friend.Schema.yearOfBirth: currentUser.yearOfBirth,

@@ -24,7 +24,7 @@ class SignUpViewController: UIViewController {
 
     @IBOutlet weak var signUpButton: LGButton!
 
-    var petPersonType: PetPersonType = .none
+    var petPersonType: PetPersonType = .both
 
     var isCatPerson: Bool = false
 
@@ -249,19 +249,13 @@ class SignUpViewController: UIViewController {
 
         switch (isCatPerson, isDogPerson) {
 
-        case (true, true): self.petPersonType = .both
-
-            break
-
         case (true, false): self.petPersonType = .cat
-
-            break
 
         case (false, true): self.petPersonType = .dog
 
-            break
+        default:
 
-        default: self.petPersonType = .none
+            self.petPersonType = .both
 
         }
 

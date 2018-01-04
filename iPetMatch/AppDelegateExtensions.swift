@@ -31,7 +31,7 @@ extension AppDelegate {
 
     func enterPassByLandingView() {
 
-        let tabBarController = TabBarController(itemTypes: [.match, .chat, .pet])
+        let tabBarController = TabBarController(itemTypes: [.match, .chat, .pet, .profile])
         self.window?.rootViewController = tabBarController
 
     }

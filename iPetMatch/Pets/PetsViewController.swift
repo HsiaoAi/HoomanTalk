@@ -28,7 +28,6 @@ class PetsViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        pets = [Pet]()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -115,6 +114,10 @@ extension PetsViewController: UITableViewDelegate, UITableViewDataSource {
         addPetViewController.petToBeEdited = pets[indexPath.row]
         self.present(addPetViewController, animated: true, completion: nil)
 
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 
 }

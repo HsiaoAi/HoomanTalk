@@ -75,6 +75,8 @@
 		87C179AB1FEBFDB200815A47 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C179AA1FEBFDB200815A47 /* UserManager.swift */; };
 		87C179AD1FEC0C7A00815A47 /* Landing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87C179AC1FEC0C7A00815A47 /* Landing.storyboard */; };
 		87C179AF1FEC0FD900815A47 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C179AE1FEC0FD900815A47 /* LoginViewController.swift */; };
+		87C3BF0A1FFDE33A002F0E37 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3BF081FFDE33A002F0E37 /* UserProfileViewController.swift */; };
+		87C3BF0B1FFDE33A002F0E37 /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87C3BF091FFDE33A002F0E37 /* UserProfileViewController.xib */; };
 		87C5071C1FF6ABC4000797D5 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C5071B1FF6ABC4000797D5 /* CoreDataStack.swift */; };
 		87DD45681FF7DD50002793EE /* FriendsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD45671FF7DD4F002793EE /* FriendsProvider.swift */; };
 		87DD456A1FF80BD9002793EE /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD45691FF80BD8002793EE /* Friend.swift */; };
@@ -179,6 +181,8 @@
 		87C179AA1FEBFDB200815A47 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		87C179AC1FEC0C7A00815A47 /* Landing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Landing.storyboard; sourceTree = "<group>"; };
 		87C179AE1FEC0FD900815A47 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		87C3BF081FFDE33A002F0E37 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserProfileViewController.swift; path = iPetMatch/UserProfile/UserProfileViewController.swift; sourceTree = SOURCE_ROOT; };
+		87C3BF091FFDE33A002F0E37 /* UserProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = UserProfileViewController.xib; path = iPetMatch/UserProfile/UserProfileViewController.xib; sourceTree = SOURCE_ROOT; };
 		87C5071B1FF6ABC4000797D5 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		87DD45671FF7DD4F002793EE /* FriendsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsProvider.swift; sourceTree = "<group>"; };
 		87DD45691FF80BD8002793EE /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
@@ -432,6 +436,7 @@
 				871F8FDD1FF344020020FF35 /* Match */,
 				87126BEB1FE18CC7009D0188 /* Chat */,
 				872E97321FFB00AF00106AF0 /* Pets */,
+				87C3BF071FFDE2DB002F0E37 /* UserProfile */,
 				87126BF81FE19B10009D0188 /* Library */,
 				8797E67B1FE116C200C9002F /* Key */,
 				874D943B1FE2D0A80009C9F3 /* StoryBoard */,
@@ -479,6 +484,15 @@
 			name = AudioCall;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/AudioCall;
 			sourceTree = "<absolute>";
+		};
+		87C3BF071FFDE2DB002F0E37 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				87C3BF081FFDE33A002F0E37 /* UserProfileViewController.swift */,
+				87C3BF091FFDE33A002F0E37 /* UserProfileViewController.xib */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
 		};
 		87C5071A1FF6AB9C000797D5 /* CoreDataStack */ = {
 			isa = PBXGroup;
@@ -603,6 +617,7 @@
 				874D943A1FE2CEAE0009C9F3 /* IncommingCallViewController.xib in Resources */,
 				8787CFB21FF977C60051AACD /* ChatInfoView.xib in Resources */,
 				87C179AD1FEC0C7A00815A47 /* Landing.storyboard in Resources */,
+				87C3BF0B1FFDE33A002F0E37 /* UserProfileViewController.xib in Resources */,
 				87C179A91FEB588800815A47 /* VideoCall.gif in Resources */,
 				87DDA8E11FE907A600A917A8 /* dog.mp3 in Resources */,
 			);
@@ -649,6 +664,7 @@
 				"${BUILT_PRODUCTS_DIR}/MZTimerLabel/MZTimerLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
+				"${BUILT_PRODUCTS_DIR}/PDFReader/PDFReader.framework",
 				"${PODS_ROOT}/QuickBlox/Quickblox.framework",
 				"${PODS_ROOT}/Quickblox-WebRTC/QuickbloxWebRTC.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
@@ -677,6 +693,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MZTimerLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PDFReader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quickblox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickbloxWebRTC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
@@ -757,6 +774,7 @@
 				8760A8321FF422A700EE409E /* MatchCardUsersManager.swift in Sources */,
 				87B529C51FFC792C0049E637 /* PetsProvider.swift in Sources */,
 				872E973B1FFB032E00106AF0 /* AddPetViewController.swift in Sources */,
+				87C3BF0A1FFDE33A002F0E37 /* UserProfileViewController.swift in Sources */,
 				879FB12E1FE2E75A002332EF /* TableBarControllerExtensions.swift in Sources */,
 				87DD456A1FF80BD9002793EE /* Friend.swift in Sources */,
 				8760A82D1FF4183700EE409E /* MatchOverlayView.swift in Sources */,

@@ -26,7 +26,7 @@ class PetsTableViewCell: UITableViewCell {
 
         let petType = (pet.petType == .dog) ? "🐶": "🐱"
         petNameLabel.text = pet.name! + petType
-
+        petImageView.image = nil
         let imageAdress = pet.imageURL
         if let imageURL = URL(string: imageAdress!) {
             UserManager.setUserProfileImage(with: imageURL,

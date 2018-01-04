@@ -94,8 +94,6 @@ class MatchCardUsersManager {
             }
             if let matchCardUsers = self?.matchCardUsers {
 
-                print("Match:observe(.value)", matchCardUsers.count)
-
                 self?.delegate?.didObserveMatchCardUsers(matchCardUsers)
 
             }
