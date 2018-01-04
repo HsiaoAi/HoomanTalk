@@ -43,7 +43,6 @@ class ChatViewController: UIViewController {
 
         setupSearchBar()
         setUpTableView()
-
         friendsProvider.delegate = self
         CallManager.shared.delegate = self
 
