@@ -13,6 +13,7 @@
 		8704DBF51FFE498C00446E4F /* EULA.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8704DBF41FFE3CDC00446E4F /* EULA.pdf */; };
 		8704DBFC1FFE545500446E4F /* EULAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DBFA1FFE545500446E4F /* EULAViewController.swift */; };
 		8704DBFD1FFE545500446E4F /* EULAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8704DBFB1FFE545500446E4F /* EULAViewController.xib */; };
+		87060F2A1FFED1670067059B /* ReportUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87060F281FFED1670067059B /* ReportUserViewController.swift */; };
 		8708821A1FFBA07C00723149 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870882191FFBA07C00723149 /* Pet.swift */; };
 		87126BE51FE18B09009D0188 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126BE31FE18B09009D0188 /* LandingViewController.swift */; };
 		87126BFA1FE19B2A009D0188 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126BF91FE19B2A009D0188 /* Identifiable.swift */; };
@@ -88,6 +89,7 @@
 		87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */; };
 		87E8A92E1FE596C200726A2E /* ChatUsersListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */; };
 		87F3B6711FEC1CD9000E5045 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */; };
+		87F630701FFEDFDF0012D695 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87F6306F1FFEDFDF0012D695 /* Report.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -111,6 +113,7 @@
 		8704DBF41FFE3CDC00446E4F /* EULA.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = EULA.pdf; sourceTree = "<group>"; };
 		8704DBFA1FFE545500446E4F /* EULAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EULAViewController.swift; sourceTree = "<group>"; };
 		8704DBFB1FFE545500446E4F /* EULAViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EULAViewController.xib; sourceTree = "<group>"; };
+		87060F281FFED1670067059B /* ReportUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportUserViewController.swift; sourceTree = "<group>"; };
 		870882191FFBA07C00723149 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		87126BE11FE183C5009D0188 /* bridge_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bridge_Header.h; path = iPetMatch/bridge_Header.h; sourceTree = SOURCE_ROOT; };
 		87126BE31FE18B09009D0188 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +198,7 @@
 		87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatUsersListTableViewCell.xib; sourceTree = "<group>"; };
 		87EBEEB81FEEA28F00C62D89 /* iPetMatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iPetMatch.entitlements; sourceTree = "<group>"; };
 		87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		87F6306F1FFEDFDF0012D695 /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		92EBCC34EEE82B0C93315475 /* Pods-iPetMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPetMatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch.release.xcconfig"; sourceTree = "<group>"; };
 		BA9B305BF331FC6F95E0DA0D /* Pods_iPetMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iPetMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD6D953E11E9C1079F2E543 /* Pods-iPetMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPetMatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch.debug.xcconfig"; sourceTree = "<group>"; };
@@ -471,6 +475,8 @@
 				8787CFB31FF979030051AACD /* ChatInfoView.swift */,
 				87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */,
 				87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */,
+				87060F281FFED1670067059B /* ReportUserViewController.swift */,
+				87F6306F1FFEDFDF0012D695 /* Report.storyboard */,
 			);
 			name = ChatList;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/ChatList;
@@ -614,6 +620,7 @@
 				872D9CD51FE65EFD0008C8AA /* MakeVideoCallViewController.xib in Resources */,
 				8797E6571FE10D5800C9002F /* Assets.xcassets in Resources */,
 				8703276F1FEB22DC009D2FF3 /* AudioCall.gif in Resources */,
+				87F630701FFEDFDF0012D695 /* Report.storyboard in Resources */,
 				8760A82F1FF4184800EE409E /* MatchOverlayView.xib in Resources */,
 				87B529BB1FFC69B00049E637 /* AddPetViewController.xib in Resources */,
 				874D943A1FE2CEAE0009C9F3 /* IncommingCallViewController.xib in Resources */,
@@ -758,6 +765,7 @@
 				87DD45681FF7DD50002793EE /* FriendsProvider.swift in Sources */,
 				8760A83C1FF4BAD200EE409E /* IPetUser.swift in Sources */,
 				87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */,
+				87060F2A1FFED1670067059B /* ReportUserViewController.swift in Sources */,
 				8797E67F1FE1174100C9002F /* QuickbloxAdmin.swift in Sources */,
 				87C179AB1FEBFDB200815A47 /* UserManager.swift in Sources */,
 				8737143A1FE40612009C440F /* MakeAudioCallViewController.swift in Sources */,

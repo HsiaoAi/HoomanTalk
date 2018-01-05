@@ -35,6 +35,5 @@ target 'iPetMatch' do
   pod 'NVActivityIndicatorView'
   pod 'CZPicker'
   pod 'Koloda', '~> 4.3.1'
-  pod 'PDFReader'
 
 end

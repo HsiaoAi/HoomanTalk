@@ -46,6 +46,7 @@
 @import UserNotifications;
 @import CZPicker;
 @import PDFReader;
+@import MessageUI;
 
 
 #endif /* bridge_Header_h */

@@ -152,6 +152,7 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
             cell.set(content: friend)
             cell.audioCallButton.addTarget(self, action: #selector(startAudioCalling), for: .touchUpInside)
             cell.videoCallButton.addTarget(self, action: #selector(startVedioCalling), for: .touchUpInside)
+            cell.reportUSerButton.addTarget(self, action: #selector(sendEmail), for: .touchUpInside)
 
             let userId = Auth.auth().currentUser?.uid
             let blockRef = Database.database().reference().child("user-friends").child(friend.id!).child(userId!)
@@ -377,8 +378,35 @@ extension ChatViewController: UISearchBarDelegate {
 
 extension ChatViewController: CallManagerProtocol {
     func didMakeCall(_ callManager: CallManager) {
-
         friendsProvider.observeMyFriends()
-
     }
+}
+
+extension ChatViewController: MFMailComposeViewControllerDelegate {
+
+    @objc func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["ilct23@hotmail.com"])
+            let message = NSLocalizedString("I want to report this user about : ", comment: "")
+            let subject = NSLocalizedString("ReportID: ", comment: "")
+            mail.setSubject(subject + "\(self.selectedFriend!.id!)")
+            mail.setMessageBody(message, isHTML: false)
+
+            self.navigationController?.present(mail, animated: true, completion: nil)
+        } else {
+            let reportStoryBoard = UIStoryboard(name: "Report", bundle: nil)
+
+            let reportViewController = reportStoryBoard.instantiateViewController(withIdentifier: "ReportUserViewController") as? ReportUserViewController
+
+            reportViewController?.selectUserId = self.selectedFriend?.id!
+            self.present(reportViewController!, animated: true, completion: nil)
+        }
+    }
+
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
+
 }
