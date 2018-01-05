@@ -14,15 +14,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IncommingCallViewController" customModule="iPetMatch" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicatorView" destination="kic-Dp-joK" id="N8B-eM-0l1"/>
                 <outlet property="afterAnswerBurronStack" destination="LTn-I3-tGu" id="tnS-SX-VX4"/>
                 <outlet property="audioSignImageView" destination="ggs-Xg-qMS" id="jb4-At-tT0"/>
                 <outlet property="beforeAnswerButtonsStack" destination="RPN-JD-kai" id="DGJ-9O-bgg"/>
+                <outlet property="friendImageView" destination="6GW-Ie-ql7" id="VrD-m7-V2U"/>
                 <outlet property="hostUserNameLabel" destination="guf-QO-sdY" id="QZm-jQ-P8g"/>
                 <outlet property="incomingCallLabel" destination="KBH-MD-9Yz" id="L9K-dU-AGM"/>
                 <outlet property="microphoneButton" destination="bKz-wk-opM" id="4qQ-ng-cle"/>
                 <outlet property="speakerButton" destination="B2O-F0-87j" id="Bmb-rl-uFA"/>
                 <outlet property="timerLabel" destination="hz3-gt-9u7" id="GRD-gh-7QY"/>
-                <outlet property="userImageView" destination="6GW-Ie-ql7" id="nYg-gE-9ls"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -56,13 +57,27 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userImage" translatesAutoresizingMaskIntoConstraints="NO" id="6GW-Ie-ql7" userLabel="UserImage">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kic-Dp-joK" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                    <rect key="frame" x="155.5" y="205.5" width="65" height="65"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="kic-Dp-joK" secondAttribute="height" multiplier="1:1" id="TPt-CS-ct4"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballScaleRippleMultiple"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="color">
+                            <color key="value" red="0.64702028040000004" green="0.66663384439999995" blue="0.69790667299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6GW-Ie-ql7" userLabel="UserImage">
                     <rect key="frame" x="25" y="69" width="325" height="336.5"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                             <real key="value" value="10"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="focusOnFaces" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dQ8-2L-qru">
@@ -75,8 +90,8 @@
                             <nil key="highlightedColor"/>
                             <color key="shadowColor" red="0.67041194439999996" green="0.70198559760000001" blue="0.69011390210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hsiao Ai" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="guf-QO-sdY">
-                            <rect key="frame" x="0.0" y="26.5" width="72" height="25"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="guf-QO-sdY">
+                            <rect key="frame" x="0.0" y="26.5" width="83" height="25"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -247,6 +262,7 @@
                 <constraint firstItem="him-gQ-3km" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="KOS-2e-Um5"/>
                 <constraint firstItem="ggs-Xg-qMS" firstAttribute="width" secondItem="EQU-up-XkN" secondAttribute="width" multiplier="0.18" id="LK7-8M-wgo"/>
                 <constraint firstItem="hz3-gt-9u7" firstAttribute="top" secondItem="KBH-MD-9Yz" secondAttribute="top" id="LM7-vk-GzI"/>
+                <constraint firstItem="kic-Dp-joK" firstAttribute="width" secondItem="6GW-Ie-ql7" secondAttribute="width" multiplier="0.2" id="M82-2L-r22"/>
                 <constraint firstItem="B2O-F0-87j" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.2" id="MNu-6d-WIk"/>
                 <constraint firstItem="ggs-Xg-qMS" firstAttribute="leading" secondItem="dQ8-2L-qru" secondAttribute="trailing" constant="10" id="My3-SY-uez"/>
                 <constraint firstItem="EQU-up-XkN" firstAttribute="top" secondItem="6GW-Ie-ql7" secondAttribute="bottom" id="Qt3-lF-rUh"/>
@@ -256,8 +272,10 @@
                 <constraint firstItem="dQ8-2L-qru" firstAttribute="leading" secondItem="him-gQ-3km" secondAttribute="leading" constant="40" id="anR-Ux-g82"/>
                 <constraint firstItem="6GW-Ie-ql7" firstAttribute="centerX" secondItem="him-gQ-3km" secondAttribute="centerX" id="awz-cx-u9p"/>
                 <constraint firstItem="LTn-I3-tGu" firstAttribute="centerY" secondItem="RPN-JD-kai" secondAttribute="centerY" id="bma-SF-B3M"/>
+                <constraint firstItem="kic-Dp-joK" firstAttribute="centerY" secondItem="6GW-Ie-ql7" secondAttribute="centerY" id="eNl-aV-Ddv"/>
                 <constraint firstItem="dQ8-2L-qru" firstAttribute="centerY" secondItem="EQU-up-XkN" secondAttribute="centerY" id="gZl-IL-U7d"/>
                 <constraint firstItem="ggs-Xg-qMS" firstAttribute="centerY" secondItem="EQU-up-XkN" secondAttribute="centerY" id="k15-sW-IPr"/>
+                <constraint firstItem="kic-Dp-joK" firstAttribute="centerX" secondItem="6GW-Ie-ql7" secondAttribute="centerX" id="lUd-RD-7OJ"/>
                 <constraint firstItem="hz3-gt-9u7" firstAttribute="leading" secondItem="KBH-MD-9Yz" secondAttribute="leading" id="mP7-zc-WjF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="him-gQ-3km" secondAttribute="trailing" constant="20" id="mbj-6C-Qud"/>
                 <constraint firstItem="EQU-up-XkN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pRL-Pp-kcv"/>
@@ -276,6 +294,5 @@
         <image name="icon-endPhone" width="75" height="59"/>
         <image name="icon-microphoneOn" width="37" height="50"/>
         <image name="icon-speakerOff" width="64" height="60"/>
-        <image name="userImage" width="95" height="76"/>
     </resources>
 </document>

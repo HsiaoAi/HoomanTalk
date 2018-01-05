@@ -11,63 +11,74 @@ import UIKit
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: SkyFloatingLabelTextField!
-
     @IBOutlet weak var nameTextField: SkyFloatingLabelTextField!
-
     @IBOutlet weak var passwordTextField: SkyFloatingLabelTextField!
-
     @IBOutlet weak var birthDayTextField: SkyFloatingLabelTextField!
-
     @IBOutlet weak var userImageView: UIImageView!
-
     @IBOutlet weak var genderControl: BetterSegmentedControl!
-
     @IBOutlet weak var signUpButton: LGButton!
 
-    var petPersonType: PetPersonType = .none
-
+    var petPersonType: PetPersonType = .both
     var isCatPerson: Bool = false
-
     var isDogPerson: Bool = false
-
     var userImage: UIImage?
-
     var gender: Gender = .male
+    var isReadEULA: Bool = false
 
+    @IBOutlet weak var readEULAButton: UIButton!
     var imageURLString: String?
+
+    var todayYear: Int {
+
+        let todayDate: Date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        let todayYesrString = dateFormatter.string(from: todayDate)
+        return Int(todayYesrString)!
+
+    }
 
     // Firebase properties
 
     override func viewDidLoad() {
-
         super.viewDidLoad()
-
-        setupFusumaImagePicker()
-
-        setupErrorTextFieldHandeler()
-
         genderControl.titles = ["♂︎", "♀︎"]
+        setupReadEULA()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    func setupReadEULA() {
+        readEULAButton.layer.borderColor = UIColor.white.cgColor
+        readEULAButton.layer.borderWidth = 2.0
+        readEULAButton.addTarget(self, action: #selector(openEULA), for: .touchUpInside)
 
     }
 
+    @objc func openEULA(_ sender: UIButton) {
+        self.isReadEULA = true
+        if let url =  Bundle.main.url(forResource: "EULA", withExtension: "pdf") {
+            let webView = UIWebView(frame: UIScreen.main.bounds)
+            let urlRequest = URLRequest(url: url)
+            webView.loadRequest(urlRequest)
+
+            let eulaViewController = EULAViewController()
+            self.navigationController?.pushViewController(eulaViewController, animated: true)
+        }
+    }
+
     @IBAction func pickBirthDay(_ sender: UITextField) {
-
-        sender.delegate = self
-
-        sender.tag = 3
-
         let datePickerView = UIDatePicker()
-
         datePickerView.datePickerMode = .date
-
         sender.inputView = datePickerView
-
         datePickerView.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
     }
 
     @IBAction func tapGenderControl(_ sender: BetterSegmentedControl) {
 
-      self.gender = (sender.index == 0) ? Gender.male: Gender.female
+        self.gender = (sender.index == 0) ? Gender.male: Gender.female
 
     }
 
@@ -86,45 +97,27 @@ class SignUpViewController: UIViewController {
     @IBAction func tapCatPerson(_ sender: LGButton) {
 
         if !sender.isSelected {
-
             sender.isSelected = true
-
             isCatPerson = true
-
             sender.rightImageSrc = IconImage.catPersonSelected.image
-
         } else {
-
             sender.isSelected = false
-
             isCatPerson = false
-
             sender.rightImageSrc = IconImage.catPerson.image
-
         }
-
     }
 
     @IBAction func tapDogPerson(_ sender: LGButton) {
 
         if !sender.isSelected {
-
             sender.isSelected = true
-
             isDogPerson = true
-
             sender.rightImageSrc = IconImage.dogPersonSelected.image
-
         } else {
-
             sender.isSelected = false
-
             isDogPerson = false
-
             sender.rightImageSrc = IconImage.dogPerson.image
-
         }
-
     }
 
     func signUp() {
@@ -141,36 +134,24 @@ class SignUpViewController: UIViewController {
 
         }
 
-        guard emailTextField.errorMessage == "" else {
-
+        guard email.contains("@") else {
             SCLAlertView().showWarning(
-
                 NSLocalizedString("Warning", comment: ""),
-
-                subTitle: NSLocalizedString("emailTextField.errorMessage!", comment: "")
-
+                subTitle: NSLocalizedString("Invalid Email", comment: "")
             )
-
             return
-
         }
 
         guard
             let name = nameTextField.text,
-
             name != ""
+            else {
+                SCLAlertView().showWarning(
+                    NSLocalizedString("Warning", comment: ""),
+                    subTitle: NSLocalizedString("Please enter your name", comment: "")
+                )
 
-        else {
-
-            SCLAlertView().showWarning(
-
-                NSLocalizedString("Warning", comment: ""),
-
-                subTitle: NSLocalizedString("Please enter your name", comment: "")
-
-            )
-
-            return
+                return
         }
 
         guard
@@ -179,47 +160,13 @@ class SignUpViewController: UIViewController {
 
             password != ""
 
-        else {
-
-            SCLAlertView().showWarning(
-
-                NSLocalizedString("Warning", comment: ""),
-
-                subTitle: NSLocalizedString("Please enter password", comment: "")
-
-            )
-
-            return
-
-        }
-
-        guard passwordTextField.errorMessage == "" else {
-
-            SCLAlertView().showWarning(
-
-                NSLocalizedString("Warning", comment: ""),
-
-                subTitle: NSLocalizedString(passwordTextField.errorMessage!, comment: "")
-
-            )
-
-            return
-
-        }
-
-        guard
-
-            let birthDay = birthDayTextField.text,
-
-            birthDay != ""
-
             else {
 
                 SCLAlertView().showWarning(
 
                     NSLocalizedString("Warning", comment: ""),
 
-                    subTitle: NSLocalizedString("Please enter your birthday", comment: "")
+                    subTitle: NSLocalizedString("Please enter password", comment: "")
 
                 )
 
@@ -227,95 +174,111 @@ class SignUpViewController: UIViewController {
 
         }
 
-        guard let yearOfBirth = Int(birthDay.components(separatedBy: ", ")[2]) else {
-
+        guard password.count > 5 else {
             SCLAlertView().showWarning(
-
                 NSLocalizedString("Warning", comment: ""),
-
-                subTitle: NSLocalizedString("Wrong birthday format", comment: "")
-
+                subTitle: NSLocalizedString("Invalid Password\n(6-20 Characters)", comment: "")
             )
-
             return
+        }
 
+        guard
+
+            let birthDay = birthDayTextField.text,
+            birthDay != ""
+            else {
+
+                SCLAlertView().showWarning(
+                    NSLocalizedString("Warning", comment: ""),
+                    subTitle: NSLocalizedString("Please pick your birthday", comment: "")
+                )
+                return
+        }
+
+        guard let yearOfBirth = Int(birthDay.components(separatedBy: ", ")[2]) else {
+            SCLAlertView().showWarning(
+                NSLocalizedString("Warning", comment: ""),
+                subTitle: NSLocalizedString("Wrong birthday format", comment: "")
+            )
+            return
+        }
+
+        guard (todayYear - yearOfBirth) >= 18 else {
+            SCLAlertView().showWarning(
+                NSLocalizedString("Warning", comment: ""),
+                subTitle: NSLocalizedString("Can't sign up,\nif you're under 18", comment: "")
+            )
+            return
         }
 
         guard let userImage = self.userImage else {
 
-             SCLAlertView().showWarning(
-
+            SCLAlertView().showWarning(
                 NSLocalizedString("Warning", comment: ""),
-
                 subTitle: NSLocalizedString("Please pick your picture", comment: "")
-
             )
-
             return
-
         }
 
         switch (isCatPerson, isDogPerson) {
 
+        case (true, false): self.petPersonType = .cat
+        case (false, true): self.petPersonType = .dog
         case (true, true): self.petPersonType = .both
 
-                            break
+        default:
 
-        case (true, false): self.petPersonType = .cat
+            SCLAlertView().showWarning(
+                NSLocalizedString("Warning", comment: ""),
+                subTitle: NSLocalizedString("Please choose one:\nDog, Cat or Both", comment: "")
+            )
+            return
+        }
 
-                            break
+        guard isReadEULA == true else {
 
-        case (false, true): self.petPersonType = .dog
-
-                            break
-
-        default: self.petPersonType = .none
+            SCLAlertView().showWarning(
+                NSLocalizedString("Warning", comment: ""),
+                subTitle: NSLocalizedString("Please read the EULA", comment: "")
+            )
+            return
 
         }
 
         // Firebase Sign up
 
         self.signUpButton.isLoading = true
-
         Auth.auth().createUser(withEmail: email, password: password) { (user: User?, error) in
-
             // handel error
-
             if error != nil {
-
                 self.signUpButton.isLoading = false
-
                 if let errCode = AuthErrorCode(rawValue: error!._code) {
 
                     switch errCode {
 
-                        case .emailAlreadyInUse:
+                    case .emailAlreadyInUse:
+                        SCLAlertView().showError(
+                            NSLocalizedString("Error", comment: ""),
+                            subTitle: NSLocalizedString("Email is already in use", comment: "")
+                        )
 
-                            SCLAlertView().showError(
-                                NSLocalizedString("Error", comment: ""),
-                                subTitle: NSLocalizedString("Email is already in use", comment: "")
-                            )
-                            break
+                    case .invalidEmail:
+                        SCLAlertView().showError(
+                            NSLocalizedString("Error", comment: ""),
+                            subTitle: NSLocalizedString("Invalid email", comment: "")
+                        )
 
-                        case .invalidEmail:
-                            SCLAlertView().showError(
-                                NSLocalizedString("Error", comment: ""),
-                                subTitle: NSLocalizedString("Invalid email", comment: "")
-                            )
-                            break
+                    case .weakPassword, .wrongPassword:
+                        SCLAlertView().showError(
+                            NSLocalizedString("Error", comment: ""),
+                            subTitle: NSLocalizedString("Invalid password", comment: "")
+                        )
 
-                        case .weakPassword, .wrongPassword:
-                            SCLAlertView().showError(
-                                NSLocalizedString("Error", comment: ""),
-                                subTitle: NSLocalizedString("Invalid password", comment: "")
-                            )
-                            break
-
-                        default:
-                            SCLAlertView().showError(
-                                NSLocalizedString("Error", comment: ""),
-                                subTitle: NSLocalizedString("Something wrong, plese sign up again", comment: "")
-                            )
+                    default:
+                        SCLAlertView().showError(
+                            NSLocalizedString("Error", comment: ""),
+                            subTitle: NSLocalizedString("Something wrong, plese sign up again", comment: "")
+                        )
 
                     }
 
@@ -351,9 +314,9 @@ class SignUpViewController: UIViewController {
 
                     SCLAlertView().showError(
 
-                        NSLocalizedString("Image Error", comment: ""),
+                        NSLocalizedString("Error", comment: ""),
 
-                        subTitle: NSLocalizedString("\(error!.localizedDescription)", comment: "")
+                        subTitle: NSLocalizedString("Invalid Image", comment: "")
 
                     )
                 }
@@ -369,49 +332,34 @@ class SignUpViewController: UIViewController {
                 QBRequest.signUp(QBCurrentUser,
 
                                  successBlock: { ( _, QBuser ) in
+                                    QBRequest.logIn(withUserEmail: QBCurrentUser.email!, password: QBCurrentUser.password!, successBlock: { _, _ in UserManager.registerForRemoteNotification() }, errorBlock: nil)
 
                                     let callingID = QBuser.id
 
-                                    UserManager.instance.currentUser = CurrentUser(loginEmail: email, name: name, petPersonType: self.petPersonType, gender: self.gender, yearOfBirth: yearOfBirth, imageURL: self.imageURLString, callingID: callingID)
+                                    UserManager.instance.currentUser = IPetUser(id: firebaseUid, loginEmail: email, name: name, petPersonType: self.petPersonType, gender: self.gender, yearOfBirth: yearOfBirth, imageURL: self.imageURLString, callingID: callingID)
 
                                     let userRef = Database.database().reference().child("users").child(firebaseUid)
 
-                                    let values: [String: Any] = [
-
-                                        CurrentUser.Schema.loginEmail: email,
-
-                                        CurrentUser.Schema.name: name,
-
-                                        CurrentUser.Schema.petPersonType: self.petPersonType.rawValue,
-
-                                        CurrentUser.Schema.gender: self.gender.rawValue,
-
-                                        CurrentUser.Schema.yearOfBirth: yearOfBirth,
-
-                                        CurrentUser.Schema.imageURL: self.imageURLString ?? "",
-
-                                        CurrentUser.Schema.callingID: callingID
-
+                                    let values: [String: Any] = [IPetUser.Schema.id: firebaseUid,
+                                                                 IPetUser.Schema.loginEmail: email,
+                                                                 IPetUser.Schema.name: name,
+                                                                 IPetUser.Schema.petPersonType: self.petPersonType.rawValue,
+                                                                 IPetUser.Schema.gender: self.gender.rawValue,
+                                                                 IPetUser.Schema.yearOfBirth: yearOfBirth,
+                                                                 IPetUser.Schema.imageURL: self.imageURLString ?? "",
+                                                                 IPetUser.Schema.callingID: callingID
                                     ]
 
                                     userRef.updateChildValues(values,
 
                                                               withCompletionBlock: { (error, _) in
-
                                                                 if error != nil {
-
                                                                     SCLAlertView().showError(
-
-                                                                        NSLocalizedString("Firebase Error", comment: ""),
-
-                                                                        subTitle: NSLocalizedString("\(error?.localizedDescription)", comment: "")
-
+                                                                        NSLocalizedString("Error", comment: ""),
+                                                                        subTitle: NSLocalizedString("Server error\nPlease try again)", comment: "")
                                                                     )
-
                                                                 }
-
                                                                 self.signUpButton.isLoading = false
-
                                                                 AppDelegate.shared.enterPassByLandingView()
 
                                     })
@@ -419,33 +367,19 @@ class SignUpViewController: UIViewController {
                 },
 
                                  errorBlock: { (_) in
-
-                                    SCLAlertView().showError(
-
-                                        NSLocalizedString("QuickBlox Error", comment: ""),
-
+                                    SCLAlertView().showInfo(
+                                        NSLocalizedString("Information", comment: ""),
                                         subTitle: NSLocalizedString("Sign up successfully, please log in again", comment: "")
-
                                     )
 
                                     let langdingStoryboard = UIStoryboard(name: "Landing", bundle: nil)
                                     let landingViewController = langdingStoryboard.instantiateViewController(withIdentifier: "LandingViewController")
-
                                     AppDelegate.shared.window?.rootViewController = landingViewController
-
                 })
 
             })
 
         }
-    }
-
-    func logOut() {
-
-        QBRequest.logOut(
-            successBlock: nil,
-            errorBlock: nil
-        )
     }
 
 }
@@ -456,62 +390,15 @@ extension SignUpViewController {
     @objc func datePickerValueChanged(_ sender: UIDatePicker) {
 
         let dateFormatter = DateFormatter()
-
+        let timeZoneAbbreviation = NSLocalizedString("CTU", comment: "timeZone")
+        let timeZone = TimeZone(abbreviation: timeZoneAbbreviation)
+        dateFormatter.timeZone = timeZone
+        dateFormatter.dateFormat = NSLocalizedString("dd, MMM, yyyy", comment: "Date format")
         sender.maximumDate = Date()
-
-        dateFormatter.dateFormat = "dd, MMM, yyyy"
-
         birthDayTextField.text = dateFormatter.string(from: sender.date)
 
     }
 
-}
-
-extension SignUpViewController: UITextFieldDelegate {
-
-    func setupErrorTextFieldHandeler() {
-
-        emailTextField.delegate = self
-
-        emailTextField.tag = 1
-
-        passwordTextField.delegate = self
-
-        passwordTextField.tag = 2
-    }
-
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
-        if textField.tag == 3 {
-
-            return false
-
-        }
-
-        if let text = textField.text {
-
-            if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
-
-                if textField.tag == 1 && (text.count < 3 || !text.contains("@")) {
-
-                    floatingLabelTextField.errorMessage = "Invalid Email"
-
-                } else if textField.tag == 2 && text.count < 5 {
-                    floatingLabelTextField.errorMessage = "Invalid Password"
-
-                } else {
-
-                    floatingLabelTextField.errorMessage = ""
-
-                }
-
-            }
-
-        }
-
-        return true
-
-    }
 }
 
 extension SignUpViewController: FusumaDelegate {
@@ -519,15 +406,10 @@ extension SignUpViewController: FusumaDelegate {
     func setupFusumaImagePicker() {
 
         let fusuma = FusumaViewController()
-
         fusuma.delegate = self
-
         fusuma.cropHeightRatio = 1.0
-
         fusuma.allowMultipleSelection = false
-
         userImageView.clipsToBounds = true
-
         self.present(fusuma, animated: true, completion: nil)
 
     }
@@ -548,7 +430,8 @@ extension SignUpViewController: FusumaDelegate {
     // When camera roll is not authorized, this method is called.
     func fusumaCameraRollUnauthorized() {
 
-        SCLAlertView().showWarning("Warning", subTitle: "Camera roll unauthorized")
+        SCLAlertView().showWarning(NSLocalizedString("Warning", comment: ""),
+                                   subTitle: NSLocalizedString("Camera roll unauthorized", comment: ""))
 
     }
 

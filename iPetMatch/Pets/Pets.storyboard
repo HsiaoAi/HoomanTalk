@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pets View Controller-->
+        <scene sceneID="fKg-jo-InP">
+            <objects>
+                <viewController storyboardIdentifier="PetsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9tv-tZ-RBx" customClass="PetsViewController" customModule="iPetMatch" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CDD-5A-nht">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TSc-2Y-W8Q">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KIQ-Hz-i9M" customClass="LGButton" customModule="LGButton">
+                                <rect key="frame" x="298" y="591" width="56.5" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="KIQ-Hz-i9M" secondAttribute="height" multiplier="1:1" id="S3X-r5-x9O"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showTouchFeedback" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fullyRoundedCorners" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="gradientStartColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="gradientEndColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftIconColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rightIconColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" red="0.3217366934" green="0.25888746979999999" blue="0.25097307559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npf-Ui-HxQ">
+                                <rect key="frame" x="298" y="591" width="56.5" height="56"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="icon_plus"/>
+                                <connections>
+                                    <action selector="addPet:" destination="9tv-tZ-RBx" eventType="touchUpInside" id="nCJ-Tl-ot2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TSc-2Y-W8Q" firstAttribute="leading" secondItem="SkV-VP-fQ4" secondAttribute="leading" id="ESQ-8f-3Q4"/>
+                            <constraint firstItem="TSc-2Y-W8Q" firstAttribute="top" secondItem="CDD-5A-nht" secondAttribute="top" id="JCB-Mh-ua1"/>
+                            <constraint firstItem="Npf-Ui-HxQ" firstAttribute="leading" secondItem="KIQ-Hz-i9M" secondAttribute="leading" id="Ys3-K6-c9T"/>
+                            <constraint firstItem="Npf-Ui-HxQ" firstAttribute="height" secondItem="KIQ-Hz-i9M" secondAttribute="height" id="ZPb-WB-2YQ"/>
+                            <constraint firstItem="SkV-VP-fQ4" firstAttribute="trailing" secondItem="TSc-2Y-W8Q" secondAttribute="trailing" id="dlo-W7-OEg"/>
+                            <constraint firstItem="SkV-VP-fQ4" firstAttribute="bottom" secondItem="TSc-2Y-W8Q" secondAttribute="bottom" id="fZZ-aJ-Ysu"/>
+                            <constraint firstItem="KIQ-Hz-i9M" firstAttribute="width" secondItem="CDD-5A-nht" secondAttribute="width" multiplier="0.15" id="nH5-Gr-75f"/>
+                            <constraint firstItem="SkV-VP-fQ4" firstAttribute="trailing" secondItem="KIQ-Hz-i9M" secondAttribute="trailing" constant="20" id="o5D-xf-IRX"/>
+                            <constraint firstItem="Npf-Ui-HxQ" firstAttribute="width" secondItem="KIQ-Hz-i9M" secondAttribute="width" id="wrY-2b-hlv"/>
+                            <constraint firstItem="Npf-Ui-HxQ" firstAttribute="top" secondItem="KIQ-Hz-i9M" secondAttribute="top" id="z98-Nl-WbF"/>
+                            <constraint firstItem="SkV-VP-fQ4" firstAttribute="bottom" secondItem="KIQ-Hz-i9M" secondAttribute="bottom" constant="20" id="zub-EK-W6E"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SkV-VP-fQ4"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="TSc-2Y-W8Q" id="I1m-pA-hgL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QQX-7V-T2x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1088.8" y="-205.54722638680661"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_plus" width="44" height="44"/>
+    </resources>
+</document>

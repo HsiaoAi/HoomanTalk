@@ -15,20 +15,16 @@ class LandingViewController: UIViewController {
     @IBOutlet weak var loginButton: LGButton!
 
     @IBOutlet weak var signupButton: LGButton!
+
     override func viewDidLoad() {
-
         super.viewDidLoad()
-
         setup()
-
         SCLAlertView().dismiss(animated: true, completion: nil)
-
     }
 
-    required init?(coder aDecoder: NSCoder) {
-
-        super.init(coder: aDecoder)
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     func setup() {
@@ -68,12 +64,6 @@ class LandingViewController: UIViewController {
         self.view.bringSubview(toFront: signupView)
 
         self.view.bringSubview(toFront: sender)
-    }
-
-    @IBAction func tapLogOut(_ sender: Any) {
-
-        QBRequest.logOut(successBlock: nil, errorBlock: nil)
-
     }
 
 }

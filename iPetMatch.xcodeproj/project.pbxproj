@@ -10,6 +10,11 @@
 		693E86532A574593235778FC /* Pods_iPetMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA9B305BF331FC6F95E0DA0D /* Pods_iPetMatch.framework */; };
 		870327631FEADC4F009D2FF3 /* IconEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870327621FEADC4F009D2FF3 /* IconEnum.swift */; };
 		8703276F1FEB22DC009D2FF3 /* AudioCall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8703276E1FEB22DA009D2FF3 /* AudioCall.gif */; };
+		8704DBF51FFE498C00446E4F /* EULA.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8704DBF41FFE3CDC00446E4F /* EULA.pdf */; };
+		8704DBFC1FFE545500446E4F /* EULAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DBFA1FFE545500446E4F /* EULAViewController.swift */; };
+		8704DBFD1FFE545500446E4F /* EULAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8704DBFB1FFE545500446E4F /* EULAViewController.xib */; };
+		87060F2A1FFED1670067059B /* ReportUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87060F281FFED1670067059B /* ReportUserViewController.swift */; };
+		8708821A1FFBA07C00723149 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870882191FFBA07C00723149 /* Pet.swift */; };
 		87126BE51FE18B09009D0188 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126BE31FE18B09009D0188 /* LandingViewController.swift */; };
 		87126BFA1FE19B2A009D0188 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126BF91FE19B2A009D0188 /* Identifiable.swift */; };
 		87126C011FE2412F009D0188 /* CallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126C001FE2412F009D0188 /* CallManager.swift */; };
@@ -21,6 +26,9 @@
 		872D9CD51FE65EFD0008C8AA /* MakeVideoCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 872D9CD11FE65CF80008C8AA /* MakeVideoCallViewController.xib */; };
 		872D9CD61FE65F030008C8AA /* MakeVideoCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D9CD31FE65CF80008C8AA /* MakeVideoCallViewController.swift */; };
 		872D9CD71FE65F110008C8AA /* LocalVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D9CD21FE65CF80008C8AA /* LocalVideoView.swift */; };
+		872E97351FFB00EC00106AF0 /* PetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872E97331FFB00EB00106AF0 /* PetsViewController.swift */; };
+		872E97381FFB028700106AF0 /* Pets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 872E97371FFB028700106AF0 /* Pets.storyboard */; };
+		872E973B1FFB032E00106AF0 /* AddPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872E97391FFB032E00106AF0 /* AddPetViewController.swift */; };
 		8735E6191FE56A4500C85442 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8735E6181FE56A4400C85442 /* AppDelegate.swift */; };
 		8735E6331FE58EF000C85442 /* QuickBloxKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8735E6321FE58EF000C85442 /* QuickBloxKey.plist */; };
 		873702451FF1E7B1007B5977 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 873702441FF1E7B1007B5977 /* GoogleService-Info.plist */; };
@@ -34,12 +42,17 @@
 		8760A82D1FF4183700EE409E /* MatchOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A82C1FF4183700EE409E /* MatchOverlayView.swift */; };
 		8760A82F1FF4184800EE409E /* MatchOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8760A82E1FF4184800EE409E /* MatchOverlayView.xib */; };
 		8760A8321FF422A700EE409E /* MatchCardUsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A8311FF422A700EE409E /* MatchCardUsersManager.swift */; };
-		8760A8341FF4238900EE409E /* MatchCardUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A8331FF4238900EE409E /* MatchCardUser.swift */; };
 		8760A8361FF4249000EE409E /* FirebaseSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A8351FF4249000EE409E /* FirebaseSchema.swift */; };
 		8760A83A1FF43EBF00EE409E /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A8391FF43EBF00EE409E /* UIImageExtension.swift */; };
-		8760A83C1FF4BAD200EE409E /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A83B1FF4BAD200EE409E /* CurrentUser.swift */; };
+		8760A83C1FF4BAD200EE409E /* IPetUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A83B1FF4BAD200EE409E /* IPetUser.swift */; };
 		87641DE11FF559AC00FDD08A /* LikedUsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87641DE01FF559AC00FDD08A /* LikedUsersManager.swift */; };
+		87641DF01FF5976700FDD08A /* LikeMeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87641DEE1FF5976700FDD08A /* LikeMeCollectionViewCell.swift */; };
+		87641DF11FF5976700FDD08A /* LikeMeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87641DEF1FF5976700FDD08A /* LikeMeCollectionViewCell.xib */; };
 		878282EC1FF0115B006C9E20 /* UIColerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878282EB1FF0115B006C9E20 /* UIColerExtension.swift */; };
+		8787CFAC1FF912000051AACD /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8787CFAA1FF912000051AACD /* ChatViewController.swift */; };
+		8787CFAD1FF912000051AACD /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8787CFAB1FF912000051AACD /* ChatViewController.xib */; };
+		8787CFB21FF977C60051AACD /* ChatInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8787CFB11FF977C60051AACD /* ChatInfoView.xib */; };
+		8787CFB41FF979030051AACD /* ChatInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8787CFB31FF979030051AACD /* ChatInfoView.swift */; };
 		8797E6521FE10D5800C9002F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797E6511FE10D5800C9002F /* ViewController.swift */; };
 		8797E6571FE10D5800C9002F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6561FE10D5800C9002F /* Assets.xcassets */; };
 		8797E65A1FE10D5800C9002F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8797E6581FE10D5800C9002F /* LaunchScreen.storyboard */; };
@@ -58,18 +71,27 @@
 		879FB12A1FE2DF92002332EF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB1291FE2DF92002332EF /* TabBarController.swift */; };
 		879FB12C1FE2E2F4002332EF /* AppDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB12B1FE2E2F4002332EF /* AppDelegateExtensions.swift */; };
 		879FB12E1FE2E75A002332EF /* TableBarControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB12D1FE2E75A002332EF /* TableBarControllerExtensions.swift */; };
+		87B529BB1FFC69B00049E637 /* AddPetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B529BA1FFC69B00049E637 /* AddPetViewController.xib */; };
+		87B529C21FFC74CF0049E637 /* PetsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B529C01FFC74CE0049E637 /* PetsTableViewCell.swift */; };
+		87B529C31FFC74CF0049E637 /* PetsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B529C11FFC74CF0049E637 /* PetsTableViewCell.xib */; };
+		87B529C51FFC792C0049E637 /* PetsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B529C41FFC792C0049E637 /* PetsProvider.swift */; };
 		87C179A91FEB588800815A47 /* VideoCall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 87C179A81FEB588800815A47 /* VideoCall.gif */; };
 		87C179AB1FEBFDB200815A47 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C179AA1FEBFDB200815A47 /* UserManager.swift */; };
 		87C179AD1FEC0C7A00815A47 /* Landing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87C179AC1FEC0C7A00815A47 /* Landing.storyboard */; };
 		87C179AF1FEC0FD900815A47 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C179AE1FEC0FD900815A47 /* LoginViewController.swift */; };
+		87C3BF0A1FFDE33A002F0E37 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3BF081FFDE33A002F0E37 /* UserProfileViewController.swift */; };
+		87C3BF0B1FFDE33A002F0E37 /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87C3BF091FFDE33A002F0E37 /* UserProfileViewController.xib */; };
+		87C5071C1FF6ABC4000797D5 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C5071B1FF6ABC4000797D5 /* CoreDataStack.swift */; };
+		87DD45681FF7DD50002793EE /* FriendsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD45671FF7DD4F002793EE /* FriendsProvider.swift */; };
+		87DD456A1FF80BD9002793EE /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD45691FF80BD8002793EE /* Friend.swift */; };
 		87DDA8E11FE907A600A917A8 /* dog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 87DDA8E01FE907A600A917A8 /* dog.mp3 */; };
 		87DDA8E31FE90CC500A917A8 /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DDA8E21FE90CC500A917A8 /* UserSetting.swift */; };
 		87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */; };
-		87E8A92B1FE5932100726A2E /* ChatListButtonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E8A9271FE5932100726A2E /* ChatListButtonsTableViewCell.swift */; };
-		87E8A92C1FE5932100726A2E /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E8A9291FE5932100726A2E /* ChatListTableViewController.swift */; };
-		87E8A92D1FE596BC00726A2E /* ChatListButtonsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E8A9281FE5932100726A2E /* ChatListButtonsTableViewCell.xib */; };
 		87E8A92E1FE596C200726A2E /* ChatUsersListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */; };
 		87F3B6711FEC1CD9000E5045 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */; };
+		87F630701FFEDFDF0012D695 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87F6306F1FFEDFDF0012D695 /* Report.storyboard */; };
+		87F630731FFF36810012D695 /* PetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F630711FFF36800012D695 /* PetsCell.swift */; };
+		87F630741FFF36810012D695 /* PetsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F630721FFF36800012D695 /* PetsCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -90,6 +112,11 @@
 /* Begin PBXFileReference section */
 		870327621FEADC4F009D2FF3 /* IconEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconEnum.swift; sourceTree = "<group>"; };
 		8703276E1FEB22DA009D2FF3 /* AudioCall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = AudioCall.gif; sourceTree = "<group>"; };
+		8704DBF41FFE3CDC00446E4F /* EULA.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = EULA.pdf; sourceTree = "<group>"; };
+		8704DBFA1FFE545500446E4F /* EULAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EULAViewController.swift; sourceTree = "<group>"; };
+		8704DBFB1FFE545500446E4F /* EULAViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EULAViewController.xib; sourceTree = "<group>"; };
+		87060F281FFED1670067059B /* ReportUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportUserViewController.swift; sourceTree = "<group>"; };
+		870882191FFBA07C00723149 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		87126BE11FE183C5009D0188 /* bridge_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bridge_Header.h; path = iPetMatch/bridge_Header.h; sourceTree = SOURCE_ROOT; };
 		87126BE31FE18B09009D0188 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		87126BF91FE19B2A009D0188 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
@@ -103,6 +130,9 @@
 		872D9CD11FE65CF80008C8AA /* MakeVideoCallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MakeVideoCallViewController.xib; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/VideoCall/MakeVideoCallViewController.xib; sourceTree = "<absolute>"; };
 		872D9CD21FE65CF80008C8AA /* LocalVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalVideoView.swift; sourceTree = "<group>"; };
 		872D9CD31FE65CF80008C8AA /* MakeVideoCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeVideoCallViewController.swift; sourceTree = "<group>"; };
+		872E97331FFB00EB00106AF0 /* PetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsViewController.swift; sourceTree = "<group>"; };
+		872E97371FFB028700106AF0 /* Pets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pets.storyboard; sourceTree = "<group>"; };
+		872E97391FFB032E00106AF0 /* AddPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPetViewController.swift; sourceTree = "<group>"; };
 		8735E6181FE56A4400C85442 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8735E6321FE58EF000C85442 /* QuickBloxKey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = QuickBloxKey.plist; sourceTree = "<group>"; };
 		873702441FF1E7B1007B5977 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -116,12 +146,17 @@
 		8760A82C1FF4183700EE409E /* MatchOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchOverlayView.swift; sourceTree = "<group>"; };
 		8760A82E1FF4184800EE409E /* MatchOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchOverlayView.xib; sourceTree = "<group>"; };
 		8760A8311FF422A700EE409E /* MatchCardUsersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardUsersManager.swift; sourceTree = "<group>"; };
-		8760A8331FF4238900EE409E /* MatchCardUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardUser.swift; sourceTree = "<group>"; };
 		8760A8351FF4249000EE409E /* FirebaseSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSchema.swift; sourceTree = "<group>"; };
 		8760A8391FF43EBF00EE409E /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
-		8760A83B1FF4BAD200EE409E /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CurrentUser.swift; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Model/Users/CurrentUser.swift; sourceTree = "<absolute>"; };
+		8760A83B1FF4BAD200EE409E /* IPetUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IPetUser.swift; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Model/Users/IPetUser.swift; sourceTree = "<absolute>"; };
 		87641DE01FF559AC00FDD08A /* LikedUsersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedUsersManager.swift; sourceTree = "<group>"; };
+		87641DEE1FF5976700FDD08A /* LikeMeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeMeCollectionViewCell.swift; sourceTree = "<group>"; };
+		87641DEF1FF5976700FDD08A /* LikeMeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeMeCollectionViewCell.xib; sourceTree = "<group>"; };
 		878282EB1FF0115B006C9E20 /* UIColerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColerExtension.swift; sourceTree = "<group>"; };
+		8787CFAA1FF912000051AACD /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		8787CFAB1FF912000051AACD /* ChatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
+		8787CFB11FF977C60051AACD /* ChatInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatInfoView.xib; sourceTree = "<group>"; };
+		8787CFB31FF979030051AACD /* ChatInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInfoView.swift; sourceTree = "<group>"; };
 		8797E64C1FE10D5800C9002F /* iPetMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPetMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8797E6511FE10D5800C9002F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8797E6561FE10D5800C9002F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -146,19 +181,29 @@
 		879FB1291FE2DF92002332EF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		879FB12B1FE2E2F4002332EF /* AppDelegateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensions.swift; sourceTree = "<group>"; };
 		879FB12D1FE2E75A002332EF /* TableBarControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableBarControllerExtensions.swift; sourceTree = "<group>"; };
+		87B529BA1FFC69B00049E637 /* AddPetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPetViewController.xib; sourceTree = "<group>"; };
+		87B529C01FFC74CE0049E637 /* PetsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsTableViewCell.swift; sourceTree = "<group>"; };
+		87B529C11FFC74CF0049E637 /* PetsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PetsTableViewCell.xib; sourceTree = "<group>"; };
+		87B529C41FFC792C0049E637 /* PetsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsProvider.swift; sourceTree = "<group>"; };
 		87C179A81FEB588800815A47 /* VideoCall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = VideoCall.gif; sourceTree = "<group>"; };
 		87C179AA1FEBFDB200815A47 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		87C179AC1FEC0C7A00815A47 /* Landing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Landing.storyboard; sourceTree = "<group>"; };
 		87C179AE1FEC0FD900815A47 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		87C3BF081FFDE33A002F0E37 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserProfileViewController.swift; path = iPetMatch/UserProfile/UserProfileViewController.swift; sourceTree = SOURCE_ROOT; };
+		87C3BF091FFDE33A002F0E37 /* UserProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = UserProfileViewController.xib; path = iPetMatch/UserProfile/UserProfileViewController.xib; sourceTree = SOURCE_ROOT; };
+		87C5071B1FF6ABC4000797D5 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		87DD45671FF7DD4F002793EE /* FriendsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsProvider.swift; sourceTree = "<group>"; };
+		87DD45691FF80BD8002793EE /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		87DDA8E01FE907A600A917A8 /* dog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog.mp3; sourceTree = "<group>"; };
 		87DDA8E21FE90CC500A917A8 /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
 		87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersListTableViewCell.swift; sourceTree = "<group>"; };
 		87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatUsersListTableViewCell.xib; sourceTree = "<group>"; };
-		87E8A9271FE5932100726A2E /* ChatListButtonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatListButtonsTableViewCell.swift; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/ChatList/ChatListButtonsTableViewCell.swift; sourceTree = "<absolute>"; };
-		87E8A9281FE5932100726A2E /* ChatListButtonsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ChatListButtonsTableViewCell.xib; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/ChatList/ChatListButtonsTableViewCell.xib; sourceTree = "<absolute>"; };
-		87E8A9291FE5932100726A2E /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
 		87EBEEB81FEEA28F00C62D89 /* iPetMatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iPetMatch.entitlements; sourceTree = "<group>"; };
 		87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		87F6306F1FFEDFDF0012D695 /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
+		87F630711FFF36800012D695 /* PetsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsCell.swift; sourceTree = "<group>"; };
+		87F630721FFF36800012D695 /* PetsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PetsCell.xib; sourceTree = "<group>"; };
+		87F630751FFF8F850012D695 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		92EBCC34EEE82B0C93315475 /* Pods-iPetMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPetMatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch.release.xcconfig"; sourceTree = "<group>"; };
 		BA9B305BF331FC6F95E0DA0D /* Pods_iPetMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iPetMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD6D953E11E9C1079F2E543 /* Pods-iPetMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPetMatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +240,7 @@
 		87126BE01FE18351009D0188 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				8704DBF41FFE3CDC00446E4F /* EULA.pdf */,
 				8760A8391FF43EBF00EE409E /* UIImageExtension.swift */,
 			);
 			name = SupportingFiles;
@@ -208,6 +254,8 @@
 				87C179AE1FEC0FD900815A47 /* LoginViewController.swift */,
 				87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */,
 				87C179AC1FEC0C7A00815A47 /* Landing.storyboard */,
+				8704DBFA1FFE545500446E4F /* EULAViewController.swift */,
+				8704DBFB1FFE545500446E4F /* EULAViewController.xib */,
 			);
 			path = Landing;
 			sourceTree = "<group>";
@@ -253,6 +301,10 @@
 				87495FC31FF3B1A700FF2C06 /* MatchCardView.xib */,
 				8760A82E1FF4184800EE409E /* MatchOverlayView.xib */,
 				8760A82C1FF4183700EE409E /* MatchOverlayView.swift */,
+				87641DEE1FF5976700FDD08A /* LikeMeCollectionViewCell.swift */,
+				87641DEF1FF5976700FDD08A /* LikeMeCollectionViewCell.xib */,
+				87F630711FFF36800012D695 /* PetsCell.swift */,
+				87F630721FFF36800012D695 /* PetsCell.xib */,
 			);
 			path = Match;
 			sourceTree = "<group>";
@@ -299,14 +351,28 @@
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/VideoCall;
 			sourceTree = "<absolute>";
 		};
+		872E97321FFB00AF00106AF0 /* Pets */ = {
+			isa = PBXGroup;
+			children = (
+				872E97371FFB028700106AF0 /* Pets.storyboard */,
+				872E97331FFB00EB00106AF0 /* PetsViewController.swift */,
+				87B529C01FFC74CE0049E637 /* PetsTableViewCell.swift */,
+				87B529C11FFC74CF0049E637 /* PetsTableViewCell.xib */,
+				872E97391FFB032E00106AF0 /* AddPetViewController.swift */,
+				87B529BA1FFC69B00049E637 /* AddPetViewController.xib */,
+			);
+			path = Pets;
+			sourceTree = "<group>";
+		};
 		874D94331FE2B28E0009C9F3 /* Users */ = {
 			isa = PBXGroup;
 			children = (
 				87DDA8E21FE90CC500A917A8 /* UserSetting.swift */,
 				87C179AA1FEBFDB200815A47 /* UserManager.swift */,
 				871F8FD41FF28E8B0020FF35 /* KeyChainSchema.swift */,
-				8760A8331FF4238900EE409E /* MatchCardUser.swift */,
-				8760A83B1FF4BAD200EE409E /* CurrentUser.swift */,
+				8760A83B1FF4BAD200EE409E /* IPetUser.swift */,
+				87DD45691FF80BD8002793EE /* Friend.swift */,
+				870882191FFBA07C00723149 /* Pet.swift */,
 			);
 			name = Users;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Model/Users;
@@ -342,9 +408,11 @@
 		8760A8301FF4228900EE409E /* FirebaseFetch */ = {
 			isa = PBXGroup;
 			children = (
-				8760A8311FF422A700EE409E /* MatchCardUsersManager.swift */,
 				8760A8351FF4249000EE409E /* FirebaseSchema.swift */,
+				8760A8311FF422A700EE409E /* MatchCardUsersManager.swift */,
 				87641DE01FF559AC00FDD08A /* LikedUsersManager.swift */,
+				87DD45671FF7DD4F002793EE /* FriendsProvider.swift */,
+				87B529C41FFC792C0049E637 /* PetsProvider.swift */,
 			);
 			name = FirebaseFetch;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Model/FirebaseFetch;
@@ -371,6 +439,7 @@
 		8797E64E1FE10D5800C9002F /* iPetMatch */ = {
 			isa = PBXGroup;
 			children = (
+				87C5071A1FF6AB9C000797D5 /* CoreDataStack */,
 				87EBEEB81FEEA28F00C62D89 /* iPetMatch.entitlements */,
 				8735E6181FE56A4400C85442 /* AppDelegate.swift */,
 				879FB12B1FE2E2F4002332EF /* AppDelegateExtensions.swift */,
@@ -380,6 +449,8 @@
 				87126BE21FE18A20009D0188 /* Landing */,
 				871F8FDD1FF344020020FF35 /* Match */,
 				87126BEB1FE18CC7009D0188 /* Chat */,
+				872E97321FFB00AF00106AF0 /* Pets */,
+				87C3BF071FFDE2DB002F0E37 /* UserProfile */,
 				87126BF81FE19B10009D0188 /* Library */,
 				8797E67B1FE116C200C9002F /* Key */,
 				874D943B1FE2D0A80009C9F3 /* StoryBoard */,
@@ -405,11 +476,14 @@
 		879FB12F1FE2EF8B002332EF /* ChatList */ = {
 			isa = PBXGroup;
 			children = (
-				87E8A9291FE5932100726A2E /* ChatListTableViewController.swift */,
+				8787CFAA1FF912000051AACD /* ChatViewController.swift */,
+				8787CFAB1FF912000051AACD /* ChatViewController.xib */,
+				8787CFB11FF977C60051AACD /* ChatInfoView.xib */,
+				8787CFB31FF979030051AACD /* ChatInfoView.swift */,
 				87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */,
 				87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */,
-				87E8A9271FE5932100726A2E /* ChatListButtonsTableViewCell.swift */,
-				87E8A9281FE5932100726A2E /* ChatListButtonsTableViewCell.xib */,
+				87060F281FFED1670067059B /* ReportUserViewController.swift */,
+				87F6306F1FFEDFDF0012D695 /* Report.storyboard */,
 			);
 			name = ChatList;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/ChatList;
@@ -424,6 +498,23 @@
 			name = AudioCall;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/AudioCall;
 			sourceTree = "<absolute>";
+		};
+		87C3BF071FFDE2DB002F0E37 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				87C3BF081FFDE33A002F0E37 /* UserProfileViewController.swift */,
+				87C3BF091FFDE33A002F0E37 /* UserProfileViewController.xib */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		87C5071A1FF6AB9C000797D5 /* CoreDataStack */ = {
+			isa = PBXGroup;
+			children = (
+				87C5071B1FF6ABC4000797D5 /* CoreDataStack.swift */,
+			);
+			path = CoreDataStack;
+			sourceTree = "<group>";
 		};
 		CCA268D45A008955D663A267 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -519,21 +610,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8704DBF51FFE498C00446E4F /* EULA.pdf in Resources */,
+				8704DBFD1FFE545500446E4F /* EULAViewController.xib in Resources */,
 				8735E6331FE58EF000C85442 /* QuickBloxKey.plist in Resources */,
 				87E8A92E1FE596C200726A2E /* ChatUsersListTableViewCell.xib in Resources */,
+				872E97381FFB028700106AF0 /* Pets.storyboard in Resources */,
 				873702451FF1E7B1007B5977 /* GoogleService-Info.plist in Resources */,
+				87641DF11FF5976700FDD08A /* LikeMeCollectionViewCell.xib in Resources */,
 				8737143B1FE40612009C440F /* MakeAudioCallViewController.xib in Resources */,
+				87F630741FFF36810012D695 /* PetsCell.xib in Resources */,
 				87495FC41FF3B1A700FF2C06 /* MatchCardView.xib in Resources */,
 				871F8FF61FF353400020FF35 /* Match.storyboard in Resources */,
-				87E8A92D1FE596BC00726A2E /* ChatListButtonsTableViewCell.xib in Resources */,
+				8787CFAD1FF912000051AACD /* ChatViewController.xib in Resources */,
+				87B529C31FFC74CF0049E637 /* PetsTableViewCell.xib in Resources */,
 				8797E65A1FE10D5800C9002F /* LaunchScreen.storyboard in Resources */,
 				8727F7351FE8B61E0027859D /* Mewo.mp3 in Resources */,
 				872D9CD51FE65EFD0008C8AA /* MakeVideoCallViewController.xib in Resources */,
 				8797E6571FE10D5800C9002F /* Assets.xcassets in Resources */,
 				8703276F1FEB22DC009D2FF3 /* AudioCall.gif in Resources */,
+				87F630701FFEDFDF0012D695 /* Report.storyboard in Resources */,
 				8760A82F1FF4184800EE409E /* MatchOverlayView.xib in Resources */,
+				87B529BB1FFC69B00049E637 /* AddPetViewController.xib in Resources */,
 				874D943A1FE2CEAE0009C9F3 /* IncommingCallViewController.xib in Resources */,
+				8787CFB21FF977C60051AACD /* ChatInfoView.xib in Resources */,
 				87C179AD1FEC0C7A00815A47 /* Landing.storyboard in Resources */,
+				87C3BF0B1FFDE33A002F0E37 /* UserProfileViewController.xib in Resources */,
 				87C179A91FEB588800815A47 /* VideoCall.gif in Resources */,
 				87DDA8E11FE907A600A917A8 /* dog.mp3 in Resources */,
 			);
@@ -568,7 +669,9 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
+				"${BUILT_PRODUCTS_DIR}/CZPicker/CZPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
+				"${BUILT_PRODUCTS_DIR}/FaceAware/FaceAware.framework",
 				"${BUILT_PRODUCTS_DIR}/Fusuma/Fusuma.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -576,6 +679,7 @@
 				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
 				"${BUILT_PRODUCTS_DIR}/LGButton/LGButton.framework",
 				"${BUILT_PRODUCTS_DIR}/MZTimerLabel/MZTimerLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${PODS_ROOT}/QuickBlox/Quickblox.framework",
 				"${PODS_ROOT}/Quickblox-WebRTC/QuickbloxWebRTC.framework",
@@ -593,7 +697,9 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BetterSegmentedControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CZPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FaceAware.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fusuma.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -601,6 +707,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MZTimerLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quickblox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickbloxWebRTC.framework",
@@ -656,32 +763,44 @@
 			buildActionMask = 2147483647;
 			files = (
 				871F8FE01FF3443A0020FF35 /* MatchViewController.swift in Sources */,
-				8760A8341FF4238900EE409E /* MatchCardUser.swift in Sources */,
+				87B529C21FFC74CF0049E637 /* PetsTableViewCell.swift in Sources */,
 				87126BE51FE18B09009D0188 /* LandingViewController.swift in Sources */,
 				874D94321FE250F00009C9F3 /* SweetAlert.swift in Sources */,
 				879FB12C1FE2E2F4002332EF /* AppDelegateExtensions.swift in Sources */,
-				8760A83C1FF4BAD200EE409E /* CurrentUser.swift in Sources */,
+				8787CFB41FF979030051AACD /* ChatInfoView.swift in Sources */,
+				87DD45681FF7DD50002793EE /* FriendsProvider.swift in Sources */,
+				8760A83C1FF4BAD200EE409E /* IPetUser.swift in Sources */,
 				87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */,
+				87060F2A1FFED1670067059B /* ReportUserViewController.swift in Sources */,
+				87F630731FFF36810012D695 /* PetsCell.swift in Sources */,
 				8797E67F1FE1174100C9002F /* QuickbloxAdmin.swift in Sources */,
-				87E8A92C1FE5932100726A2E /* ChatListTableViewController.swift in Sources */,
 				87C179AB1FEBFDB200815A47 /* UserManager.swift in Sources */,
 				8737143A1FE40612009C440F /* MakeAudioCallViewController.swift in Sources */,
 				879FB12A1FE2DF92002332EF /* TabBarController.swift in Sources */,
 				87126BFA1FE19B2A009D0188 /* Identifiable.swift in Sources */,
-				87E8A92B1FE5932100726A2E /* ChatListButtonsTableViewCell.swift in Sources */,
 				87126C011FE2412F009D0188 /* CallManager.swift in Sources */,
 				87641DE11FF559AC00FDD08A /* LikedUsersManager.swift in Sources */,
 				874D94391FE2CEAE0009C9F3 /* IncommingCallViewController.swift in Sources */,
+				87C5071C1FF6ABC4000797D5 /* CoreDataStack.swift in Sources */,
+				8787CFAC1FF912000051AACD /* ChatViewController.swift in Sources */,
 				87C179AF1FEC0FD900815A47 /* LoginViewController.swift in Sources */,
+				8704DBFC1FFE545500446E4F /* EULAViewController.swift in Sources */,
 				872D9CD71FE65F110008C8AA /* LocalVideoView.swift in Sources */,
 				879FB1261FE2DCFD002332EF /* TabBarItem.swift in Sources */,
 				8727F72E1FE85E060027859D /* RingtonePlayer.swift in Sources */,
 				8760A8321FF422A700EE409E /* MatchCardUsersManager.swift in Sources */,
+				87B529C51FFC792C0049E637 /* PetsProvider.swift in Sources */,
+				872E973B1FFB032E00106AF0 /* AddPetViewController.swift in Sources */,
+				87C3BF0A1FFDE33A002F0E37 /* UserProfileViewController.swift in Sources */,
 				879FB12E1FE2E75A002332EF /* TableBarControllerExtensions.swift in Sources */,
+				87DD456A1FF80BD9002793EE /* Friend.swift in Sources */,
 				8760A82D1FF4183700EE409E /* MatchOverlayView.swift in Sources */,
 				8797E6521FE10D5800C9002F /* ViewController.swift in Sources */,
+				87641DF01FF5976700FDD08A /* LikeMeCollectionViewCell.swift in Sources */,
 				8760A83A1FF43EBF00EE409E /* UIImageExtension.swift in Sources */,
 				871F8FD51FF28E8B0020FF35 /* KeyChainSchema.swift in Sources */,
+				872E97351FFB00EC00106AF0 /* PetsViewController.swift in Sources */,
+				8708821A1FFBA07C00723149 /* Pet.swift in Sources */,
 				87DDA8E31FE90CC500A917A8 /* UserSetting.swift in Sources */,
 				872D9CD61FE65F030008C8AA /* MakeVideoCallViewController.swift in Sources */,
 				8735E6191FE56A4500C85442 /* AppDelegate.swift in Sources */,
@@ -701,6 +820,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8797E6591FE10D5800C9002F /* Base */,
+				87F630751FFF8F850012D695 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -712,6 +832,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -769,6 +890,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

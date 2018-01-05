@@ -18,8 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        // Firebase
+        // Set rootViewController
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
 
+        // Firebase
         FirebaseApp.configure()
 
         // IQKeyboard
@@ -33,19 +36,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let APIKeysPath = Bundle.main.path(forResource: "QuickBloxKey", ofType: "plist"),
 
             let plistDic = NSDictionary(contentsOfFile: APIKeysPath) as? [String: Any],
-
             let accountKey = plistDic[QuickBloxAdmin.accountKey] as? String,
-
             let applicationID = plistDic[QuickBloxAdmin.applicationID] as? UInt,
-
             let authKey = plistDic[QuickBloxAdmin.authKey] as? String,
-
             let authSecret = plistDic[QuickBloxAdmin.authSecret] as? String else {
-
                 print("QuickBlox credentials fail")
-
                 return false
-
         }
 
         QBSettings.accountKey = accountKey
@@ -64,39 +60,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         SVProgressHUD.setDefaultMaskType(.gradient)
 
-        // loading settings
-        //Settings.instance()
-
-        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.alert, UIUserNotificationType.badge, UIUserNotificationType.sound]
-
-        let pushNotificationSettings = UIUserNotificationSettings(types: notificationTypes, categories: nil)
-
-        application.registerUserNotificationSettings(pushNotificationSettings)
-
-        application.registerForRemoteNotifications()
-
-        // Set rootViewController
-        window = UIWindow(frame: UIScreen.main.bounds)
-
-        window?.makeKeyAndVisible()
-
         guard
-
             let user = Auth.auth().currentUser,
-
             let email = user.email
-
             else {
 
                 enterLandingView()
 
-                return true
+                return true }
 
-        }
-        
-        UserManager.instance.getCurrentUserInfo(user)
-        
         showLoading()
+
+        UserManager.instance.upDateCurrentUser(user)
 
         enterPassByLandingView()
 
@@ -104,140 +79,100 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             QBChat.instance.connect(with: QBuser, completion: {
 
-                _ in SVProgressHUD.dismiss()
+                _ in
 
             })
 
-            print("done")}, errorBlock: nil)
+            print("done")}, errorBlock: {_ in SVProgressHUD.dismiss() })
 
         return true
 
     }
 
-        // 判斷是否登入
+    // 判斷是否登入
 
-        func applicationWillEnterForeground(_ application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
 
-            if QBChat.instance.isConnected == false {
+        showLoading()
+        UIApplication.shared.beginIgnoringInteractionEvents()
 
-                showLoading()
-
-                UIApplication.shared.beginIgnoringInteractionEvents()
-
-                guard let user = Auth.auth().currentUser else {
-
-                    enterLandingView()
-
-                    SVProgressHUD.dismiss()
-
-                    UIApplication.shared.endIgnoringInteractionEvents()
-
-                    UserManager.instance.currentUser = nil
-
-                    return
-
-                }
-                
-                UserManager.instance.getCurrentUserInfo(user)
-
-                if let email = user.email {
-
-                    QBRequest.logIn(withUserEmail: email, password: user.uid, successBlock: { (_, QBuser) in
-
-                        QBChat.instance.connect(with: QBuser, completion: {
-
-                            _ in
-
-                            SVProgressHUD.dismiss()
-                        })
-
-                        print("done")}, errorBlock: nil)
-
-                }
-
-                enterPassByLandingView()
-
-            }
+        guard let user = Auth.auth().currentUser else {
+            enterLandingView()
+            SVProgressHUD.dismiss()
+            UIApplication.shared.endIgnoringInteractionEvents()
+            UserManager.instance.currentUser = nil
+            return
         }
+
+        UserManager.instance.upDateCurrentUser(user)
+
+        if let email = user.email {
+
+            QBRequest.logIn(withUserEmail: email,
+                            password: user.uid,
+                            successBlock: { (_, QBuser) in
+                                QBChat.instance.connect(with: QBuser,
+                                                        completion: {_ in
+                                                            SVProgressHUD.dismiss()
+                                                            UIApplication.shared.endIgnoringInteractionEvents()})},
+                            errorBlock: {_ in
+                                SVProgressHUD.dismiss()
+                                UIApplication.shared.endIgnoringInteractionEvents()
+                                SCLAlertView().showError(
+                                    NSLocalizedString("Error", comment: ""),
+                                    subTitle: NSLocalizedString("User didn't log in", comment: "")
+                                )
+                                self.enterLandingView()
+            })
+        }
+        UIApplication.shared.endIgnoringInteractionEvents()
+        enterPassByLandingView()
+    }
 
     // MARK: - Remote Notifictions
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
 
         if notificationSettings.types != .none {
-
             print("Did register user notificaiton settings")
-
             application.registerForRemoteNotifications()
-
         }
-
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 
+        let user = QBSession.current.currentUser
         let deviceIdentifier = UIDevice.current.identifierForVendor?.uuidString
-
-        let subscription = QBMSubscription()
-
+        let subscription: QBMSubscription = QBMSubscription()
         subscription.notificationChannel = .APNS
-
         subscription.deviceUDID = deviceIdentifier
-
         subscription.deviceToken = deviceToken
-
         QBRequest.createSubscription(subscription,
+                                     successBlock: { (response: QBResponse, _: [QBMSubscription]?) -> Void in
 
-                                     successBlock: {  (_ response: QBResponse,
-                                        _ subscription: [QBMSubscription]?) -> Void in
-
-                                        print("Push Subscroption Response: \(response)")
-
-                                         },
-
-                                     errorBlock: {(_ response: QBResponse) in
-
-                                        print("Push Subscroption Error: \(response)")
-
+                                        print("Push Subscroption Response: \(response)")},
+                                     errorBlock: {(response: QBResponse) in
+                                        print("Push Subscroption Error: \(response.error!)")
         })
 
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-
         print("Did receive remote notification", userInfo)
-
     }
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-
         print("Did receive remote notification", error.localizedDescription)
+    }
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+
+        application.applicationIconBadgeNumber = 0
+        //QBChat.instance.disconnect(completionBlock: nil)
 
     }
 
-    func enterLandingView() {
-
-        let langdingStoryboard = UIStoryboard(name: "Landing", bundle: nil)
-
-        let landingViewController = langdingStoryboard.instantiateViewController(withIdentifier: "LandingViewController")
-
-        window?.rootViewController = landingViewController
-
-    }
-
-    func enterPassByLandingView() {
-
-        let chatListTableViewController = ChatListTableViewController()
-
-        let tabBarController = TabBarController(itemTypes: [.match, .chat])
-
-        self.window?.rootViewController = tabBarController
-
-    }
-
-    func showLoading() {
-
-        SVProgressHUD.show(withStatus: NSLocalizedString("Loading", comment: ""))
-
+    func applicationWillTerminate(_ application: UIApplication) {
+        QBChat.instance.disconnect(completionBlock: nil)
     }
 
 }

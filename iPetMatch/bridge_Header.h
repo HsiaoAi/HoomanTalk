@@ -41,6 +41,11 @@
 @import pop;
 @import Nuke;
 @import CoreData;
+@import NVActivityIndicatorView;
+@import CoreData;
+@import UserNotifications;
+@import CZPicker;
+@import MessageUI;
 
 
 #endif /* bridge_Header_h */

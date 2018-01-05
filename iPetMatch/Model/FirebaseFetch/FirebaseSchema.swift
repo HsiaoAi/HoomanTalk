@@ -14,22 +14,24 @@ enum FirebaseSchema: String {
 
     case likes
 
+    case timeStamp
+
 }
 
 struct LikeMe {
-    
+
     struct Schema {
-        
+
         static let fromUserName = "fromUserName"
         static let fromUserImageURL = "fromUserImageURL"
         static let timestamp = "timestamp"
-        
+
     }
-    
+
     let fromUserName: String
     let fromUserImageURL: String
     let timestamp: Int
-    
+
 }
 
 struct Like {
@@ -41,8 +43,8 @@ struct Like {
         static let timestamp = "timestamp"
 
     }
-    
-    let fromUser: MatchCardUser
+
+    let fromUser: IPetUser
     let timeStamp: Int
 
     static func getCurrentDate() -> Int {

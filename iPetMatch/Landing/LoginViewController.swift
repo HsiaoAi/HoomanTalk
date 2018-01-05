@@ -19,9 +19,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-
-        setupErrorTextFieldHandeler()
-
     }
 
     @IBAction func tapForgetPassword(_ sender: UIButton) {
@@ -38,18 +35,12 @@ class LoginViewController: UIViewController {
 
         }
 
-        guard emailTextFied.errorMessage == "" else {
-
+        guard email.contains("@") else {
             SCLAlertView().showWarning(
-
                 NSLocalizedString("Warning", comment: ""),
-
-                subTitle: NSLocalizedString("emailTextField.errorMessage!", comment: "")
-
+                subTitle: NSLocalizedString("Invalid Email", comment: "")
             )
-
             return
-
         }
 
         Auth.auth().sendPasswordReset(withEmail: email) { error in
@@ -85,205 +76,102 @@ class LoginViewController: UIViewController {
 
         let email = emailTextFied.text!
         guard email != "" else {
-
             SCLAlertView().showWarning(
                 NSLocalizedString("Warning", comment: ""),
                 subTitle: NSLocalizedString("Please enter your email", comment: "")
             )
-
             return
-
         }
 
-        guard emailTextFied.errorMessage == "" else {
-
+        guard email.contains("@") else {
             SCLAlertView().showWarning(
-
                 NSLocalizedString("Warning", comment: ""),
-
-                subTitle: NSLocalizedString("emailTextField.errorMessage!", comment: "")
-
+                subTitle: NSLocalizedString("Invalid Email", comment: "")
             )
-
             return
-
         }
 
         guard
-
             let password = passwordTextFied.text,
-
             password != ""
-
             else {
-
                 SCLAlertView().showWarning(
-
                     NSLocalizedString("Warning", comment: ""),
-
                     subTitle: NSLocalizedString("Please enter password", comment: "")
-
                 )
-
                 return
-
         }
 
-        guard passwordTextFied.errorMessage == "" else {
-
+        guard password.count > 5 else {
             SCLAlertView().showWarning(
-
                 NSLocalizedString("Warning", comment: ""),
-
-                subTitle: NSLocalizedString(passwordTextFied.errorMessage!, comment: "")
-
+                subTitle: NSLocalizedString("Invalid Password\n(6-20 Characters)", comment: "")
             )
-
             return
-
         }
 
         loginButton.isLoading = true
-
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-
             if let authError = error {
-
                 if let errCode = AuthErrorCode(rawValue: authError._code) {
-
                     self.loginButton.isLoading = false
-
                     switch errCode {
-
                     case.wrongPassword:
-
                         SCLAlertView().showError(
                             NSLocalizedString("Error", comment: ""),
                             subTitle: NSLocalizedString("Wrong password", comment: "")
                         )
-
-                        break
-
                     case .userNotFound:
-
                         SCLAlertView().showError(
                             NSLocalizedString("Error", comment: ""),
                             subTitle: NSLocalizedString("Wrong email", comment: "")
                         )
-                        break
-
                     default:
-
                         SCLAlertView().showError(
                             NSLocalizedString("Error", comment: ""),
-                            subTitle: NSLocalizedString("Something wrong, plese log in again.\(errCode)", comment: "")
+                            subTitle: NSLocalizedString("Something wrong, plese log in again.", comment: "")
                         )
-
                         self.emailTextFied.text = ""
-
                         self.passwordTextFied.text = ""
-
                         return
-
                     }
-
+                }
             }
-        }
-
             if let loginUser = user {
-                
-                UserManager.instance.getCurrentUserInfo(loginUser)
-
+                UserManager.instance.upDateCurrentUser(loginUser)
                 let uid = loginUser.uid
-
                 QBRequest.logOut(successBlock: nil, errorBlock: nil)
 
-                QBRequest.logIn(withUserEmail: email, password: uid, successBlock: { (_, QBUser) in
+                QBRequest.logIn(withUserEmail: email,
+                                password: uid,
+                                successBlock: { (_, QBUser) in
+                                    UserManager.registerForRemoteNotification()
+                                    QBChat.instance.connect(with: QBUser, completion: { (error) in
+                                        guard error == nil else {
+                                            self.loginButton.isLoading = false
+                                            SCLAlertView().showError(
+                                                NSLocalizedString("Error", comment: ""),
+                                                subTitle: NSLocalizedString("Something wrong, plese log in again", comment: "")
+                                            )
+                                            return
+                                        }
+                                        self.loginButton.isLoading = false
+                                        AppDelegate.shared.enterPassByLandingView()
+                                    })
 
-                    if QBChat.instance.isConnected == false {
+                                    self.loginButton.isLoading = false
+                                    AppDelegate.shared.enterPassByLandingView()},
 
-                        QBChat.instance.connect(with: QBUser, completion: { (error) in
-
-                            guard error == nil else {
-
-                                self.loginButton.isLoading = false
-
-                                SCLAlertView().showError(
-                                    NSLocalizedString("Error", comment: ""),
-                                    subTitle: NSLocalizedString("Something wrong, plese log in again", comment: "")
-                                )
-
-                                return
-
-                            }
-                            self.loginButton.isLoading = false
-
-                            AppDelegate.shared.enterPassByLandingView()
-                        })
-
-                    }
-
-                    self.loginButton.isLoading = false
-
-                    AppDelegate.shared.enterPassByLandingView()
-
-                }, errorBlock: { ( errorResponse ) in
-
-                    self.loginButton.isLoading = false
-
-                    SCLAlertView().showError(
-                        NSLocalizedString("Error", comment: ""),
-                        subTitle: NSLocalizedString("Something wrong, plese log in again: \(errorResponse)", comment: "")
-                    )
-
-                    return
-
-                })
-
+                                errorBlock: { ( _ ) in
+                                    self.loginButton.isLoading = false
+                                    SCLAlertView().showError(
+                                        NSLocalizedString("Error", comment: ""),
+                                        subTitle: NSLocalizedString("Something wrong, plese log in again", comment: "")
+                                    )
+                                    return}
+                )
             }
         }
-    }
-
-}
-
-extension LoginViewController: UITextFieldDelegate {
-
-    func setupErrorTextFieldHandeler() {
-
-        emailTextFied.delegate = self
-
-        emailTextFied.tag = 1
-
-        passwordTextFied.delegate = self
-
-        passwordTextFied.tag = 2
-    }
-
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
-        if let text = textField.text {
-
-            if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
-
-                if textField.tag == 1 && (text.count < 3 || !text.contains("@")) {
-
-                    floatingLabelTextField.errorMessage = "Invalid Email"
-
-                } else if textField.tag == 2 && text.count < 5 {
-                    floatingLabelTextField.errorMessage = "Invalid Password"
-
-                } else {
-
-                    floatingLabelTextField.errorMessage = ""
-
-                }
-
-            }
-
-        }
-
-        return true
-
     }
 
 }
