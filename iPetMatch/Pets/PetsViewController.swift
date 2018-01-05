@@ -23,6 +23,7 @@ class PetsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         petProvider.delegate = self
+        petProvider.fetchMyPets()
         setupTableView()
     }
 
@@ -32,7 +33,6 @@ class PetsViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        petProvider.fetchMyPets()
     }
 
 }

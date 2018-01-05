@@ -140,6 +140,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 
+        let user = QBSession.current.currentUser
         let deviceIdentifier = UIDevice.current.identifierForVendor?.uuidString
         let subscription: QBMSubscription = QBMSubscription()
         subscription.notificationChannel = .APNS
@@ -150,7 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
                                         print("Push Subscroption Response: \(response)")},
                                      errorBlock: {(response: QBResponse) in
-                                        print("Push Subscroption Error: \(response)")
+                                        print("Push Subscroption Error: \(response.error!)")
         })
 
     }
@@ -166,7 +167,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
 
         application.applicationIconBadgeNumber = 0
-        QBChat.instance.disconnect(completionBlock: nil)
+        //QBChat.instance.disconnect(completionBlock: nil)
 
     }
 

@@ -32,6 +32,7 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        self.friendsProvider.observeMyFriends()
 
         SCLAlertView().dismiss(animated: true, completion: nil)
 
@@ -50,7 +51,6 @@ class ChatViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.friendsProvider.observeMyFriends()
     }
 
     override func viewWillDisappear(_ animated: Bool) {

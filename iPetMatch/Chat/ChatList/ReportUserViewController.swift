@@ -25,10 +25,6 @@ class ReportUserViewController: UIViewController {
     func setupReportView() {
         reportView.layer.cornerRadius = 10.0
         reportView.clipsToBounds = true
-        reportView.layer.shadowColor = UIColor.gray.cgColor
-        reportView.layer.shadowRadius = 10.0
-        reportView.layer.shadowOpacity = 1
-        reportView.layer.shadowOffset = CGSize.zero
     }
 
     @IBAction func sendReport(_ sender: UIButton) {
@@ -41,7 +37,7 @@ class ReportUserViewController: UIViewController {
         let buttonNo = NSLocalizedString("No", comment: "")
 
         alertview.addButton(buttonYes) {
-            let ref = Database.database().reference().childByAutoId().child("reports")
+            let ref = Database.database().reference().child("reports").childByAutoId()
             let content = self.textfieldView.text!
             let value = [IPetUser.Schema.id: self.selectUserId!,
                          "about": content]

@@ -170,7 +170,9 @@
                                 <constraint firstAttribute="width" secondItem="Mt6-T9-p25" secondAttribute="height" multiplier="1:1" id="GkK-iT-aqf"/>
                             </constraints>
                             <color key="tintColor" red="0.24313725490196078" green="0.24313725490196078" blue="0.24313725490196078" alpha="0.5" colorSpace="calibratedRGB"/>
-                            <state key="normal" image="icon-exit"/>
+                            <state key="normal" image="icon-exit">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                            </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                     <integer key="value" value="20"/>

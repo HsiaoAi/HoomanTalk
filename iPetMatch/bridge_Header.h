@@ -45,7 +45,6 @@
 @import CoreData;
 @import UserNotifications;
 @import CZPicker;
-@import PDFReader;
 @import MessageUI;
 
 

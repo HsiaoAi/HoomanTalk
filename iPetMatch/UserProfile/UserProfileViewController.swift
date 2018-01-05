@@ -87,10 +87,11 @@ class UserProfileViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUserInfo()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupUserInfo()
+
     }
 
     func setupUserInfo() {
@@ -100,7 +101,7 @@ class UserProfileViewController: UIViewController {
             return
         }
         let friendRef = Database.database().reference().child("user-friends").child(user.id)
-        friendRef.observeSingleEvent(of: .value) { snapshot in
+        friendRef.observe(.value) { snapshot in
             if let friendDics = snapshot.value as? [String: Any] {
                 self.friendNumber = friendDics.keys.count
             } else {
@@ -109,7 +110,7 @@ class UserProfileViewController: UIViewController {
         }
 
         let likesRef = Database.database().reference().child("user-sentLikes").child(user.id)
-        likesRef.observeSingleEvent(of: .value) { snapshot in
+        likesRef.observe(.value) { snapshot in
             if let likeDics = snapshot.value as? [String: Any] {
                 self.likeNumber = likeDics.keys.count
             } else {
@@ -118,7 +119,7 @@ class UserProfileViewController: UIViewController {
         }
 
         let likedRef = Database.database().reference().child("user-ReceivedLikes").child(user.id)
-        likedRef.observeSingleEvent(of: .value) { snapshot in
+        likedRef.observe(.value) { snapshot in
             if let likedDics = snapshot.value as? [String: Any] {
                 self.likedNumber = likedDics.keys.count
             } else {
@@ -144,12 +145,12 @@ class UserProfileViewController: UIViewController {
             userPetTypeLabel.text = "❤️ 🐶 & 🐱"
 
         }
-
+        let im = NSLocalizedString("I'm", comment: "")
         switch user.gender {
         case .female:
-            userGenderLabel.text = "I'm 🙋🏻‍♀️"
+            userGenderLabel.text = im + "🙋🏻‍♀️"
         case .male:
-            userGenderLabel.text = "I'm 🙋🏻‍♂️"
+            userGenderLabel.text = im + "🙋🏻‍♂️"
         }
         let yearsOld = NSLocalizedString("yrs", comment: "")
         userBirthLabel.text = "\(todayYear - user.yearOfBirth) " + yearsOld

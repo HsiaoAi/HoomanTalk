@@ -24,7 +24,7 @@ class PetsProvider {
         }
 
         let ref = Database.database().reference().child("user-pets").child(uid)
-        ref.observeSingleEvent(of: .value) { [weak self] (snapshot) in
+        ref.observe(.value) { [weak self] (snapshot) in
                 var pets = [Pet]()
                 if let petsDic = snapshot.value as? [String: Any] {
                     for (petId, petDic) in petsDic {

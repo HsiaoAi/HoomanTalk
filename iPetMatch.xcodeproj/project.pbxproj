@@ -90,6 +90,8 @@
 		87E8A92E1FE596C200726A2E /* ChatUsersListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E8A9261FE5932100726A2E /* ChatUsersListTableViewCell.xib */; };
 		87F3B6711FEC1CD9000E5045 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */; };
 		87F630701FFEDFDF0012D695 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87F6306F1FFEDFDF0012D695 /* Report.storyboard */; };
+		87F630731FFF36810012D695 /* PetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F630711FFF36800012D695 /* PetsCell.swift */; };
+		87F630741FFF36810012D695 /* PetsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F630721FFF36800012D695 /* PetsCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -199,6 +201,9 @@
 		87EBEEB81FEEA28F00C62D89 /* iPetMatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iPetMatch.entitlements; sourceTree = "<group>"; };
 		87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		87F6306F1FFEDFDF0012D695 /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
+		87F630711FFF36800012D695 /* PetsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsCell.swift; sourceTree = "<group>"; };
+		87F630721FFF36800012D695 /* PetsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PetsCell.xib; sourceTree = "<group>"; };
+		87F630751FFF8F850012D695 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		92EBCC34EEE82B0C93315475 /* Pods-iPetMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPetMatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch.release.xcconfig"; sourceTree = "<group>"; };
 		BA9B305BF331FC6F95E0DA0D /* Pods_iPetMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iPetMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD6D953E11E9C1079F2E543 /* Pods-iPetMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPetMatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch.debug.xcconfig"; sourceTree = "<group>"; };
@@ -298,6 +303,8 @@
 				8760A82C1FF4183700EE409E /* MatchOverlayView.swift */,
 				87641DEE1FF5976700FDD08A /* LikeMeCollectionViewCell.swift */,
 				87641DEF1FF5976700FDD08A /* LikeMeCollectionViewCell.xib */,
+				87F630711FFF36800012D695 /* PetsCell.swift */,
+				87F630721FFF36800012D695 /* PetsCell.xib */,
 			);
 			path = Match;
 			sourceTree = "<group>";
@@ -611,6 +618,7 @@
 				873702451FF1E7B1007B5977 /* GoogleService-Info.plist in Resources */,
 				87641DF11FF5976700FDD08A /* LikeMeCollectionViewCell.xib in Resources */,
 				8737143B1FE40612009C440F /* MakeAudioCallViewController.xib in Resources */,
+				87F630741FFF36810012D695 /* PetsCell.xib in Resources */,
 				87495FC41FF3B1A700FF2C06 /* MatchCardView.xib in Resources */,
 				871F8FF61FF353400020FF35 /* Match.storyboard in Resources */,
 				8787CFAD1FF912000051AACD /* ChatViewController.xib in Resources */,
@@ -673,7 +681,6 @@
 				"${BUILT_PRODUCTS_DIR}/MZTimerLabel/MZTimerLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
-				"${BUILT_PRODUCTS_DIR}/PDFReader/PDFReader.framework",
 				"${PODS_ROOT}/QuickBlox/Quickblox.framework",
 				"${PODS_ROOT}/Quickblox-WebRTC/QuickbloxWebRTC.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
@@ -702,7 +709,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MZTimerLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PDFReader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quickblox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickbloxWebRTC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
@@ -766,6 +772,7 @@
 				8760A83C1FF4BAD200EE409E /* IPetUser.swift in Sources */,
 				87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */,
 				87060F2A1FFED1670067059B /* ReportUserViewController.swift in Sources */,
+				87F630731FFF36810012D695 /* PetsCell.swift in Sources */,
 				8797E67F1FE1174100C9002F /* QuickbloxAdmin.swift in Sources */,
 				87C179AB1FEBFDB200815A47 /* UserManager.swift in Sources */,
 				8737143A1FE40612009C440F /* MakeAudioCallViewController.swift in Sources */,
@@ -813,6 +820,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8797E6591FE10D5800C9002F /* Base */,
+				87F630751FFF8F850012D695 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -824,6 +832,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -881,6 +890,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

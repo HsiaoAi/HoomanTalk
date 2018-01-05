@@ -85,22 +85,7 @@ class MatchViewController: UIViewController {
         SVProgressHUD.dismiss()
         setupLikeMeCollectionView()
 
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-
-        super.viewWillAppear(animated)
-        SVProgressHUD.show(withStatus: NSLocalizedString("Browsing", comment: ""))
-
-        // ResetView
-        kolodaView.isHidden = true
-        runOutofCardView.isHidden = true
-
-        likeMeCollectionView.isHidden = true
-        hitHearToMatchLabel.isHidden = true
-        likeMeButton.setTitleColor(.lightGray, for: .normal)
-        browseButton.setTitleColor(UIColor.Custom.greyishBrown, for: .normal)
-
+        //
         matchCardsManager.observeMatchCardUsers()
         matchCardsManager.observeLikesSentByCurrentUser()
         matchCardsManager.delegate = self
@@ -110,14 +95,33 @@ class MatchViewController: UIViewController {
 
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+
+        super.viewWillAppear(animated)
+
+        // ResetView
+        kolodaView.isHidden = false
+        runOutofCardView.isHidden = true
+
+        likeMeCollectionView.isHidden = true
+        hitHearToMatchLabel.isHidden = true
+        likeMeButton.setTitleColor(.lightGray, for: .normal)
+        browseButton.setTitleColor(UIColor.Custom.greyishBrown, for: .normal)
+        self.kolodaView.reloadData()
+
+//        matchCardsManager.observeMatchCardUsers()
+//        matchCardsManager.observeLikesSentByCurrentUser()
+//        matchCardsManager.delegate = self
+//
+//        likedMeManager.delegate = self
+//        likedMeManager.observeReceivedLikes()
+
+    }
+
     override func viewDidDisappear(_ animated: Bool) {
 
         super.viewDidDisappear(animated)
-
-        self.matchCardUsers = [IPetUser]()
-        self.likedMeUsers = [IPetUser]()
-
-        self.kolodaView.isHidden = true
+        self.runOutofCardView.isHidden = true
 
     }
 
@@ -146,11 +150,11 @@ extension MatchViewController: MatchCardUsersManagerProtocol {
 
         DispatchQueue.main.async {
 
-            self.kolodaView.isHidden = false
-
             SVProgressHUD.dismiss()
 
             self.kolodaView.reloadData()
+
+            self.kolodaView.isHidden = false
 
         }
     }
@@ -170,7 +174,7 @@ extension MatchViewController: KolodaViewDelegate {
         kolodaView.delegate = self
 
         kolodaView.alphaValueSemiTransparent = 0.1
-        kolodaView.countOfVisibleCards = 3
+        kolodaView.countOfVisibleCards = 4
 
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
 
@@ -180,7 +184,6 @@ extension MatchViewController: KolodaViewDelegate {
         runOutofCardView.isHidden = false
         self.view.bringSubview(toFront: runOutofCardView)
         self.kolodaView.resetCurrentCardIndex()
-        matchCardsManager.observeMatchCardUsers()
 
         let appearance = SCLAlertView.SCLAppearance(
             showCloseButton: false
@@ -220,7 +223,7 @@ extension MatchViewController: KolodaViewDataSource {
 
     func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
 
-        return .default
+        return .fast
 
     }
 
@@ -234,25 +237,42 @@ extension MatchViewController: KolodaViewDataSource {
         if self.matchCardUsers.count > index {
 
             let matchUser = self.matchCardUsers[index]
+            var userPets = [Pet]()
+            let petsRef = Database.database().reference().child("user-pets").child(matchUser.id)
+            petsRef.observeSingleEvent(of: .value) { snapshot in
 
-            if self.usersIdLikedByCurrentUser.contains(matchUser.id) {
+                if let petsDic = snapshot.value as? [String: Any] {
+                    for (petId, petData) in petsDic {
+                        guard let petDic = petData as? [String: Any] else { return }
+                        let pet = Pet(dictionary: petDic)
+                        userPets.append(pet)
+                    }
+                    matchCardView.setupPetsCollectionView(pets: userPets)
+                }
 
-                matchCardView.likeButton.setClicked(true, animated: false)
-                matchCardView.likeButton.isEnabled = false
-            } else {
+                matchCardView.userImageView.contentMode = .scaleToFill
 
-                matchCardView.likeButton.addTarget(self, action: #selector(tagLikeButton(_:)), for: .touchUpInside)
+                let imageAdress = matchUser.imageURL
+                if let imageURL = URL(string: imageAdress!) {
 
-            }
+                    UserManager.setUserProfileImage(with: imageURL, into: matchCardView.userImageView, activityIndicatorView: matchCardView.activityIndicatorView)
+                    UserManager.setUserProfileImage(with: imageURL, into: matchCardView.backgroundUserImage, activityIndicatorView: nil)
+                }
 
-            matchCardView.userInfo.text = "\(matchUser.name), \(todayYear - matchUser.yearOfBirth)"
+                if self.usersIdLikedByCurrentUser.contains(matchUser.id) {
+                    matchCardView.likeButton.setClicked(true, animated: false)
+                    matchCardView.likeButton.isEnabled = false
+                } else {
 
-            matchCardView.userImageView.contentMode = .scaleToFill
+                    matchCardView.likeButton.addTarget(self, action: #selector(self.tagLikeButton(_:)), for: .touchUpInside)
 
-            let imageAdress = matchUser.imageURL
-            if let imageURL = URL(string: imageAdress!) {
+                }
+                let yearsOld = NSLocalizedString("yrs", comment: "")
+                matchCardView.nameLabel.text = matchUser.name + ", \(self.todayYear - matchUser.yearOfBirth) " + yearsOld
+                let im = NSLocalizedString("I'm", comment: "")
+               matchCardView.genderLabel.text = (matchUser.gender == .male) ? im + "🙋🏻‍♂️" : im + "🙋🏻‍♀️"
+                matchCardView.petTypeLabel.text = (matchUser.petPersonType == .dog) ? "🐶" +  NSLocalizedString("Person", comment: "") : "🐱" +  NSLocalizedString("Person", comment: "")
 
-                UserManager.setUserProfileImage(with: imageURL, into: matchCardView.userImageView, activityIndicatorView: matchCardView.activityIndicatorView)
             }
 
         }
@@ -446,7 +466,6 @@ extension MatchViewController: UICollectionViewDataSource {
 
             cell.userInfoLabel.text = "\(user.name), \(user.petPersonType.rawValue.capitalized) Person"
 
-            cell.userImageView.image = nil
             cell.userImageView.contentMode = .scaleToFill
             let imageAdress = user.imageURL
             if let imageURL = URL(string: imageAdress!) {
