@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let applicationID = plistDic[QuickBloxAdmin.applicationID] as? UInt,
             let authKey = plistDic[QuickBloxAdmin.authKey] as? String,
             let authSecret = plistDic[QuickBloxAdmin.authSecret] as? String else {
-                print("QuickBlox credentials fail")
+                //print("QuickBlox credentials fail")
                 return false
         }
 
@@ -48,14 +48,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         QBSettings.applicationID = applicationID
         QBSettings.authKey = authKey
         QBSettings.authSecret = authSecret
-
         QBSettings.logLevel = .debug
         QBSettings.enableXMPPLogging()
-
         QBRTCConfig.setAnswerTimeInterval(kQBAnswerTimeInterval)
         QBRTCConfig.setDialingTimeInterval(kQBDialingTimeInterval)
         QBRTCConfig.setStatsReportTimeInterval(1.0)
-
         QBRTCClient.initializeRTC()
 
         SVProgressHUD.setDefaultMaskType(.gradient)
@@ -75,21 +72,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         enterPassByLandingView()
 
-        QBRequest.logIn(withUserEmail: email, password: user.uid, successBlock: { (_, QBuser) in
+        QBRequest.logIn(withUserEmail: email,
+                        password: user.uid,
+                        successBlock: { (_, QBuser) in
 
-            QBChat.instance.connect(with: QBuser, completion: {
+                            QBChat.instance.connect(with: QBuser, completion: { _ in})},
 
-                _ in
-
-            })
-
-            print("done")}, errorBlock: {_ in SVProgressHUD.dismiss() })
-
+                        errorBlock: {_ in SVProgressHUD.dismiss() })
         return true
-
     }
-
-    // 判斷是否登入
 
     func applicationWillEnterForeground(_ application: UIApplication) {
 
@@ -120,7 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 UIApplication.shared.endIgnoringInteractionEvents()
                                 SCLAlertView().showError(
                                     NSLocalizedString("Error", comment: ""),
-                                    subTitle: NSLocalizedString("User didn't log in", comment: "")
+                                    subTitle: NSLocalizedString("Please log in", comment: "")
                                 )
                                 self.enterLandingView()
             })
@@ -133,7 +124,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
 
         if notificationSettings.types != .none {
-            print("Did register user notificaiton settings")
+            //print("Did register user notificaiton settings")
             application.registerForRemoteNotifications()
         }
     }
@@ -148,7 +139,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         subscription.deviceToken = deviceToken
         QBRequest.createSubscription(subscription,
                                      successBlock: { (response: QBResponse, _: [QBMSubscription]?) -> Void in
-
                                         print("Push Subscroption Response: \(response)")},
                                      errorBlock: {(response: QBResponse) in
                                         print("Push Subscroption Error: \(response.error!)")

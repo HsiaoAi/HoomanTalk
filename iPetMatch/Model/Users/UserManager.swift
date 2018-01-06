@@ -37,7 +37,9 @@ class UserManager {
 
             }
 
-            UserManager.instance.currentUser = IPetUser(id: snapShot.key, loginEmail: email, name: name, petPersonType: PetPersonType(rawValue: petPersionType)!, gender: Gender(rawValue: gender)!, yearOfBirth: yearOfBirth, imageURL: imageURL, callingID: UInt(callingID))
+            let user = IPetUser(id: snapShot.key, loginEmail: email, name: name, petPersonType: PetPersonType(rawValue: petPersionType)!, gender: Gender(rawValue: gender)!, yearOfBirth: yearOfBirth, imageURL: imageURL, callingID: UInt(callingID))
+            UserManager.instance.currentUser = user
+            RingtonePlayer.shared.ringtoneName = (user.petPersonType == .dog) ? RingtoneName.dog : RingtoneName.mewo
 
         }
 
@@ -47,8 +49,8 @@ class UserManager {
 
         activityIndicatorView?.startAnimating()
         Manager.shared.loadImage(with: Request(url: imageURL), into: imageView) { response, _ in
-            imageView.image = response.value
             activityIndicatorView?.stopAnimating()
+            imageView.image = response.value
         }
 
     }

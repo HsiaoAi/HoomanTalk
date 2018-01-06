@@ -35,7 +35,7 @@ class AddPetViewController: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-
+        setup()
         setupSizePickView()
         setupSegmentedControls()
         saveOrEditButton.addTarget(self, action: #selector(tapSave), for: .touchUpInside)
@@ -47,6 +47,33 @@ class AddPetViewController: UIViewController {
         } else {
 
         }
+
+    }
+    func setup() {
+        let petName = NSLocalizedString("PET NAME", comment: "")
+        nameTextField.title = petName
+        nameTextField.placeholder = petName
+        nameTextField.selectedTitle = NSLocalizedString("Add Pet Name", comment: "")
+
+        let breed = NSLocalizedString("BREED", comment: "")
+        breedTextField.title = breed
+        breedTextField.placeholder = breed
+        breedTextField.selectedTitle = NSLocalizedString("Add pet breed", comment: "")
+
+        let birth = NSLocalizedString("BIRTH", comment: "")
+        birthTextField.title = birth
+        birthTextField.selectedTitle = NSLocalizedString("Select Pet Birth", comment: "")
+        birthTextField.placeholder = birth
+
+        let size = NSLocalizedString("SIZE", comment: "")
+        sizeTextField.title = size
+        sizeTextField.placeholder = size
+        sizeTextField.selectedTitle = NSLocalizedString("Select Pet size", comment: "")
+
+        let content = NSLocalizedString("Description", comment: "")
+        aboutPetTextField.title = content
+        aboutPetTextField.placeholder = content
+        aboutPetTextField.selectedTitle = NSLocalizedString("Give a brief introduction", comment: "")
 
     }
 

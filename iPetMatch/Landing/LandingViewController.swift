@@ -30,16 +30,13 @@ class LandingViewController: UIViewController {
     func setup() {
 
         loginView.isHidden = false
-
         signupView.isHidden = true
-
         self.view.bringSubview(toFront: loginView)
-
         self.view.bringSubview(toFront: loginButton)
-
         loginButton.titleColor = .white
-
         signupButton.titleColor = .white
+        loginButton.titleString = NSLocalizedString("Log in", comment: "")
+        signupButton.titleString = NSLocalizedString("Sign up", comment: "")
 
     }
 

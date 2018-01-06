@@ -29,6 +29,9 @@ class ChatUsersListTableViewCell: UITableViewCell, Identifiable {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        audioCallButton.titleString = NSLocalizedString("AudioCall", comment: "")
+        videoCallButton.titleString = NSLocalizedString("VedioCall", comment: "")
+        reportUSerButton.titleString = NSLocalizedString("Report", comment: "")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,7 +53,8 @@ class ChatUsersListTableViewCell: UITableViewCell, Identifiable {
         if let lastCallType = friend.lastCallType,
             let lastCallTime = friend.lastCallTime {
 
-            lastCallLabel.text = "\(lastCallType): \(lastCallTime)"
+            let lastCallingTypeString = (lastCallType == "Audio Call") ? NSLocalizedString("Last audio call", comment: "") : NSLocalizedString("Last video call", comment: "")
+            lastCallLabel.text = "\(lastCallingTypeString): \(lastCallTime)"
 
         } else {
 

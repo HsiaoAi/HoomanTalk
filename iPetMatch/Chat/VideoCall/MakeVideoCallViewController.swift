@@ -214,6 +214,8 @@ extension MakeVideoCallViewController: QBRTCClientDelegate {
 
         self.opponentVideoView.setVideoTrack(videoTrack)
 
+        callingFromLabel.text = NSLocalizedString("Friend didn't user camara", comment: "")
+
     }
 
     func session(_ session: QBRTCBaseSession, connectedToUser userID: NSNumber) {

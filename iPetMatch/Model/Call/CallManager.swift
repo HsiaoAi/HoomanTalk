@@ -52,8 +52,7 @@ class CallManager {
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-        let timeZoneAbbreviation = NSLocalizedString("CTU", comment: "timeZone")
-        let timeZone = TimeZone(abbreviation: timeZoneAbbreviation)
+        let timeZone = TimeZone.ReferenceType.local
         dateFormatter.timeZone = timeZone
         let dateString = dateFormatter.string(from: Date())
 

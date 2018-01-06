@@ -63,7 +63,7 @@ extension PetsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-        let contentViewHeight = UIScreen.main.bounds.height - 20 - 20
+        let contentViewHeight = UIScreen.main.bounds.height - 20
         return contentViewHeight / 3
 
     }
@@ -114,10 +114,6 @@ extension PetsViewController: UITableViewDelegate, UITableViewDataSource {
         addPetViewController.petToBeEdited = pets[indexPath.row]
         self.present(addPetViewController, animated: true, completion: nil)
 
-    }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
     }
 
 }

@@ -24,7 +24,7 @@ class LikedUsersManger {
             let currentUser = UserManager.instance.currentUser else {
 
             SCLAlertView().showWarning(NSLocalizedString("Warning", comment: ""),
-                                       subTitle: NSLocalizedString("User didn't log it", comment: ""))
+                                       subTitle: NSLocalizedString("User didn't log in", comment: ""))
             return
         }
 
@@ -85,7 +85,7 @@ class LikedUsersManger {
         guard let uid = Auth.auth().currentUser?.uid else {
 
             SCLAlertView().showWarning(NSLocalizedString("Warning", comment: ""),
-                                       subTitle: NSLocalizedString("User didn't log it", comment: ""))
+                                       subTitle: NSLocalizedString("User didn't log in", comment: ""))
             return
         }
 

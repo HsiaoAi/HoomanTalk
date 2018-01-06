@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,13 +16,20 @@
         <scene sceneID="fKg-jo-InP">
             <objects>
                 <viewController storyboardIdentifier="PetsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9tv-tZ-RBx" customClass="PetsViewController" customModule="iPetMatch" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P9E-sM-dAL"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mre-NR-dcg"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CDD-5A-nht">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TSc-2Y-W8Q">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TSc-2Y-W8Q">
+                                <rect key="frame" x="0.0" y="-20" width="375" height="687"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KIQ-Hz-i9M" customClass="LGButton" customModule="LGButton">
                                 <rect key="frame" x="298" y="591" width="56.5" height="56"/>
@@ -79,19 +86,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="TSc-2Y-W8Q" firstAttribute="leading" secondItem="SkV-VP-fQ4" secondAttribute="leading" id="ESQ-8f-3Q4"/>
-                            <constraint firstItem="TSc-2Y-W8Q" firstAttribute="top" secondItem="CDD-5A-nht" secondAttribute="top" id="JCB-Mh-ua1"/>
+                            <constraint firstItem="TSc-2Y-W8Q" firstAttribute="leading" secondItem="CDD-5A-nht" secondAttribute="leading" id="ESQ-8f-3Q4"/>
+                            <constraint firstItem="Mre-NR-dcg" firstAttribute="top" secondItem="TSc-2Y-W8Q" secondAttribute="bottom" id="YaL-Ky-p25"/>
                             <constraint firstItem="Npf-Ui-HxQ" firstAttribute="leading" secondItem="KIQ-Hz-i9M" secondAttribute="leading" id="Ys3-K6-c9T"/>
                             <constraint firstItem="Npf-Ui-HxQ" firstAttribute="height" secondItem="KIQ-Hz-i9M" secondAttribute="height" id="ZPb-WB-2YQ"/>
-                            <constraint firstItem="SkV-VP-fQ4" firstAttribute="trailing" secondItem="TSc-2Y-W8Q" secondAttribute="trailing" id="dlo-W7-OEg"/>
-                            <constraint firstItem="SkV-VP-fQ4" firstAttribute="bottom" secondItem="TSc-2Y-W8Q" secondAttribute="bottom" id="fZZ-aJ-Ysu"/>
+                            <constraint firstAttribute="trailing" secondItem="TSc-2Y-W8Q" secondAttribute="trailing" id="dlo-W7-OEg"/>
+                            <constraint firstItem="Mre-NR-dcg" firstAttribute="top" secondItem="TSc-2Y-W8Q" secondAttribute="bottom" id="fZZ-aJ-Ysu"/>
                             <constraint firstItem="KIQ-Hz-i9M" firstAttribute="width" secondItem="CDD-5A-nht" secondAttribute="width" multiplier="0.15" id="nH5-Gr-75f"/>
-                            <constraint firstItem="SkV-VP-fQ4" firstAttribute="trailing" secondItem="KIQ-Hz-i9M" secondAttribute="trailing" constant="20" id="o5D-xf-IRX"/>
+                            <constraint firstAttribute="trailing" secondItem="KIQ-Hz-i9M" secondAttribute="trailing" constant="20" id="o5D-xf-IRX"/>
+                            <constraint firstItem="TSc-2Y-W8Q" firstAttribute="top" secondItem="CDD-5A-nht" secondAttribute="top" constant="-20" id="utn-JE-4pU"/>
                             <constraint firstItem="Npf-Ui-HxQ" firstAttribute="width" secondItem="KIQ-Hz-i9M" secondAttribute="width" id="wrY-2b-hlv"/>
                             <constraint firstItem="Npf-Ui-HxQ" firstAttribute="top" secondItem="KIQ-Hz-i9M" secondAttribute="top" id="z98-Nl-WbF"/>
-                            <constraint firstItem="SkV-VP-fQ4" firstAttribute="bottom" secondItem="KIQ-Hz-i9M" secondAttribute="bottom" constant="20" id="zub-EK-W6E"/>
+                            <constraint firstItem="Mre-NR-dcg" firstAttribute="top" secondItem="KIQ-Hz-i9M" secondAttribute="bottom" constant="20" id="zub-EK-W6E"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="SkV-VP-fQ4"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="TSc-2Y-W8Q" id="I1m-pA-hgL"/>

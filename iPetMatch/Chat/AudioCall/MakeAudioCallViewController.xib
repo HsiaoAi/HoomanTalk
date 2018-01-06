@@ -156,17 +156,17 @@
                             <viewLayoutGuide key="safeArea" id="uxQ-6F-5mO"/>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WSz-HA-P3Z">
-                            <rect key="frame" x="60.000000000000014" y="485.33333333333331" width="220.33333333333337" height="51.333333333333314"/>
+                            <rect key="frame" x="60.000000000000014" y="473" width="220.33333333333337" height="76.333333333333371"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Audio Calling To" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsE-Rs-4lz" userLabel="Audio Calling To Label">
-                                    <rect key="frame" x="0.0" y="0.0" width="128" height="21.333333333333332"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QsE-Rs-4lz" userLabel="Audio Calling To Label">
+                                    <rect key="frame" x="0.0" y="0.0" width="4.333333333333333" height="21.333333333333332"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                     <color key="textColor" red="0.3217366934" green="0.25888746979999999" blue="0.25097307559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                     <color key="shadowColor" red="0.67041194439999996" green="0.70198559760000001" blue="0.69011390210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hsiao Ai" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pye-3m-8ji">
-                                    <rect key="frame" x="0.0" y="26.333333333333371" width="72" height="25"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pye-3m-8ji">
+                                    <rect key="frame" x="0.0" y="26.333333333333314" width="220.33333333333334" height="50"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -185,8 +185,8 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incoming Call From" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urd-La-2W0" customClass="MZTimerLabel">
-                            <rect key="frame" x="60.000000000000014" y="485.33333333333331" width="153.33333333333337" height="21.333333333333314"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Urd-La-2W0" customClass="MZTimerLabel">
+                            <rect key="frame" x="60" y="472.66666666666669" width="4.3333333333333286" height="0.0"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                             <color key="textColor" red="0.3217366934" green="0.25888746979999999" blue="0.25097307559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -220,6 +220,7 @@
                         <constraint firstItem="bA8-re-Kda" firstAttribute="centerX" secondItem="v8s-ih-OZN" secondAttribute="centerX" id="pEr-vu-4v5"/>
                         <constraint firstItem="Jpt-XT-rIY" firstAttribute="centerX" secondItem="bA8-re-Kda" secondAttribute="centerX" id="pZn-6B-POL"/>
                         <constraint firstItem="bA8-re-Kda" firstAttribute="height" secondItem="v8s-ih-OZN" secondAttribute="height" multiplier="0.75" id="qNO-QY-wFi"/>
+                        <constraint firstItem="Urd-La-2W0" firstAttribute="trailing" secondItem="QsE-Rs-4lz" secondAttribute="trailing" id="toR-ml-Ez6"/>
                         <constraint firstItem="v8s-ih-OZN" firstAttribute="leading" secondItem="mDw-zu-AxW" secondAttribute="leading" constant="20" id="yPt-lV-rUl"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="mDw-zu-AxW"/>

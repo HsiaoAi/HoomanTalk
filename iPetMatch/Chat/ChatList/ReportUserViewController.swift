@@ -29,6 +29,13 @@ class ReportUserViewController: UIViewController {
 
     @IBAction func sendReport(_ sender: UIButton) {
 
+        guard textfieldView.textColor != .lightGray,
+            textfieldView.text != "" else {
+
+            SCLAlertView().showWarning(NSLocalizedString("Warning", comment: ""), subTitle: NSLocalizedString("Please enter content", comment: ""))
+                return
+        }
+
         let appearance = SCLAlertView.SCLAppearance(
             showCloseButton: false
         )

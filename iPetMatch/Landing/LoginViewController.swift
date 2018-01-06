@@ -19,6 +19,21 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        setup()
+            }
+
+    func setup() {
+        loginButton.titleString = NSLocalizedString("Log in", comment: "")
+
+        let email = NSLocalizedString("Email", comment: "")
+        emailTextFied.title = email
+        emailTextFied.placeholder = email
+
+        let password = NSLocalizedString("Password", comment: "")
+        passwordTextFied.title = password
+        passwordTextFied.placeholder = password
+        passwordTextFied.selectedTitle = NSLocalizedString("Password (6-20 Characters)", comment: "")
+        loginButton.loadingString = NSLocalizedString("Loading...)", comment: "")
     }
 
     @IBAction func tapForgetPassword(_ sender: UIButton) {

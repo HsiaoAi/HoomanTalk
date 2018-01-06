@@ -44,10 +44,34 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         genderControl.titles = ["♂︎", "♀︎"]
         setupReadEULA()
+        setup()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    func setup() {
+        let email = NSLocalizedString("Email", comment: "")
+        emailTextField.title = email
+        emailTextField.placeholder = email
+
+        let name = NSLocalizedString("Name", comment: "")
+        nameTextField.title = name
+        nameTextField.placeholder = name
+
+        let password = NSLocalizedString("Password", comment: "")
+        passwordTextField.title = password
+        passwordTextField.placeholder = password
+        passwordTextField.selectedTitle = NSLocalizedString("Password (6-20 Characters)", comment: "")
+
+        let birth = NSLocalizedString("Birth", comment: "")
+        birthDayTextField.title = birth
+        birthDayTextField.placeholder = birth
+        birthDayTextField.selectedTitle = NSLocalizedString(">= 18yrs", comment: "")
+
+        signUpButton.titleString = NSLocalizedString("Sign up", comment: "")
+        signUpButton.loadingString = NSLocalizedString("Loading...", comment: "")
     }
 
     func setupReadEULA() {
@@ -338,6 +362,8 @@ class SignUpViewController: UIViewController {
 
                                     UserManager.instance.currentUser = IPetUser(id: firebaseUid, loginEmail: email, name: name, petPersonType: self.petPersonType, gender: self.gender, yearOfBirth: yearOfBirth, imageURL: self.imageURLString, callingID: callingID)
 
+                                    RingtonePlayer.shared.ringtoneName = (UserManager.instance.currentUser?.petPersonType == .dog) ? RingtoneName.dog : RingtoneName.mewo
+
                                     let userRef = Database.database().reference().child("users").child(firebaseUid)
 
                                     let values: [String: Any] = [IPetUser.Schema.id: firebaseUid,
@@ -356,7 +382,7 @@ class SignUpViewController: UIViewController {
                                                                 if error != nil {
                                                                     SCLAlertView().showError(
                                                                         NSLocalizedString("Error", comment: ""),
-                                                                        subTitle: NSLocalizedString("Server error\nPlease try again)", comment: "")
+                                                                        subTitle: NSLocalizedString("Server error\nPlease try again", comment: "")
                                                                     )
                                                                 }
                                                                 self.signUpButton.isLoading = false
@@ -390,8 +416,8 @@ extension SignUpViewController {
     @objc func datePickerValueChanged(_ sender: UIDatePicker) {
 
         let dateFormatter = DateFormatter()
-        let timeZoneAbbreviation = NSLocalizedString("CTU", comment: "timeZone")
-        let timeZone = TimeZone(abbreviation: timeZoneAbbreviation)
+        let timeZone = TimeZone.ReferenceType.local
+        dateFormatter.timeZone = timeZone
         dateFormatter.timeZone = timeZone
         dateFormatter.dateFormat = NSLocalizedString("dd, MMM, yyyy", comment: "Date format")
         sender.maximumDate = Date()
@@ -430,7 +456,17 @@ extension SignUpViewController: FusumaDelegate {
     // When camera roll is not authorized, this method is called.
     func fusumaCameraRollUnauthorized() {
 
-        SCLAlertView().showWarning(NSLocalizedString("Warning", comment: ""),
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        let alertview = SCLAlertView(appearance: appearance)
+        let buttonDone = NSLocalizedString("Done", comment: "")
+
+        alertview.addButton(buttonDone) {
+            self.dismiss(animated: true, completion: nil)
+        }
+
+        alertview.showWarning(NSLocalizedString("Warning", comment: ""),
                                    subTitle: NSLocalizedString("Camera roll unauthorized", comment: ""))
 
     }

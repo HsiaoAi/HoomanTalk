@@ -33,6 +33,7 @@ class MakeAudioCallViewController: UIViewController {
         setupCallInfoView()
         QBRTCClient.instance().add(self)
         CallManager.shared.audioManager.currentAudioDevice = QBRTCAudioDevice.receiver
+        callingToLabel.text = NSLocalizedString("Audio Calling To", comment: "")
         self.navigationController?.isNavigationBarHidden = true
     }
 

@@ -17,11 +17,6 @@ class PetsTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-
     func set(content pet: Pet) {
 
         let petType = (pet.petType == .dog) ? "🐶": "🐱"

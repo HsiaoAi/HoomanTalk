@@ -20,17 +20,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6X-zg-4GN">
-                                <rect key="frame" x="37.5" y="170" width="300" height="233"/>
+                                <rect key="frame" x="37.5" y="170" width="300" height="233.5"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" text="Report this user about ..." textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FvS-10-5tG">
-                                        <rect key="frame" x="0.5" y="0.0" width="300" height="186.5"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FvS-10-5tG">
+                                        <rect key="frame" x="0.5" y="0.0" width="300" height="187"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="C8D-an-4pB">
-                                        <rect key="frame" x="0.0" y="186.5" width="300" height="46.5"/>
+                                        <rect key="frame" x="0.0" y="187" width="300" height="46.5"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs5-Uz-9E2">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="46.5"/>

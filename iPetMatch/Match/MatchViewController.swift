@@ -464,7 +464,17 @@ extension MatchViewController: UICollectionViewDataSource {
 
             }
 
-            cell.userInfoLabel.text = "\(user.name), \(user.petPersonType.rawValue.capitalized) Person"
+            var petTypeString = ""
+            switch user.petPersonType {
+            case .dog:
+                petTypeString = "❤️🐶"
+            case .cat:
+                petTypeString = "❤️🐱"
+            case .both:
+                petTypeString = "❤️🐶🐱"
+            }
+
+            cell.userInfoLabel.text = "\(user.name), \(petTypeString)"
 
             cell.userImageView.contentMode = .scaleToFill
             let imageAdress = user.imageURL

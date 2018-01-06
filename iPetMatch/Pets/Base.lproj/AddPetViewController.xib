@@ -74,7 +74,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hvW-Nw-SFY">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EPr-KG-d6n" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EPr-KG-d6n" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="42"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -98,8 +98,6 @@
                                         <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
                                             <color key="value" red="0.1641129851" green="0.50144350530000004" blue="0.72513860460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Add Pet Name"/>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Pet Name"/>
                                         <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
                                             <color key="value" red="0.1641129851" green="0.50144350530000004" blue="0.72513860460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </userDefinedRuntimeAttribute>
@@ -131,7 +129,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="r09-cY-rlX">
                             <rect key="frame" x="0.0" y="62" width="320" height="42"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B1a-lf-beh" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B1a-lf-beh" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="42"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -155,8 +153,6 @@
                                         <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
                                             <color key="value" red="0.1641129851" green="0.50144350530000004" blue="0.72513860460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Add Pet Breed"/>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Breed"/>
                                         <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
                                             <color key="value" red="0.1641129851" green="0.50144350530000004" blue="0.72513860460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </userDefinedRuntimeAttribute>
@@ -188,7 +184,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xZm-3P-C7n">
                             <rect key="frame" x="0.0" y="124" width="320" height="42"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHg-tb-nlX" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHg-tb-nlX" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="42"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -212,8 +208,6 @@
                                         <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
                                             <color key="value" red="0.1641129851" green="0.50144350530000004" blue="0.72513860460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Select Pet Birth"/>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Birth"/>
                                         <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
                                             <color key="value" red="0.1641129851" green="0.50144350530000004" blue="0.72513860460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </userDefinedRuntimeAttribute>
@@ -222,7 +216,7 @@
                                         <action selector="pickBirthDay:" destination="-1" eventType="editingDidBegin" id="N8Z-13-xxz"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9c5-yA-56I" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9c5-yA-56I" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                     <rect key="frame" x="170" y="0.0" width="150" height="42"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -246,8 +240,6 @@
                                         <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
                                             <color key="value" red="0.1641129851" green="0.50144350530000004" blue="0.72513860460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Select Pet Size"/>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Size"/>
                                         <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
                                             <color key="value" red="0.1641129851" green="0.50144350530000004" blue="0.72513860460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </userDefinedRuntimeAttribute>
@@ -258,7 +250,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FDC-8P-VK5">
                             <rect key="frame" x="0.0" y="186" width="320" height="42"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HBG-48-ZPC" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HBG-48-ZPC" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -282,8 +274,6 @@
                                         <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
                                             <color key="value" red="0.1641129851" green="0.50144350530000004" blue="0.72513860460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Description"/>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Give a brief introduction "/>
                                         <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
                                             <color key="value" red="0.1641129851" green="0.50144350530000004" blue="0.72513860460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </userDefinedRuntimeAttribute>
@@ -293,8 +283,8 @@
                         </stackView>
                     </subviews>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQX-4D-OXb">
-                    <rect key="frame" x="305" y="48" width="47" height="36"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQX-4D-OXb">
+                    <rect key="frame" x="197" y="48" width="155" height="36"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                     <state key="normal" title="Save">
                         <color key="titleColor" red="0.3217366934" green="0.25888746979999999" blue="0.25097307559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -325,8 +315,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5T-yb-TIb">
-                    <rect key="frame" x="22" y="48" width="66" height="36"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5T-yb-TIb">
+                    <rect key="frame" x="22" y="48" width="155" height="36"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Cancel">
@@ -355,6 +345,7 @@
                 <constraint firstItem="N5T-yb-TIb" firstAttribute="bottom" secondItem="cTM-NX-z59" secondAttribute="bottom" constant="-1" id="GtQ-gl-qzN"/>
                 <constraint firstItem="xI4-o2-Yiu" firstAttribute="centerY" secondItem="LNA-B7-t0J" secondAttribute="centerY" id="HHF-cf-BL9"/>
                 <constraint firstItem="gi7-SX-0g1" firstAttribute="centerX" secondItem="xI4-o2-Yiu" secondAttribute="centerX" id="Hhp-LL-1Kq"/>
+                <constraint firstItem="N5T-yb-TIb" firstAttribute="trailing" secondItem="EPr-KG-d6n" secondAttribute="trailing" id="JPN-QD-xCv"/>
                 <constraint firstItem="2eV-5f-rHi" firstAttribute="centerX" secondItem="xI4-o2-Yiu" secondAttribute="centerX" id="KuT-0a-hpq"/>
                 <constraint firstItem="jQX-4D-OXb" firstAttribute="centerY" secondItem="N5T-yb-TIb" secondAttribute="centerY" id="OMe-M9-qWf"/>
                 <constraint firstItem="cTM-NX-z59" firstAttribute="centerX" secondItem="fqB-Py-47y" secondAttribute="centerX" id="OgS-sZ-ZZQ"/>
@@ -373,6 +364,7 @@
                 <constraint firstItem="Rf9-Ka-ckt" firstAttribute="width" secondItem="9c5-yA-56I" secondAttribute="width" id="oDL-g5-Mdz"/>
                 <constraint firstItem="YCI-Pm-RYC" firstAttribute="top" secondItem="h4v-bp-4cu" secondAttribute="top" id="pBM-0O-Akz"/>
                 <constraint firstItem="LNA-B7-t0J" firstAttribute="top" secondItem="cTM-NX-z59" secondAttribute="bottom" constant="20" id="qfn-Jw-Fxg"/>
+                <constraint firstItem="jQX-4D-OXb" firstAttribute="leading" secondItem="hHV-iX-i9B" secondAttribute="leading" id="spb-hb-lQs"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="x3r-Z7-Yyq"/>
         </view>

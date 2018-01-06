@@ -19,6 +19,7 @@ class IncommingCallViewController: UIViewController {
     @IBOutlet weak var afterAnswerBurronStack: UIStackView!
     @IBOutlet weak var speakerButton: LGButton!
     var isAnswer = false
+    var incommingType: String!
 
     @IBOutlet weak var microphoneButton: LGButton!
 
@@ -27,6 +28,8 @@ class IncommingCallViewController: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        
+        incomingCallLabel.text = incommingType
 
         self.navigationController?.isNavigationBarHidden = true
 
