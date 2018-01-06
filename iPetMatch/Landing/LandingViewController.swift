@@ -20,6 +20,7 @@ class LandingViewController: UIViewController {
         super.viewDidLoad()
         setup()
         SCLAlertView().dismiss(animated: true, completion: nil)
+
     }
 
     override func viewWillAppear(_ animated: Bool) {

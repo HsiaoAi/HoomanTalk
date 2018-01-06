@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Firebase
         FirebaseApp.configure()
+        Fabric.sharedSDK().debug = true
 
         // IQKeyboard
 

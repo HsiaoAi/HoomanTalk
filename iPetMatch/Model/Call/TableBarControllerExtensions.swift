@@ -26,7 +26,7 @@ extension TabBarController: QBRTCClientDelegate {
             CallManager.shared.userInfo = userInfo
 
             let incommingCallViewController = IncommingCallViewController()
-            
+
             let incommingLabel = (session.conferenceType == .audio) ? NSLocalizedString("Incoming Audio Call", comment: "") :
                 NSLocalizedString("Incoming Vedio Call", comment: "")
             incommingCallViewController.incommingType = incommingLabel

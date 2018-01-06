@@ -557,6 +557,7 @@
 				7E6B64015C2B5B2A3C569B94 /* [CP] Copy Pods Resources */,
 				8797E6791FE114BF00C9002F /* Embed Frameworks */,
 				8797E67A1FE1154800C9002F /* ShellScript */,
+				87AC114D2001572600AFFE29 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -761,6 +762,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickbloxWebRTC.framework/strip-framework.sh\"\n\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		87AC114D2001572600AFFE29 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1036,6 +1050,7 @@
 				CODE_SIGN_ENTITLEMENTS = iPetMatch/iPetMatch.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = DTTYHBEAZE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

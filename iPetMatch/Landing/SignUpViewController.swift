@@ -316,7 +316,7 @@ class SignUpViewController: UIViewController {
             // Success
 
             guard let firebaseUid = user?.uid else { return }
-
+            Crashlytics.sharedInstance().setUserIdentifier(firebaseUid)
             let QBCurrentUser = QBUUser()
 
             QBCurrentUser.email = email

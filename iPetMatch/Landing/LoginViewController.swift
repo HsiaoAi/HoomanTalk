@@ -155,6 +155,7 @@ class LoginViewController: UIViewController {
             if let loginUser = user {
                 UserManager.instance.upDateCurrentUser(loginUser)
                 let uid = loginUser.uid
+                Crashlytics.sharedInstance().setUserIdentifier(uid)
                 QBRequest.logOut(successBlock: nil, errorBlock: nil)
 
                 QBRequest.logIn(withUserEmail: email,

@@ -28,7 +28,7 @@ class IncommingCallViewController: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-        
+
         incomingCallLabel.text = incommingType
 
         self.navigationController?.isNavigationBarHidden = true

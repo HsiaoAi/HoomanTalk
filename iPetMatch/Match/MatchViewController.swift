@@ -107,7 +107,7 @@ class MatchViewController: UIViewController {
         hitHearToMatchLabel.isHidden = true
         likeMeButton.setTitleColor(.lightGray, for: .normal)
         browseButton.setTitleColor(UIColor.Custom.greyishBrown, for: .normal)
-        self.kolodaView.reloadData()
+        //self.kolodaView.reloadData()
 
 //        matchCardsManager.observeMatchCardUsers()
 //        matchCardsManager.observeLikesSentByCurrentUser()
