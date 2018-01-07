@@ -46,6 +46,8 @@
 @import UserNotifications;
 @import CZPicker;
 @import MessageUI;
+@import ChameleonFramework;
+@import SDWebImage;
 
 
 #endif /* bridge_Header_h */

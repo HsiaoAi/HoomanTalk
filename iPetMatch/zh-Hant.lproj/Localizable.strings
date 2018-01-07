@@ -1,6 +1,9 @@
 /* No comment provided by engineer. */
 "(error!.localizedDescription)" = "錯誤，請再試一次";
 
+/* for USA */
+"2" = "0";
+
 /* No comment provided by engineer. */
 ">= 18yrs" = "需滿18歲";
 
@@ -165,9 +168,6 @@
 
 /* No comment provided by engineer. */
 "Loading..." = "載入中...";
-
-/* No comment provided by engineer. */
-"Loading...)" = "載入中...";
 
 /* No comment provided by engineer. */
 "Log in" = "登入";

@@ -27,7 +27,9 @@ final class FSImageCropView: UIScrollView, UIScrollViewDelegate {
                 
             } else {
                 
-                imageView.image = nil
+                DispatchQueue.main.async {
+                    self.imageView.image = nil
+                }
                 return
             }
 

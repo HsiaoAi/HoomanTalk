@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
         passwordTextFied.title = password
         passwordTextFied.placeholder = password
         passwordTextFied.selectedTitle = NSLocalizedString("Password (6-20 Characters)", comment: "")
-        loginButton.loadingString = NSLocalizedString("Loading...)", comment: "")
+        loginButton.loadingString = NSLocalizedString("Loading...", comment: "")
     }
 
     @IBAction func tapForgetPassword(_ sender: UIButton) {

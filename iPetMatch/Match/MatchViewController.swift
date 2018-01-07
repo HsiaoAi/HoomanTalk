@@ -22,6 +22,7 @@ class MatchViewController: UIViewController {
 
     let matchCardsManager = MatchCardUsersManager()
     let likedMeManager = LikedUsersManger()
+    var isFirstTime: Bool = true
 
     @IBOutlet weak var likeMeCollectionView: UICollectionView!
 
@@ -107,14 +108,6 @@ class MatchViewController: UIViewController {
         hitHearToMatchLabel.isHidden = true
         likeMeButton.setTitleColor(.lightGray, for: .normal)
         browseButton.setTitleColor(UIColor.Custom.greyishBrown, for: .normal)
-        //self.kolodaView.reloadData()
-
-//        matchCardsManager.observeMatchCardUsers()
-//        matchCardsManager.observeLikesSentByCurrentUser()
-//        matchCardsManager.delegate = self
-//
-//        likedMeManager.delegate = self
-//        likedMeManager.observeReceivedLikes()
 
     }
 
@@ -136,9 +129,10 @@ extension MatchViewController: MatchCardUsersManagerProtocol {
 
                 self.kolodaView.reloadData()
 
+            } else {
+                self.likeMeCollectionView.reloadData()
             }
 
-            // self.likeMeCollectionView.reloadData()
         }
     }
 
@@ -270,24 +264,33 @@ extension MatchViewController: KolodaViewDataSource {
                 let yearsOld = NSLocalizedString("yrs", comment: "")
                 matchCardView.nameLabel.text = matchUser.name + ", \(self.todayYear - matchUser.yearOfBirth) " + yearsOld
                 let im = NSLocalizedString("I'm", comment: "")
-               matchCardView.genderLabel.text = (matchUser.gender == .male) ? im + "🙋🏻‍♂️" : im + "🙋🏻‍♀️"
-                matchCardView.petTypeLabel.text = (matchUser.petPersonType == .dog) ? "🐶" +  NSLocalizedString("Person", comment: "") : "🐱" +  NSLocalizedString("Person", comment: "")
+                matchCardView.genderLabel.text = (matchUser.gender == .male) ? im + "🙋🏻‍♂️" : im + "🙋🏻‍♀️"
+
+                switch matchUser.petPersonType {
+                case .dog:
+                    matchCardView.petTypeLabel.text = "❤️🐶"
+
+                case .cat:
+                    matchCardView.petTypeLabel.text = "❤️🐱"
+
+                case .both:
+                    matchCardView.petTypeLabel.text = "❤️🐶🐱"
+
+                }
 
             }
 
         }
 
-            return matchCardView
+        return matchCardView
 
     }
 
     // ToDo: version 1.1
-
-//    func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
-//
-//        return Bundle.main.loadNibNamed("MatchOverlayView", owner: self, options: nil)?[0] as? OverlayView
-//    }
-
+    //    func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
+    //
+    //        return Bundle.main.loadNibNamed("MatchOverlayView", owner: self, options: nil)?[0] as? OverlayView
+    //    }
 }
 
 // Selector functions
@@ -316,25 +319,25 @@ extension MatchViewController {
             let uid = currentUser.id
             let myFriendsRef = Database.database().reference().child("user-friends").child(uid).child(likeUser.id)
             let matchFriendInfo: [String: Any] = [Friend.Schema.name: likeUser.name,
-                                             Friend.Schema.imageURL: likeUser.imageURL,
-                                             Friend.Schema.callingID: likeUser.callingID,
-                                             Friend.Schema.gender: likeUser.gender.rawValue,
-                                             Friend.Schema.yearOfBirth: likeUser.yearOfBirth,
-                                             Friend.Schema.loginEmail: likeUser.loginEmail,
-                                             Friend.Schema.id: likeUser.id,
-                                             Friend.Schema.petPersonType: likeUser.petPersonType.rawValue]
+                                                  Friend.Schema.imageURL: likeUser.imageURL,
+                                                  Friend.Schema.callingID: likeUser.callingID,
+                                                  Friend.Schema.gender: likeUser.gender.rawValue,
+                                                  Friend.Schema.yearOfBirth: likeUser.yearOfBirth,
+                                                  Friend.Schema.loginEmail: likeUser.loginEmail,
+                                                  Friend.Schema.id: likeUser.id,
+                                                  Friend.Schema.petPersonType: likeUser.petPersonType.rawValue]
 
             myFriendsRef.updateChildValues(matchFriendInfo)
 
             let matchUserFriendsRef = Database.database().reference().child("user-friends").child(likeUser.id).child(uid)
             let myInfo: [String: Any] = [Friend.Schema.name: currentUser.name,
-                                             Friend.Schema.id: currentUser.id,
-                                             Friend.Schema.imageURL: currentUser.imageURL,
-                                             Friend.Schema.callingID: currentUser.callingID,
-                                             Friend.Schema.gender: currentUser.gender.rawValue,
-                                             Friend.Schema.yearOfBirth: currentUser.yearOfBirth,
-                                             Friend.Schema.loginEmail: currentUser.loginEmail,
-                                             Friend.Schema.petPersonType: currentUser.petPersonType.rawValue]
+                                         Friend.Schema.id: currentUser.id,
+                                         Friend.Schema.imageURL: currentUser.imageURL,
+                                         Friend.Schema.callingID: currentUser.callingID,
+                                         Friend.Schema.gender: currentUser.gender.rawValue,
+                                         Friend.Schema.yearOfBirth: currentUser.yearOfBirth,
+                                         Friend.Schema.loginEmail: currentUser.loginEmail,
+                                         Friend.Schema.petPersonType: currentUser.petPersonType.rawValue]
 
             matchUserFriendsRef.updateChildValues(myInfo)
         }
@@ -419,6 +422,10 @@ extension MatchViewController: UICollectionViewDelegateFlowLayout {
 
     func setupLikeMeCollectionView() {
 
+        if #available(iOS 10, *) {
+            likeMeCollectionView.isPrefetchingEnabled = false
+        }
+
         self.likeMeCollectionView.delegate = self
         self.likeMeCollectionView.dataSource = self
         self.likeMeCollectionView.showsVerticalScrollIndicator = false
@@ -445,9 +452,9 @@ extension MatchViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? LikeMeCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? LikeMeCollectionViewCell else { return UICollectionViewCell() }
 
-        if (likedMeUsers.count > indexPath.row) {
+        if likedMeUsers.count > indexPath.row {
 
             let user = likedMeUsers[indexPath.row]
 
@@ -476,6 +483,7 @@ extension MatchViewController: UICollectionViewDataSource {
 
             cell.userInfoLabel.text = "\(user.name), \(petTypeString)"
 
+            cell.userImageView.image = nil
             cell.userImageView.contentMode = .scaleToFill
             let imageAdress = user.imageURL
             if let imageURL = URL(string: imageAdress!) {

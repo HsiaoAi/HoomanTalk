@@ -8,6 +8,7 @@ target 'iPetMatch' do
   use_frameworks!
 
   # Pods for iPetMatch
+  pod 'SDWebImage'
   
   pod 'Quickblox-WebRTC', '~> 2.6'
   pod 'QuickBlox'
@@ -22,7 +23,8 @@ target 'iPetMatch' do
   pod 'SDWebImage/GIF'
   pod 'FLAnimatedImage', '~> 1.0'
   pod 'IQKeyboardManagerSwift'
-  pod 'Fusuma'                                                                                                                
+  pod 'Fusuma'     
+  pod 'ChameleonFramework'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'BetterSegmentedControl', '~> 0.9' 
   pod 'Firebase/Auth'

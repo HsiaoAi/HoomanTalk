@@ -1,5 +1,8 @@
 PODS:
   - BetterSegmentedControl (0.9)
+  - ChameleonFramework (2.1.0):
+    - ChameleonFramework/Default (= 2.1.0)
+  - ChameleonFramework/Default (2.1.0)
   - Crashlytics (3.9.3):
     - Fabric (~> 1.7.2)
   - CZPicker (0.4.3)
@@ -71,6 +74,8 @@ PODS:
   - Quickblox-WebRTC (2.6.3):
     - QuickBlox (>= 2.7)
   - SCLAlertView (0.7.0)
+  - SDWebImage (4.2.2):
+    - SDWebImage/Core (= 4.2.2)
   - SDWebImage/Core (4.2.2)
   - SDWebImage/GIF (4.2.2):
     - FLAnimatedImage (~> 1.0)
@@ -83,6 +88,7 @@ PODS:
 
 DEPENDENCIES:
   - BetterSegmentedControl (~> 0.9)
+  - ChameleonFramework
   - Crashlytics (~> 3.9.3)
   - CZPicker
   - Fabric (~> 1.7.2)
@@ -102,6 +108,7 @@ DEPENDENCIES:
   - QuickBlox
   - Quickblox-WebRTC (~> 2.6)
   - SCLAlertView
+  - SDWebImage
   - SDWebImage/GIF
   - SkyFloatingLabelTextField (~> 3.0)
   - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
@@ -120,6 +127,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   BetterSegmentedControl: 40b2b6a08bbc59663149624d1b5235efa8d43a3c
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   CZPicker: 55aa1751ea26e209814552da1a9a08cba8bbf72a
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
@@ -154,6 +162,6 @@ SPEC CHECKSUMS:
   UIImageView+Extension: 0c4aafa145d9e36a8154bf5f5e9698dea04fd410
   WCLShineButton: d8b979b6f6f9f6709f9e241e6e1a4712a1a9b36b
 
-PODFILE CHECKSUM: ca79c7469fb7340bc76b0b75e79f262abb647aab
+PODFILE CHECKSUM: 2ca0973fd20e00ac606a0c47f92d33c92645c047
 
 COCOAPODS: 1.3.1

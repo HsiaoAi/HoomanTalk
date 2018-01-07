@@ -23,9 +23,9 @@ class LikedUsersManger {
         guard let fromUser = Auth.auth().currentUser,
             let currentUser = UserManager.instance.currentUser else {
 
-            SCLAlertView().showWarning(NSLocalizedString("Warning", comment: ""),
-                                       subTitle: NSLocalizedString("User didn't log in", comment: ""))
-            return
+                SCLAlertView().showWarning(NSLocalizedString("Warning", comment: ""),
+                                           subTitle: NSLocalizedString("User didn't log it", comment: ""))
+                return
         }
 
         let fromId = fromUser.uid
@@ -34,8 +34,8 @@ class LikedUsersManger {
         let ref = Database.database().reference().child(FirebaseSchema.likes.rawValue)
         let childRef = ref.childByAutoId()
         let values: [String: Any] = [Like.Schema.fromID: fromId,
-                                    Like.Schema.toID: toId,
-                                    Like.Schema.timestamp: Like.getCurrentDate()]
+                                     Like.Schema.toID: toId,
+                                     Like.Schema.timestamp: Like.getCurrentDate()]
         childRef.updateChildValues(values)
 
         let userSentLikeRef = Database.database().reference().child("user-sentLikes").child(fromId)
@@ -85,7 +85,7 @@ class LikedUsersManger {
         guard let uid = Auth.auth().currentUser?.uid else {
 
             SCLAlertView().showWarning(NSLocalizedString("Warning", comment: ""),
-                                       subTitle: NSLocalizedString("User didn't log in", comment: ""))
+                                       subTitle: NSLocalizedString("User didn't log it", comment: ""))
             return
         }
 
@@ -103,7 +103,7 @@ class LikedUsersManger {
 
                 guard let userDic = userData as? [String: Any] else {
 
-                return
+                    return
                 }
 
                 guard

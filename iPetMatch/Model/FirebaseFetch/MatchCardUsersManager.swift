@@ -57,7 +57,7 @@ class MatchCardUsersManager {
             guard let data = snapShot.value as? [String: AnyObject] else {
 
                 SCLAlertView().showInfo(NSLocalizedString("No user found", comment: ""),
-                                            subTitle: NSLocalizedString("Change filter to find more users", comment: ""))
+                                        subTitle: NSLocalizedString("Change filter to find users", comment: ""))
                 return
             }
 
@@ -80,7 +80,6 @@ class MatchCardUsersManager {
                         let petPersionType = userDic[IPetUser.Schema.petPersonType] as? String else {
 
                             //self.delegate?.observeMatchCardUsersError(Error)
-
                             return
 
                     }

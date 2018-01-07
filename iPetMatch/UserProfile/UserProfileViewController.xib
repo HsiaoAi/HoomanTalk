@@ -122,7 +122,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="433.5"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a9e-D5-B3Y">
-                            <rect key="frame" x="103" y="132.5" width="169" height="169"/>
+                            <rect key="frame" x="84.5" y="114" width="206" height="206"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="a9e-D5-B3Y" secondAttribute="height" id="Xrm-Lx-Ixz"/>
                             </constraints>
@@ -132,10 +132,10 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y9Z-pC-Lw6">
-                            <rect key="frame" x="0.0" y="301.5" width="375" height="132"/>
+                            <rect key="frame" x="0.0" y="320" width="375" height="113.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2J9-As-8ff">
-                                    <rect key="frame" x="188" y="66.5" width="0.0" height="0.0"/>
+                                    <rect key="frame" x="188" y="57.5" width="0.0" height="0.0"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -148,7 +148,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OcS-Gw-Fun" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-                            <rect key="frame" x="169" y="200.5" width="37" height="34"/>
+                            <rect key="frame" x="165" y="197" width="45" height="41"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="OcS-Gw-Fun" secondAttribute="height" multiplier="11:10" id="tQu-On-dx5"/>
@@ -186,7 +186,7 @@
                     <constraints>
                         <constraint firstItem="OcS-Gw-Fun" firstAttribute="height" secondItem="a9e-D5-B3Y" secondAttribute="height" multiplier="0.2" id="16K-i6-zdr"/>
                         <constraint firstItem="OcS-Gw-Fun" firstAttribute="centerX" secondItem="a9e-D5-B3Y" secondAttribute="centerX" id="1pP-oJ-xmJ"/>
-                        <constraint firstItem="a9e-D5-B3Y" firstAttribute="width" secondItem="RNB-MP-Sdh" secondAttribute="width" multiplier="0.45" id="2CM-ME-Dkx"/>
+                        <constraint firstItem="a9e-D5-B3Y" firstAttribute="width" secondItem="RNB-MP-Sdh" secondAttribute="width" multiplier="0.55" id="2CM-ME-Dkx"/>
                         <constraint firstItem="OcS-Gw-Fun" firstAttribute="centerY" secondItem="a9e-D5-B3Y" secondAttribute="centerY" id="3Kc-dM-lGt"/>
                         <constraint firstItem="Y9Z-pC-Lw6" firstAttribute="leading" secondItem="RNB-MP-Sdh" secondAttribute="leading" id="Fj6-qG-sYq"/>
                         <constraint firstItem="a9e-D5-B3Y" firstAttribute="centerX" secondItem="RNB-MP-Sdh" secondAttribute="centerX" id="MP4-yw-6jd"/>

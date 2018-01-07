@@ -159,7 +159,7 @@ class AddPetViewController: UIViewController {
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
 
-        storageRef.putData(UIImageJPEGRepresentation(image, 0.5)!, metadata: metadata, completion: { (data, error) in
+        storageRef.putData(UIImageJPEGRepresentation(image, 0.2)!, metadata: metadata, completion: { (data, error) in
 
             if error != nil {
                 SCLAlertView().showError(

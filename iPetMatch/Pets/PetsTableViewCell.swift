@@ -15,6 +15,8 @@ class PetsTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
+
     }
 
     func set(content pet: Pet) {

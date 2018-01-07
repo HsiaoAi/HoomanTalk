@@ -36,6 +36,7 @@ class MatchCardView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
 
     @IBOutlet weak var matchCardView: UIImageView!
 
+    @IBOutlet weak var userImageViewLayer: UIImageView!
     @IBOutlet weak var userImageView: UIImageView!
 
     @IBOutlet weak var backgroundUserImage: UIImageView!
@@ -74,7 +75,7 @@ class MatchCardView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
 
         likeButtonParam.enableFlashing = true
 
-        likeButtonParam.animDuration = 1
+        likeButtonParam.animDuration = 0.5
 
         likeButton.params = likeButtonParam
 

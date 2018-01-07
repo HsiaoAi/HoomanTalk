@@ -218,8 +218,8 @@ class SignUpViewController: UIViewController {
                 )
                 return
         }
-
-        guard let yearOfBirth = Int(birthDay.components(separatedBy: ", ")[2]) else {
+        let yearIndex: Int = Int(NSLocalizedString("2", comment: "for USA"))!
+        guard let yearOfBirth = Int(birthDay.components(separatedBy: ", ")[yearIndex]) else {
             SCLAlertView().showWarning(
                 NSLocalizedString("Warning", comment: ""),
                 subTitle: NSLocalizedString("Wrong birthday format", comment: "")
@@ -332,7 +332,7 @@ class SignUpViewController: UIViewController {
 
             metadata.contentType = "image/jpeg"
 
-            storageRef.putData(UIImageJPEGRepresentation(userImage, 0.5)!, metadata: metadata, completion: { (data, error) in
+            storageRef.putData(UIImageJPEGRepresentation(userImage, 0.2)!, metadata: metadata, completion: { (data, error) in
 
                 if error != nil {
 
@@ -417,7 +417,6 @@ extension SignUpViewController {
 
         let dateFormatter = DateFormatter()
         let timeZone = TimeZone.ReferenceType.local
-        dateFormatter.timeZone = timeZone
         dateFormatter.timeZone = timeZone
         dateFormatter.dateFormat = NSLocalizedString("dd, MMM, yyyy", comment: "Date format")
         sender.maximumDate = Date()

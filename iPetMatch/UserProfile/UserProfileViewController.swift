@@ -50,8 +50,11 @@ class UserProfileViewController: UIViewController {
             )
             print(error)
         }
-        QBRequest.logOut(successBlock: { _ in
+        let deviceIdentifier = UIDevice.current.identifierForVendor?.uuidString
 
+        QBRequest.unregisterSubscription(forUniqueDeviceIdentifier: deviceIdentifier!, successBlock: nil, errorBlock: nil)
+
+        QBRequest.logOut(successBlock: { _ in
             UserManager.instance.currentUser = nil
             AppDelegate.shared.enterLandingView()
 

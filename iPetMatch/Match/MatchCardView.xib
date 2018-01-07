@@ -254,6 +254,7 @@
                 <outlet property="petCollectionView" destination="gDK-ES-eXL" id="utu-v1-gnr"/>
                 <outlet property="petTypeLabel" destination="dk0-HH-o4u" id="gQn-3D-xb4"/>
                 <outlet property="userImageView" destination="1rA-RE-hr9" id="Jrq-5A-eVd"/>
+                <outlet property="userImageViewLayer" destination="3PF-Wm-6n3" id="jav-uc-Wvf"/>
             </connections>
             <point key="canvasLocation" x="26" y="52.5"/>
         </view>
