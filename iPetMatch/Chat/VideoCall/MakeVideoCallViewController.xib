@@ -4,15 +4,28 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MakeVideoCallViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MakeVideoCallViewController" customModule="iPetMatch" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicatorView" destination="Vbg-44-jrq" id="Uyw-Cw-C2g"/>
+                <outlet property="callingFromLabel" destination="nw1-Xg-gSZ" id="VIG-gb-Tnf"/>
+                <outlet property="cameraButton" destination="BGe-Vj-8Ri" id="7r0-bc-dVr"/>
+                <outlet property="cameraPositionButton" destination="PX9-kH-L6g" id="FCR-W5-SEm"/>
+                <outlet property="controlPanelStackView" destination="MTM-zC-jaZ" id="lk8-id-tT0"/>
                 <outlet property="localVideoView" destination="cEs-TL-hUX" id="TCC-Xt-7El"/>
+                <outlet property="microphoneButton" destination="XCX-o8-owX" id="DYo-r7-sS6"/>
                 <outlet property="opponentVideoView" destination="Q4E-sl-0BN" id="mDJ-rs-hje"/>
+                <outlet property="timerLabel" destination="rpa-Dz-koU" id="uy8-tt-25k"/>
+                <outlet property="userImageView" destination="nKd-4P-65B" id="l04-JM-3Xt"/>
+                <outlet property="userNameLabel" destination="NLH-3q-i5k" id="vwM-hj-Vh5"/>
+                <outlet property="videoSignImageView" destination="nmj-p0-mKi" id="njl-l0-qzv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,28 +34,118 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q4E-sl-0BN" customClass="QBRTCRemoteVideoView" customModule="iPetMatch" customModuleProvider="target">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xS-bZ-lYE" customClass="MZTimerLabel">
+                    <rect key="frame" x="20" y="260" width="335" height="20.5"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RrP-kq-XPt">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JD6-2Y-D1e">
-                            <rect key="frame" x="116" y="591" width="143" height="30"/>
-                            <color key="backgroundColor" red="0.93457251789999995" green="0.3537055254" blue="0.34148138760000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="795-y5-mKr" userLabel="CallInfoView">
+                            <rect key="frame" x="20" y="60" width="335" height="490"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                    <color key="value" red="0.67041194439999996" green="0.70198559760000001" blue="0.69011390210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vbg-44-jrq" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                            <rect key="frame" x="154.5" y="216.5" width="65" height="65"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="143" id="gtt-9k-ExK"/>
+                                <constraint firstAttribute="width" secondItem="Vbg-44-jrq" secondAttribute="height" multiplier="1:1" id="LfQ-PV-lOc"/>
                             </constraints>
-                            <state key="normal" title="Decline">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="hangUpCall:" destination="-1" eventType="touchUpInside" id="Qa3-iA-3EG"/>
-                            </connections>
-                        </button>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                    <color key="value" red="0.64702028040000004" green="0.66663384439999995" blue="0.69790667299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballScaleRippleMultiple"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nKd-4P-65B" userLabel="UserImage">
+                            <rect key="frame" x="25" y="65" width="325" height="367.5"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="focusOnFaces" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nmj-p0-mKi" customClass="FLAnimatedImageView">
+                            <rect key="frame" x="247.5" y="459" width="67.5" height="75"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="circle" value="NO"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                    <color key="value" red="0.67041194439999996" green="0.70198559760000001" blue="0.69011390210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpa-Dz-koU" customClass="MZTimerLabel">
+                            <rect key="frame" x="60" y="471" width="88" height="21.5"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                            <color key="textColor" red="0.3217366934" green="0.25888746979999999" blue="0.25097307559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                            <color key="shadowColor" red="0.67041194439999996" green="0.70198559760000001" blue="0.69011390210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DSU-sy-5bD">
+                            <rect key="frame" x="60" y="471" width="177.5" height="51.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="                     " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nw1-Xg-gSZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="88" height="21.5"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                    <color key="textColor" red="0.3217366934" green="0.25888746979999999" blue="0.25097307559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" red="0.67041194439999996" green="0.70198559760000001" blue="0.69011390210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="              " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NLH-3q-i5k">
+                                    <rect key="frame" x="0.0" y="26.5" width="62.5" height="25"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" red="0.67041194439999996" green="0.70198559760000001" blue="0.69011390210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </label>
+                            </subviews>
+                        </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="JD6-2Y-D1e" secondAttribute="bottom" constant="46" id="K30-MQ-UJH"/>
-                        <constraint firstItem="JD6-2Y-D1e" firstAttribute="centerX" secondItem="Q4E-sl-0BN" secondAttribute="centerX" id="xay-76-EUz"/>
+                        <constraint firstItem="nmj-p0-mKi" firstAttribute="top" secondItem="795-y5-mKr" secondAttribute="bottom" constant="-91" id="GaO-zm-eQO"/>
+                        <constraint firstItem="Vbg-44-jrq" firstAttribute="centerX" secondItem="nKd-4P-65B" secondAttribute="centerX" id="HZ2-5t-GiP"/>
+                        <constraint firstItem="795-y5-mKr" firstAttribute="leading" secondItem="RrP-kq-XPt" secondAttribute="leading" constant="20" id="ITf-Ig-uBW"/>
+                        <constraint firstItem="Vbg-44-jrq" firstAttribute="centerY" secondItem="nKd-4P-65B" secondAttribute="centerY" id="Jrm-Y8-ycB"/>
+                        <constraint firstItem="rpa-Dz-koU" firstAttribute="centerX" secondItem="nw1-Xg-gSZ" secondAttribute="centerX" id="Mok-H8-YcB"/>
+                        <constraint firstItem="Vbg-44-jrq" firstAttribute="width" secondItem="nKd-4P-65B" secondAttribute="width" multiplier="0.2" id="NiM-k5-VEK"/>
+                        <constraint firstItem="nmj-p0-mKi" firstAttribute="width" secondItem="RrP-kq-XPt" secondAttribute="width" multiplier="0.18" id="OGg-4f-bis"/>
+                        <constraint firstItem="DSU-sy-5bD" firstAttribute="centerY" secondItem="nmj-p0-mKi" secondAttribute="centerY" id="SYa-mz-ubE"/>
+                        <constraint firstItem="nKd-4P-65B" firstAttribute="leading" secondItem="795-y5-mKr" secondAttribute="leading" constant="5" id="XZC-nD-TZS"/>
+                        <constraint firstItem="rpa-Dz-koU" firstAttribute="top" secondItem="nw1-Xg-gSZ" secondAttribute="top" id="Y9k-ZA-gSF"/>
+                        <constraint firstItem="nmj-p0-mKi" firstAttribute="trailing" secondItem="795-y5-mKr" secondAttribute="trailing" constant="-40" id="c2L-5Q-H7j"/>
+                        <constraint firstItem="nKd-4P-65B" firstAttribute="height" secondItem="795-y5-mKr" secondAttribute="height" multiplier="0.75" id="fo8-0z-i1w"/>
+                        <constraint firstItem="nmj-p0-mKi" firstAttribute="width" secondItem="nmj-p0-mKi" secondAttribute="height" multiplier="0.9:1" id="kL6-td-JAL"/>
+                        <constraint firstItem="795-y5-mKr" firstAttribute="top" secondItem="RrP-kq-XPt" secondAttribute="top" constant="60" id="kfC-0a-O3V"/>
+                        <constraint firstAttribute="trailing" secondItem="795-y5-mKr" secondAttribute="trailing" constant="20" id="lz2-r2-BKN"/>
+                        <constraint firstItem="nKd-4P-65B" firstAttribute="centerX" secondItem="RrP-kq-XPt" secondAttribute="centerX" id="m8E-Fu-cYM"/>
+                        <constraint firstItem="rpa-Dz-koU" firstAttribute="leading" secondItem="nw1-Xg-gSZ" secondAttribute="leading" id="sIk-ca-oaE"/>
+                        <constraint firstItem="rpa-Dz-koU" firstAttribute="centerY" secondItem="nw1-Xg-gSZ" secondAttribute="centerY" id="uYV-9v-Tlo"/>
+                        <constraint firstItem="nmj-p0-mKi" firstAttribute="leading" secondItem="DSU-sy-5bD" secondAttribute="trailing" constant="10" id="woi-UI-Lw1"/>
+                        <constraint firstItem="795-y5-mKr" firstAttribute="top" secondItem="nKd-4P-65B" secondAttribute="top" constant="-5" id="wqO-jH-KvB"/>
+                        <constraint firstItem="DSU-sy-5bD" firstAttribute="leading" secondItem="795-y5-mKr" secondAttribute="leading" constant="40" id="xew-kq-Evv"/>
                     </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q4E-sl-0BN" customClass="QBRTCRemoteVideoView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEs-TL-hUX" customClass="LocalVideoView" customModule="iPetMatch" customModuleProvider="target">
                     <rect key="frame" x="10" y="10" width="120" height="150"/>
@@ -52,18 +155,143 @@
                         <constraint firstAttribute="width" constant="120" id="tJB-pt-4Xm"/>
                     </constraints>
                 </view>
+                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MTM-zC-jaZ" userLabel="controlPanel">
+                    <rect key="frame" x="22.5" y="580" width="330" height="67"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BGe-Vj-8Ri" customClass="LGButton" customModule="LGButton">
+                            <rect key="frame" x="0.0" y="0.0" width="67.5" height="67"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="BGe-Vj-8Ri" secondAttribute="height" multiplier="1:1" id="BaT-H5-Emu"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                    <color key="value" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="showTouchFeedback" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="fullyRoundedCorners" value="YES"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                    <color key="value" red="0.67041194439999996" green="0.70198559760000001" blue="0.69011390210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="rightImageHeight">
+                                    <real key="value" value="44"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="image" keyPath="rightImageSrc" value="icon-cameraOn"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="switchCameraEnabled:" destination="-1" eventType="touchUpInside" id="wfy-8h-kZC"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PX9-kH-L6g" customClass="LGButton" customModule="LGButton">
+                            <rect key="frame" x="87.5" y="0.0" width="67.5" height="67"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                    <color key="value" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="showTouchFeedback" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="fullyRoundedCorners" value="YES"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                    <color key="value" red="0.67041194439999996" green="0.70198559760000001" blue="0.69011390210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="rightImageHeight">
+                                    <real key="value" value="46"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="image" keyPath="rightImageSrc" value="icon-cameraPosition"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="rightImageWidth">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="switchCameraPoistion:" destination="-1" eventType="touchUpInside" id="dpa-19-BSY"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XCX-o8-owX" customClass="LGButton" customModule="LGButton">
+                            <rect key="frame" x="175" y="0.0" width="67.5" height="67"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                    <color key="value" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="showTouchFeedback" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="fullyRoundedCorners" value="YES"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                    <color key="value" red="0.67041194439999996" green="0.70198559760000001" blue="0.69011390210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="image" keyPath="rightImageSrc" value="icon-microphoneOn"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="rightImageHeight">
+                                    <real key="value" value="44"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="switchMicrophoneMode:" destination="-1" eventType="touchUpInside" id="tLp-YE-eVs"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4yH-PN-Mrn" customClass="LGButton" customModule="LGButton">
+                            <rect key="frame" x="262.5" y="0.0" width="67.5" height="67"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                    <color key="value" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="showTouchFeedback" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="fullyRoundedCorners" value="YES"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                    <color key="value" red="0.67041194439999996" green="0.70198559760000001" blue="0.69011390210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="image" keyPath="rightImageSrc" value="icon-endPhone"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="rightImageHeight">
+                                    <real key="value" value="44"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="hangUpCall:" destination="-1" eventType="touchUpInside" id="wMv-Gl-HWQ"/>
+                            </connections>
+                        </view>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="9Oh-QZ-Q8J"/>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="MTM-zC-jaZ" firstAttribute="top" secondItem="795-y5-mKr" secondAttribute="bottom" constant="30" id="3zg-gC-bqu"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0xS-bZ-lYE" secondAttribute="trailing" constant="20" id="AoB-yT-61K"/>
+                <constraint firstItem="BGe-Vj-8Ri" firstAttribute="width" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.18" priority="999" id="EgR-lV-b9z"/>
+                <constraint firstItem="0xS-bZ-lYE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="JaF-wM-gHv"/>
                 <constraint firstItem="Q4E-sl-0BN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="KhW-jX-y1f"/>
+                <constraint firstItem="RrP-kq-XPt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="M0P-kp-X3q"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="MTM-zC-jaZ" secondAttribute="bottom" constant="20" id="Nt9-ic-fzG"/>
+                <constraint firstItem="MTM-zC-jaZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Q9a-en-wTR"/>
+                <constraint firstItem="RrP-kq-XPt" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="W6Q-57-GWI"/>
+                <constraint firstItem="RrP-kq-XPt" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="b83-7q-FQB"/>
                 <constraint firstAttribute="trailing" secondItem="Q4E-sl-0BN" secondAttribute="trailing" id="bNp-jD-i7V"/>
                 <constraint firstItem="cEs-TL-hUX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="bmC-D5-sja"/>
                 <constraint firstAttribute="bottom" secondItem="Q4E-sl-0BN" secondAttribute="bottom" id="dqc-MO-GQm"/>
+                <constraint firstItem="RrP-kq-XPt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jnO-bt-NIJ"/>
+                <constraint firstItem="0xS-bZ-lYE" firstAttribute="top" secondItem="cEs-TL-hUX" secondAttribute="bottom" constant="100" id="kGh-Qe-q9b"/>
                 <constraint firstItem="Q4E-sl-0BN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uNS-Bo-hD6"/>
                 <constraint firstItem="cEs-TL-hUX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="wqu-AQ-zub"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="26.5" y="51.5"/>
+            <point key="canvasLocation" x="266.5" y="-22.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="icon-cameraOn" width="56" height="35"/>
+        <image name="icon-cameraPosition" width="205" height="157"/>
+        <image name="icon-endPhone" width="75" height="59"/>
+        <image name="icon-microphoneOn" width="37" height="50"/>
+    </resources>
 </document>

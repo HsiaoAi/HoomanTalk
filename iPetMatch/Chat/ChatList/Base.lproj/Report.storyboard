@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Report User View Controller-->
+        <scene sceneID="cQV-kK-pxk">
+            <objects>
+                <viewController storyboardIdentifier="ReportUserViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sfa-1a-fB7" customClass="ReportUserViewController" customModule="iPetMatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dpR-TC-kvI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6X-zg-4GN">
+                                <rect key="frame" x="37.5" y="170" width="300" height="233.5"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FvS-10-5tG">
+                                        <rect key="frame" x="0.5" y="0.0" width="300" height="187"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="C8D-an-4pB">
+                                        <rect key="frame" x="0.0" y="187" width="300" height="46.5"/>
+                                        <subviews>
+                                            <button opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs5-Uz-9E2">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="46.5"/>
+                                                <color key="backgroundColor" red="0.29845899339999998" green="0.69420337679999999" blue="0.51775008440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <state key="normal" title="Send">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="sendReport:" destination="sfa-1a-fB7" eventType="touchUpInside" id="giD-OV-5bQ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dia-wZ-TQP">
+                                                <rect key="frame" x="150" y="0.0" width="150" height="46.5"/>
+                                                <color key="backgroundColor" red="0.1641129851" green="0.50144350530000004" blue="0.72513860460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelReport:" destination="sfa-1a-fB7" eventType="touchUpInside" id="xvm-oL-nkF"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <viewLayoutGuide key="safeArea" id="DdW-ro-brR"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="C8D-an-4pB" secondAttribute="bottom" id="8UF-Pv-WGE"/>
+                                    <constraint firstItem="C8D-an-4pB" firstAttribute="centerX" secondItem="y6X-zg-4GN" secondAttribute="centerX" id="AuE-Av-diC"/>
+                                    <constraint firstAttribute="trailing" secondItem="FvS-10-5tG" secondAttribute="trailing" id="CEC-oN-ZFo"/>
+                                    <constraint firstItem="C8D-an-4pB" firstAttribute="top" secondItem="FvS-10-5tG" secondAttribute="bottom" id="apS-CB-f01"/>
+                                    <constraint firstItem="C8D-an-4pB" firstAttribute="height" secondItem="y6X-zg-4GN" secondAttribute="height" multiplier="0.2" id="eC9-vG-3K5"/>
+                                    <constraint firstItem="FvS-10-5tG" firstAttribute="leading" secondItem="y6X-zg-4GN" secondAttribute="leading" id="fRF-aR-7Kk"/>
+                                    <constraint firstItem="C8D-an-4pB" firstAttribute="width" secondItem="y6X-zg-4GN" secondAttribute="width" id="pRa-QV-keb"/>
+                                    <constraint firstItem="FvS-10-5tG" firstAttribute="top" secondItem="y6X-zg-4GN" secondAttribute="top" id="rwS-IM-CoI"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.34999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="y6X-zg-4GN" firstAttribute="top" secondItem="0Pp-h6-A5x" secondAttribute="top" constant="150" id="BlP-eU-rsx"/>
+                            <constraint firstItem="y6X-zg-4GN" firstAttribute="height" secondItem="dpR-TC-kvI" secondAttribute="height" multiplier="0.35" id="LfE-Ny-AwD"/>
+                            <constraint firstItem="y6X-zg-4GN" firstAttribute="width" secondItem="dpR-TC-kvI" secondAttribute="width" multiplier="0.8" id="oa7-Sn-BKB"/>
+                            <constraint firstItem="y6X-zg-4GN" firstAttribute="centerX" secondItem="0Pp-h6-A5x" secondAttribute="centerX" id="zRc-So-74x"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0Pp-h6-A5x"/>
+                    </view>
+                    <connections>
+                        <outlet property="reportView" destination="y6X-zg-4GN" id="J4E-yQ-QWL"/>
+                        <outlet property="textfieldView" destination="FvS-10-5tG" id="iXT-ny-D1E"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JUI-Wk-aJZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21.600000000000001" y="36.431784107946029"/>
+        </scene>
+    </scenes>
+</document>

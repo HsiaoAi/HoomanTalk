@@ -18,11 +18,29 @@ extension AppDelegate {
 
     func makeEntryController() -> UIViewController {
 
-        // if login
-        // return TabBarController(itemTypes: [.chat])
+        return UIViewController()
+    }
 
-        // if not login
-        return LandingViewControViewController()
+    func enterLandingView() {
+
+        let landingStoryboard = UIStoryboard(name: "Landing", bundle: nil)
+        let landingViewController = landingStoryboard.instantiateViewController(withIdentifier: "LandingViewController")
+        let navigationController = UINavigationController(rootViewController: landingViewController)
+        window?.rootViewController = navigationController
+
+    }
+
+    func enterPassByLandingView() {
+
+        let tabBarController = TabBarController(itemTypes: [.match, .chat, .pet, .profile])
+        self.window?.rootViewController = tabBarController
+
+    }
+
+    func showLoading() {
+
+        SVProgressHUD.show(withStatus: NSLocalizedString("Loading", comment: ""))
+
     }
 
 }

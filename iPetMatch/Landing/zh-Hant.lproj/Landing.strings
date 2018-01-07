@@ -1,0 +1,21 @@
+/* Class = "UIButton"; normalTitle = "Fogot Password?"; ObjectID = "FyV-ro-oNB"; */
+"FyV-ro-oNB.normalTitle" = "忘記密碼";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "I3m-WH-QeP"; */
+"I3m-WH-QeP.placeholder" = "密碼";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "JKh-pL-v4M"; */
+"JKh-pL-v4M.placeholder" = "名字";
+
+/* Class = "UITextField"; placeholder = "Age"; ObjectID = "Z7n-2t-GIx"; */
+"Z7n-2t-GIx.placeholder" = "年齡";
+
+/* Class = "UILabel"; text = "Choose which you like (At least one or both)"; ObjectID = "qgQ-gR-yc2"; */
+"qgQ-gR-yc2.text" = "選擇喜歡的寵物類型 (至少一個)";
+
+/* Class = "UIButton"; normalTitle = "Read EULA"; ObjectID = "xUQ-QU-bBk"; */
+"xUQ-QU-bBk.normalTitle" = "詳讀EULA";
+
+/* Class = "UILabel"; text = "You agreed the EULA if you registered a new account."; ObjectID = "yQ5-oJ-eIw"; */
+"yQ5-oJ-eIw.text" = "一旦註冊, 代表同意最終用戶協議(EULA)";
+

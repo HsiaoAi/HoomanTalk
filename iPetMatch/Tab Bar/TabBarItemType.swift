@@ -8,7 +8,7 @@
 
 enum TabBarItemType {
 
-    case chat
+    case chat, match, pet, profile
 
 }
 
@@ -22,6 +22,17 @@ extension TabBarItemType {
 
             return NSLocalizedString("Chat", comment: "")
 
+        case .match:
+
+            return NSLocalizedString("Match", comment: "")
+
+        case .pet:
+
+            return NSLocalizedString("Pets", comment: "")
+
+        case .profile:
+
+            return NSLocalizedString("Profile", comment: "")
         }
     }
 
@@ -31,7 +42,19 @@ extension TabBarItemType {
 
         case .chat:
 
-            return #imageLiteral(resourceName: "icon-chat").withRenderingMode(.alwaysTemplate)
+            return #imageLiteral(resourceName: "icon-caht").withRenderingMode(.alwaysTemplate)
+
+        case .match:
+
+            return #imageLiteral(resourceName: "icon-match").withRenderingMode(.alwaysTemplate)
+
+        case .pet:
+
+            return #imageLiteral(resourceName: "icon-pet").withRenderingMode(.alwaysTemplate)
+
+        case .profile:
+
+            return #imageLiteral(resourceName: "icon-profile") .withRenderingMode(.alwaysTemplate)
 
         }
 
@@ -41,7 +64,7 @@ extension TabBarItemType {
 
         switch self {
 
-        case .chat:
+        case .chat, .match, .pet, .profile:
 
             return nil
 

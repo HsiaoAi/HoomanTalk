@@ -36,6 +36,14 @@ class TabBarController: UITabBarController {
 
         QBRTCClient.instance().add(self)
 
+        QBRTCAudioSession.instance().initialize()
+
+    }
+
+    override var prefersStatusBarHidden: Bool {
+
+        return false
+
     }
 
     // MARK: Set up tab bar
@@ -46,9 +54,15 @@ class TabBarController: UITabBarController {
 
         tabBar.barStyle = .default
 
-        tabBar.isTranslucent = false
+        let frost = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 
-        tabBar.tintColor = UIColor.lightGray
+        frost.frame = self.tabBar.bounds
+
+        self.tabBar.insertSubview(frost, at: 0)
+
+        tabBar.tintColor = UIColor.Custom.karolina
+
+        tabBar.barStyle = .default
 
     }
 
@@ -58,13 +72,40 @@ class TabBarController: UITabBarController {
 
         case .chat:
 
-            let chatListTableViewController = ChatListTableViewController()
+            let chatListTableViewController = ChatViewController()
 
             let navigationController = UINavigationController(rootViewController: chatListTableViewController)
 
             navigationController.tabBarItem = TabBarItem(itemType: itemType)
 
             return navigationController
+
+        case .match:
+
+            let matchStoryBoard = UIStoryboard(name: "Match", bundle: nil)
+
+            let matchViewController = matchStoryBoard.instantiateViewController(withIdentifier: "MatchViewController")
+
+            matchViewController.tabBarItem = TabBarItem(itemType: itemType)
+
+            return matchViewController
+
+        case .pet:
+
+            let petsStoryBoard = UIStoryboard(name: "Pets", bundle: nil)
+
+            let petsViewController = petsStoryBoard.instantiateViewController(withIdentifier: "PetsViewController")
+
+            petsViewController.tabBarItem = TabBarItem(itemType: itemType)
+
+            return petsViewController
+
+        case .profile:
+
+            let profileViewController = UserProfileViewController()
+            profileViewController.tabBarItem = TabBarItem(itemType: itemType)
+
+            return profileViewController
 
         }
 

@@ -5,19 +5,28 @@
 //  Created by Hsiao Ai LEE on 14/12/2017.
 //  Copyright © 2017 Hsiao Ai LEE. All rights reserved.
 //
+protocol CallManagerProtocol: class {
+
+    func didMakeCall(_ callManager: CallManager)
+}
 
 class CallManager {
 
     static let shared = CallManager()
+    weak var delegate: CallManagerProtocol?
 
     // fromUser: User
-    var fromUser: User?
+    var fromId: String?
 
-    var toUserID: UInt?
+    var toId: String?
 
     var conferenceType: QBRTCConferenceType = .audio
 
     var session: QBRTCSession?
+
+    var userInfo: [String: String]?
+
+    let audioManager = QBRTCAudioSession.instance()
 
     func makeCall(to userID: UInt, with conferenceType: QBRTCConferenceType) {
 
@@ -27,41 +36,80 @@ class CallManager {
 
         opponents.append(userID)
 
-        let newSession = QBRTCClient.instance().createNewSession(withOpponents: opponents, with: conferenceType)
+        if conferenceType == .audio {
+            let newSession = QBRTCClient.instance().createNewSession(withOpponents: opponents, with: conferenceType)
+            self.session = newSession
+            newSession.startCall(userInfo)
+        }
 
-        let userInfo: [String: String] = ["key": "value"]
+        RingtonePlayer.shared.startPhoneRing(callRole: .host)
 
-        newSession.startCall(userInfo)
+        let hostRef = Database.database().reference().child("user-friends").child(fromId!).child(toId!)
 
-        self.session = newSession
+        let receiveRref = Database.database().reference().child("user-friends").child(toId!).child(fromId!)
+
+        let callType = (conferenceType == .audio) ? "Audio Call" : "Video Call"
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        let timeZone = TimeZone.ReferenceType.local
+        dateFormatter.timeZone = timeZone
+        let dateString = dateFormatter.string(from: Date())
+
+        let callInfo = [Friend.Schema.lastCallType: callType,
+                        Friend.Schema.lastCallTime: dateString]
+        hostRef.updateChildValues(callInfo)
+        receiveRref.updateChildValues(callInfo)
+
+        self.delegate?.didMakeCall(self)
 
     }
 
-    func prepareLocalVideoTrack(localVideoView: UIView) {
+    func acceptCall() {
 
-        let videoFormat = QBRTCVideoFormat.init()
+        CallManager.shared.session?.acceptCall(self.userInfo)
 
-        let videoCapture = QBRTCCameraCapture(videoFormat: videoFormat, position: .front)
+        RingtonePlayer.shared.stopPhoneRing()
 
-        self.session?.localMediaStream.videoTrack.videoCapture = videoCapture
+    }
 
-        videoCapture.previewLayer.frame = localVideoView.bounds
+    func rejectCall(for session: QBRTCSession?) {
 
-        videoCapture.previewLayer.videoGravity = .resizeAspectFill
+        session?.rejectCall(self.userInfo)
 
-        videoCapture.startSession()
+        RingtonePlayer.shared.stopPhoneRing()
 
-        localVideoView.layer.insertSublayer(videoCapture.previewLayer, at: 0)
+    }
+
+    func hangupCall() {
+
+       RingtonePlayer.shared.stopPhoneRing()
+        CallManager.shared.session?.hangUp(self.userInfo)
+
+    }
+
+    func startCountingTime(timerLabel: MZTimerLabel) {
+
+        timerLabel.isHidden = false
+
+        timerLabel.addTimeCounted(byTime: 0)
+
+        timerLabel.start()
+
+    }
+
+    func stopCountingTime(timerLabel: MZTimerLabel) {
+
+        timerLabel.pause()
+
+    }
+
+    func timerReset(timerLabel: MZTimerLabel) {
+
+        timerLabel.reset()
+
+        timerLabel.isHidden = true
 
     }
 
 }
-
-// Call sounds
-//extension CallManager {
-//
-//    static func startPlayingSound() {}
-//
-//    static func stopPlayingSound() {}
-//
-//}

@@ -8,14 +8,34 @@ target 'iPetMatch' do
   use_frameworks!
 
   # Pods for iPetMatch
+  pod 'SDWebImage'
   
   pod 'Quickblox-WebRTC', '~> 2.6'
   pod 'QuickBlox'
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
-  pod 'Fabric'
-  pod 'Crashlytics'
-  pod 'IHKeyboardAvoiding'
+  pod 'Fabric', '~> 1.7.2'
+  pod 'Crashlytics', '~> 3.9.3'
   pod 'SCLAlertView'
-
+  pod 'MZTimerLabel', '~> 0.5'
+  pod 'SwiftTimer'
+  pod 'LGButton'
+  pod 'UIImageView+Extension', '~> 0.2'
+  pod 'SDWebImage/GIF'
+  pod 'FLAnimatedImage', '~> 1.0'
+  pod 'IQKeyboardManagerSwift'
+  pod 'Fusuma'     
+  pod 'ChameleonFramework'
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
+  pod 'BetterSegmentedControl', '~> 0.9' 
+  pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Database'
+  pod 'WCLShineButton' 
+  pod 'Nuke'
+  pod 'FaceAware'
+  pod 'NVActivityIndicatorView'
+  pod 'CZPicker'
+  pod 'Koloda', '~> 4.3.1'
 
 end
