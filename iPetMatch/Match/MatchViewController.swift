@@ -460,12 +460,12 @@ extension MatchViewController: UICollectionViewDataSource {
 
             if self.usersIdLikedByCurrentUser.contains(user.id) {
 
-                cell.likeButton.setClicked(true, animated: true)
+                cell.likeButton.setClicked(true, animated: false)
                 cell.likeButton.isEnabled = false
 
             } else {
 
-                cell.likeButton.setClicked(false, animated: true)
+                cell.likeButton.setClicked(false, animated: false)
                 cell.likeButton.isEnabled = true
                 cell.likeButton.addTarget(self, action: #selector(responseLike(_:)), for: .touchUpInside)
 
