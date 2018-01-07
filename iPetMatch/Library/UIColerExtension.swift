@@ -29,5 +29,6 @@ extension UIColor {
         static let greyishBrown75 = UIColor(red: 82 / 255, green: 66 / 255, blue: 64 / 255, alpha: 0.75)
         static let grapefruit = UIColor(red: 255 / 255, green: 94 / 255, blue: 89 / 255, alpha: 1)
         static let darkerRed = UIColor(red: 203 / 255, green: 75 / 255, blue: 71 / 255, alpha: 1)
+        static let karolina = UIColor(red: 42 / 255, green: 128 / 255, blue: 185 / 255, alpha: 1)
     }
 }

@@ -8,85 +8,131 @@
 
 protocol LikedUsersMangerProtocol: class {
 
-    func didObserveReceivedLikes(_ likedMeUsers: [LikeMe])
+    func didObserveReceivedLikes(_ likedMeUsers: [IPetUser])
     func observeReceivedLikesError(_ error: Error)
 }
 
 class LikedUsersManger {
 
-    static let instance = LikedUsersManger()
     weak var delegate: LikedUsersMangerProtocol?
-    var likesForMe = [LikeMe]()
 
-    func didLikeUser(with user: MatchCardUser) {
+    var likeMeUsers = [IPetUser]()
 
-        guard let uid = Auth.auth().currentUser?.uid,
+    func sendLike(to user: IPetUser) {
+
+        guard let fromUser = Auth.auth().currentUser,
             let currentUser = UserManager.instance.currentUser else {
 
-            SCLAlertView().showWarning(NSLocalizedString("Warning", comment: ""),
-                                       subTitle: NSLocalizedString("User didn't log it", comment: ""))
-            return
+                SCLAlertView().showWarning(NSLocalizedString("Warning", comment: ""),
+                                           subTitle: NSLocalizedString("User didn't log it", comment: ""))
+                return
         }
-        
-        let fromId = uid
+
+        let fromId = fromUser.uid
         let toId = user.id
 
         let ref = Database.database().reference().child(FirebaseSchema.likes.rawValue)
         let childRef = ref.childByAutoId()
         let values: [String: Any] = [Like.Schema.fromID: fromId,
-                                    Like.Schema.toID: toId,
-                                    Like.Schema.timestamp: Like.getCurrentDate()]
+                                     Like.Schema.toID: toId,
+                                     Like.Schema.timestamp: Like.getCurrentDate()]
         childRef.updateChildValues(values)
 
         let userSentLikeRef = Database.database().reference().child("user-sentLikes").child(fromId)
         userSentLikeRef.updateChildValues([toId: Like.getCurrentDate()])
 
         let userReceivedLikeRef = Database.database().reference().child("user-ReceivedLikes").child(toId).child(fromId)
-        
-        let likeInfo: [String: Any] = [LikeMe.Schema.fromUserName: currentUser.name as Any,
-                                     LikeMe.Schema.fromUserImageURL: currentUser.imageURL as Any,
-                                     LikeMe.Schema.timestamp: Like.getCurrentDate() as Any]
+
+        let likeInfo: [String: Any] = [
+
+            IPetUser.Schema.loginEmail: currentUser.loginEmail,
+            IPetUser.Schema.name: currentUser.name,
+            IPetUser.Schema.petPersonType: currentUser.petPersonType.rawValue,
+            IPetUser.Schema.gender: currentUser.gender.rawValue,
+            IPetUser.Schema.yearOfBirth: currentUser.yearOfBirth,
+            IPetUser.Schema.imageURL: currentUser.imageURL ?? "",
+            IPetUser.Schema.callingID: currentUser.callingID,
+            FirebaseSchema.timeStamp.rawValue: Like.getCurrentDate()
+
+        ]
 
         userReceivedLikeRef.updateChildValues(likeInfo)
+        pushReceivedLikeNotifictaion(from: currentUser.name, toUserId: "\(user.callingID)")
+
+    }
+
+    func pushReceivedLikeNotifictaion(from userName: String, toUserId userCallingID: String) {
+
+        let pushMessage = NSLocalizedString("Someone likes you! Come back to check it.", comment: "")
+
+        QBRequest.sendPush(withText: pushMessage,
+                           toUsers: userCallingID,
+
+                           successBlock: {(_, _) -> Void in
+
+                            print("+++Push Done")},
+
+                           errorBlock: {(_ error: QBError) -> Void in
+
+                            print("Push error \(error)")
+
+        })
 
     }
 
     func observeReceivedLikes() {
-        
+
         guard let uid = Auth.auth().currentUser?.uid else {
-            
+
             SCLAlertView().showWarning(NSLocalizedString("Warning", comment: ""),
                                        subTitle: NSLocalizedString("User didn't log it", comment: ""))
             return
         }
-        
+
         let toId = uid
-        
+
         let userReceivedLikeRef = Database.database().reference().child("user-ReceivedLikes").child(toId)
-        
+
         userReceivedLikeRef.observe(.value) {[weak self] (snapshot) in
-            
+
+            self?.likeMeUsers.removeAll()
+
             guard let likeDics = snapshot.value as? [String: Any] else { return }
-            
-            for (userId, userInfo) in likeDics {
-                
-                guard let userDic = userInfo as? [String: Any] else { return }
-                guard let name = userDic[LikeMe.Schema.fromUserName] as? String,
-                    let imageURL = userDic[LikeMe.Schema.fromUserImageURL] as? String,
-                    let timeStamp = userDic[LikeMe.Schema.timestamp] as? Int else { return }
-                
-                let likeMe = LikeMe(fromUserName: name, fromUserImageURL: imageURL, timestamp: timeStamp)
-                
-                self?.likesForMe.append(likeMe)
-                
+
+            for (userId, userData) in likeDics {
+
+                guard let userDic = userData as? [String: Any] else {
+
+                    return
+                }
+
+                guard
+                    let email = userDic[IPetUser.Schema.loginEmail] as? String,
+                    let name = userDic[IPetUser.Schema.name] as? String,
+                    let imageURL = userDic[IPetUser.Schema.imageURL] as? String,
+                    let callingID = userDic[IPetUser.Schema.callingID] as? Int,
+                    let yearOfBirth = userDic[IPetUser.Schema.yearOfBirth] as? Int,
+                    let gender = userDic[IPetUser.Schema.gender] as? String,
+                    let petPersionType = userDic[IPetUser.Schema.petPersonType] as? String else {
+
+                        //self.delegate?.observeMatchCardUsersError(Error)
+                        return
+                }
+
+                let ipetUser = IPetUser(id: userId, loginEmail: email, name: name, petPersonType: PetPersonType(rawValue: petPersionType)!, gender: Gender(rawValue: gender)!, yearOfBirth: yearOfBirth, imageURL: imageURL, callingID: UInt(callingID))
+
+                self?.likeMeUsers.append(ipetUser)
+
             }
-            guard let likesForMe = self?.likesForMe else { return }
-            self?.delegate?.didObserveReceivedLikes(likesForMe)
-        
-        
+
+            if self?.likeMeUsers != nil {
+
+                self?.delegate?.didObserveReceivedLikes((self?.likeMeUsers)!)
+
+            }
+
         }
-        
-        
+
     }
 
 }

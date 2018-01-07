@@ -5,13 +5,20 @@
 //  Created by Hsiao Ai LEE on 14/12/2017.
 //  Copyright © 2017 Hsiao Ai LEE. All rights reserved.
 //
+protocol CallManagerProtocol: class {
+
+    func didMakeCall(_ callManager: CallManager)
+}
 
 class CallManager {
 
     static let shared = CallManager()
+    weak var delegate: CallManagerProtocol?
 
     // fromUser: User
-    var toUserID: UInt?
+    var fromId: String?
+
+    var toId: String?
 
     var conferenceType: QBRTCConferenceType = .audio
 
@@ -29,13 +36,32 @@ class CallManager {
 
         opponents.append(userID)
 
-        let newSession = QBRTCClient.instance().createNewSession(withOpponents: opponents, with: conferenceType)
-
-        newSession.startCall(userInfo)
+        if conferenceType == .audio {
+            let newSession = QBRTCClient.instance().createNewSession(withOpponents: opponents, with: conferenceType)
+            self.session = newSession
+            newSession.startCall(userInfo)
+        }
 
         RingtonePlayer.shared.startPhoneRing(callRole: .host)
 
-        self.session = newSession
+        let hostRef = Database.database().reference().child("user-friends").child(fromId!).child(toId!)
+
+        let receiveRref = Database.database().reference().child("user-friends").child(toId!).child(fromId!)
+
+        let callType = (conferenceType == .audio) ? "Audio Call" : "Video Call"
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        let timeZone = TimeZone.ReferenceType.local
+        dateFormatter.timeZone = timeZone
+        let dateString = dateFormatter.string(from: Date())
+
+        let callInfo = [Friend.Schema.lastCallType: callType,
+                        Friend.Schema.lastCallTime: dateString]
+        hostRef.updateChildValues(callInfo)
+        receiveRref.updateChildValues(callInfo)
+
+        self.delegate?.didMakeCall(self)
 
     }
 
@@ -87,12 +113,3 @@ class CallManager {
     }
 
 }
-
-// Call sounds
-//extension CallManager {
-//
-//    static func startPlayingSound() {}
-//
-//    static func stopPlayingSound() {}
-//
-//}

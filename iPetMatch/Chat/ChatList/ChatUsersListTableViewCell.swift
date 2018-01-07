@@ -12,21 +12,59 @@ class ChatUsersListTableViewCell: UITableViewCell, Identifiable {
 
     class var identifier: String { return String(describing: self) }
 
+    @IBOutlet weak var loadingImageView: NVActivityIndicatorView!
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var lastCallLabel: UILabel!
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var actionPanelView: UIView!
 
-    @IBOutlet weak var userNumberLabel: UILabel!
+    @IBOutlet weak var audioCallButton: LGButton!
+    @IBOutlet weak var videoCallButton: LGButton!
+    @IBOutlet weak var blockUserButton: LGButton!
+    @IBOutlet weak var reportUSerButton: LGButton!
+
+    @IBOutlet weak var friendInfoView: UIView!
+    var friendCallingId: UInt?
+    var friendInfo: [String: String]?
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        audioCallButton.titleString = NSLocalizedString("AudioCall", comment: "")
+        videoCallButton.titleString = NSLocalizedString("VedioCall", comment: "")
+        reportUSerButton.titleString = NSLocalizedString("Report", comment: "")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        self.layer.borderColor = UIColor.blue.cgColor
+    }
 
-        self.layer.borderWidth = selected ? 5 : 0
+    func set(content friend: Friend) {
+
+        self.userNameLabel.text = friend.name
+        self.lastCallLabel.text = String(describing: friend.lastCallTime)
+
+        userImageView.image = nil
+        let imageAdress = friend.imageURL
+        if let imageURL = URL(string: imageAdress!) {
+            UserManager.setUserProfileImage(with: imageURL, into: self.userImageView, activityIndicatorView: self.loadingImageView)
+        }
+
+        if let lastCallType = friend.lastCallType,
+            let lastCallTime = friend.lastCallTime {
+
+            let lastCallingTypeString = (lastCallType == "Audio Call") ? NSLocalizedString("Last audio call", comment: "") : NSLocalizedString("Last video call", comment: "")
+            lastCallLabel.text = "\(lastCallingTypeString): \(lastCallTime)"
+
+        } else {
+
+            lastCallLabel.text = NSLocalizedString("Click to start your first call!", comment: "")
+        }
+
+        self.preservesSuperviewLayoutMargins = false
+        self.separatorInset = UIEdgeInsets.zero
+        self.layoutMargins = UIEdgeInsets.zero
+
     }
 
 }

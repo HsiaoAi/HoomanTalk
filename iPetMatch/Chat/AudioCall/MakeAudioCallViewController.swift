@@ -10,50 +10,52 @@ import UIKit
 
 class MakeAudioCallViewController: UIViewController {
 
+    @IBOutlet weak var friendImageView: UIImageView!
+    @IBOutlet weak var friendNameLabel: UILabel!
+    @IBOutlet weak var acticityIndicatorView: NVActivityIndicatorView!
     @IBOutlet weak var timerLabel: MZTimerLabel!
-
     @IBOutlet weak var callingToLabel: UILabel!
-
     @IBOutlet weak var speakerButton: LGButton!
-
     @IBOutlet weak var microphoneButton: LGButton!
-
     @IBOutlet weak var audioSignGifView: FLAnimatedImageView!
-
+    var selectedFriend: Friend?
     @IBAction func declineButton(_ sender: Any) {
 
-        let userInfo: [String: String] = ["key": "value"]
-
-        CallManager.shared.session?.hangUp(userInfo)
-
+        CallManager.shared.session?.hangUp(nil)
         CallManager.shared.session = nil
 
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        sendPushToOpponentsAboutNewCall()
-
-       // QBRTCAudioSession.instance().initialize()
-
         self.timerLabel.isHidden = true
-
         setupAudioSignImageView()
-
+        setupCallInfoView()
         QBRTCClient.instance().add(self)
-
         CallManager.shared.audioManager.currentAudioDevice = QBRTCAudioDevice.receiver
-
+        callingToLabel.text = NSLocalizedString("Audio Calling To", comment: "")
         self.navigationController?.isNavigationBarHidden = true
+    }
+
+    func setupCallInfoView() {
+
+        guard let friend = self.selectedFriend else {
+            SCLAlertView().showError(NSLocalizedString("Error", comment: ""), subTitle: NSLocalizedString("Friend can't answer the call", comment: ""))
+            return
+        }
+        friendNameLabel.text = friend.name
+        let imageAdress = friend.imageURL
+        if let imageURL = URL(string: imageAdress!) {
+            UserManager.setUserProfileImage(with: imageURL, into: self.friendImageView, activityIndicatorView: self.acticityIndicatorView)
+        }
+        sendPushToOpponentsAboutNewCall(from: UserManager.instance.currentUser!.name, to: "\(friend.callingID!)")
+
     }
 
     func setupAudioSignImageView() {
 
         let path = Bundle.main.path(forResource: "AudioCall.gif", ofType: nil)!
-
         let url = URL(fileURLWithPath: path)
-
         audioSignGifView.sd_setImage(with: url, placeholderImage: nil)
 
     }
@@ -99,13 +101,15 @@ extension MakeAudioCallViewController: QBRTCClientDelegate {
 
     func session(_ session: QBRTCSession, acceptedByUser userID: NSNumber, userInfo: [String: String]? = nil) {
 
-        callingToLabel.text = "Connecting..."
+        callingToLabel.text = NSLocalizedString("Connecting...", comment: "")
 
     }
 
     func session(_ session: QBRTCSession, rejectedByUser userID: NSNumber, userInfo: [String: String]? = nil) {
 
-        callingToLabel.text = "Rejected By"
+        callingToLabel.text = NSLocalizedString("Rejected by friend", comment: "")
+
+        SCLAlertView().showInfo("Information", subTitle: NSLocalizedString("Rejected by friend", comment: ""))
 
     }
 
@@ -113,20 +117,17 @@ extension MakeAudioCallViewController: QBRTCClientDelegate {
 
         print("++++++被掛斷++++++")
 
-        callingToLabel.text = "Hang Up By"
+        callingToLabel.text = NSLocalizedString("Hang up by friend", comment: "")
+        SCLAlertView().showInfo("Information", subTitle: NSLocalizedString("Hang up by friend", comment: ""))
 
     }
 
     func session(_ session: QBRTCBaseSession, connectedToUser userID: NSNumber) {
 
         callingToLabel.textColor = UIColor.clear
-
         timerLabel.isHidden = false
-
         callingToLabel.textColor = UIColor.clear
-
         audioSignGifView.stopAnimating()
-
         CallManager.shared.startCountingTime(timerLabel: timerLabel)
     }
 
@@ -158,9 +159,6 @@ extension MakeAudioCallViewController: QBRTCClientDelegate {
 
         if state == .closed && CallManager.shared.session != nil {
 
-            //
-            print("==============Your friend disconnect this call")
-
             self.dismiss(animated: false, completion: nil)
 
         }
@@ -173,15 +171,12 @@ extension MakeAudioCallViewController: QBRTCClientDelegate {
 
 extension MakeAudioCallViewController {
 
-    func sendPushToOpponentsAboutNewCall() {
+    func sendPushToOpponentsAboutNewCall(from userName: String, to userId: String) {
 
-        var pushMessage = QBMPushMessage(payload: ["custom": "ilct23", "text": "Hello World !"])
+        let pushMessage = NSLocalizedString("Incoming audio call from ", comment: "") + "\(userName)"
 
-        var userID = "38863883"
-
-        QBRequest.sendPush(withText: "Audio Call From ilct23",
-
-                           toUsers: userID,
+        QBRequest.sendPush(withText: pushMessage,
+                           toUsers: userId,
 
                            successBlock: {(_, _) -> Void in
 

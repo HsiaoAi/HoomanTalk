@@ -48,7 +48,8 @@ class WCLShineClickLayer: CALayer {
     var clicked: Bool = false {
         didSet {
             if image.isDefaultAndSelect() {
-                backgroundColor = UIColor.clear.cgColor
+                //HERE
+                backgroundColor = UIColor.white.cgColor
                 if clicked {
                     contents = image.getImages().last?.cgImage
                 }else {
@@ -82,7 +83,7 @@ class WCLShineClickLayer: CALayer {
     //MARK: Override
     override func layoutSublayers() {
         if image.isDefaultAndSelect() {
-            backgroundColor = UIColor.clear.cgColor
+            backgroundColor = UIColor.white.cgColor
         }else {
             maskLayer.frame = bounds
             maskLayer.contents = image.getImages().first?.cgImage

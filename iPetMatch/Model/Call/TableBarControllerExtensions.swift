@@ -19,13 +19,17 @@ extension TabBarController: QBRTCClientDelegate {
             CallManager.shared.rejectCall(for: session)
 
         } else {
-
+            CallManager.shared.userInfo = nil
             CallManager.shared.session = session
 
             RingtonePlayer.shared.startPhoneRing(callRole: .receiver)
+            CallManager.shared.userInfo = userInfo
 
             let incommingCallViewController = IncommingCallViewController()
 
+            let incommingLabel = (session.conferenceType == .audio) ? NSLocalizedString("Incoming Audio Call", comment: "") :
+                NSLocalizedString("Incoming Vedio Call", comment: "")
+            incommingCallViewController.incommingType = incommingLabel
             self.present(incommingCallViewController, animated: true, completion: nil)
 
         }
@@ -38,9 +42,8 @@ extension TabBarController: QBRTCClientDelegate {
         print("***sessionDidClose***")
 
         CallManager.shared.session = nil
-
+        CallManager.shared.userInfo = nil
         RingtonePlayer.shared.stopPhoneRing()
-
         self.dismiss(animated: false, completion: nil)
 
     }

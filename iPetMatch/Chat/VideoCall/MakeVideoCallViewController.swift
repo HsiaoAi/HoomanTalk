@@ -12,19 +12,26 @@ class MakeVideoCallViewController: UIViewController {
 
     var videoCapture: QBRTCCameraCapture?
 
+    var selectedFriend: Friend?
+    var callingFriendInfo: [String: String]?
+
     @IBOutlet weak var localVideoView: LocalVideoView!
 
     @IBOutlet weak var controlPanelStackView: UIStackView!
 
+    @IBOutlet weak var videoSignImageView: FLAnimatedImageView!
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
+
+    @IBOutlet weak var callingFromLabel: UILabel!
+    @IBOutlet weak var activityIndicatorView: NVActivityIndicatorView!
     @IBOutlet weak var opponentVideoView: QBRTCRemoteVideoView!
 
     @IBOutlet weak var timerLabel: MZTimerLabel!
 
     @IBAction func hangUpCall(_ sender: Any) {
 
-        let userInfo: [String: String] = ["key": "value"]
-
-        CallManager.shared.session?.hangUp(userInfo)
+        CallManager.shared.session?.hangUp(nil)
 
     }
 
@@ -61,11 +68,15 @@ class MakeVideoCallViewController: UIViewController {
 
             CallManager.shared.session!.localMediaStream.videoTrack.isEnabled = false
 
+            self.localVideoView.isHidden = true
+
             cameraButton.rightImageSrc = IconImage.cameraOff.image
 
         } else {
 
             CallManager.shared.session!.localMediaStream.videoTrack.isEnabled = true
+
+            self.localVideoView.isHidden = false
 
             cameraButton.rightImageSrc = IconImage.cameraOn.image
 
@@ -102,34 +113,56 @@ extension MakeVideoCallViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-
-        //QBRTCAudioSession.instance().initialize()
+        self.timerLabel.isHidden = true
 
         opponentVideoView.videoGravity = "AVLayerVideoGravityResizeAspect"
 
         CallManager.shared.audioManager.currentAudioDevice = QBRTCAudioDevice.speaker
 
         QBRTCClient.instance().add(self)
+        setupVideoSignImageView()
 
         setupLocalVideoView()
-
         if CallManager.shared.session != nil {
 
             // Incomming
 
+            guard let callingUser = CallManager.shared.userInfo else {
+                SCLAlertView().showInfo(NSLocalizedString("Error", comment: ""), subTitle: NSLocalizedString("Friend end this call", comment: ""))
+                return
+            }
+            callingFromLabel.text = NSLocalizedString("Video Call From", comment: "")
+            userNameLabel.text = callingUser[Friend.Schema.name]
+            let imageAdress = callingUser[Friend.Schema.imageURL]
+            if let imageURL = URL(string: imageAdress!) {
+                UserManager.setUserProfileImage(with: imageURL, into: self.userImageView, activityIndicatorView: self.activityIndicatorView)
+            }
             self.prepareLocalVideoTrack()
 
         } else {
 
             // Make call
+            guard let callToUser = self.selectedFriend,
+                let callingID = callToUser.callingID as NSNumber? else {
+                SCLAlertView().showInfo(NSLocalizedString("Error", comment: ""), subTitle: NSLocalizedString("Try again", comment: ""))
+                self.dismiss(animated: false, completion: nil)
+                return
+            }
 
-            CallManager.shared.session = QBRTCClient.instance().createNewSession(withOpponents: [38863883], with: .video)
+            CallManager.shared.session = QBRTCClient.instance().createNewSession(withOpponents: [callingID], with: .video)
+
+            callingFromLabel.text = NSLocalizedString("Video Calling To", comment: "")
+            userNameLabel.text = callToUser.name
+            let imageAdress = callToUser.imageURL
+            if let imageURL = URL(string: imageAdress!) {
+                UserManager.setUserProfileImage(with: imageURL, into: self.userImageView, activityIndicatorView: self.activityIndicatorView)
+            }
 
             self.prepareLocalVideoTrack()
 
-            CallManager.shared.session?.startCall(nil)
+            CallManager.shared.session?.startCall(CallManager.shared.userInfo)
 
-            sendPushToOpponentsAboutNewCall()
+            sendPushToOpponentsAboutNewCall(from: UserManager.instance.currentUser!.name, to: "\(callToUser.callingID!)")
 
             RingtonePlayer.shared.startPhoneRing(callRole: .host)
 
@@ -142,6 +175,16 @@ extension MakeVideoCallViewController {
         super.viewWillAppear(animated)
 
         timerLabel.isHidden = true
+
+    }
+
+    func setupVideoSignImageView() {
+
+        let path = Bundle.main.path(forResource: "VideoCall.gif", ofType: nil)!
+
+        let url = URL(fileURLWithPath: path)
+
+        videoSignImageView.sd_setImage(with: url, placeholderImage: nil)
 
     }
 
@@ -171,23 +214,34 @@ extension MakeVideoCallViewController: QBRTCClientDelegate {
 
         self.opponentVideoView.setVideoTrack(videoTrack)
 
+        callingFromLabel.text = NSLocalizedString("Friend didn't user camara", comment: "")
+
+    }
+
+    func session(_ session: QBRTCBaseSession, connectedToUser userID: NSNumber) {
+
+//        callingFromLabel.isHidden = true
+//        timerLabel.isHidden = false
+
+      //  CallManager.shared.startCountingTime(timerLabel: timerLabel)
+
     }
 
     func session(_ session: QBRTCBaseSession, startedConnectingToUser userID: NSNumber) {
 
-        CallManager.shared.startCountingTime(timerLabel: timerLabel)
+      //  CallManager.shared.startCountingTime(timerLabel: timerLabel)
 
     }
 
     func session(_ session: QBRTCBaseSession, disconnectedFromUser userID: NSNumber) {
 
-        CallManager.shared.stopCountingTime(timerLabel: timerLabel)
+     //   CallManager.shared.stopCountingTime(timerLabel: timerLabel)
 
     }
 
     func session(_ session: QBRTCBaseSession, connectionClosedForUser userID: NSNumber) {
 
-        CallManager.shared.stopCountingTime(timerLabel: timerLabel)
+     //   CallManager.shared.stopCountingTime(timerLabel: timerLabel)
 
     }
 
@@ -214,25 +268,15 @@ extension MakeVideoCallViewController: UIDropInteractionDelegate {
     @objc func draggedView(_ sender: UIPanGestureRecognizer) {
 
         self.view.bringSubview(toFront: localVideoView)
-
         let translation = sender.translation(in: self.view)
-
         let MinXCenter = localVideoView.bounds.width / 2
-
         let MaxXCenter = UIScreen.main.bounds.width - MinXCenter
-
         let MinYCenter = localVideoView.bounds.height / 2
-
         let MaxYCenter = UIScreen.main.bounds.height - MinYCenter
-
         let newXCenter = min(MaxXCenter, (max(localVideoView.center.x + translation.x, MinXCenter)))
-
         let newYCenter = min(MaxYCenter, (max(localVideoView.center.y + translation.y, MinYCenter)))
-
         localVideoView.center = CGPoint(x: newXCenter,
-
                                         y: newYCenter)
-
         sender.setTranslation(CGPoint.zero, in: self.view)
 
     }
@@ -243,24 +287,16 @@ extension MakeVideoCallViewController: UIDropInteractionDelegate {
 
 extension MakeVideoCallViewController {
 
-    func sendPushToOpponentsAboutNewCall() {
+    func sendPushToOpponentsAboutNewCall(from userName: String, to userId: String) {
 
-        var pushMessage = QBMPushMessage(payload: ["custom": "ilct23", "text": "Hello World !"])
+        let pushMessage = NSLocalizedString("Incoming video call from ", comment: "") + "\(userName)"
 
-        var userID = "38863883"
-
-        QBRequest.sendPush(withText: "Video Call From ilct23",
-
-                           toUsers: userID,
-
+        QBRequest.sendPush(withText: pushMessage,
+                           toUsers: userId,
                            successBlock: {(_, _) -> Void in
-
                             print("+++Push Done")},
-
                            errorBlock: {(_ error: QBError) -> Void in
-
                             print("Push error \(error)")
-
         })
     }
 

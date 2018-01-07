@@ -11,19 +11,15 @@ import UIKit
 class IncommingCallViewController: UIViewController {
 
     @IBOutlet weak var timerLabel: MZTimerLabel!
-
-    @IBOutlet weak var userImageView: UIImageView!
-
+    @IBOutlet weak var friendImageView: UIImageView!
+    @IBOutlet weak var activityIndicatorView: NVActivityIndicatorView!
     @IBOutlet weak var incomingCallLabel: UILabel!
-
     @IBOutlet weak var hostUserNameLabel: UILabel!
-
     @IBOutlet weak var beforeAnswerButtonsStack: UIStackView!
-
     @IBOutlet weak var afterAnswerBurronStack: UIStackView!
-
     @IBOutlet weak var speakerButton: LGButton!
     var isAnswer = false
+    var incommingType: String!
 
     @IBOutlet weak var microphoneButton: LGButton!
 
@@ -32,6 +28,8 @@ class IncommingCallViewController: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
+
+        incomingCallLabel.text = incommingType
 
         self.navigationController?.isNavigationBarHidden = true
 
@@ -43,6 +41,8 @@ class IncommingCallViewController: UIViewController {
 
         QBRTCClient.instance().add(self)
 
+        setupFriendInfoView()
+
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -50,6 +50,21 @@ class IncommingCallViewController: UIViewController {
         super.viewDidDisappear(animated)
 
         CallManager.shared.timerReset(timerLabel: timerLabel)
+
+    }
+
+    func setupFriendInfoView() {
+
+        guard let userInfo = CallManager.shared.userInfo else {
+            SCLAlertView().showError(NSLocalizedString("Error", comment: ""), subTitle: NSLocalizedString("Unknown caller", comment: ""))
+            return
+        }
+
+        hostUserNameLabel.text = userInfo[Friend.Schema.name]
+        let imageAdress = userInfo[Friend.Schema.imageURL]
+        if let imageURL = URL(string: imageAdress!) {
+            UserManager.setUserProfileImage(with: imageURL, into: self.friendImageView, activityIndicatorView: self.activityIndicatorView)
+        }
 
     }
 
@@ -130,7 +145,7 @@ class IncommingCallViewController: UIViewController {
 
         case .audio:
 
-            incomingCallLabel.text = "Connecting..."
+            incomingCallLabel.text = NSLocalizedString("Connecting...", comment: "")
 
             beforeAnswerButtonsStack.isHidden = true
 
@@ -141,7 +156,7 @@ class IncommingCallViewController: UIViewController {
             turnOffSpeaker()
 
         case .video:
-
+            let answerVideoCallViewController = MakeVideoCallViewController()
             self.present(MakeVideoCallViewController(), animated: false, completion: nil)
 
         }
@@ -149,8 +164,6 @@ class IncommingCallViewController: UIViewController {
     }
 
     @IBAction func declineCall(_ sender: Any) {
-
-        let userInfo: [String: String] = ["key": "value"]
 
         if isAnswer {
 

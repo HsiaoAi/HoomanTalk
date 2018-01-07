@@ -60,7 +60,9 @@ class TabBarController: UITabBarController {
 
         self.tabBar.insertSubview(frost, at: 0)
 
-        tabBar.tintColor = UIColor.lightGray
+        tabBar.tintColor = UIColor.Custom.karolina
+
+        tabBar.barStyle = .default
 
     }
 
@@ -70,7 +72,7 @@ class TabBarController: UITabBarController {
 
         case .chat:
 
-            let chatListTableViewController = ChatListTableViewController()
+            let chatListTableViewController = ChatViewController()
 
             let navigationController = UINavigationController(rootViewController: chatListTableViewController)
 
@@ -80,15 +82,30 @@ class TabBarController: UITabBarController {
 
         case .match:
 
-            let langdingStoryboard = UIStoryboard(name: "Match", bundle: nil)
+            let matchStoryBoard = UIStoryboard(name: "Match", bundle: nil)
 
-            let matchViewController = langdingStoryboard.instantiateViewController(withIdentifier: "MatchViewController")
+            let matchViewController = matchStoryBoard.instantiateViewController(withIdentifier: "MatchViewController")
 
-            let navigationController = UINavigationController(rootViewController: matchViewController)
+            matchViewController.tabBarItem = TabBarItem(itemType: itemType)
 
-            navigationController.tabBarItem = TabBarItem(itemType: itemType)
+            return matchViewController
 
-            return navigationController
+        case .pet:
+
+            let petsStoryBoard = UIStoryboard(name: "Pets", bundle: nil)
+
+            let petsViewController = petsStoryBoard.instantiateViewController(withIdentifier: "PetsViewController")
+
+            petsViewController.tabBarItem = TabBarItem(itemType: itemType)
+
+            return petsViewController
+
+        case .profile:
+
+            let profileViewController = UserProfileViewController()
+            profileViewController.tabBarItem = TabBarItem(itemType: itemType)
+
+            return profileViewController
 
         }
 

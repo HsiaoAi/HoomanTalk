@@ -8,21 +8,49 @@
 
 import UIKit
 
-class MatchCardView: UIView {
+class MatchCardView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.pets.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PetsCell", for: indexPath) as? PetsCell else { return PetsCell() }
+
+        if self.pets.count > indexPath.row {
+
+            let pet = self.pets[indexPath.row]
+            let imageAdress = pet.imageURL
+            if let imageURL = URL(string: imageAdress!) {
+                UserManager.setUserProfileImage(with: imageURL, into: cell.petImageView, activityIndicatorView: nil)
+            }
+        }
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let borderLength = self.petCollectionView.bounds.height
+        return CGSize(width: borderLength, height: borderLength)
+    }
 
     @IBOutlet weak var matchCardView: UIImageView!
 
+    @IBOutlet weak var userImageViewLayer: UIImageView!
     @IBOutlet weak var userImageView: UIImageView!
 
+    @IBOutlet weak var backgroundUserImage: UIImageView!
+
     @IBOutlet weak var petCollectionView: UICollectionView!
-
-    @IBOutlet weak var infoView: UIView!
-
-    @IBOutlet weak var userInfo: UILabel!
-
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var petTypeLabel: UILabel!
+    @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var likeButton: WCLShineButton!
 
     @IBOutlet weak var likeButtonBorderView: LGButton!
+
+    @IBOutlet weak var activityIndicatorView: NVActivityIndicatorView!
+    var pets = [Pet]()
 
     override init(frame: CGRect) {
 
@@ -39,10 +67,6 @@ class MatchCardView: UIView {
 
         setupLikeButton()
 
-        matchCardView.layer.borderWidth = 0.5
-
-        matchCardView.layer.borderColor = UIColor.Custom.greyishBrown.cgColor
-
     }
 
     func setupLikeButton() {
@@ -51,10 +75,19 @@ class MatchCardView: UIView {
 
         likeButtonParam.enableFlashing = true
 
-        likeButtonParam.animDuration = 1
+        likeButtonParam.animDuration = 0.5
 
         likeButton.params = likeButtonParam
 
+    }
+
+    func setupPetsCollectionView(pets: [Pet]) {
+        petCollectionView.delegate = self
+        petCollectionView.dataSource = self
+        self.pets = pets
+        self.petCollectionView.reloadData()
+        let nib = UINib(nibName: "PetsCell", bundle: nil)
+        self.petCollectionView.register(nib, forCellWithReuseIdentifier: "PetsCell")
     }
 
 }
