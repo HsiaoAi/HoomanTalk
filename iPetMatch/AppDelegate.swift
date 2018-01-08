@@ -121,15 +121,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         enterPassByLandingView()
     }
 
-    // MARK: - Remote Notifictions
-    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
-
-        if notificationSettings.types != .none {
-            //print("Did register user notificaiton settings")
-            application.registerForRemoteNotifications()
-        }
-    }
-
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 
         let user = QBSession.current.currentUser

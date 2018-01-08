@@ -39,7 +39,6 @@ class SignUpViewController: UIViewController {
     }
 
     // Firebase properties
-
     override func viewDidLoad() {
         super.viewDidLoad()
         genderControl.titles = ["♂︎", "♀︎"]
@@ -55,21 +54,17 @@ class SignUpViewController: UIViewController {
         let email = NSLocalizedString("Email", comment: "")
         emailTextField.title = email
         emailTextField.placeholder = email
-
         let name = NSLocalizedString("Name", comment: "")
         nameTextField.title = name
         nameTextField.placeholder = name
-
         let password = NSLocalizedString("Password", comment: "")
         passwordTextField.title = password
         passwordTextField.placeholder = password
         passwordTextField.selectedTitle = NSLocalizedString("Password (6-20 Characters)", comment: "")
-
         let birth = NSLocalizedString("Birth", comment: "")
         birthDayTextField.title = birth
         birthDayTextField.placeholder = birth
         birthDayTextField.selectedTitle = NSLocalizedString(">= 18yrs", comment: "")
-
         signUpButton.titleString = NSLocalizedString("Sign up", comment: "")
         signUpButton.loadingString = NSLocalizedString("Loading...", comment: "")
     }
@@ -78,7 +73,6 @@ class SignUpViewController: UIViewController {
         readEULAButton.layer.borderColor = UIColor.white.cgColor
         readEULAButton.layer.borderWidth = 2.0
         readEULAButton.addTarget(self, action: #selector(openEULA), for: .touchUpInside)
-
     }
 
     @objc func openEULA(_ sender: UIButton) {
@@ -87,7 +81,6 @@ class SignUpViewController: UIViewController {
             let webView = UIWebView(frame: UIScreen.main.bounds)
             let urlRequest = URLRequest(url: url)
             webView.loadRequest(urlRequest)
-
             let eulaViewController = EULAViewController()
             self.navigationController?.pushViewController(eulaViewController, animated: true)
         }
@@ -101,21 +94,15 @@ class SignUpViewController: UIViewController {
     }
 
     @IBAction func tapGenderControl(_ sender: BetterSegmentedControl) {
-
         self.gender = (sender.index == 0) ? Gender.male: Gender.female
-
     }
 
     @IBAction func tapSignupButton(_ sender: LGButton) {
-
         signUp()
-
     }
 
     @IBAction func addUserImage (_ sender: Any) {
-
         self.setupFusumaImagePicker()
-
     }
 
     @IBAction func tapCatPerson(_ sender: LGButton) {
@@ -148,14 +135,11 @@ class SignUpViewController: UIViewController {
 
         let email = emailTextField.text!
         guard email != "" else {
-
             SCLAlertView().showWarning(
                 NSLocalizedString("Warning", comment: ""),
                 subTitle: NSLocalizedString("Please enter your email", comment: "")
             )
-
             return
-
         }
 
         guard email.contains("@") else {
@@ -174,28 +158,18 @@ class SignUpViewController: UIViewController {
                     NSLocalizedString("Warning", comment: ""),
                     subTitle: NSLocalizedString("Please enter your name", comment: "")
                 )
-
                 return
         }
 
         guard
-
             let password = passwordTextField.text,
-
             password != ""
-
             else {
-
                 SCLAlertView().showWarning(
-
                     NSLocalizedString("Warning", comment: ""),
-
                     subTitle: NSLocalizedString("Please enter password", comment: "")
-
                 )
-
                 return
-
         }
 
         guard password.count > 5 else {
@@ -207,17 +181,16 @@ class SignUpViewController: UIViewController {
         }
 
         guard
-
             let birthDay = birthDayTextField.text,
             birthDay != ""
             else {
-
                 SCLAlertView().showWarning(
                     NSLocalizedString("Warning", comment: ""),
                     subTitle: NSLocalizedString("Please pick your birthday", comment: "")
                 )
                 return
         }
+      
         let yearIndex: Int = Int(NSLocalizedString("2", comment: "for USA"))!
         guard let yearOfBirth = Int(birthDay.components(separatedBy: ", ")[yearIndex]) else {
             SCLAlertView().showWarning(
@@ -236,7 +209,6 @@ class SignUpViewController: UIViewController {
         }
 
         guard let userImage = self.userImage else {
-
             SCLAlertView().showWarning(
                 NSLocalizedString("Warning", comment: ""),
                 subTitle: NSLocalizedString("Please pick your picture", comment: "")
@@ -260,7 +232,6 @@ class SignUpViewController: UIViewController {
         }
 
         guard isReadEULA == true else {
-
             SCLAlertView().showWarning(
                 NSLocalizedString("Warning", comment: ""),
                 subTitle: NSLocalizedString("Please read the EULA", comment: "")
@@ -307,9 +278,7 @@ class SignUpViewController: UIViewController {
                     }
 
                     self.signUpButton.isLoading = false
-
-                    return
-
+                  
                 }
             }
 
@@ -318,43 +287,30 @@ class SignUpViewController: UIViewController {
             guard let firebaseUid = user?.uid else { return }
             Crashlytics.sharedInstance().setUserIdentifier(firebaseUid)
             let QBCurrentUser = QBUUser()
-
             QBCurrentUser.email = email
-
             QBCurrentUser.password = firebaseUid
-
             // Upload images to Firebase Storage
             let userImageName = UUID().uuidString
-
             let storageRef = Storage.storage().reference().child("usersImage").child(firebaseUid).child("\(userImageName).png")
-
             let metadata = StorageMetadata()
 
             metadata.contentType = "image/jpeg"
-
             storageRef.putData(UIImageJPEGRepresentation(userImage, 0.2)!, metadata: metadata, completion: { (data, error) in
 
                 if error != nil {
-
                     SCLAlertView().showError(
-
                         NSLocalizedString("Error", comment: ""),
-
                         subTitle: NSLocalizedString("Invalid Image", comment: "")
-
                     )
                 }
 
                 if let userImageURL = data?.downloadURL()?.absoluteString {
-
                     self.imageURLString = userImageURL
-
                 }
 
                 // QBSignUp
 
                 QBRequest.signUp(QBCurrentUser,
-
                                  successBlock: { ( _, QBuser ) in
                                     QBRequest.logIn(withUserEmail: QBCurrentUser.email!, password: QBCurrentUser.password!, successBlock: { _, _ in UserManager.registerForRemoteNotification() }, errorBlock: nil)
 
@@ -414,14 +370,12 @@ class SignUpViewController: UIViewController {
 extension SignUpViewController {
 
     @objc func datePickerValueChanged(_ sender: UIDatePicker) {
-
         let dateFormatter = DateFormatter()
         let timeZone = TimeZone.ReferenceType.local
         dateFormatter.timeZone = timeZone
         dateFormatter.dateFormat = NSLocalizedString("dd, MMM, yyyy", comment: "Date format")
         sender.maximumDate = Date()
         birthDayTextField.text = dateFormatter.string(from: sender.date)
-
     }
 
 }
@@ -429,27 +383,20 @@ extension SignUpViewController {
 extension SignUpViewController: FusumaDelegate {
 
     func setupFusumaImagePicker() {
-
         let fusuma = FusumaViewController()
         fusuma.delegate = self
         fusuma.cropHeightRatio = 1.0
         fusuma.allowMultipleSelection = false
         userImageView.clipsToBounds = true
         self.present(fusuma, animated: true, completion: nil)
-
     }
 
     // Delegate Methods
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
-
         let correctImage = image.fixedOrientation()
-
         self.userImage = correctImage
-
         userImageView.contentMode = .scaleAspectFill
-
         userImageView.image = correctImage
-
     }
 
     // When camera roll is not authorized, this method is called.
@@ -472,11 +419,8 @@ extension SignUpViewController: FusumaDelegate {
 
     // Empty delegate functions
     func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
-
     }
 
     func fusumaVideoCompleted(withFileURL fileURL: URL) {
-
     }
-
 }

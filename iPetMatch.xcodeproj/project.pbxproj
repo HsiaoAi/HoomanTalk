@@ -558,6 +558,7 @@
 				8797E6791FE114BF00C9002F /* Embed Frameworks */,
 				8797E67A1FE1154800C9002F /* ShellScript */,
 				87AC114D2001572600AFFE29 /* ShellScript */,
+				8736CCF12003002C00F9811A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -751,6 +752,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		8736CCF12003002C00F9811A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone\n";
 		};
 		8797E67A1FE1154800C9002F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1050,7 +1064,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = iPetMatch/iPetMatch.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = DTTYHBEAZE;
@@ -1063,8 +1077,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.iPetMatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e903e18d-a2b1-419c-b578-5f71ecbbdbd6";
-				PROVISIONING_PROFILE_SPECIFIER = "Notification iPetMatch Dev";
+				PROVISIONING_PROFILE = "241124e7-5036-4915-a6c1-79bc073a7651";
+				PROVISIONING_PROFILE_SPECIFIER = hoomanTalk;
 				SWIFT_OBJC_BRIDGING_HEADER = iPetMatch/bridge_Header.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1077,7 +1091,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = iPetMatch/iPetMatch.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DTTYHBEAZE;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1089,8 +1103,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.iPetMatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e903e18d-a2b1-419c-b578-5f71ecbbdbd6";
-				PROVISIONING_PROFILE_SPECIFIER = "Notification iPetMatch Dev";
+				PROVISIONING_PROFILE = "241124e7-5036-4915-a6c1-79bc073a7651";
+				PROVISIONING_PROFILE_SPECIFIER = hoomanTalk;
 				SWIFT_OBJC_BRIDGING_HEADER = iPetMatch/bridge_Header.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

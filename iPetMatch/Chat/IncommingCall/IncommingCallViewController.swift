@@ -157,7 +157,7 @@ class IncommingCallViewController: UIViewController {
 
         case .video:
             let answerVideoCallViewController = MakeVideoCallViewController()
-            self.present(MakeVideoCallViewController(), animated: false, completion: nil)
+            self.present(answerVideoCallViewController, animated: false, completion: nil)
 
         }
 

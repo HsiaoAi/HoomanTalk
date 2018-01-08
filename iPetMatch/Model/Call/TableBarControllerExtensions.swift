@@ -38,7 +38,6 @@ extension TabBarController: QBRTCClientDelegate {
 
     func sessionDidClose(_ session: QBRTCSession) {
 
-        // TODO: show how long the call is
         print("***sessionDidClose***")
 
         CallManager.shared.session = nil
@@ -52,8 +51,6 @@ extension TabBarController: QBRTCClientDelegate {
 
     func session(_ session: QBRTCSession, userDidNotRespond userID: NSNumber) {
 
-        // TODO: Show Alert
-
         RingtonePlayer.shared.stopPhoneRing()
 
         print("***userDidNotRespond***")
@@ -64,7 +61,6 @@ extension TabBarController: QBRTCClientDelegate {
 
         RingtonePlayer.shared.stopPhoneRing()
 
-        // TODO: Show Alerr
         print("***Reject***")
 
     }
@@ -84,7 +80,7 @@ extension TabBarController: QBRTCClientDelegate {
 
     }
 
-    // MARK - Connection life-cyle
+    // Connection life-cyle
 
     func session(_ session: QBRTCBaseSession, startedConnectingToUser userID: NSNumber) {
 
@@ -101,24 +97,6 @@ extension TabBarController: QBRTCClientDelegate {
     func session(_ session: QBRTCBaseSession, connectionClosedForUser userID: NSNumber) {
 
         RingtonePlayer.shared.stopPhoneRing()
-
-        //
-        var userID = "38863883"
-
-        QBRequest.sendPush(withText: "Miss Call From ilct23",
-
-                           toUsers: userID,
-
-                           successBlock: {(_, _) -> Void in
-
-                            print("+++Push Done")},
-
-                           errorBlock: {(_ error: QBError) -> Void in
-
-                            print("Push error \(error)")
-
-        })
-        //
         print("***connectionClosedForUser***")
 
     }
@@ -132,7 +110,6 @@ extension TabBarController: QBRTCClientDelegate {
 
     func session(session: QBRTCSession!, userDidNotRespond userID: NSNumber!) {
 
-        // TODO: Alert
         RingtonePlayer.shared.stopPhoneRing()
         print("***userDidNotRespond***")
 
@@ -140,7 +117,6 @@ extension TabBarController: QBRTCClientDelegate {
 
     func session(_ session: QBRTCBaseSession, connectionFailedForUser userID: NSNumber) {
 
-        // TODO: Alert
         RingtonePlayer.shared.stopPhoneRing()
         print("***connectionFailedForUser***")
 

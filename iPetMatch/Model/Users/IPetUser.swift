@@ -7,7 +7,7 @@
 //
 
 struct IPetUser: Equatable {
-    static func ==(lhs: IPetUser, rhs: IPetUser) -> Bool {
+    static func == (lhs: IPetUser, rhs: IPetUser) -> Bool {
         return (lhs.id == rhs.id)
     }
 

@@ -319,7 +319,7 @@ extension MatchViewController {
             let uid = currentUser.id
             let myFriendsRef = Database.database().reference().child("user-friends").child(uid).child(likeUser.id)
             let matchFriendInfo: [String: Any] = [Friend.Schema.name: likeUser.name,
-                                                  Friend.Schema.imageURL: likeUser.imageURL,
+                                                  Friend.Schema.imageURL: likeUser.imageURL!,
                                                   Friend.Schema.callingID: likeUser.callingID,
                                                   Friend.Schema.gender: likeUser.gender.rawValue,
                                                   Friend.Schema.yearOfBirth: likeUser.yearOfBirth,
