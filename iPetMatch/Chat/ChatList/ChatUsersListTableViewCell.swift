@@ -26,6 +26,7 @@ class ChatUsersListTableViewCell: UITableViewCell, Identifiable {
     @IBOutlet weak var friendInfoView: UIView!
     var friendCallingId: UInt?
     var friendInfo: [String: String]?
+    let loadingImagesManager = LoadingImagesManager()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,7 +48,7 @@ class ChatUsersListTableViewCell: UITableViewCell, Identifiable {
         userImageView.image = nil
         let imageAdress = friend.imageURL
         if let imageURL = URL(string: imageAdress!) {
-            UserManager.setUserProfileImage(with: imageURL, into: self.userImageView, activityIndicatorView: self.loadingImageView)
+            loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: userImageView, activityIndicatorView: loadingImageView)
         }
 
         if let lastCallType = friend.lastCallType,

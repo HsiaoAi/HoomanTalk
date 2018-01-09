@@ -36,6 +36,7 @@
 		87495FC41FF3B1A700FF2C06 /* MatchCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87495FC31FF3B1A700FF2C06 /* MatchCardView.xib */; };
 		874D94321FE250F00009C9F3 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94311FE250EF0009C9F3 /* SweetAlert.swift */; };
 		874D94391FE2CEAE0009C9F3 /* IncommingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D94371FE2CEAE0009C9F3 /* IncommingCallViewController.swift */; };
+		874EA599200499FC009B9166 /* LoadingImagesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874EA598200499FC009B9166 /* LoadingImagesManager.swift */; };
 		8760A82D1FF4183700EE409E /* MatchOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A82C1FF4183700EE409E /* MatchOverlayView.swift */; };
 		8760A82F1FF4184800EE409E /* MatchOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8760A82E1FF4184800EE409E /* MatchOverlayView.xib */; };
 		8760A8321FF422A700EE409E /* MatchCardUsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760A8311FF422A700EE409E /* MatchCardUsersManager.swift */; };
@@ -139,6 +140,7 @@
 		87495FC31FF3B1A700FF2C06 /* MatchCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchCardView.xib; sourceTree = "<group>"; };
 		874D94311FE250EF0009C9F3 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
 		874D94371FE2CEAE0009C9F3 /* IncommingCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncommingCallViewController.swift; sourceTree = "<group>"; };
+		874EA598200499FC009B9166 /* LoadingImagesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingImagesManager.swift; sourceTree = "<group>"; };
 		8760A82C1FF4183700EE409E /* MatchOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchOverlayView.swift; sourceTree = "<group>"; };
 		8760A82E1FF4184800EE409E /* MatchOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchOverlayView.xib; sourceTree = "<group>"; };
 		8760A8311FF422A700EE409E /* MatchCardUsersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardUsersManager.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				8760A8301FF4228900EE409E /* FirebaseFetch */,
 				87126C021FE2413D009D0188 /* Call */,
 				874D94331FE2B28E0009C9F3 /* Users */,
+				874EA598200499FC009B9166 /* LoadingImagesManager.swift */,
 			);
 			name = Model;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Model;
@@ -558,7 +561,6 @@
 				8797E6791FE114BF00C9002F /* Embed Frameworks */,
 				8797E67A1FE1154800C9002F /* ShellScript */,
 				87AC114D2001572600AFFE29 /* ShellScript */,
-				8736CCF12003002C00F9811A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -753,19 +755,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8736CCF12003002C00F9811A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone\n";
-		};
 		8797E67A1FE1154800C9002F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -805,6 +794,7 @@
 				874D94321FE250F00009C9F3 /* SweetAlert.swift in Sources */,
 				879FB12C1FE2E2F4002332EF /* AppDelegateExtensions.swift in Sources */,
 				8787CFB41FF979030051AACD /* ChatInfoView.swift in Sources */,
+				874EA599200499FC009B9166 /* LoadingImagesManager.swift in Sources */,
 				87DD45681FF7DD50002793EE /* FriendsProvider.swift in Sources */,
 				8760A83C1FF4BAD200EE409E /* IPetUser.swift in Sources */,
 				87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */,

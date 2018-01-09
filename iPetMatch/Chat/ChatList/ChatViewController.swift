@@ -24,6 +24,7 @@ class ChatViewController: UIViewController {
     var userInfo: [String: String]?
     var selectedFriend: Friend?
     private var callToUserID: UInt?
+    let loadingImageManager = LoadingImagesManager()
 
     @IBOutlet weak var tableView: UITableView!
 

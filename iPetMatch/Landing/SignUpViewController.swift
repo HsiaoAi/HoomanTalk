@@ -190,7 +190,7 @@ class SignUpViewController: UIViewController {
                 )
                 return
         }
-      
+
         let yearIndex: Int = Int(NSLocalizedString("2", comment: "for USA"))!
         guard let yearOfBirth = Int(birthDay.components(separatedBy: ", ")[yearIndex]) else {
             SCLAlertView().showWarning(
@@ -278,7 +278,7 @@ class SignUpViewController: UIViewController {
                     }
 
                     self.signUpButton.isLoading = false
-                  
+
                 }
             }
 

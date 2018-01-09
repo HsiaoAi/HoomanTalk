@@ -12,6 +12,7 @@ class PetsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var petImageView: UIImageView!
     @IBOutlet weak var petNameLabel: UILabel!
+    let loadingImagesManager = LoadingImagesManager()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,9 +27,7 @@ class PetsTableViewCell: UITableViewCell {
         petImageView.image = nil
         let imageAdress = pet.imageURL
         if let imageURL = URL(string: imageAdress!) {
-            UserManager.setUserProfileImage(with: imageURL,
-                                            into: petImageView,
-                                            activityIndicatorView: nil)
+            loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: petImageView, activityIndicatorView: nil)
         }
 
     }

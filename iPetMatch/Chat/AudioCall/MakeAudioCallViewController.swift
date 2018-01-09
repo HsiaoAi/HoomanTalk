@@ -19,6 +19,8 @@ class MakeAudioCallViewController: UIViewController {
     @IBOutlet weak var microphoneButton: LGButton!
     @IBOutlet weak var audioSignGifView: FLAnimatedImageView!
     var selectedFriend: Friend?
+    let loadingImagesManager = LoadingImagesManager()
+
     @IBAction func declineButton(_ sender: Any) {
 
         CallManager.shared.session?.hangUp(nil)
@@ -46,7 +48,7 @@ class MakeAudioCallViewController: UIViewController {
         friendNameLabel.text = friend.name
         let imageAdress = friend.imageURL
         if let imageURL = URL(string: imageAdress!) {
-            UserManager.setUserProfileImage(with: imageURL, into: self.friendImageView, activityIndicatorView: self.acticityIndicatorView)
+            loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: friendImageView, activityIndicatorView: acticityIndicatorView)
         }
         sendPushToOpponentsAboutNewCall(from: UserManager.instance.currentUser!.name, to: "\(friend.callingID!)")
 

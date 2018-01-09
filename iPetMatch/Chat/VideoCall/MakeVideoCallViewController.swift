@@ -28,6 +28,7 @@ class MakeVideoCallViewController: UIViewController {
     @IBOutlet weak var opponentVideoView: QBRTCRemoteVideoView!
 
     @IBOutlet weak var timerLabel: MZTimerLabel!
+    let loadingImagesManager = LoadingImagesManager()
 
     @IBAction func hangUpCall(_ sender: Any) {
 
@@ -135,8 +136,7 @@ extension MakeVideoCallViewController {
             userNameLabel.text = callingUser[Friend.Schema.name]
             let imageAdress = callingUser[Friend.Schema.imageURL]
             if let imageURL = URL(string: imageAdress!) {
-                UserManager.setUserProfileImage(with: imageURL, into: self.userImageView, activityIndicatorView: self.activityIndicatorView)
-            }
+                loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: userImageView, activityIndicatorView: activityIndicatorView)            }
             self.prepareLocalVideoTrack()
 
         } else {
@@ -155,7 +155,8 @@ extension MakeVideoCallViewController {
             userNameLabel.text = callToUser.name
             let imageAdress = callToUser.imageURL
             if let imageURL = URL(string: imageAdress!) {
-                UserManager.setUserProfileImage(with: imageURL, into: self.userImageView, activityIndicatorView: self.activityIndicatorView)
+                loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: userImageView, activityIndicatorView: activityIndicatorView)
+                //UserManager.setUserProfileImage(with: imageURL, into: self.userImageView, activityIndicatorView: self.activityIndicatorView)
             }
 
             self.prepareLocalVideoTrack()

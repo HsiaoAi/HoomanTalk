@@ -9,6 +9,7 @@
 import UIKit
 
 class MatchCardView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    let loadingImagesManager = LoadingImagesManager()
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.pets.count
@@ -22,7 +23,7 @@ class MatchCardView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
             let pet = self.pets[indexPath.row]
             let imageAdress = pet.imageURL
             if let imageURL = URL(string: imageAdress!) {
-                UserManager.setUserProfileImage(with: imageURL, into: cell.petImageView, activityIndicatorView: nil)
+                loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: cell.petImageView, activityIndicatorView: nil)
             }
         }
         return cell

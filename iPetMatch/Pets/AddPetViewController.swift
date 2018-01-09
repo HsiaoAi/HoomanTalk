@@ -30,6 +30,7 @@ class AddPetViewController: UIViewController {
     @IBOutlet weak var birthTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var sizeTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var aboutPetTextField: SkyFloatingLabelTextField!
+    let loadingImagesManager = LoadingImagesManager()
 
     @IBOutlet weak var cancelButton: UIButton!
     override func viewDidLoad() {
@@ -326,9 +327,7 @@ extension AddPetViewController {
         petImageView.image = nil
         let imageAdress = pet.imageURL
         if let imageURL = URL(string: imageAdress!) {
-            UserManager.setUserProfileImage(with: imageURL,
-                                            into: petImageView,
-                                            activityIndicatorView: loadingImageView)
+            loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: petImageView, activityIndicatorView: loadingImageView)
         }
         self.petImage = petImageView.image
         nameTextField.isEnabled = false
