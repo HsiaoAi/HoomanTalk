@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -181,6 +181,27 @@
                                 <action selector="tapLogout:" destination="-1" eventType="touchUpInside" id="mth-FS-b8X"/>
                             </connections>
                         </button>
+                        <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VY2-PK-aQ3">
+                            <rect key="frame" x="30" y="44" width="40" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="VY2-PK-aQ3" secondAttribute="height" multiplier="1:1" id="Afx-Mi-Flf"/>
+                                <constraint firstAttribute="height" constant="40" id="luh-pw-yZ3"/>
+                                <constraint firstAttribute="width" constant="40" id="uLW-Ak-XrH"/>
+                            </constraints>
+                            <color key="tintColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="0.5" colorSpace="calibratedRGB"/>
+                            <state key="normal" image="icon-pencil">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="tapLogout:" destination="-1" eventType="touchUpInside" id="0ih-WK-cYR"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -188,12 +209,16 @@
                         <constraint firstItem="OcS-Gw-Fun" firstAttribute="centerX" secondItem="a9e-D5-B3Y" secondAttribute="centerX" id="1pP-oJ-xmJ"/>
                         <constraint firstItem="a9e-D5-B3Y" firstAttribute="width" secondItem="RNB-MP-Sdh" secondAttribute="width" multiplier="0.55" id="2CM-ME-Dkx"/>
                         <constraint firstItem="OcS-Gw-Fun" firstAttribute="centerY" secondItem="a9e-D5-B3Y" secondAttribute="centerY" id="3Kc-dM-lGt"/>
+                        <constraint firstItem="VY2-PK-aQ3" firstAttribute="width" secondItem="VY2-PK-aQ3" secondAttribute="height" multiplier="1:1" id="9hg-jl-6MW"/>
+                        <constraint firstItem="VY2-PK-aQ3" firstAttribute="centerY" secondItem="Mt6-T9-p25" secondAttribute="centerY" id="Df8-Sh-o2s"/>
                         <constraint firstItem="Y9Z-pC-Lw6" firstAttribute="leading" secondItem="RNB-MP-Sdh" secondAttribute="leading" id="Fj6-qG-sYq"/>
                         <constraint firstItem="a9e-D5-B3Y" firstAttribute="centerX" secondItem="RNB-MP-Sdh" secondAttribute="centerX" id="MP4-yw-6jd"/>
                         <constraint firstItem="a9e-D5-B3Y" firstAttribute="centerY" secondItem="RNB-MP-Sdh" secondAttribute="centerY" id="NLg-jF-fHC"/>
                         <constraint firstItem="Mt6-T9-p25" firstAttribute="top" secondItem="RNB-MP-Sdh" secondAttribute="top" constant="44" id="PQ1-U9-gO1"/>
                         <constraint firstAttribute="bottom" secondItem="Y9Z-pC-Lw6" secondAttribute="bottom" id="VLE-98-A5G"/>
+                        <constraint firstItem="VY2-PK-aQ3" firstAttribute="leading" secondItem="RNB-MP-Sdh" secondAttribute="leading" constant="30" id="XeL-CO-hzw"/>
                         <constraint firstItem="Y9Z-pC-Lw6" firstAttribute="top" secondItem="a9e-D5-B3Y" secondAttribute="bottom" id="gK6-lF-9TS"/>
+                        <constraint firstItem="VY2-PK-aQ3" firstAttribute="top" secondItem="Mt6-T9-p25" secondAttribute="top" id="iDU-ht-rgw"/>
                         <constraint firstAttribute="trailing" secondItem="Y9Z-pC-Lw6" secondAttribute="trailing" id="q8A-DB-qKT"/>
                         <constraint firstAttribute="trailing" secondItem="Mt6-T9-p25" secondAttribute="trailing" constant="30" id="w5f-9X-Voz"/>
                     </constraints>
@@ -270,5 +295,6 @@
     </objects>
     <resources>
         <image name="icon-exit" width="25" height="25"/>
+        <image name="icon-pencil" width="25" height="25"/>
     </resources>
 </document>
