@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -292,17 +292,17 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="9kP-mP-otF">
-                                <rect key="frame" x="130" y="15" width="225" height="70"/>
+                                <rect key="frame" x="120" y="15" width="235" height="70"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoI-UF-0Zd">
-                                        <rect key="frame" x="0.0" y="0.0" width="225" height="39.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="EoI-UF-0Zd">
+                                        <rect key="frame" x="0.0" y="0.0" width="235" height="38.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" red="0.1641129851" green="0.50144350530000004" blue="0.72513860460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Call" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lJN-Hq-zxn">
-                                        <rect key="frame" x="0.0" y="39.5" width="225" height="30.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                        <rect key="frame" x="0.0" y="38.5" width="235" height="31.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.3217366934" green="0.25888746979999999" blue="0.25097307559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -322,7 +322,7 @@
                             <constraint firstItem="dLD-Th-FBA" firstAttribute="width" secondItem="bjw-vm-j24" secondAttribute="width" multiplier="0.9" id="fJf-Dh-k2z"/>
                             <constraint firstItem="fzj-XM-6Jl" firstAttribute="height" secondItem="M1c-lK-Mjz" secondAttribute="height" multiplier="0.5" id="fZe-T6-A43"/>
                             <constraint firstItem="M1c-lK-Mjz" firstAttribute="leading" secondItem="bjw-vm-j24" secondAttribute="leading" constant="30" id="h7I-0U-8YT"/>
-                            <constraint firstItem="9kP-mP-otF" firstAttribute="leading" secondItem="M1c-lK-Mjz" secondAttribute="trailing" constant="20" id="iRn-If-0aj"/>
+                            <constraint firstItem="9kP-mP-otF" firstAttribute="leading" secondItem="M1c-lK-Mjz" secondAttribute="trailing" constant="10" id="iRn-If-0aj"/>
                             <constraint firstAttribute="bottom" secondItem="dLD-Th-FBA" secondAttribute="bottom" id="kDE-sg-QSI"/>
                             <constraint firstItem="M1c-lK-Mjz" firstAttribute="top" secondItem="bjw-vm-j24" secondAttribute="top" constant="10" id="ltH-xo-WOz"/>
                             <constraint firstAttribute="width" constant="375" id="wde-pA-ylm"/>

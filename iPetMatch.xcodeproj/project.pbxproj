@@ -558,7 +558,7 @@
 				8797E6791FE114BF00C9002F /* Embed Frameworks */,
 				8797E67A1FE1154800C9002F /* ShellScript */,
 				87AC114D2001572600AFFE29 /* ShellScript */,
-				8736CCF12003002C00F9811A /* ShellScript */,
+				8705AC6A2005ED2A00AB3BCA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -753,7 +753,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8736CCF12003002C00F9811A /* ShellScript */ = {
+		8705AC6A2005ED2A00AB3BCA /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
