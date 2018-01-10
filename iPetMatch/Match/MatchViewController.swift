@@ -11,20 +11,16 @@ private let reuseIdentifier = "LikeMeCollectionViewCell"
 class MatchViewController: UIViewController {
 
     @IBOutlet weak var kolodaView: KolodaView!
+    @IBOutlet weak var likeMeCollectionView: UICollectionView!
 
     var matchCardUsers = [IPetUser]()
-
     var likedMeUsers = [IPetUser]()
-
     var isSentLikeInCollectionView = false
-
     var usersIdLikedByCurrentUser = [String]()
-
     let matchCardsManager = MatchCardUsersManager()
     let likedMeManager = LikedUsersManger()
+    let loadignImagesManager = LoadingImagesManager()
     var isFirstTime: Bool = true
-
-    @IBOutlet weak var likeMeCollectionView: UICollectionView!
 
     var todayYear: Int {
 
@@ -83,10 +79,9 @@ class MatchViewController: UIViewController {
         hitHearToMatchLabel.isHidden = true
         setupKolodaView()
 
-        SVProgressHUD.dismiss()
+        SVProgressHUD.show(withStatus: NSLocalizedString("Browsing", comment: ""))
         setupLikeMeCollectionView()
 
-        //
         matchCardsManager.observeMatchCardUsers()
         matchCardsManager.observeLikesSentByCurrentUser()
         matchCardsManager.delegate = self
@@ -248,9 +243,8 @@ extension MatchViewController: KolodaViewDataSource {
 
                 let imageAdress = matchUser.imageURL
                 if let imageURL = URL(string: imageAdress!) {
+                    self.loadignImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: matchCardView.userImageView, activityIndicatorView: matchCardView.activityIndicatorView)
 
-                    UserManager.setUserProfileImage(with: imageURL, into: matchCardView.userImageView, activityIndicatorView: matchCardView.activityIndicatorView)
-                    UserManager.setUserProfileImage(with: imageURL, into: matchCardView.backgroundUserImage, activityIndicatorView: nil)
                 }
 
                 if self.usersIdLikedByCurrentUser.contains(matchUser.id) {
@@ -459,16 +453,13 @@ extension MatchViewController: UICollectionViewDataSource {
             let user = likedMeUsers[indexPath.row]
 
             if self.usersIdLikedByCurrentUser.contains(user.id) {
-
                 cell.likeButton.setClicked(true, animated: false)
                 cell.likeButton.isEnabled = false
 
             } else {
-
                 cell.likeButton.setClicked(false, animated: false)
                 cell.likeButton.isEnabled = true
                 cell.likeButton.addTarget(self, action: #selector(responseLike(_:)), for: .touchUpInside)
-
             }
 
             var petTypeString = ""
@@ -485,10 +476,10 @@ extension MatchViewController: UICollectionViewDataSource {
 
             cell.userImageView.image = nil
             cell.userImageView.contentMode = .scaleToFill
+
             let imageAdress = user.imageURL
             if let imageURL = URL(string: imageAdress!) {
-
-                UserManager.setUserProfileImage(with: imageURL, into: cell.userImageView, activityIndicatorView: cell.activityIndicatorView)
+                self.loadignImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: cell.userImageView, activityIndicatorView: cell.activityIndicatorView)
             }
 
         }
@@ -507,30 +498,16 @@ extension MatchViewController {
 
         QBRequest.sendPush(withText: pushMessage,
                            toUsers: user1Id,
-
-                           successBlock: {(_, _) -> Void in
-
-                            print("+++Push Done")},
-
-                           errorBlock: {(_ error: QBError) -> Void in
-
-                            print("Push error \(error)")
-
-        })
+                           successBlock: nil,
+                           errorBlock: nil
+        )
 
         QBRequest.sendPush(withText: pushMessage,
                            toUsers: user2Id,
 
-                           successBlock: {(_, _) -> Void in
-
-                            print("+++Push Done")},
-
-                           errorBlock: {(_ error: QBError) -> Void in
-
-                            print("Push error \(error)")
-
-        })
+                           successBlock: nil,
+                           errorBlock: nil
+        )
 
     }
-
 }

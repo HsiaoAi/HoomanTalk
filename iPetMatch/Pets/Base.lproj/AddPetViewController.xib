@@ -68,14 +68,14 @@
                         <action selector="pickPetImage:" destination="-1" eventType="touchUpInside" id="FXI-tP-g24"/>
                     </connections>
                 </button>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YCI-Pm-RYC">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="YCI-Pm-RYC">
                     <rect key="frame" x="27" y="256" width="265" height="194"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hvW-Nw-SFY">
-                            <rect key="frame" x="0.0" y="0.0" width="265" height="41"/>
+                            <rect key="frame" x="0.0" y="0.0" width="265" height="37.5"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EPr-KG-d6n" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                    <rect key="frame" x="0.0" y="0.0" width="122.5" height="41"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="122.5" height="37.5"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="username"/>
@@ -104,7 +104,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </textField>
                                 <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hHV-iX-i9B" userLabel="Sex" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
-                                    <rect key="frame" x="142.5" y="0.0" width="122.5" height="41"/>
+                                    <rect key="frame" x="142.5" y="0.0" width="122.5" height="37.5"/>
                                     <color key="backgroundColor" red="0.32310152050000002" green="0.26004406810000003" blue="0.25005185600000002" alpha="0.1160905394" colorSpace="custom" customColorSpace="sRGB"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="color" keyPath="indicatorViewBackgroundColor">
@@ -127,10 +127,10 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="r09-cY-rlX">
-                            <rect key="frame" x="0.0" y="51" width="265" height="41"/>
+                            <rect key="frame" x="0.0" y="52.5" width="265" height="37"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B1a-lf-beh" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                    <rect key="frame" x="0.0" y="0.0" width="122.5" height="41"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="122.5" height="37"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="username"/>
@@ -159,7 +159,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </textField>
                                 <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nNp-Ls-iYN" userLabel="Sex" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
-                                    <rect key="frame" x="142.5" y="0.0" width="122.5" height="41"/>
+                                    <rect key="frame" x="142.5" y="0.0" width="122.5" height="37"/>
                                     <color key="backgroundColor" red="0.32310152050000002" green="0.26004406810000003" blue="0.25005185600000002" alpha="0.1160905394" colorSpace="custom" customColorSpace="sRGB"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="color" keyPath="indicatorViewBackgroundColor">
@@ -182,10 +182,10 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xZm-3P-C7n">
-                            <rect key="frame" x="0.0" y="102" width="265" height="41"/>
+                            <rect key="frame" x="0.0" y="104.5" width="265" height="37.5"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHg-tb-nlX" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                    <rect key="frame" x="0.0" y="0.0" width="122.5" height="41"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="122.5" height="37.5"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="username"/>
@@ -217,7 +217,7 @@
                                     </connections>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9c5-yA-56I" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                    <rect key="frame" x="142.5" y="0.0" width="122.5" height="41"/>
+                                    <rect key="frame" x="142.5" y="0.0" width="122.5" height="37.5"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" textContentType="username"/>
@@ -248,10 +248,10 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FDC-8P-VK5">
-                            <rect key="frame" x="0.0" y="153" width="265" height="41"/>
+                            <rect key="frame" x="0.0" y="157" width="265" height="37"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HBG-48-ZPC" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                    <rect key="frame" x="0.0" y="0.0" width="265" height="41"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="265" height="37"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="username"/>
@@ -291,7 +291,7 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rf9-Ka-ckt" userLabel="pickSizeButton">
-                    <rect key="frame" x="169.5" y="358" width="122.5" height="41"/>
+                    <rect key="frame" x="169.5" y="360.5" width="122.5" height="37.5"/>
                     <connections>
                         <action selector="pikcSize:" destination="-1" eventType="touchUpInside" id="yt3-5m-ofO"/>
                     </connections>

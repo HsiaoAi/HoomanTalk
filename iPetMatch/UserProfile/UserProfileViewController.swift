@@ -20,6 +20,7 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var likedUserLabel: UILabel!
     @IBOutlet weak var friendsNumberLabel: UILabel!
     @IBOutlet weak var loadingImageView: NVActivityIndicatorView!
+    let loadingImagesManager = LoadingImagesManager()
 
     @IBAction func tapLogout(_ sender: UIButton) {
 
@@ -132,9 +133,8 @@ class UserProfileViewController: UIViewController {
 
         let imageAdress = user.imageURL
         if let imageURL = URL(string: imageAdress!) {
-
-            UserManager.setUserProfileImage(with: imageURL, into: userImageView, activityIndicatorView: loadingImageView)
-            UserManager.setUserProfileImage(with: imageURL, into: backgroundUserImageView, activityIndicatorView: nil)
+            loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: userImageView, activityIndicatorView: loadingImageView)
+            loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: backgroundUserImageView, activityIndicatorView: loadingImageView)
         }
         userNameLabel.text = user.name
         switch user.petPersonType {

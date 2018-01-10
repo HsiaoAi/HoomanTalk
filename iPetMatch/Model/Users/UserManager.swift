@@ -45,16 +45,6 @@ class UserManager {
 
     }
 
-    static func setUserProfileImage(with imageURL: URL, into imageView: UIImageView, activityIndicatorView: NVActivityIndicatorView?) {
-
-        activityIndicatorView?.startAnimating()
-        Manager.shared.loadImage(with: Request(url: imageURL), into: imageView) { response, _ in
-            activityIndicatorView?.stopAnimating()
-            imageView.image = response.value
-        }
-
-    }
-
     static func registerForRemoteNotification() {
 
         if #available(iOS 10.0, *) {

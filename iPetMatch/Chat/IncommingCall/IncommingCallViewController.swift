@@ -18,8 +18,10 @@ class IncommingCallViewController: UIViewController {
     @IBOutlet weak var beforeAnswerButtonsStack: UIStackView!
     @IBOutlet weak var afterAnswerBurronStack: UIStackView!
     @IBOutlet weak var speakerButton: LGButton!
+
     var isAnswer = false
     var incommingType: String!
+    let loadingImagesManager = LoadingImagesManager()
 
     @IBOutlet weak var microphoneButton: LGButton!
 
@@ -63,7 +65,7 @@ class IncommingCallViewController: UIViewController {
         hostUserNameLabel.text = userInfo[Friend.Schema.name]
         let imageAdress = userInfo[Friend.Schema.imageURL]
         if let imageURL = URL(string: imageAdress!) {
-            UserManager.setUserProfileImage(with: imageURL, into: self.friendImageView, activityIndicatorView: self.activityIndicatorView)
+            loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: friendImageView, activityIndicatorView: nil)
         }
 
     }
