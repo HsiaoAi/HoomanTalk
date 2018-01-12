@@ -9,6 +9,7 @@
 struct UserSetting {
 
     static var isAllowVibrating: Bool = true
-    static var subscriptionID: UInt = 0
-
+    static var lookForPetType: PetPersonType?
+    static var lookForGender: Gender?
+    static var ageRange: (Int, Int)?
 }

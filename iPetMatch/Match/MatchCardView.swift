@@ -22,9 +22,7 @@ class MatchCardView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
 
             let pet = self.pets[indexPath.row]
             let imageAdress = pet.imageURL
-            if let imageURL = URL(string: imageAdress!) {
-                loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: cell.petImageView, activityIndicatorView: nil)
-            }
+            loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: cell.petImageView, activityIndicatorView: nil, placeholderImage: #imageLiteral(resourceName: "icon-pet"))
         }
         return cell
     }

@@ -32,10 +32,9 @@ target 'iPetMatch' do
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
   pod 'WCLShineButton' 
-  pod 'Nuke'
   pod 'FaceAware'
   pod 'NVActivityIndicatorView'
   pod 'CZPicker'
   pod 'Koloda', '~> 4.3.1'
-
+    pod 'RangeSeekSlider'
 end

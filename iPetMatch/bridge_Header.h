@@ -14,6 +14,7 @@
 #import <Availability.h>
 #import <Quickblox/Quickblox.h>
 #import <QuickbloxWebRTC/QuickbloxWebRTC.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @import UIKit;
 @import SVProgressHUD;
@@ -39,8 +40,6 @@
 @import Koloda;
 @import WCLShineButton;
 @import pop;
-@import Nuke;
-@import CoreData;
 @import NVActivityIndicatorView;
 @import CoreData;
 @import UserNotifications;
@@ -48,6 +47,7 @@
 @import MessageUI;
 @import ChameleonFramework;
 @import SDWebImage;
+@import RangeSeekSlider;
 
 
 #endif /* bridge_Header_h */

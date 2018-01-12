@@ -21,9 +21,14 @@ extension TabBarController: QBRTCClientDelegate {
         } else {
             CallManager.shared.userInfo = nil
             CallManager.shared.session = session
+            CallManager.shared.userInfo = userInfo
+
+            if self.isDoNotDisturb {
+                CallManager.shared.rejectCall(for: session)
+                return
+            }
 
             RingtonePlayer.shared.startPhoneRing(callRole: .receiver)
-            CallManager.shared.userInfo = userInfo
 
             let incommingCallViewController = IncommingCallViewController()
 
@@ -34,6 +39,18 @@ extension TabBarController: QBRTCClientDelegate {
 
         }
 
+    }
+
+    @objc func defaultsChanged() {
+        if let ringtoneName = UserDefaults.standard.object(forKey: SettingsBundleHelper.SettingsBundleKeys.ringtones) as? String {
+            if let ringtoneEnum = RingtoneName(rawValue: ringtoneName) {
+                RingtonePlayer.shared.ringtoneName = ringtoneEnum
+            } else if let user = UserManager.instance.currentUser {
+                RingtonePlayer.shared.ringtoneName = (user.petPersonType == .dog) ? RingtoneName.dog : RingtoneName.mewo
+            }
+        }
+
+        self.isDoNotDisturb = UserDefaults.standard.bool(forKey: SettingsBundleHelper.SettingsBundleKeys.doNotDisturb)
     }
 
     func sessionDidClose(_ session: QBRTCSession) {

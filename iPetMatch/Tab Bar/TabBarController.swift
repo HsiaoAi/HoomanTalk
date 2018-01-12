@@ -10,6 +10,8 @@ class TabBarController: UITabBarController {
 
     // MARK: Init
 
+    var isDoNotDisturb: Bool = false
+
     init(itemTypes: [TabBarItemType]) {
 
         super.init(nibName: nil, bundle: nil)
@@ -37,6 +39,10 @@ class TabBarController: UITabBarController {
         QBRTCClient.instance().add(self)
 
         QBRTCAudioSession.instance().initialize()
+
+        SettingsBundleHelper.registerSettingsBundle()
+        NotificationCenter.default.addObserver(self, selector: #selector(defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
+        defaultsChanged()
 
     }
 

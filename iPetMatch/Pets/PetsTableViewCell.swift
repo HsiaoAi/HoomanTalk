@@ -23,12 +23,12 @@ class PetsTableViewCell: UITableViewCell {
     func set(content pet: Pet) {
 
         let petType = (pet.petType == .dog) ? "🐶": "🐱"
+        let imagePlaceholder: UIImage = (pet.petType == .dog) ? #imageLiteral(resourceName: "dogPerson") : #imageLiteral(resourceName: "catPerson")
         petNameLabel.text = pet.name! + petType
         petImageView.image = nil
-        let imageAdress = pet.imageURL
-        if let imageURL = URL(string: imageAdress!) {
-            loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: petImageView, activityIndicatorView: nil)
-        }
+        let imageURL = pet.imageURL!
+        loadingImagesManager.downloadAndCacheImage(urlString: imageURL, imageView: petImageView, activityIndicatorView: nil, placeholderImage: imagePlaceholder)
+        petImageView?.contentMode = .scaleAspectFill
 
     }
 

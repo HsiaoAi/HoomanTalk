@@ -239,13 +239,8 @@ extension MatchViewController: KolodaViewDataSource {
                     matchCardView.setupPetsCollectionView(pets: userPets)
                 }
 
-                matchCardView.userImageView.contentMode = .scaleToFill
-
-                let imageAdress = matchUser.imageURL
-                if let imageURL = URL(string: imageAdress!) {
-                    self.loadignImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: matchCardView.userImageView, activityIndicatorView: matchCardView.activityIndicatorView)
-
-                }
+                let imageUrl = matchUser.imageURL
+                self.loadignImagesManager.downloadAndCacheImage(urlString: imageUrl!, imageView: matchCardView.userImageView, activityIndicatorView: matchCardView.activityIndicatorView, placeholderImage: nil)
 
                 if self.usersIdLikedByCurrentUser.contains(matchUser.id) {
                     matchCardView.likeButton.setClicked(true, animated: false)
@@ -478,9 +473,7 @@ extension MatchViewController: UICollectionViewDataSource {
             cell.userImageView.contentMode = .scaleToFill
 
             let imageAdress = user.imageURL
-            if let imageURL = URL(string: imageAdress!) {
-                self.loadignImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: cell.userImageView, activityIndicatorView: cell.activityIndicatorView)
-            }
+            self.loadignImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: cell.userImageView, activityIndicatorView: cell.activityIndicatorView, placeholderImage: nil)
 
         }
 

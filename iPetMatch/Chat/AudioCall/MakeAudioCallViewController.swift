@@ -47,9 +47,7 @@ class MakeAudioCallViewController: UIViewController {
         }
         friendNameLabel.text = friend.name
         let imageAdress = friend.imageURL
-        if let imageURL = URL(string: imageAdress!) {
-            loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: friendImageView, activityIndicatorView: acticityIndicatorView)
-        }
+        loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: friendImageView, activityIndicatorView: acticityIndicatorView, placeholderImage: nil)
         sendPushToOpponentsAboutNewCall(from: UserManager.instance.currentUser!.name, to: "\(friend.callingID!)")
 
     }

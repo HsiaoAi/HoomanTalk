@@ -160,7 +160,7 @@ class AddPetViewController: UIViewController {
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
 
-        storageRef.putData(UIImageJPEGRepresentation(image, 0.2)!, metadata: metadata, completion: { (data, error) in
+        storageRef.putData(UIImageJPEGRepresentation(image, 0.1)!, metadata: metadata, completion: { (data, error) in
 
             if error != nil {
                 SCLAlertView().showError(
@@ -326,9 +326,8 @@ extension AddPetViewController {
         petImageView.clipsToBounds = true
         petImageView.image = nil
         let imageAdress = pet.imageURL
-        if let imageURL = URL(string: imageAdress!) {
-            loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: petImageView, activityIndicatorView: loadingImageView)
-        }
+
+        loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: petImageView, activityIndicatorView: loadingImageView, placeholderImage: #imageLiteral(resourceName: "icon-pet"))
         self.petImage = petImageView.image
         nameTextField.isEnabled = false
         nameTextField.text = pet.name ?? ""

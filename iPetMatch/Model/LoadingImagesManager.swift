@@ -10,23 +10,12 @@ class LoadingImagesManager {
 
     let imageCache = NSCache<NSString, UIImage>()
 
-    func downloadAndCacheImage(urlString: String, imageView: UIImageView, activityIndicatorView: NVActivityIndicatorView?) {
-        if let cachedImage = self.imageCache.object(forKey: urlString as NSString) {
-            imageView.image = cachedImage
-
-        } else {
-
-            activityIndicatorView?.startAnimating()
-            Manager.shared.loadImage(with: Request(url: URL(string: urlString)!),
-                                     into: imageView) { response, _ in
-                SVProgressHUD.dismiss()
-                activityIndicatorView?.stopAnimating()
-                let image = response.value
-                imageView.image = image
-                activityIndicatorView?.stopAnimating()
-                self.imageCache.setObject(image!, forKey: urlString as NSString)
-            }
-
+    func downloadAndCacheImage(urlString: String, imageView: UIImageView,
+                               activityIndicatorView: NVActivityIndicatorView?, placeholderImage: UIImage?) {
+        imageView.tintColor = .gray
+        activityIndicatorView?.startAnimating()
+        imageView.sd_setImage(with: URL(string: urlString), placeholderImage: nil) { (_, _, _, _) in
+            activityIndicatorView?.stopAnimating()
         }
     }
 }

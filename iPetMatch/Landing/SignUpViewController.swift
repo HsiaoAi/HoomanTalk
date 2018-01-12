@@ -295,7 +295,7 @@ class SignUpViewController: UIViewController {
             let metadata = StorageMetadata()
 
             metadata.contentType = "image/jpeg"
-            storageRef.putData(UIImageJPEGRepresentation(userImage, 0.2)!, metadata: metadata, completion: { (data, error) in
+            storageRef.putData(UIImageJPEGRepresentation(userImage, 0.1)!, metadata: metadata, completion: { (data, error) in
 
                 if error != nil {
                     SCLAlertView().showError(

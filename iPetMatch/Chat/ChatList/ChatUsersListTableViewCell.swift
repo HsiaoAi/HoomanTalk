@@ -47,9 +47,7 @@ class ChatUsersListTableViewCell: UITableViewCell, Identifiable {
 
         userImageView.image = nil
         let imageAdress = friend.imageURL
-        if let imageURL = URL(string: imageAdress!) {
-            loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: userImageView, activityIndicatorView: loadingImageView)
-        }
+        loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: userImageView, activityIndicatorView: loadingImageView, placeholderImage: nil)
 
         if let lastCallType = friend.lastCallType,
             let lastCallTime = friend.lastCallTime {

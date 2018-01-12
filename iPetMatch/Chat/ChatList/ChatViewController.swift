@@ -48,14 +48,20 @@ class ChatViewController: UIViewController {
         friendsProvider.delegate = self
         CallManager.shared.delegate = self
 
+        SettingsBundleHelper.registerSettingsBundle()
+        NotificationCenter.default.addObserver(self, selector: #selector(defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
+        defaultsChanged()
+
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    @objc func defaultsChanged() {
+        if let ringtoneName = UserDefaults.standard.object(forKey: SettingsBundleHelper.SettingsBundleKeys.ringtones) as? String {
+            if let ringtoneEnum = RingtoneName(rawValue: ringtoneName) {
+                RingtonePlayer.shared.ringtoneName = ringtoneEnum
+            } else if let user = UserManager.instance.currentUser {
+                RingtonePlayer.shared.ringtoneName = (user.petPersonType == .dog) ? RingtoneName.dog : RingtoneName.mewo
+            }
+        }
     }
 
     func setupSearchBar() {
@@ -209,37 +215,6 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
         self.userInfo = userInfo
         CallManager.shared.userInfo = userInfo
 
-        if QBChat.instance.isConnected == false {
-            SVProgressHUD.show(withStatus: NSLocalizedString("Loading...", comment: ""))
-            UIApplication.shared.beginIgnoringInteractionEvents()
-
-            guard let user = Auth.auth().currentUser else {
-                SVProgressHUD.dismiss()
-                UIApplication.shared.endIgnoringInteractionEvents()
-                SCLAlertView().showError(NSLocalizedString("Error", comment: ""),
-                                         subTitle: NSLocalizedString("Something wrong, please log in again", comment: ""))
-                AppDelegate.shared.enterLandingView()
-                // ToDo: AddLogout!
-                return
-            }
-
-            if let email = user.email {
-                QBRequest.logIn(withUserEmail: email,
-                                password: user.uid,
-                                successBlock: { (_, QBuser) in
-                                    QBChat.instance.connect(with: QBuser, completion: { _ in
-                                        SVProgressHUD.dismiss()
-                                        UIApplication.shared.endIgnoringInteractionEvents()
-                                        self.friendsProvider.observeMyFriends()
-                                    })},
-                                errorBlock: {_ in
-                                    SVProgressHUD.dismiss()
-                                    SCLAlertView().showError(NSLocalizedString("Error", comment: ""),
-                                                             subTitle: NSLocalizedString("Something wrong, please log in again", comment: ""))
-                                    AppDelegate.shared.enterLandingView()
-                })
-            }
-        }
     }
 }
 
@@ -267,6 +242,10 @@ extension ChatViewController {
     }
 
     @objc func startAudioCalling() {
+        checkoutQBConnect(completion: makeAudioCall)
+    }
+
+    func makeAudioCall() {
 
         self.isCellExpaned = false
         self.didSelectIndexPath = nil
@@ -300,7 +279,10 @@ extension ChatViewController {
     }
 
     @objc func startVedioCalling() {
+        checkoutQBConnect(completion: makeVedioCall)
+    }
 
+    func makeVedioCall() {
         self.isCellExpaned = false
         self.didSelectIndexPath = nil
         self.tableView.reloadData()
@@ -393,5 +375,42 @@ extension ChatViewController {
 
             reportViewController?.selectUserId = self.selectedFriend?.id!
             self.present(reportViewController!, animated: true, completion: nil)
+    }
+
+    func checkoutQBConnect(completion: @escaping () -> Void) {
+        if QBChat.instance.isConnected == false {
+            SVProgressHUD.show(withStatus: NSLocalizedString("Loading...", comment: ""))
+            UIApplication.shared.beginIgnoringInteractionEvents()
+
+            guard let user = Auth.auth().currentUser else {
+                SVProgressHUD.dismiss()
+                UIApplication.shared.endIgnoringInteractionEvents()
+                SCLAlertView().showError(NSLocalizedString("Error", comment: ""),
+                                         subTitle: NSLocalizedString("Something wrong, please log in again", comment: ""))
+                AppDelegate.shared.enterLandingView()
+                // ToDo: AddLogout!
+                return
+            }
+
+            if let email = user.email {
+                QBRequest.logIn(withUserEmail: email,
+                                password: user.uid,
+                                successBlock: { (_, QBuser) in
+                                    QBChat.instance.connect(with: QBuser, completion: { _ in
+                                        SVProgressHUD.dismiss()
+                                        UIApplication.shared.endIgnoringInteractionEvents()
+                                        self.friendsProvider.observeMyFriends()
+                                        completion()
+                                    })},
+                                errorBlock: {_ in
+                                    SVProgressHUD.dismiss()
+                                    SCLAlertView().showError(NSLocalizedString("Error", comment: ""),
+                                                             subTitle: NSLocalizedString("Something wrong, please log in again", comment: ""))
+                                    AppDelegate.shared.enterLandingView()
+                })
+            }
+        } else {
+            completion()
+        }
     }
 }

@@ -64,9 +64,7 @@ class IncommingCallViewController: UIViewController {
 
         hostUserNameLabel.text = userInfo[Friend.Schema.name]
         let imageAdress = userInfo[Friend.Schema.imageURL]
-        if let imageURL = URL(string: imageAdress!) {
-            loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: friendImageView, activityIndicatorView: nil)
-        }
+        loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: friendImageView, activityIndicatorView: nil, placeholderImage: nil)
 
     }
 

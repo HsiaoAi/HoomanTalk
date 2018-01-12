@@ -27,11 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.sharedSDK().debug = true
 
         // IQKeyboard
-
         IQKeyboardManager.sharedManager().enable = true
 
         // Quickblox API
-
         guard
 
             let APIKeysPath = Bundle.main.path(forResource: "QuickBloxKey", ofType: "plist"),
@@ -144,6 +142,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Did receive remote notification", error.localizedDescription)
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        // Setting
+        SettingsBundleHelper.setAppVersionInfo()
+        SettingsBundleHelper.checkoutAndExcuteSettings()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {

@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double NukeVersionNumber;
-FOUNDATION_EXPORT const unsigned char NukeVersionString[];
+FOUNDATION_EXPORT double RangeSeekSliderVersionNumber;
+FOUNDATION_EXPORT const unsigned char RangeSeekSliderVersionString[];
 

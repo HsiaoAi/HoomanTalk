@@ -21,6 +21,7 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var friendsNumberLabel: UILabel!
     @IBOutlet weak var loadingImageView: NVActivityIndicatorView!
     let loadingImagesManager = LoadingImagesManager()
+    var displayUser: IPetUser?
 
     @IBAction func tapLogout(_ sender: UIButton) {
 
@@ -104,6 +105,7 @@ class UserProfileViewController: UIViewController {
                                      subTitle: NSLocalizedString("Can't load user's information", comment: ""))
             return
         }
+        self.displayUser = user
         let friendRef = Database.database().reference().child("user-friends").child(user.id)
         friendRef.observe(.value) { snapshot in
             if let friendDics = snapshot.value as? [String: Any] {
@@ -132,10 +134,8 @@ class UserProfileViewController: UIViewController {
         }
 
         let imageAdress = user.imageURL
-        if let imageURL = URL(string: imageAdress!) {
-            loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: userImageView, activityIndicatorView: loadingImageView)
-            loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: backgroundUserImageView, activityIndicatorView: loadingImageView)
-        }
+        loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: userImageView, activityIndicatorView: loadingImageView, placeholderImage: nil)
+        loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: backgroundUserImageView, activityIndicatorView: loadingImageView, placeholderImage: nil)
         userNameLabel.text = user.name
         switch user.petPersonType {
         case .dog:
@@ -158,6 +158,25 @@ class UserProfileViewController: UIViewController {
         let yearsOld = NSLocalizedString("yrs", comment: "")
         userBirthLabel.text = "\(todayYear - user.yearOfBirth) " + yearsOld
 
+    }
+
+    @IBAction func tapEditButton(_ sender: Any) {
+        let editStoryboard = UIStoryboard(name: "EditProfile", bundle: nil)
+        if let editViewController = editStoryboard.instantiateViewController(withIdentifier: "EditProfileViewController") as? EditProfileViewController {
+            editViewController.user = self.displayUser
+            if let userImage = self.userImageView.image {
+                editViewController.userImage = userImage
+                self.present(editViewController, animated: true, completion: nil)
+            } else {
+                return
+
+            }
+        }
+    }
+    @IBAction func tapFilterButton(_ sender: Any) {
+        let filterStoryboard = UIStoryboard(name: "Filter", bundle: nil)
+        let filterViewController = filterStoryboard.instantiateViewController(withIdentifier: "FilterViewController")
+        self.present(filterViewController, animated: true, completion: nil)
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {

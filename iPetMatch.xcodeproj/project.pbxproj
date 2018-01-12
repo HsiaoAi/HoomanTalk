@@ -13,6 +13,8 @@
 		8704DBF51FFE498C00446E4F /* EULA.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8704DBF41FFE3CDC00446E4F /* EULA.pdf */; };
 		8704DBFC1FFE545500446E4F /* EULAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DBFA1FFE545500446E4F /* EULAViewController.swift */; };
 		8704DBFD1FFE545500446E4F /* EULAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8704DBFB1FFE545500446E4F /* EULAViewController.xib */; };
+		8705AC6F2006147000AB3BCA /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8705AC6E2006147000AB3BCA /* Settings.bundle */; };
+		8705AC7120061E2B00AB3BCA /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705AC7020061E2B00AB3BCA /* SettingsBundleHelper.swift */; };
 		87060F2A1FFED1670067059B /* ReportUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87060F281FFED1670067059B /* ReportUserViewController.swift */; };
 		8708821A1FFBA07C00723149 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870882191FFBA07C00723149 /* Pet.swift */; };
 		87126BE51FE18B09009D0188 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87126BE31FE18B09009D0188 /* LandingViewController.swift */; };
@@ -27,6 +29,8 @@
 		872E97351FFB00EC00106AF0 /* PetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872E97331FFB00EB00106AF0 /* PetsViewController.swift */; };
 		872E97381FFB028700106AF0 /* Pets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 872E97371FFB028700106AF0 /* Pets.storyboard */; };
 		872E973B1FFB032E00106AF0 /* AddPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872E97391FFB032E00106AF0 /* AddPetViewController.swift */; };
+		87310A0B200706FE00FDD248 /* EditProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87310A0A200706FD00FDD248 /* EditProfile.storyboard */; };
+		87310A0F2007073500FDD248 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87310A0E2007073500FDD248 /* EditProfileViewController.swift */; };
 		8735E6191FE56A4500C85442 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8735E6181FE56A4400C85442 /* AppDelegate.swift */; };
 		8735E6331FE58EF000C85442 /* QuickBloxKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8735E6321FE58EF000C85442 /* QuickBloxKey.plist */; };
 		873702451FF1E7B1007B5977 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 873702441FF1E7B1007B5977 /* GoogleService-Info.plist */; };
@@ -62,6 +66,8 @@
 		8797E6761FE114BE00C9002F /* Quickblox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6611FE113CB00C9002F /* Quickblox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8797E6781FE114BE00C9002F /* QuickbloxWebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8797E6631FE113D900C9002F /* QuickbloxWebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8797E67F1FE1174100C9002F /* QuickbloxAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797E67E1FE1174100C9002F /* QuickbloxAdmin.swift */; };
+		879F3640200853FD000B2323 /* Filter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879F363F200853FD000B2323 /* Filter.storyboard */; };
+		879F36422008541C000B2323 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879F36412008541C000B2323 /* FilterViewController.swift */; };
 		879FB1261FE2DCFD002332EF /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB1251FE2DCFD002332EF /* TabBarItem.swift */; };
 		879FB1281FE2DE54002332EF /* TabBarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB1271FE2DE54002332EF /* TabBarItemType.swift */; };
 		879FB12A1FE2DF92002332EF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879FB1291FE2DF92002332EF /* TabBarController.swift */; };
@@ -115,6 +121,8 @@
 		8704DBF41FFE3CDC00446E4F /* EULA.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = EULA.pdf; sourceTree = "<group>"; };
 		8704DBFA1FFE545500446E4F /* EULAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EULAViewController.swift; sourceTree = "<group>"; };
 		8704DBFB1FFE545500446E4F /* EULAViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EULAViewController.xib; sourceTree = "<group>"; };
+		8705AC6E2006147000AB3BCA /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		8705AC7020061E2B00AB3BCA /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
 		87060F281FFED1670067059B /* ReportUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportUserViewController.swift; sourceTree = "<group>"; };
 		870882191FFBA07C00723149 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		87126BE11FE183C5009D0188 /* bridge_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bridge_Header.h; path = iPetMatch/bridge_Header.h; sourceTree = SOURCE_ROOT; };
@@ -131,6 +139,8 @@
 		872E97331FFB00EB00106AF0 /* PetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsViewController.swift; sourceTree = "<group>"; };
 		872E97371FFB028700106AF0 /* Pets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pets.storyboard; sourceTree = "<group>"; };
 		872E97391FFB032E00106AF0 /* AddPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPetViewController.swift; sourceTree = "<group>"; };
+		87310A0A200706FD00FDD248 /* EditProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditProfile.storyboard; sourceTree = "<group>"; };
+		87310A0E2007073500FDD248 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		8735E6181FE56A4400C85442 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8735E6321FE58EF000C85442 /* QuickBloxKey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = QuickBloxKey.plist; sourceTree = "<group>"; };
 		873702441FF1E7B1007B5977 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -172,6 +182,8 @@
 		8797E6731FE1147E00C9002F /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		8797E6741FE1148500C9002F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		8797E67E1FE1174100C9002F /* QuickbloxAdmin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickbloxAdmin.swift; sourceTree = "<group>"; };
+		879F363F200853FD000B2323 /* Filter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Filter.storyboard; sourceTree = "<group>"; };
+		879F36412008541C000B2323 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		879FB1251FE2DCFD002332EF /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		879FB1271FE2DE54002332EF /* TabBarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemType.swift; sourceTree = "<group>"; };
 		879FB1291FE2DF92002332EF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -250,6 +262,15 @@
 				92EBCC34EEE82B0C93315475 /* Pods-iPetMatch.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8705AC6D2006145A00AB3BCA /* Settting */ = {
+			isa = PBXGroup;
+			children = (
+				8705AC6E2006147000AB3BCA /* Settings.bundle */,
+				8705AC7020061E2B00AB3BCA /* SettingsBundleHelper.swift */,
+			);
+			path = Settting;
 			sourceTree = "<group>";
 		};
 		87126BE01FE18351009D0188 /* SupportingFiles */ = {
@@ -454,6 +475,7 @@
 		8797E64E1FE10D5800C9002F /* iPetMatch */ = {
 			isa = PBXGroup;
 			children = (
+				8705AC6D2006145A00AB3BCA /* Settting */,
 				87AC114C2000FF0C00AFFE29 /* InfoPlist.strings */,
 				87AC11472000FF0A00AFFE29 /* Localizable.strings */,
 				87EBEEB81FEEA28F00C62D89 /* iPetMatch.entitlements */,
@@ -519,6 +541,10 @@
 			children = (
 				87C3BF081FFDE33A002F0E37 /* UserProfileViewController.swift */,
 				87C3BF091FFDE33A002F0E37 /* UserProfileViewController.xib */,
+				87310A0A200706FD00FDD248 /* EditProfile.storyboard */,
+				87310A0E2007073500FDD248 /* EditProfileViewController.swift */,
+				879F363F200853FD000B2323 /* Filter.storyboard */,
+				879F36412008541C000B2323 /* FilterViewController.swift */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -561,6 +587,7 @@
 				8797E6791FE114BF00C9002F /* Embed Frameworks */,
 				8797E67A1FE1154800C9002F /* ShellScript */,
 				87AC114D2001572600AFFE29 /* ShellScript */,
+				8705AC6C200603DF00AB3BCA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -633,6 +660,7 @@
 				8787CFAD1FF912000051AACD /* ChatViewController.xib in Resources */,
 				87B529C31FFC74CF0049E637 /* PetsTableViewCell.xib in Resources */,
 				87AC114A2000FF0C00AFFE29 /* InfoPlist.strings in Resources */,
+				879F3640200853FD000B2323 /* Filter.storyboard in Resources */,
 				8797E65A1FE10D5800C9002F /* LaunchScreen.storyboard in Resources */,
 				8727F7351FE8B61E0027859D /* Mewo.mp3 in Resources */,
 				872D9CD51FE65EFD0008C8AA /* MakeVideoCallViewController.xib in Resources */,
@@ -641,10 +669,12 @@
 				8703276F1FEB22DC009D2FF3 /* AudioCall.gif in Resources */,
 				87AC112C2000F7CF00AFFE29 /* Report.storyboard in Resources */,
 				8760A82F1FF4184800EE409E /* MatchOverlayView.xib in Resources */,
+				8705AC6F2006147000AB3BCA /* Settings.bundle in Resources */,
 				87AC113A2000F86200AFFE29 /* AddPetViewController.xib in Resources */,
 				87AC11332000F7F100AFFE29 /* IncommingCallViewController.xib in Resources */,
 				87AC111E2000F79300AFFE29 /* ChatInfoView.xib in Resources */,
 				87AC11102000F73800AFFE29 /* Landing.storyboard in Resources */,
+				87310A0B200706FE00FDD248 /* EditProfile.storyboard in Resources */,
 				87C3BF0B1FFDE33A002F0E37 /* UserProfileViewController.xib in Resources */,
 				87C179A91FEB588800815A47 /* VideoCall.gif in Resources */,
 				87DDA8E11FE907A600A917A8 /* dog.mp3 in Resources */,
@@ -692,9 +722,9 @@
 				"${BUILT_PRODUCTS_DIR}/LGButton/LGButton.framework",
 				"${BUILT_PRODUCTS_DIR}/MZTimerLabel/MZTimerLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
-				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${PODS_ROOT}/QuickBlox/Quickblox.framework",
 				"${PODS_ROOT}/Quickblox-WebRTC/QuickbloxWebRTC.framework",
+				"${BUILT_PRODUCTS_DIR}/RangeSeekSlider/RangeSeekSlider.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
@@ -721,9 +751,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MZTimerLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quickblox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickbloxWebRTC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RangeSeekSlider.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
@@ -754,6 +784,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPetMatch/Pods-iPetMatch-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		8705AC6C200603DF00AB3BCA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
 		};
 		8797E67A1FE1154800C9002F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -795,6 +838,7 @@
 				879FB12C1FE2E2F4002332EF /* AppDelegateExtensions.swift in Sources */,
 				8787CFB41FF979030051AACD /* ChatInfoView.swift in Sources */,
 				874EA599200499FC009B9166 /* LoadingImagesManager.swift in Sources */,
+				879F36422008541C000B2323 /* FilterViewController.swift in Sources */,
 				87DD45681FF7DD50002793EE /* FriendsProvider.swift in Sources */,
 				8760A83C1FF4BAD200EE409E /* IPetUser.swift in Sources */,
 				87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */,
@@ -808,6 +852,7 @@
 				87126C011FE2412F009D0188 /* CallManager.swift in Sources */,
 				87641DE11FF559AC00FDD08A /* LikedUsersManager.swift in Sources */,
 				874D94391FE2CEAE0009C9F3 /* IncommingCallViewController.swift in Sources */,
+				8705AC7120061E2B00AB3BCA /* SettingsBundleHelper.swift in Sources */,
 				8787CFAC1FF912000051AACD /* ChatViewController.swift in Sources */,
 				87C179AF1FEC0FD900815A47 /* LoginViewController.swift in Sources */,
 				8704DBFC1FFE545500446E4F /* EULAViewController.swift in Sources */,
@@ -819,6 +864,7 @@
 				872E973B1FFB032E00106AF0 /* AddPetViewController.swift in Sources */,
 				87C3BF0A1FFDE33A002F0E37 /* UserProfileViewController.swift in Sources */,
 				879FB12E1FE2E75A002332EF /* TableBarControllerExtensions.swift in Sources */,
+				87310A0F2007073500FDD248 /* EditProfileViewController.swift in Sources */,
 				87DD456A1FF80BD9002793EE /* Friend.swift in Sources */,
 				8760A82D1FF4183700EE409E /* MatchOverlayView.swift in Sources */,
 				87641DF01FF5976700FDD08A /* LikeMeCollectionViewCell.swift in Sources */,
@@ -1054,7 +1100,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = iPetMatch/iPetMatch.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = DTTYHBEAZE;
@@ -1067,8 +1113,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.iPetMatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "241124e7-5036-4915-a6c1-79bc073a7651";
-				PROVISIONING_PROFILE_SPECIFIER = hoomanTalk;
+				PROVISIONING_PROFILE = "ced2fa8e-4577-40c8-a4c3-a825b93e4215";
+				PROVISIONING_PROFILE_SPECIFIER = "Notification iPetMatch Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = iPetMatch/bridge_Header.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1081,7 +1127,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = iPetMatch/iPetMatch.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DTTYHBEAZE;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1093,8 +1139,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xleeif00.iPetMatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "241124e7-5036-4915-a6c1-79bc073a7651";
-				PROVISIONING_PROFILE_SPECIFIER = hoomanTalk;
+				PROVISIONING_PROFILE = "ced2fa8e-4577-40c8-a4c3-a825b93e4215";
+				PROVISIONING_PROFILE_SPECIFIER = "Notification iPetMatch Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = iPetMatch/bridge_Header.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

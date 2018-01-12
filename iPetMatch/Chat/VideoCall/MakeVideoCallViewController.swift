@@ -135,8 +135,7 @@ extension MakeVideoCallViewController {
             callingFromLabel.text = NSLocalizedString("Video Call From", comment: "")
             userNameLabel.text = callingUser[Friend.Schema.name]
             let imageAdress = callingUser[Friend.Schema.imageURL]
-            if let imageURL = URL(string: imageAdress!) {
-                loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: userImageView, activityIndicatorView: activityIndicatorView)            }
+            loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: userImageView, activityIndicatorView: activityIndicatorView, placeholderImage: nil)
             self.prepareLocalVideoTrack()
 
         } else {
@@ -154,10 +153,7 @@ extension MakeVideoCallViewController {
             callingFromLabel.text = NSLocalizedString("Video Calling To", comment: "")
             userNameLabel.text = callToUser.name
             let imageAdress = callToUser.imageURL
-            if let imageURL = URL(string: imageAdress!) {
-                loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: userImageView, activityIndicatorView: activityIndicatorView)
-                //UserManager.setUserProfileImage(with: imageURL, into: self.userImageView, activityIndicatorView: self.activityIndicatorView)
-            }
+            loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: userImageView, activityIndicatorView: activityIndicatorView, placeholderImage: nil)
 
             self.prepareLocalVideoTrack()
 
@@ -217,6 +213,10 @@ extension MakeVideoCallViewController: QBRTCClientDelegate {
 
         callingFromLabel.text = NSLocalizedString("Friend didn't user camara", comment: "")
 
+    }
+
+    func session(_ session: QBRTCSession, hungUpByUser userID: NSNumber, userInfo: [String: String]? = nil) {
+        SCLAlertView().showInfo("Information", subTitle: NSLocalizedString("Rejected by friend", comment: ""))
     }
 
     func session(_ session: QBRTCBaseSession, connectedToUser userID: NSNumber) {
