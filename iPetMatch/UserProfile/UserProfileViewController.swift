@@ -10,6 +10,7 @@ import UIKit
 
 class UserProfileViewController: UIViewController {
 
+    @IBOutlet weak var editPanel: UIView!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var backgroundUserImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -92,11 +93,16 @@ class UserProfileViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        editPanel.isHidden = true
         setupUserInfo()
+        hideNavigationBar()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
 
+    func hideNavigationBar() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = UIColor.clear
     }
 
     func setupUserInfo() {
@@ -176,7 +182,8 @@ class UserProfileViewController: UIViewController {
     @IBAction func tapFilterButton(_ sender: Any) {
         let filterStoryboard = UIStoryboard(name: "Filter", bundle: nil)
         let filterViewController = filterStoryboard.instantiateViewController(withIdentifier: "FilterViewController")
-        self.present(filterViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(filterViewController, animated: true)
+        //self.present(filterViewController, animated: true, completion: nil)
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {

@@ -109,9 +109,10 @@ class TabBarController: UITabBarController {
         case .profile:
 
             let profileViewController = UserProfileViewController()
-            profileViewController.tabBarItem = TabBarItem(itemType: itemType)
+            let navigationViewController = UINavigationController(rootViewController: profileViewController)
+            navigationViewController.tabBarItem = TabBarItem(itemType: itemType)
 
-            return profileViewController
+            return navigationViewController
 
         }
 

@@ -23,6 +23,7 @@
 		871F8FE01FF3443A0020FF35 /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871F8FDE1FF3443A0020FF35 /* MatchViewController.swift */; };
 		8727F72E1FE85E060027859D /* RingtonePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8727F72D1FE85E060027859D /* RingtonePlayer.swift */; };
 		8727F7351FE8B61E0027859D /* Mewo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8727F7321FE8B61D0027859D /* Mewo.mp3 */; };
+		872B4D242008EEA400C8D2FA /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B4D232008EEA400C8D2FA /* UserSetting.swift */; };
 		872D9CD51FE65EFD0008C8AA /* MakeVideoCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 872D9CD11FE65CF80008C8AA /* MakeVideoCallViewController.xib */; };
 		872D9CD61FE65F030008C8AA /* MakeVideoCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D9CD31FE65CF80008C8AA /* MakeVideoCallViewController.swift */; };
 		872D9CD71FE65F110008C8AA /* LocalVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D9CD21FE65CF80008C8AA /* LocalVideoView.swift */; };
@@ -93,7 +94,7 @@
 		87DD45681FF7DD50002793EE /* FriendsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD45671FF7DD4F002793EE /* FriendsProvider.swift */; };
 		87DD456A1FF80BD9002793EE /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD45691FF80BD8002793EE /* Friend.swift */; };
 		87DDA8E11FE907A600A917A8 /* dog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 87DDA8E01FE907A600A917A8 /* dog.mp3 */; };
-		87DDA8E31FE90CC500A917A8 /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DDA8E21FE90CC500A917A8 /* UserSetting.swift */; };
+		87DDA8E31FE90CC500A917A8 /* UserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DDA8E21FE90CC500A917A8 /* UserPreference.swift */; };
 		87E8A92A1FE5932100726A2E /* ChatUsersListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */; };
 		87F3B6711FEC1CD9000E5045 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */; };
 		87F630731FFF36810012D695 /* PetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F630711FFF36800012D695 /* PetsCell.swift */; };
@@ -133,6 +134,7 @@
 		8727F72D1FE85E060027859D /* RingtonePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingtonePlayer.swift; sourceTree = "<group>"; };
 		8727F7321FE8B61D0027859D /* Mewo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mewo.mp3; sourceTree = "<group>"; };
 		8727F7371FE8BF310027859D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		872B4D232008EEA400C8D2FA /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
 		872D9CD11FE65CF80008C8AA /* MakeVideoCallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MakeVideoCallViewController.xib; path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Chat/VideoCall/MakeVideoCallViewController.xib; sourceTree = "<absolute>"; };
 		872D9CD21FE65CF80008C8AA /* LocalVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalVideoView.swift; sourceTree = "<group>"; };
 		872D9CD31FE65CF80008C8AA /* MakeVideoCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeVideoCallViewController.swift; sourceTree = "<group>"; };
@@ -224,7 +226,7 @@
 		87DD45671FF7DD4F002793EE /* FriendsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsProvider.swift; sourceTree = "<group>"; };
 		87DD45691FF80BD8002793EE /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		87DDA8E01FE907A600A917A8 /* dog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog.mp3; sourceTree = "<group>"; };
-		87DDA8E21FE90CC500A917A8 /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
+		87DDA8E21FE90CC500A917A8 /* UserPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreference.swift; sourceTree = "<group>"; };
 		87E8A9251FE5932100726A2E /* ChatUsersListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersListTableViewCell.swift; sourceTree = "<group>"; };
 		87EBEEB81FEEA28F00C62D89 /* iPetMatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iPetMatch.entitlements; sourceTree = "<group>"; };
 		87F3B6701FEC1CD9000E5045 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -404,11 +406,12 @@
 		874D94331FE2B28E0009C9F3 /* Users */ = {
 			isa = PBXGroup;
 			children = (
-				87DDA8E21FE90CC500A917A8 /* UserSetting.swift */,
+				87DDA8E21FE90CC500A917A8 /* UserPreference.swift */,
 				87C179AA1FEBFDB200815A47 /* UserManager.swift */,
 				8760A83B1FF4BAD200EE409E /* IPetUser.swift */,
 				87DD45691FF80BD8002793EE /* Friend.swift */,
 				870882191FFBA07C00723149 /* Pet.swift */,
+				872B4D232008EEA400C8D2FA /* UserSetting.swift */,
 			);
 			name = Users;
 			path = /Users/hsiaoai/GitHub/iPetMatch/iPetMatch/Model/Users;
@@ -846,6 +849,7 @@
 				87F630731FFF36810012D695 /* PetsCell.swift in Sources */,
 				8797E67F1FE1174100C9002F /* QuickbloxAdmin.swift in Sources */,
 				87C179AB1FEBFDB200815A47 /* UserManager.swift in Sources */,
+				872B4D242008EEA400C8D2FA /* UserSetting.swift in Sources */,
 				8737143A1FE40612009C440F /* MakeAudioCallViewController.swift in Sources */,
 				879FB12A1FE2DF92002332EF /* TabBarController.swift in Sources */,
 				87126BFA1FE19B2A009D0188 /* Identifiable.swift in Sources */,
@@ -871,7 +875,7 @@
 				8760A83A1FF43EBF00EE409E /* UIImageExtension.swift in Sources */,
 				872E97351FFB00EC00106AF0 /* PetsViewController.swift in Sources */,
 				8708821A1FFBA07C00723149 /* Pet.swift in Sources */,
-				87DDA8E31FE90CC500A917A8 /* UserSetting.swift in Sources */,
+				87DDA8E31FE90CC500A917A8 /* UserPreference.swift in Sources */,
 				872D9CD61FE65F030008C8AA /* MakeVideoCallViewController.swift in Sources */,
 				8735E6191FE56A4500C85442 /* AppDelegate.swift in Sources */,
 				8760A8361FF4249000EE409E /* FirebaseSchema.swift in Sources */,

@@ -15,6 +15,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserProfileViewController" customModule="iPetMatch" customModuleProvider="target">
             <connections>
                 <outlet property="backgroundUserImageView" destination="dmN-TU-DYC" id="FTd-aZ-JWK"/>
+                <outlet property="editPanel" destination="KPS-bd-nDR" id="5Ks-H6-naL"/>
                 <outlet property="friendsNumberLabel" destination="hC3-rn-Zlj" id="SWd-PZ-G2R"/>
                 <outlet property="likedUserLabel" destination="hMp-px-aeT" id="Cqw-Nb-Wxz"/>
                 <outlet property="loadingImageView" destination="OcS-Gw-Fun" id="cbD-vQ-1yw"/>
@@ -226,7 +227,7 @@
                         <constraint firstAttribute="width" constant="1" id="K3d-As-zB7"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KPS-bd-nDR">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KPS-bd-nDR" userLabel="EditView">
                     <rect key="frame" x="0.0" y="555.5" width="375" height="90"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="tcb-JE-q8d">

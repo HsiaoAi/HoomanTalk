@@ -21,10 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set rootViewController
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
+        UINavigationBar.appearance().tintColor = UIColor.Custom.karolina
 
         // Firebase
         FirebaseApp.configure()
         Fabric.sharedSDK().debug = true
+        _ = UserPreference.shared
 
         // IQKeyboard
         IQKeyboardManager.sharedManager().enable = true

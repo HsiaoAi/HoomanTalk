@@ -65,10 +65,7 @@ class MatchCardUsersManager {
 
                 if userUid != Auth.auth().currentUser?.uid {
 
-                    guard let userDic = userData as? [String: Any] else {
-
-                        return
-                    }
+                    guard let userDic = userData as? [String: Any] else { return }
 
                     guard
                         let email = userDic[IPetUser.Schema.loginEmail] as? String,

@@ -2,14 +2,12 @@
 //  UserSetting.swift
 //  iPetMatch
 //
-//  Created by Hsiao Ai LEE on 19/12/2017.
-//  Copyright © 2017 Hsiao Ai LEE. All rights reserved.
+//  Created by Hsiao Ai LEE on 12/01/2018.
+//  Copyright © 2018 Hsiao Ai LEE. All rights reserved.
 //
 
-struct UserSetting {
+import Foundation
 
+class UserSetting {
     static var isAllowVibrating: Bool = true
-    static var lookForPetType: PetPersonType?
-    static var lookForGender: Gender?
-    static var ageRange: (Int, Int)?
 }

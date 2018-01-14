@@ -41,64 +41,45 @@ class MatchViewController: UIViewController {
     @IBOutlet weak var hitHearToMatchLabel: UILabel!
 
     @IBAction func tapLikeMeButton(_ sender: Any) {
-
         likeMeButton.setTitleColor(UIColor.Custom.greyishBrown, for: .normal)
-
         browseButton.setTitleColor(.lightGray, for: .normal)
-
         likeMeCollectionView.isHidden = false
-
         view.bringSubview(toFront: likeMeCollectionView)
-
         kolodaView.isHidden = true
-
         hitHearToMatchLabel.isHidden = false
-
     }
 
     @IBAction func tapBrowse(_ sender: UIButton) {
-
         likeMeButton.setTitleColor(.lightGray, for: .normal)
         browseButton.setTitleColor(UIColor.Custom.greyishBrown, for: .normal)
-
         kolodaView.isHidden = false
-
         likeMeCollectionView.isHidden = true
-
         hitHearToMatchLabel.isHidden = true
         runOutofCardView.isHidden = true
-
     }
 
     override func viewDidLoad() {
-
         super.viewDidLoad()
-
         kolodaView.isHidden = true
         likeMeCollectionView.isHidden = true
         hitHearToMatchLabel.isHidden = true
         setupKolodaView()
-
         SVProgressHUD.show(withStatus: NSLocalizedString("Browsing", comment: ""))
         setupLikeMeCollectionView()
-
         matchCardsManager.observeMatchCardUsers()
         matchCardsManager.observeLikesSentByCurrentUser()
         matchCardsManager.delegate = self
-
         likedMeManager.delegate = self
         likedMeManager.observeReceivedLikes()
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
 
         super.viewWillAppear(animated)
-
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
         // ResetView
         kolodaView.isHidden = false
         runOutofCardView.isHidden = true
-
         likeMeCollectionView.isHidden = true
         hitHearToMatchLabel.isHidden = true
         likeMeButton.setTitleColor(.lightGray, for: .normal)
@@ -107,10 +88,8 @@ class MatchViewController: UIViewController {
     }
 
     override func viewDidDisappear(_ animated: Bool) {
-
         super.viewDidDisappear(animated)
         self.runOutofCardView.isHidden = true
-
     }
 
 }
@@ -134,7 +113,6 @@ extension MatchViewController: MatchCardUsersManagerProtocol {
     func didObserveMatchCardUsers(_ matchCardUsers: [IPetUser]) {
 
         self.matchCardUsers = matchCardUsers
-
         self.matchCardsManager.matchCardUsers = [IPetUser]()
 
         DispatchQueue.main.async {
@@ -241,6 +219,7 @@ extension MatchViewController: KolodaViewDataSource {
 
                 let imageUrl = matchUser.imageURL
                 self.loadignImagesManager.downloadAndCacheImage(urlString: imageUrl!, imageView: matchCardView.userImageView, activityIndicatorView: matchCardView.activityIndicatorView, placeholderImage: nil)
+                self.loadignImagesManager.downloadAndCacheImage(urlString: imageUrl!, imageView: matchCardView.backgroundUserImage, activityIndicatorView: matchCardView.activityIndicatorView, placeholderImage: nil)
 
                 if self.usersIdLikedByCurrentUser.contains(matchUser.id) {
                     matchCardView.likeButton.setClicked(true, animated: false)

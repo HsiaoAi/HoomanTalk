@@ -41,6 +41,9 @@
 "Block" = "封鎖";
 
 /* No comment provided by engineer. */
+"Browsing" = "探索中";
+
+/* No comment provided by engineer. */
 "Camera roll unauthorized" = "未授權相機";
 
 /* No comment provided by engineer. */
@@ -53,7 +56,10 @@
 "Cancel" = "取消";
 
 /* No comment provided by engineer. */
-"Change filter to find more users" = "更改設定探索更多";
+"Cat" = "貓";
+
+/* No comment provided by engineer. */
+"Change filter to find users" = "改變條件尋找更多使用者";
 
 /* No comment provided by engineer. */
 "Chat" = "聊天";
@@ -69,6 +75,12 @@
 
 /* No comment provided by engineer. */
 "Description" = "描述";
+
+/* No comment provided by engineer. */
+"Dog" = "狗";
+
+/* No comment provided by engineer. */
+"Dog and Cat" = "狗和貓";
 
 /* No comment provided by engineer. */
 "Done" = "完成";
@@ -95,6 +107,9 @@
 "Extra Small: 1 - 4.5 Kg" = "迷你型：1 - 4.5 公斤";
 
 /* No comment provided by engineer. */
+"Female" = "女生";
+
+/* No comment provided by engineer. */
 "Friend can't answer the call" = "朋友無法接通電話";
 
 /* No comment provided by engineer. */
@@ -105,6 +120,9 @@
 
 /* No comment provided by engineer. */
 "Friends" = "朋友";
+
+/* No comment provided by engineer. */
+"Gender" = "性別";
 
 /* No comment provided by engineer. */
 "Give a brief introduction" = "一句話簡單介紹你的寵物";
@@ -173,6 +191,12 @@
 "Log in" = "登入";
 
 /* No comment provided by engineer. */
+"Male" = "男生";
+
+/* No comment provided by engineer. */
+"Male and Female" = "男生和女生";
+
+/* No comment provided by engineer. */
 "Match" = "配對";
 
 /* No comment provided by engineer. */
@@ -201,6 +225,9 @@
 
 /* No comment provided by engineer. */
 "Person" = "奴";
+
+/* No comment provided by engineer. */
+"Pet Person" = "寵物奴";
 
 /* No comment provided by engineer. */
 "Pets" = "寵物";
