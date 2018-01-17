@@ -22,4 +22,8 @@ https://itunes.apple.com/app/hooman-talk/id1332388329
 6. Auto Reference Counting
 7. Unowned v.s. Weak
 
+### Login and Sign Up Page
+
+### Other
+1. Localization
 
