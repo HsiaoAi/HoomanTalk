@@ -25,9 +25,14 @@ https://itunes.apple.com/app/hooman-talk/id1332388329
 ### Other
 1. Localization
 
-### Login and Sign Up Page
-    <a href="https://imgflip.com/gif/22tuo9"><img src="https://i.imgflip.com/22tuo9.gif" title="made at imgflip.com"/></a>
+### Landing Page
+1. Login
 
+    <a href="https://imgflip.com/gif/22tuvk"><img src="https://i.imgflip.com/22tuvk.gif" title="made at imgflip.com"/></a>
+
+2. Sign up
+
+    <a href="https://imgflip.com/gif/22turl"><img src="https://i.imgflip.com/22turl.gif" title="made at imgflip.com"/></a>
 ### Match View Controller
 1. Swipeable cards to browse other users on Browse page.
 
@@ -40,7 +45,16 @@ https://itunes.apple.com/app/hooman-talk/id1332388329
 ### Chat View Controller
 1. Free audio and video call.
 
-    <a href="https://imgflip.com/gif/22tu1j"><img src="https://i.imgflip.com/22tu1j.gif" title="made at imgflip.com"/></a>    <a href="https://imgflip.com/gif/22tu2u"><img src="https://i.imgflip.com/22tu2u.gif" title="made at imgflip.com"/></a>    
+    <a href="https://imgflip.com/gif/22tu1j"><img src="https://i.imgflip.com/22tu1j.gif" title="made at imgflip.com"/></a>    <a href="https://imgflip.com/gif/22tu2u"><img src="https://i.imgflip.com/22tu2u.gif" title="made at imgflip.com"/></a>
+    
+2. Block and report users.
+
+### Pets View Controller
+ Creat, Read, Edit, Delete pets' profile.
+ 
+     <a href="https://imgflip.com/gif/22tv0o"><img src="https://i.imgflip.com/22tv0o.gif" title="made at imgflip.com"/></a>
+
+
 
 
 
