@@ -50,9 +50,9 @@ https://itunes.apple.com/app/hooman-talk/id1332388329
 2. Block and report users.
 
 ### Pets View Controller
- Creat, Read, Edit, Delete pets' profile.
- 
-     <a href="https://imgflip.com/gif/22tv0o"><img src="https://i.imgflip.com/22tv0o.gif" title="made at imgflip.com"/></a>
+1. Creat, Read, Edit, Delete pets' profile.
+
+    <a href="https://imgflip.com/gif/22tv0o"><img src="https://i.imgflip.com/22tv0o.gif" title="made at imgflip.com"/></a>
 
 
 
