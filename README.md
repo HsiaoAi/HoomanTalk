@@ -54,6 +54,11 @@ https://itunes.apple.com/app/hooman-talk/id1332388329
 
     <a href="https://imgflip.com/gif/22tv0o"><img src="https://i.imgflip.com/22tv0o.gif" title="made at imgflip.com"/></a>
 
+### Profile View Controller
+1. Checkout user profile and log out
+
+    <a href="https://imgflip.com/gif/22tv5x"><img src="https://i.imgflip.com/22tv5x.gif" title="made at imgflip.com"/></a>
+
 
 
 
