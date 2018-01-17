@@ -1,0 +1,18 @@
+
+/* Class = "UIButton"; normalTitle = "Browse"; ObjectID = "6Vd-Ye-uBv"; */
+"6Vd-Ye-uBv.normalTitle" = "Browse";
+
+/* Class = "UILabel"; text = "RUN OUT OF MATCH CARDS"; ObjectID = "Skq-GJ-f6D"; */
+"Skq-GJ-f6D.text" = "RUN OUT OF MATCH CARDS";
+
+/* Class = "UILabel"; text = "←→SWIPE TO DISMISS"; ObjectID = "dKa-if-BxX"; */
+"dKa-if-BxX.text" = "←→SWIPE TO DISMISS";
+
+/* Class = "UILabel"; text = "HIT BUTTON TO LIKE"; ObjectID = "e50-KN-5uU"; */
+"e50-KN-5uU.text" = "HIT BUTTON TO LIKE";
+
+/* Class = "UILabel"; text = "HIT HEART TO MATH"; ObjectID = "mh3-Y9-M81"; */
+"mh3-Y9-M81.text" = "HIT HEART TO MATH";
+
+/* Class = "UIButton"; normalTitle = "Like Me"; ObjectID = "uLz-mF-sZN"; */
+"uLz-mF-sZN.normalTitle" = "Like Me";

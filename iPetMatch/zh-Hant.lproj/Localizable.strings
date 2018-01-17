@@ -1,0 +1,408 @@
+/* No comment provided by engineer. */
+"(error!.localizedDescription)" = "錯誤，請再試一次";
+
+/* for USA */
+"2" = "0";
+
+/* No comment provided by engineer. */
+">= 18yrs" = "需滿18歲";
+
+/* No comment provided by engineer. */
+"Add Pet Name" = "輸入寵物名字";
+
+/* No comment provided by engineer. */
+"Add pet breed" = "輸入寵物品種";
+
+/* No comment provided by engineer. */
+"Are you sure to log out?" = "確定要登出嗎？";
+
+/* No comment provided by engineer. */
+"Are you sure to send this report" = "確定送出報告嗎？";
+
+/* No comment provided by engineer. */
+"Audio Calling To" = "語音電話打給";
+
+/* No comment provided by engineer. */
+"AudioCall" = "語音";
+
+/* No comment provided by engineer. */
+"BIRTH" = "生日";
+
+/* No comment provided by engineer. */
+"BREED" = "品種";
+
+/* No comment provided by engineer. */
+"Back" = "上一頁";
+
+/* No comment provided by engineer. */
+"Birth" = "生日";
+
+/* No comment provided by engineer. */
+"Block" = "封鎖";
+
+/* No comment provided by engineer. */
+"Browsing" = "探索中";
+
+/* No comment provided by engineer. */
+"Camera roll unauthorized" = "未授權相機";
+
+/* No comment provided by engineer. */
+"Can't load user's information" = "無法載入使用者資料";
+
+/* No comment provided by engineer. */
+"Can't sign up,\nif you're under 18" = "未滿十八歲無法註冊";
+
+/* No comment provided by engineer. */
+"Cancel" = "取消";
+
+/* No comment provided by engineer. */
+"Cat" = "貓";
+
+/* No comment provided by engineer. */
+"Change filter to find users" = "改變條件尋找更多使用者";
+
+/* No comment provided by engineer. */
+"Chat" = "聊天";
+
+/* No comment provided by engineer. */
+"Click to start your first call!" = "開始第一通通話";
+
+/* No comment provided by engineer. */
+"Confirm" = "確定";
+
+/* No comment provided by engineer. */
+"Connecting..." = "連接中...";
+
+/* No comment provided by engineer. */
+"Description" = "描述";
+
+/* No comment provided by engineer. */
+"Dog" = "狗";
+
+/* No comment provided by engineer. */
+"Dog and Cat" = "狗和貓";
+
+/* No comment provided by engineer. */
+"Done" = "完成";
+
+/* No comment provided by engineer. */
+"Edit" = "編輯";
+
+/* No comment provided by engineer. */
+"Edit Successully" = "編輯成功";
+
+/* No comment provided by engineer. */
+"Email" = "信箱";
+
+/* No comment provided by engineer. */
+"Email is already in use" = "Email已被使用";
+
+/* No comment provided by engineer. */
+"Error" = "錯誤";
+
+/* No comment provided by engineer. */
+"Extra Large: 32 - 45 Kg" = "超大型：32 - 45 公斤";
+
+/* No comment provided by engineer. */
+"Extra Small: 1 - 4.5 Kg" = "迷你型：1 - 4.5 公斤";
+
+/* No comment provided by engineer. */
+"Female" = "女生";
+
+/* No comment provided by engineer. */
+"Friend can't answer the call" = "朋友無法接通電話";
+
+/* No comment provided by engineer. */
+"Friend didn't user camara" = "朋友開啟鏡頭";
+
+/* No comment provided by engineer. */
+"Friend end this call" = "朋友結束電話";
+
+/* No comment provided by engineer. */
+"Friends" = "朋友";
+
+/* No comment provided by engineer. */
+"Gender" = "性別";
+
+/* No comment provided by engineer. */
+"Give a brief introduction" = "一句話簡單介紹你的寵物";
+
+/* No comment provided by engineer. */
+"Hang up by friend" = "朋友掛斷電話";
+
+/* No comment provided by engineer. */
+"I'm" = "我是";
+
+/* No comment provided by engineer. */
+"Image Error.\nPick image again." = "請重新選取照片";
+
+/* No comment provided by engineer. */
+"Incoming Audio Call" = "語音來電";
+
+/* No comment provided by engineer. */
+"Incoming Vedio Call" = "視訊來電";
+
+/* No comment provided by engineer. */
+"Incoming audio call from " = "語音電話來自";
+
+/* No comment provided by engineer. */
+"Incoming video call from " = "視訊電話來自";
+
+/* No comment provided by engineer. */
+"Information" = "資訊";
+
+/* No comment provided by engineer. */
+"Invalid Email" = "無效的Email";
+
+/* No comment provided by engineer. */
+"Invalid Image" = "無效的照片";
+
+/* No comment provided by engineer. */
+"Invalid Password\n(6-20 Characters)" = "無效的密碼(6-20 字元)";
+
+/* No comment provided by engineer. */
+"Invalid email" = "無效的Email";
+
+/* No comment provided by engineer. */
+"Invalid password" = "無效的密碼";
+
+/* No comment provided by engineer. */
+"Large: 18 - 32 Kg" = "大型：18 - 32 公斤";
+
+/* No comment provided by engineer. */
+"Last audio call" = "上一次語音";
+
+/* No comment provided by engineer. */
+"Last video call" = "上一次視訊";
+
+/* No comment provided by engineer. */
+"Liked" = "喜歡我";
+
+/* No comment provided by engineer. */
+"Likes" = "我喜歡";
+
+/* No comment provided by engineer. */
+"Loading" = "載入中";
+
+/* No comment provided by engineer. */
+"Loading..." = "載入中...";
+
+/* No comment provided by engineer. */
+"Log in" = "登入";
+
+/* No comment provided by engineer. */
+"Male" = "男生";
+
+/* No comment provided by engineer. */
+"Male and Female" = "男生和女生";
+
+/* No comment provided by engineer. */
+"Match" = "配對";
+
+/* No comment provided by engineer. */
+"Medium : 12 - 18 Kg" = "中型：12 -18 公斤";
+
+/* No comment provided by engineer. */
+"Name" = "名字";
+
+/* No comment provided by engineer. */
+"No" = "否";
+
+/* No comment provided by engineer. */
+"No user found" = "沒有找到使用者";
+
+/* No comment provided by engineer. */
+"Notice" = "注意";
+
+/* No comment provided by engineer. */
+"PET NAME" = "寵物名稱";
+
+/* No comment provided by engineer. */
+"Password" = "密碼";
+
+/* No comment provided by engineer. */
+"Password (6-20 Characters)" = "密碼(6-20 字元)";
+
+/* No comment provided by engineer. */
+"Person" = "奴";
+
+/* No comment provided by engineer. */
+"Pet Person" = "寵物奴";
+
+/* No comment provided by engineer. */
+"Pets" = "寵物";
+
+/* No comment provided by engineer. */
+"Please check the password reset email" = "請檢查重設密碼的郵件";
+
+/* No comment provided by engineer. */
+"Please choose one:\nDog, Cat or Both" = "請選擇： 狗, 貓 或兩者";
+
+/* No comment provided by engineer. */
+"Please enter content" = "請輸入內容";
+
+/* No comment provided by engineer. */
+"Please enter password" = "請輸入密碼";
+
+/* No comment provided by engineer. */
+"Please enter pet's name" = "請輸入寵物名字";
+
+/* No comment provided by engineer. */
+"Please enter your email" = "請輸入信箱";
+
+/* No comment provided by engineer. */
+"Please enter your name" = "請輸入名字";
+
+/* No comment provided by engineer. */
+"Please log in" = "請登入";
+
+/* No comment provided by engineer. */
+"Please login again" = "請重新登入";
+
+/* No comment provided by engineer. */
+"Please pick pet's picture" = "請選擇寵物照片";
+
+/* No comment provided by engineer. */
+"Please pick your birthday" = "請選擇生日";
+
+/* No comment provided by engineer. */
+"Please pick your picture" = "請選擇照片";
+
+/* No comment provided by engineer. */
+"Please read the EULA" = "請詳讀最終用戶許可協議";
+
+/* No comment provided by engineer. */
+"Profile" = "會員";
+
+/* No comment provided by engineer. */
+"Rejected by friend" = "朋友拒接電話";
+
+/* No comment provided by engineer. */
+"Report" = "回報";
+
+/* No comment provided by engineer. */
+"Run out of cards\nDo you want to reload cards" = "探索使用者完畢 想要重新探索嗎？";
+
+/* No comment provided by engineer. */
+"SIZE" = "體型";
+
+/* No comment provided by engineer. */
+"Save" = "儲存";
+
+/* No comment provided by engineer. */
+"Save Successully" = "儲存成功";
+
+/* No comment provided by engineer. */
+"Search Friend" = "尋找朋友";
+
+/* No comment provided by engineer. */
+"Select Pet Birth" = "選擇寵物生日";
+
+/* No comment provided by engineer. */
+"Select Pet size" = "選擇寵物體型";
+
+/* No comment provided by engineer. */
+"Sent this report" = "送出報告";
+
+/* No comment provided by engineer. */
+"Server error\nPlease try again" = "錯誤,  請再試一次";
+
+/* No comment provided by engineer. */
+"Sign up" = "註冊";
+
+/* No comment provided by engineer. */
+"Sign up successfully, please log in again" = "註冊成功, 請登入";
+
+/* No comment provided by engineer. */
+"Size" = "體型";
+
+/* No comment provided by engineer. */
+"Small: 5 - 11.5 Kg" = "小型：5 - 11.5 公斤";
+
+/* No comment provided by engineer. */
+"Someone likes you! Come back to check it." = "有人喜歡你，點進來查看！";
+
+/* No comment provided by engineer. */
+"Something wrong, please log in again" = "錯誤, 請重新登入";
+
+/* No comment provided by engineer. */
+"Something wrong, please try again" = "錯誤, 請再試一次";
+
+/* No comment provided by engineer. */
+"Something wrong, plese log in again" = "錯誤, 請重新登入";
+
+/* No comment provided by engineer. */
+"Something wrong, plese log in again." = "錯誤, 請重新登入";
+
+/* No comment provided by engineer. */
+"Something wrong, plese sign up again" = "錯誤, 請重新註冊";
+
+/* No comment provided by engineer. */
+"Success" = "成功";
+
+/* No comment provided by engineer. */
+"Try again" = "再試一次";
+
+/* No comment provided by engineer. */
+"Unblock" = "解封鎖";
+
+/* No comment provided by engineer. */
+"Unknown caller" = "不明來電";
+
+/* No comment provided by engineer. */
+"Uploading" = "上傳";
+
+/* No comment provided by engineer. */
+"User didn't add pets yet" = "尚未增加寵物";
+
+/* No comment provided by engineer. */
+"User didn't log in" = "尚未登入";
+
+/* No comment provided by engineer. */
+"User not found with this email" = "找不登符合信箱";
+
+/* No comment provided by engineer. */
+"VedioCall" = "視訊";
+
+/* No comment provided by engineer. */
+"Video Call From" = "視訊來電";
+
+/* No comment provided by engineer. */
+"Video Calling To" = "視訊電話給";
+
+/* No comment provided by engineer. */
+"Warning" = "警告";
+
+/* No comment provided by engineer. */
+"What do you want to report about this user?" = "你想要報告什麼？";
+
+/* No comment provided by engineer. */
+"Wrong birthday format" = "生日錯誤";
+
+/* No comment provided by engineer. */
+"Wrong email" = "信箱錯誤";
+
+/* No comment provided by engineer. */
+"Wrong password" = "密碼錯誤";
+
+/* No comment provided by engineer. */
+"Yes" = "是";
+
+/* No comment provided by engineer. */
+"You can't contact with this friend" = "無法聯絡此朋友";
+
+/* No comment provided by engineer. */
+"You don't have friends" = "沒有朋友";
+
+/* No comment provided by engineer. */
+"You got a new friend! Come back to check it." = "你有一個新朋友！回來查看";
+
+/* Date format */
+"dd, MMM, yyyy" = "yyyy, MMM, dd";
+
+/* Date format */
+"dd, MMMM, yyyy" = "yyyy, MMM, dd";
+
+/* No comment provided by engineer. */
+"yrs" = "歲";
+

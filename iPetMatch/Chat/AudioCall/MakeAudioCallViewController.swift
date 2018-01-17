@@ -10,71 +10,183 @@ import UIKit
 
 class MakeAudioCallViewController: UIViewController {
 
-    @IBOutlet weak var declineButton: UIButton!
+    @IBOutlet weak var friendImageView: UIImageView!
+    @IBOutlet weak var friendNameLabel: UILabel!
+    @IBOutlet weak var acticityIndicatorView: NVActivityIndicatorView!
+    @IBOutlet weak var timerLabel: MZTimerLabel!
+    @IBOutlet weak var callingToLabel: UILabel!
+    @IBOutlet weak var speakerButton: LGButton!
+    @IBOutlet weak var microphoneButton: LGButton!
+    @IBOutlet weak var audioSignGifView: FLAnimatedImageView!
+    var selectedFriend: Friend?
+    let loadingImagesManager = LoadingImagesManager()
+
+    @IBAction func declineButton(_ sender: Any) {
+
+        CallManager.shared.session?.hangUp(nil)
+        CallManager.shared.session = nil
+
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //self.navigationController?.navigationBar.topItem?.title =  "撥打語音電話中"
-
+        self.timerLabel.isHidden = true
+        setupAudioSignImageView()
+        setupCallInfoView()
         QBRTCClient.instance().add(self)
+        CallManager.shared.audioManager.currentAudioDevice = QBRTCAudioDevice.receiver
+        callingToLabel.text = NSLocalizedString("Audio Calling To", comment: "")
+        self.navigationController?.isNavigationBarHidden = true
+    }
 
-        declineButton.addTarget(self, action: #selector(declineCall), for: .touchUpInside)
+    func setupCallInfoView() {
 
-        self.navigationItem.title = "撥打語音電話中"
+        guard let friend = self.selectedFriend else {
+            SCLAlertView().showError(NSLocalizedString("Error", comment: ""), subTitle: NSLocalizedString("Friend can't answer the call", comment: ""))
+            return
+        }
+        friendNameLabel.text = friend.name
+        let imageAdress = friend.imageURL
+        loadingImagesManager.downloadAndCacheImage(urlString: imageAdress!, imageView: friendImageView, activityIndicatorView: acticityIndicatorView, placeholderImage: nil)
+        sendPushToOpponentsAboutNewCall(from: UserManager.instance.currentUser!.name, to: "\(friend.callingID!)")
 
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    func setupAudioSignImageView() {
 
-        super.viewWillAppear(animated)
+        let path = Bundle.main.path(forResource: "AudioCall.gif", ofType: nil)!
+        let url = URL(fileURLWithPath: path)
+        audioSignGifView.sd_setImage(with: url, placeholderImage: nil)
 
     }
 
+    @IBAction func switchSpeakerMode(_ sender: Any) {
+
+        if CallManager.shared.audioManager.currentAudioDevice == .receiver {
+
+            CallManager.shared.audioManager.currentAudioDevice = .speaker
+
+            speakerButton.rightImageSrc = IconImage.speakerOn.image
+
+        } else {
+
+            CallManager.shared.audioManager.currentAudioDevice = .receiver
+
+            speakerButton.rightImageSrc = IconImage.speakerOff.image
+
+        }
+
+    }
+
+    @IBAction func switchMicrophoneMode(_ sender: Any) {
+
+        if CallManager.shared.session!.localMediaStream.audioTrack.isEnabled {
+
+            CallManager.shared.session!.localMediaStream.audioTrack.isEnabled = false
+
+            microphoneButton.rightImageSrc = IconImage.microphoneOff.image
+
+        } else {
+
+            CallManager.shared.session!.localMediaStream.audioTrack.isEnabled = true
+
+            microphoneButton.rightImageSrc = IconImage.microphoneOn.image
+
+        }
+
+    }
 }
 
 extension MakeAudioCallViewController: QBRTCClientDelegate {
 
     func session(_ session: QBRTCSession, acceptedByUser userID: NSNumber, userInfo: [String: String]? = nil) {
 
-        self.navigationItem.title =  "通話中"
+        callingToLabel.text = NSLocalizedString("Connecting...", comment: "")
 
     }
 
     func session(_ session: QBRTCSession, rejectedByUser userID: NSNumber, userInfo: [String: String]? = nil) {
 
-        self.navigationItem.title =  "被拒絕"
+        callingToLabel.text = NSLocalizedString("Rejected by friend", comment: "")
+
+        SCLAlertView().showInfo("Information", subTitle: NSLocalizedString("Rejected by friend", comment: ""))
 
     }
 
     func session(_ session: QBRTCSession, hungUpByUser userID: NSNumber, userInfo: [String: String]? = nil) {
 
-        self.navigationItem.title =  "被掛斷"
+        print("++++++被掛斷++++++")
+
+        callingToLabel.text = NSLocalizedString("Hang up by friend", comment: "")
+        SCLAlertView().showInfo("Information", subTitle: NSLocalizedString("Hang up by friend", comment: ""))
+
+    }
+
+    func session(_ session: QBRTCBaseSession, connectedToUser userID: NSNumber) {
+
+        callingToLabel.textColor = UIColor.clear
+        timerLabel.isHidden = false
+        callingToLabel.textColor = UIColor.clear
+        audioSignGifView.stopAnimating()
+        CallManager.shared.startCountingTime(timerLabel: timerLabel)
+    }
+
+    func session(_ session: QBRTCBaseSession, startedConnectingToUser userID: NSNumber) {
+
+    }
+
+    func session(_ session: QBRTCBaseSession, disconnectedFromUser userID: NSNumber) {
+
+        CallManager.shared.stopCountingTime(timerLabel: timerLabel)
+
+    }
+
+    func session(_ session: QBRTCBaseSession, connectionClosedForUser userID: NSNumber) {
+
+        CallManager.shared.stopCountingTime(timerLabel: timerLabel)
 
     }
 
     func sessionDidClose(_ session: QBRTCSession) {
 
-        self.navigationItem.title = ""
+        RingtonePlayer.shared.stopPhoneRing()
 
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
+
+    }
+
+    func session(_ session: QBRTCBaseSession, didChange state: QBRTCSessionState) {
+
+        if state == .closed && CallManager.shared.session != nil {
+
+            self.dismiss(animated: false, completion: nil)
+
+        }
 
     }
 
 }
 
-// Button funtions
+// Push notification
 
 extension MakeAudioCallViewController {
 
-    @objc func declineCall() {
+    func sendPushToOpponentsAboutNewCall(from userName: String, to userId: String) {
 
-        let userInfo: [String: String] = ["key": "value"]
+        let pushMessage = NSLocalizedString("Incoming audio call from ", comment: "") + "\(userName)"
 
-        CallManager.shared.session?.hangUp(userInfo)
+        QBRequest.sendPush(withText: pushMessage,
+                           toUsers: userId,
 
-        CallManager.shared.session = nil
+                           successBlock: {(_, _) -> Void in
 
+                            print("+++Push Done")},
+
+                           errorBlock: {(_ error: QBError) -> Void in
+
+                            print("Push error \(error)")
+
+        })
     }
 
 }

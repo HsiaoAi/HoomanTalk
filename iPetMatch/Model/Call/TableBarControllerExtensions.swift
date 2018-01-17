@@ -16,39 +16,51 @@ extension TabBarController: QBRTCClientDelegate {
 
         if CallManager.shared.session != nil {
 
-            let userInfo: [String: String] = ["key": "value"]
-
-            session.rejectCall(userInfo)
+            CallManager.shared.rejectCall(for: session)
 
         } else {
-
+            CallManager.shared.userInfo = nil
             CallManager.shared.session = session
+            CallManager.shared.userInfo = userInfo
 
-            switch session.conferenceType {
-
-            case .audio:
-
-                let incommingCallViewController = IncommingCallViewController()
-
-                let navigationController = UINavigationController(rootViewController: incommingCallViewController)
-
-                self.present(navigationController, animated: true, completion: nil)
-
-            case .video:
-
-                self.present(MakeVideoCallViewController(), animated: true, completion: nil)
+            if self.isDoNotDisturb {
+                CallManager.shared.rejectCall(for: session)
+                return
             }
+
+            RingtonePlayer.shared.startPhoneRing(callRole: .receiver)
+
+            let incommingCallViewController = IncommingCallViewController()
+
+            let incommingLabel = (session.conferenceType == .audio) ? NSLocalizedString("Incoming Audio Call", comment: "") :
+                NSLocalizedString("Incoming Vedio Call", comment: "")
+            incommingCallViewController.incommingType = incommingLabel
+            self.present(incommingCallViewController, animated: true, completion: nil)
 
         }
 
     }
 
+    @objc func defaultsChanged() {
+        if let ringtoneName = UserDefaults.standard.object(forKey: SettingsBundleHelper.SettingsBundleKeys.ringtones) as? String {
+            if let ringtoneEnum = RingtoneName(rawValue: ringtoneName) {
+                RingtonePlayer.shared.ringtoneName = ringtoneEnum
+            } else if let user = UserManager.instance.currentUser {
+                RingtonePlayer.shared.ringtoneName = (user.petPersonType == .dog) ? RingtoneName.dog : RingtoneName.mewo
+            }
+        }
+
+        self.isDoNotDisturb = UserDefaults.standard.bool(forKey: SettingsBundleHelper.SettingsBundleKeys.doNotDisturb)
+    }
+
     func sessionDidClose(_ session: QBRTCSession) {
 
-        // TODO: show how long the call is
         print("***sessionDidClose***")
 
         CallManager.shared.session = nil
+        CallManager.shared.userInfo = nil
+        RingtonePlayer.shared.stopPhoneRing()
+        self.dismiss(animated: false, completion: nil)
 
     }
 
@@ -56,30 +68,36 @@ extension TabBarController: QBRTCClientDelegate {
 
     func session(_ session: QBRTCSession, userDidNotRespond userID: NSNumber) {
 
-        // TODO: Show Alert
+        RingtonePlayer.shared.stopPhoneRing()
+
         print("***userDidNotRespond***")
 
     }
 
     func session(_ session: QBRTCSession, rejectedByUser userID: NSNumber, userInfo: [String: String]? = nil) {
 
-        // TODO: Show Alert
+        RingtonePlayer.shared.stopPhoneRing()
+
         print("***Reject***")
 
     }
 
     func session(_ session: QBRTCSession, acceptedByUser userID: NSNumber, userInfo: [String: String]? = nil) {
 
+        RingtonePlayer.shared.stopPhoneRing()
+
         print("***acceptedByUser***")
     }
 
     func session(_ session: QBRTCSession, hungUpByUser userID: NSNumber, userInfo: [String: String]? = nil) {
 
+        RingtonePlayer.shared.stopPhoneRing()
+
         print("***hungUpByUser***")
 
     }
 
-    // MARK - Connection life-cyle
+    // Connection life-cyle
 
     func session(_ session: QBRTCBaseSession, startedConnectingToUser userID: NSNumber) {
 
@@ -95,27 +113,40 @@ extension TabBarController: QBRTCClientDelegate {
 
     func session(_ session: QBRTCBaseSession, connectionClosedForUser userID: NSNumber) {
 
+        RingtonePlayer.shared.stopPhoneRing()
         print("***connectionClosedForUser***")
 
     }
 
     func session(_ session: QBRTCBaseSession, disconnectedFromUser userID: NSNumber) {
 
+        RingtonePlayer.shared.stopPhoneRing()
         print("***disconnectedFromUser***")
 
     }
 
     func session(session: QBRTCSession!, userDidNotRespond userID: NSNumber!) {
 
-        // TODO: Alert
+        RingtonePlayer.shared.stopPhoneRing()
         print("***userDidNotRespond***")
 
     }
 
     func session(_ session: QBRTCBaseSession, connectionFailedForUser userID: NSNumber) {
 
-        // TODO: Alert
+        RingtonePlayer.shared.stopPhoneRing()
         print("***connectionFailedForUser***")
+
+    }
+
+    func session(_ session: QBRTCBaseSession, didChange state: QBRTCConnectionState, forUser userID: NSNumber) {
+        if CallManager.shared.session != nil && state == .disconnected {
+
+            CallManager.shared.session = nil
+
+            self.dismiss(animated: false, completion: nil)
+
+        }
 
     }
 
