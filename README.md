@@ -26,7 +26,7 @@ https://itunes.apple.com/app/hooman-talk/id1332388329
 1. Localization
 
 ### Login and Sign Up Page
-<img src="https://imgur.com/a/8ahpE"></img>
+    <a href="https://imgflip.com/gif/22tuo9"><img src="https://i.imgflip.com/22tuo9.gif" title="made at imgflip.com"/></a>
 
 ### Match View Controller
 1. Swipeable cards to browse other users on Browse page.
