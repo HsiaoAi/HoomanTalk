@@ -58,6 +58,16 @@ https://itunes.apple.com/app/hooman-talk/id1332388329
 1. Checkout user profile and log out
 
     <a href="https://imgflip.com/gif/22tv5x"><img src="https://i.imgflip.com/22tv5x.gif" title="made at imgflip.com"/></a>
+    
+### Requirement
+- iOS 10.2+
+- Xcode 8.0+
+- pod install
+
+### Contacts
+- IFANG LEE
+- [Facebook](https://www.facebook.com/HoomanTalk/ "Hooman Talk")
+- ilct23@hotmail.com
 
 
 
