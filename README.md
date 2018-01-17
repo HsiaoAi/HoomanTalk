@@ -22,10 +22,13 @@ https://itunes.apple.com/app/hooman-talk/id1332388329
 6. Auto Reference Counting
 7. Unowned v.s. Weak
 
+### Other
+1. Localization
+
 ### Login and Sign Up Page
 <img src="https://imgur.com/a/8ahpE"></img>
 
-### Match Page
+### Match View Controller
 1. Swipeable cards to browse other users on Browse page.
 
     <a href="https://imgflip.com/gif/22ttxi"><img src="https://i.imgflip.com/22ttxi.gif" title="made at imgflip.com"/></a>
@@ -33,9 +36,12 @@ https://itunes.apple.com/app/hooman-talk/id1332388329
 2. Checkout who sent you likes on Like Me page.
 
     <a href="https://imgflip.com/gif/22ttzt"><img src="https://i.imgflip.com/22ttzt.gif" title="made at imgflip.com"/></a>
+    
+### Chat View Controller
+1. Free audio and video call.
+
+    <a href="https://imgflip.com/gif/22tu1j"><img src="https://i.imgflip.com/22tu1j.gif" title="made at imgflip.com"/></a>    <a href="https://imgflip.com/gif/22tu2u"><img src="https://i.imgflip.com/22tu2u.gif" title="made at imgflip.com"/></a>    
 
 
 
-### Other
-1. Localization
 
